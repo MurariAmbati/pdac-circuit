@@ -69,9 +69,20 @@ than emit designs resting on numbers it cannot support — which is the intended
 The durable contributions are the multi-omic data assembly, the four trained sequence models, the
 data-scaling analysis, and a body of methodology for not fooling yourself.
 
+## Read further
+
+The summary pages above are backed by the project's primary documents, reproduced in full: four
+[addenda]({{ '/addenda/' | relative_url }}) covering individual analyses in depth, and the complete
+[written record]({{ '/reports/' | relative_url }}) including the twenty-eight step review arc that tested
+and in most cases overturned the original claims. Exact held-out numbers for every model, split and
+comparison are on the [evaluation page]({{ '/evaluation/' | relative_url }}).
+
 <div class="next">
 <a href="{{ '/results/' | relative_url }}">Results →</a>
+<a href="{{ '/evaluation/' | relative_url }}">Evaluation →</a>
 <a href="{{ '/methods/' | relative_url }}">Methods →</a>
 <a href="{{ '/validation/' | relative_url }}">Validation →</a>
 <a href="{{ '/data/' | relative_url }}">Data →</a>
+<a href="{{ '/addenda/' | relative_url }}">Addenda →</a>
+<a href="{{ '/reports/' | relative_url }}">Full reports →</a>
 </div>

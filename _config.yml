@@ -18,12 +18,18 @@ nav:
     url: /
   - title: Results
     url: /results/
+  - title: Evaluation
+    url: /evaluation/
   - title: Methods
     url: /methods/
   - title: Validation
     url: /validation/
   - title: Data
     url: /data/
+  - title: Addenda
+    url: /addenda/
+  - title: Reports
+    url: /reports/
 
 markdown: kramdown
 kramdown:
