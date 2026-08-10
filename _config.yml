@@ -61,6 +61,7 @@ exclude:
   - data/
   - docs/
   - models/
+  - configs/
   - COMPENDIUM.md
   - METHODS.md
   - RESULTS.md

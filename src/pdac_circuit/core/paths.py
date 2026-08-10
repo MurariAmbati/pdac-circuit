@@ -10,7 +10,7 @@ CORPORA_JSON=DATA / "corpora.json"
 MODELS=ROOT / "models"
 RESULTS=ROOT / "results"
 FIGURES=ROOT / "figures"
-REGISTRY_JSON=ROOT / "registry.json"
+REGISTRY_JSON=ROOT / "configs" / "registry.json"
 
 DEPMAP_CRISPR=(
     ROOT.parent / "glio-ai" / "data" / "raw" / "depmap-crispr" / "CRISPRGeneEffect.csv"

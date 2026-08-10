@@ -1,0 +1,130 @@
+{
+  "schema": "pdac-circuit.human-adaptation-cohort/1",
+  "frozen_at": "2026-07-15T04:40:00-05:00",
+  "temporal_cutoff": "2026-06-20",
+  "objective": "Increase human PDAC chromatin adaptation without exposing the sealed 54-patient headline test or confusing cell lines, engineered organoids, and patient tumors as equivalent biological units.",
+  "identity_policy": {
+    "patient_unit": "depositor patient or tumor identifier",
+    "engineered_organoid_unit": "genotype plus biological replicate",
+    "cell_line_unit": "canonical cell-line identity shared globally across GEO studies",
+    "technical_replicates": "never independent groups",
+    "cross_study_rule": "The same canonical cell line is one biological group even when it appears in multiple studies."
+  },
+  "planes": [
+    {
+      "accession": "GSE99311",
+      "role": "training",
+      "biological_unit": "organoid_or_cell_line",
+      "uses": ["human_state_adaptation", "signed_intervention_supervision"],
+      "compiled_glob": "data/processed/chromatin_gse99311_full_v1/**/*.npz",
+      "profile_format": "bigWig",
+      "status": "compiled_mouse_profiles_and_paired_interventions",
+      "species_scope": "mouse-only continuous profiles after two hg18-mismatch exclusions; retained as a mixed-species regularizer and intervention curriculum, not counted as human evidence"
+    },
+    {
+      "accession": "GSE149103",
+      "role": "training",
+      "biological_unit": "global_cell_line",
+      "uses": ["human_state_adaptation", "multi_assay_alignment", "primary_metastatic_contrast"],
+      "compiled_glob": "data/processed/chromatin_gse149103_full_v1/**/*.npz",
+      "profile_format": "bigWig",
+      "status": "planned"
+    },
+    {
+      "accession": "GSE272459",
+      "role": "training",
+      "biological_unit": "genotype_plus_biological_replicate",
+      "uses": ["human_state_adaptation", "driver_progression_residual"],
+      "compiled_glob": "data/processed/chromatin_gse272459_full_v1/**/*.npz",
+      "profile_format": "bigWig",
+      "status": "planned"
+    },
+    {
+      "accession": "GSE272461",
+      "role": "training",
+      "biological_unit": "factor_plus_biological_replicate",
+      "uses": ["AP1_occupancy_supervision", "circuit_interpretation_evidence"],
+      "compiled_glob": "data/processed/chromatin_gse272461_full_v1/**/*.npz",
+      "profile_format": "bigWig",
+      "status": "planned"
+    },
+    {
+      "accession": "GSE272462",
+      "role": "training",
+      "biological_unit": "genotype_plus_biological_replicate",
+      "uses": ["methylation_cross_layer", "lineage_loss_supervision"],
+      "compiled_glob": "data/processed/chromatin_gse272462_full_v1/**/*.npz",
+      "profile_format": "bigWig",
+      "status": "planned"
+    },
+    {
+      "accession": "GSE272586",
+      "role": "training",
+      "biological_unit": "factor_plus_biological_replicate",
+      "uses": ["healthy_lineage_occupancy_prior"],
+      "compiled_glob": "data/processed/chromatin_gse272586_full_v1/**/*.npz",
+      "profile_format": "bigWig",
+      "status": "planned"
+    },
+    {
+      "accession": "GSE272463",
+      "role": "validation_only",
+      "biological_unit": "patient",
+      "uses": ["checkpoint_selection", "calibration_development_without_test_labels"],
+      "compiled_glob": "data/processed/chromatin_gse272463_validation_v1/**/*.npz",
+      "profile_format": "bigWig",
+      "status": "planned",
+      "gradient_updates": false,
+      "architecture_or_threshold_tuning": false,
+      "forbidden_outcome_characteristics": ["status", "os", "dfs"]
+    },
+    {
+      "accession": "GSE64557",
+      "role": "profile_training_excluded",
+      "biological_unit": "global_cell_line",
+      "uses": ["KLF5_ELF3_perturbation", "lineage_occupancy"],
+      "profile_format": "BED",
+      "status": "registered_but_excluded_from_profile_training",
+      "exclusion_reason": "processed profiles are BED and require a separately frozen rasterizer"
+    },
+    {
+      "accession": "GSE272460",
+      "role": "profile_training_excluded",
+      "biological_unit": "genotype_perturbation_plus_biological_replicate",
+      "uses": ["ERK_AP1_expression_direction", "state_descriptor"],
+      "status": "registered_but_excluded_from_profile_training",
+      "exclusion_reason": "RNA auxiliary supervision requires a separately frozen profile transform"
+    },
+    {
+      "accession": "GSE124229",
+      "role": "protected_test",
+      "biological_unit": "patient",
+      "uses": ["one_shot_headline_test"],
+      "status": "sealed",
+      "gradient_updates": false,
+      "checkpoint_selection": false
+    },
+    {
+      "accession": "GSE124230",
+      "role": "protected_test",
+      "biological_unit": "patient",
+      "uses": ["one_shot_matched_expression_test"],
+      "status": "sealed",
+      "gradient_updates": false,
+      "checkpoint_selection": false
+    }
+  ],
+  "role_policy": {
+    "training": ["GSE99311", "GSE149103", "GSE272459", "GSE272461", "GSE272462", "GSE272586"],
+    "validation_only": ["GSE272463"],
+    "protected_test": ["GSE124229", "GSE124230"],
+    "profile_training_excluded": ["GSE64557", "GSE272460"]
+  },
+  "fail_closed_rules": [
+    "Every training/validation plane must be public on or before the temporal cutoff.",
+    "Every validation-only shard must carry split=validation and can never appear in a training iterator.",
+    "Protected-test data and metadata require the independent release gate.",
+    "Missing registered training collections keep the full human-adaptation stage non-runnable; they are never silently dropped.",
+    "Patient, cell-line, and engineered-organoid groups are reported separately in validation diagnostics."
+  ]
+}

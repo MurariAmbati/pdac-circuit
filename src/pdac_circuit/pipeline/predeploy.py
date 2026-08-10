@@ -273,7 +273,7 @@ def _check_chromatin_program():
         return ("chromatin-program", "fail", "campaign curriculum stages are incomplete")
     if campaign.get("selection", {}).get("maximum_tuning_uses_of_test_surfaces") != 0:
         return ("chromatin-program", "fail", "campaign permits test-surface tuning")
-    ablation_path=ROOT / "configs" / "chromatin-ablation-registry.json"
+    ablation_path=ROOT / "configs" / "chromatin-ablation-configs/registry.json"
     ablation_registry=json.loads(ablation_path.read_text(encoding="utf-8"))
     ablation_rows=ablation_registry.get("ablations", [])
     if (
@@ -494,7 +494,7 @@ def _check_chromatin_program():
     ):
         return ("chromatin-program", "fail", "Enformer target metadata is not commit-pinned")
     mouse_map=loaded_maps["enformer-mouse"]
-    mouse_policy=ROOT / "enformer_mouse_target_policy.json"
+    mouse_policy=ROOT / "configs" / "enformer_mouse_target_policy.json"
     mouse_metadata=ROOT / "data" / "metadata" / "enformer_targets_mouse.txt"
     mouse_rules={row.get("name"): row for row in mouse_map.get("rules", [])}
     if (

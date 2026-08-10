@@ -1,0 +1,71 @@
+{
+  "schema": "pdac-circuit.registry/1",
+  "title": "PDAC Synthetic Gene-Circuit Design Pipeline",
+  "ruo_banner": "RESEARCH USE ONLY — not for clinical or diagnostic use",
+  "prereg": {
+    "committed_at": "2026-06-20T00:00:00Z",
+    "global": {
+      "seed": 20260620,
+      "bootstrap_B": 2000,
+      "permutation_B": 2000,
+      "ci_level": 0.95,
+      "alpha": 0.05,
+      "genome_build": "GRCh38/hg38"
+    },
+    "module_I": {
+      "name": "target-prioritization",
+      "positive_controls": ["GATA6", "KLF5", "HNF1A", "ZEB1", "MYC", "FOXA2", "TP63"],
+      "recovery_at_k": 10,
+      "recovery_margin": 2,
+      "ranking_perm_alpha": 0.05,
+      "min_tumors_powered": 100,
+      "criterion_note": "Headline gate = permutation enrichment of the known-driver set (multiple-testing-free). recovery_margin is a floor (>=2 master drivers in top-K); the control set deliberately mixes bulk-detectable lineage TFs (GATA6/KLF5/HNF1A/FOXA2) with subset/context-specific ones (ZEB1 mesenchymal, MYC pan-expressed, TP63 basal-only) that are not expected to top a tumor-intrinsic ranking."
+    },
+    "module_II": {
+      "name": "part-selection",
+      "promoter_spearman_margin": 0.40,
+      "enhancer_auroc_margin": 0.75,
+      "conformal_level": 0.90,
+      "held_out_chroms": ["chr8", "chr9"],
+      "val_chroms": ["chr7"]
+    },
+    "module_III": {
+      "name": "circuit-assembly",
+      "steady_state_tol": 0.10,
+      "robustness_min": 0.80,
+      "sweep_n": 256
+    },
+    "module_IV": {
+      "name": "sequence-optimization",
+      "gc_band": [0.40, 0.60],
+      "cai_floor": 0.80,
+      "structure_target_mfe": -10.0
+    },
+    "module_V": {
+      "name": "grna-design",
+      "ontarget_spearman_margin": 0.40,
+      "conformal_level": 0.90,
+      "max_offtarget_mismatch": 4,
+      "min_specificity": 0.50
+    },
+    "module_VI": {
+      "name": "circuit-scoring",
+      "safety_floor": 0.70,
+      "efficacy_floor": 0.50,
+      "front_membership_min": 0.50
+    },
+    "module_VII": {
+      "name": "denovo-part-generation",
+      "gan_seq_len": 1024,
+      "realism_js_max": 0.05,
+      "strength_p90_min": 0.70,
+      "criterion_note": "GAN (WGAN-GP) is certified-real iff (a) generated promoters match real 4-mer composition better than random DNA (JS <= realism_js_max AND lower than random) AND (b) the library contains a STRONG SELECTABLE TAIL: 90th-percentile predicted promoter strength >= strength_p90_min (this is how the pipeline uses it — it selects the strongest generated promoter). Median strength uplift over random is reported honestly but NOT gated: a faithful generator reproduces the full (weak-heavy) real promoter distribution, so its MEDIAN is near random; the value is realistic composition + a strong tail. Generated sequences are GENERATED CANDIDATES, never passed off as real data."
+    }
+  },
+  "models": [
+    { "key": "promoter", "module": "II", "arch": "rf+cnn", "metric": "spearman", "weights_absent": true },
+    { "key": "enhancer", "module": "II", "arch": "cnn", "metric": "auroc", "weights_absent": true },
+    { "key": "grna_ontarget", "module": "V", "arch": "gbt+cnn", "metric": "spearman", "weights_absent": true },
+    { "key": "promoter_gan", "module": "VII", "arch": "wgan-gp", "metric": "strength_uplift", "weights_absent": true }
+  ]
+}

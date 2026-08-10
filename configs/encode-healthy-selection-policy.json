@@ -1,0 +1,24 @@
+{
+  "schema": "pdac-circuit.encode-healthy-selection-policy/1",
+  "frozen_at": "2026-07-15T01:12:00-05:00",
+  "purpose": "Select one semantically identifiable signal family per frozen assay channel for healthy-pancreas pretraining; retain biological and technical replicates but never alias incompatible transforms into the same condition vector.",
+  "required_status": "released",
+  "canonical_outputs": {
+    "ATAC-seq": ["signal p-value"],
+    "DNase-seq": ["read-depth normalized signal"],
+    "Histone ChIP-seq": ["signal p-value"],
+    "TF ChIP-seq": ["signal p-value"],
+    "polyA plus RNA-seq": ["minus strand signal of unique reads", "plus strand signal of unique reads"],
+    "total RNA-seq": ["minus strand signal of unique reads", "plus strand signal of unique reads"],
+    "RAMPAGE": ["minus strand signal of unique reads", "plus strand signal of unique reads"]
+  },
+  "supported_histone_targets": ["H3K27ac", "H3K4me1", "H3K4me3", "H3K27me3", "H3K9me3"],
+  "excluded_signal_families": {
+    "fold change over control": "incompatible scale with signal p-value under the frozen assay vector",
+    "signal of all reads": "redundant with and less specific than unique-read strand signal",
+    "CpG sites coverage": "coverage is not a methylation-state target"
+  },
+  "audit_policy": "Retain released canonical tracks with ENCODE audit errors only when their replicate-quality condition is 0.5; primary sensitivity analysis must also report the audit-error-free subset.",
+  "replicate_policy": "Retain biological and technical replicates after semantic selection; sample_group remains the ENCODE experiment so splitting and validation keep an experiment intact.",
+  "test_label_access": false
+}

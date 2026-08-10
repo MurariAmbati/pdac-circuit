@@ -421,108 +421,6 @@ def fig_architecture():
     save(fig, "fig8_architecture", pad=0.8)
 
 
-def fig_circuit():
-    fig=plt.figure(figsize=(14.4, 8.2))
-    gs=fig.add_gridspec(2, 1, height_ratios=[1.0, 1.18], hspace=0.14)
-
-    ax=fig.add_subplot(gs[0])
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.axis("off")
-    ax.annotate("a", (0.000, 0.93), fontsize=17, fontweight="bold", color=INK)
-    ax.annotate("Delivered construct, two cassettes", (0.026, 0.93), fontsize=13,
-                fontweight="bold", color=INK)
-
-    for name, sub, x, w, col, tc in [
-            ("synthetic promoter", "1,024 bp, generated", 0.028, 0.240, PALETTE["green_2"], INK),
-            ("enhancer", "activity 0.815", 0.278, 0.120, PALETTE["green_1"], INK),
-            ("dCas9-KRAB", "effector CDS", 0.408, 0.220, BLUE2, "white"),
-            ("pA", "", 0.638, 0.070, NEUT, INK)]:
-        ax.add_patch(Rectangle((x, 0.520), w, 0.170, facecolor=col,
-                               edgecolor="black", linewidth=1.8, zorder=3))
-        ax.annotate(name, (x + w / 2, 0.632), ha="center", va="center",
-                    fontsize=11.2, fontweight="bold", color=tc, zorder=4)
-        if sub:
-            ax.annotate(sub, (x + w / 2, 0.567), ha="center", va="center",
-                        fontsize=8.8, color="#E7EDF6" if tc == "white" else PALETTE["grey_dark"],
-                        zorder=4)
-    for name, sub, x, w, col, tc in [
-            ("U6", "pol III", 0.028, 0.090, NEUT, INK),
-            ("sgRNA spacer", "20 nt, on-target 0.657", 0.128, 0.240, VIOLET, "white"),
-            ("scaffold", "", 0.378, 0.125, NEUT, INK)]:
-        ax.add_patch(Rectangle((x, 0.195), w, 0.170, facecolor=col,
-                               edgecolor="black", linewidth=1.8, zorder=3))
-        ax.annotate(name, (x + w / 2, 0.307), ha="center", va="center",
-                    fontsize=11.2, fontweight="bold", color=tc, zorder=4)
-        if sub:
-            ax.annotate(sub, (x + w / 2, 0.242), ha="center", va="center",
-                        fontsize=8.8, color="#F3E8F2" if tc == "white" else PALETTE["grey_dark"],
-                        zorder=4)
-    ax.plot([0.028, 0.708], [0.605, 0.605], color=INK, lw=1.1, zorder=1)
-    ax.plot([0.028, 0.503], [0.280, 0.280], color=INK, lw=1.1, zorder=1)
-    ax.annotate("effector cassette", (0.726, 0.605), fontsize=10, va="center", color=GREY)
-    ax.annotate("guide cassette", (0.521, 0.280), fontsize=10, va="center", color=GREY)
-    ax.annotate("Sequence-optimised for GC content, cryptic splice sites, restriction sites "
-                "and codon adaptation",
-                (0.028, 0.060), fontsize=10.4, color=GREY)
-
-    ax2=fig.add_subplot(gs[1])
-    ax2.set_xlim(0, 1)
-    ax2.set_ylim(0, 1)
-    ax2.axis("off")
-    ax2.annotate("b", (0.000, 0.945), fontsize=17, fontweight="bold", color=INK)
-    ax2.annotate("Regulatory action and kinetics", (0.026, 0.945), fontsize=13,
-                 fontweight="bold", color=INK)
-
-    box(ax2, 0.028, 0.470, 0.200, 0.240, "dCas9-KRAB", "effector complex",
-        "guided by sgRNA", fill="#EAF0F8", edge=BLUE, ts=12, ss=10, ds=9)
-    box(ax2, 0.330, 0.470, 0.200, 0.240, "GATA6 promoter", "target locus",
-        "bivalent, poised", fill="#F2F5FA", ts=12, ss=10, ds=9)
-    box(ax2, 0.632, 0.470, 0.200, 0.240, "GATA6 protein", "steady state x",
-        "knockdown 0.647", ts=12, ss=10, ds=9)
-
-    ax2.plot([0.228, 0.316], [0.590, 0.590], color=INK, lw=2.2, zorder=2)
-    blunt(ax2, (0.322, 0.590), 0, size=0.052, lw=3.4)
-    ax2.annotate("KRAB-mediated\nrepression", (0.272, 0.712), ha="center", fontsize=9.6,
-                 color=GREY, style="italic")
-    arrow(ax2, (0.530, 0.590), (0.630, 0.590), lw=2.2)
-    ax2.annotate("transcription", (0.580, 0.646), ha="center", fontsize=9.6,
-                 color=GREY, style="italic")
-    ax2.add_patch(FancyArrowPatch((0.732, 0.466), (0.434, 0.466), arrowstyle="-",
-                                  linewidth=2.2, color=RED, linestyle=(0, (5, 3)),
-                                  connectionstyle="arc3,rad=-0.42", zorder=2))
-    blunt(ax2, (0.432, 0.470), 90, size=0.034, lw=3.4, color=RED)
-    ax2.annotate("negative feedback", (0.582, 0.298), ha="center", fontsize=10.2,
-                 color=RED, style="italic")
-
-    ax2.annotate(r"$\dfrac{dx_i}{dt} \;=\; \beta_i \prod_{a \in A_i} H^{+}(x_a)"
-                 r"\prod_{r \in R_i} H^{-}(x_r) \;-\; \gamma_i x_i$",
-                 (0.028, 0.150), fontsize=14.5, color=INK)
-    ax2.annotate(r"$H^{+}(x)=x^{n}/(K^{n}+x^{n})$,   $H^{-}(x)=K^{n}/(K^{n}+x^{n})$,   "
-                 r"$\beta$ set by promoter strength,   $n=2$",
-                 (0.028, 0.040), fontsize=10.8, color=GREY)
-
-    sx, sy, sw, sh=0.858, 0.285, 0.142, 0.500
-    ax2.add_patch(FancyBboxPatch((sx, sy), sw, sh,
-                                 boxstyle="round,pad=0.006,rounding_size=0.02",
-                                 facecolor="#F7F9FC", edgecolor=PALETTE["grey_dark"],
-                                 linewidth=1.6, zorder=3))
-    ax2.annotate("Pareto objectives", (sx + sw / 2, sy + sh - 0.045), ha="center",
-                 fontsize=10.4, fontweight="bold", color=INK, zorder=4)
-    for i, (k, v) in enumerate([("efficacy", 0.915), ("specificity", 0.794),
-                                ("robustness", 1.000), ("safety", 0.877)]):
-        y=sy + sh - 0.135 - i * 0.078
-        ax2.annotate(k, (sx + 0.013, y), fontsize=9.6, color=PALETTE["grey_dark"], zorder=4)
-        ax2.annotate(f"{v:.3f}", (sx + sw - 0.013, y), fontsize=9.6, ha="right",
-                     color=INK, fontweight="bold", zorder=4)
-    ax2.annotate("Pareto rank 0\nODE-stable", (sx + sw / 2, sy + 0.032), ha="center",
-                 fontsize=8.8, color=GREY, style="italic", zorder=4)
-
-    fig.suptitle("A designed CRISPRi circuit against GATA6, from construct to kinetics",
-                 fontsize=15.5, fontweight="bold", y=0.982)
-    save(fig, "fig9_circuit", pad=0.6)
-
-
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     print("writing figures:")
@@ -534,7 +432,8 @@ def main():
     fig_transfer()
     fig_evidence_heatmap()
     fig_architecture()
-    fig_circuit()
+    import make_circuit_figure
+    make_circuit_figure.main()
     print(f"done -> {OUT}")
 
 

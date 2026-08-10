@@ -1,0 +1,31 @@
+{
+  "schema": "pdac-circuit.enformer-target-policy/1",
+  "frozen_at": "2026-07-15T06:55:00-05:00",
+  "reason": "The verified GSE99311 continuous perturbation profiles are mm9. Before baseline inference or target inspection, freeze the official Enformer mouse output head and its published global-to-head index offset. The primary zero-shot comparison uses every official mouse H3K27ac target because the official table contains no pancreas H3K27ac or FOXA1 target.",
+  "source_url": "https://raw.githubusercontent.com/calico/basenji/24403ec79bc71c803c258efce9e98ddc2ca9a48d/manuscripts/cross2020/targets_mouse.txt",
+  "source_repository": "https://github.com/calico/basenji",
+  "source_commit": "24403ec79bc71c803c258efce9e98ddc2ca9a48d",
+  "head": "mouse",
+  "head_index_offset": 5313,
+  "output_target_count": 1643,
+  "allowed_genomes": ["mm10", "mm9"],
+  "selection_policy": "Target rules use official descriptions only and are frozen before any PDAC label, target value, or prediction is inspected. All 107 official mouse H3K27ac targets are averaged; no tissue, cell type, or output is selected using benchmark performance.",
+  "rules": [
+    {
+      "name": "mouse_H3K27ac_all_tissues",
+      "description_regex": "^CHIP:H3K27ac:",
+      "minimum_matches": 107,
+      "maximum_matches": 107,
+      "aggregation": "arithmetic_mean"
+    },
+    {
+      "name": "mouse_pancreas_CAGE_diagnostic",
+      "description_regex": "^CAGE:.*pancreas",
+      "minimum_matches": 12,
+      "maximum_matches": 12,
+      "aggregation": "arithmetic_mean"
+    }
+  ],
+  "unsupported_zero_shot_assays": ["FOXA1", "pancreas_specific_H3K27ac"],
+  "unsupported_policy": "FOXA1 occupancy is a candidate-only biological diagnostic and cannot enter the Enformer headline comparison. The all-tissue H3K27ac average is reported explicitly as a generic mouse chromatin prior, never as a pancreas-specific Enformer output."
+}

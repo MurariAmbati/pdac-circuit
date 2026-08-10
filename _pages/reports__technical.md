@@ -520,20 +520,20 @@ without pretending that a human output head applies to mm9. Its official source 
 indices 5,313–6,955, so the resolver subtracts the frozen 5,313 mouse-head offset before indexing
 the 1,643-channel Enformer tensor and retains both indices in provenance.
 
-`enformer_target_policy.json` implements that freeze from target descriptions alone. It averages
+`configs/enformer_target_policy.json` implements that freeze from target descriptions alone. It averages
 all matching pancreas targets for accessibility, five registered histone marks, CTCF, or adult
 pancreas CAGE; it never selects the best-performing head. Bulk RNA and WGBS are explicitly
 unsupported for zero-shot Enformer rather than being mapped to another modality. The resolver
 writes the target-table hash, policy hash, exact indices, accessions, and descriptions.
 
-`enformer_mouse_target_policy.json` freezes all 107 official mouse H3K27ac outputs by description
+`configs/enformer_mouse_target_policy.json` freezes all 107 official mouse H3K27ac outputs by description
 alone and averages them without looking at PDAC outcomes. The official table has no pancreas
 H3K27ac or FOXA1 output. The mean is therefore reported honestly as a generic mouse H3K27ac
 sequence prior; FOXA1 occupancy is diagnostic only and cannot enter the Enformer headline score.
 The 12 mouse pancreas CAGE channels are retained as a separately named diagnostic, not substituted
 for chromatin.
 
-`borzoi_target_policy.json` independently freezes nine human pancreas mappings from the official
+`configs/borzoi_target_policy.json` independently freezes nine human pancreas mappings from the official
 Borzoi table: accessibility, six ChIP targets, adult CAGE, and RNA. The frozen map retains all
 7,611 strand-pair indices needed by the official reverse-complement transform and the exact
 inverse-transform fields for every selected output. The exporter requires all four official
@@ -1081,7 +1081,7 @@ directories:
 
 ```powershell
 pdac chromatin-enformer-target-map `
-  --policy enformer_mouse_target_policy.json `
+  --policy configs/enformer_mouse_target_policy.json `
   --out data/metadata/enformer_target_map_mouse.json
 
 pdac chromatin-freeze-evaluation-windows `

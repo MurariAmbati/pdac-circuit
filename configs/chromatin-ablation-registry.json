@@ -1,0 +1,88 @@
+{
+  "schema": "pdac-circuit.chromatin-ablation-registry/1",
+  "frozen_at": "2026-07-15T04:40:00-05:00",
+  "seeds": [20260620, 20260714, 20260808],
+  "selection_surface": "validation only",
+  "test_tuning_uses": 0,
+  "shared_geometry": {
+    "input_bp": 196608,
+    "bin_bp": 128,
+    "comparison_bins": 896,
+    "exact_example_ids": true
+  },
+  "ablations": [
+    {
+      "label": "healthy baseline only",
+      "kind": "selected_stage_checkpoint",
+      "implementation": "Use each seed's validation-selected healthy_prior/best.pt directly on the frozen cohort.",
+      "status": "executable"
+    },
+    {
+      "label": "no state residual",
+      "kind": "counterfactual_inference",
+      "implementation": "chromatin-predict --ablate-state-residual",
+      "status": "executable"
+    },
+    {
+      "label": "no intervention residual",
+      "kind": "counterfactual_inference",
+      "implementation": "chromatin-predict --ablate-intervention-residual",
+      "status": "executable"
+    },
+    {
+      "label": "no progression counterfactual loss",
+      "kind": "three_seed_retraining",
+      "config": "configs/chromatin-ablation-no-progression-graph.json",
+      "common_parent": "validation-selected healthy_prior/best.pt for the same seed",
+      "status": "executable"
+    },
+    {
+      "label": "no species-label invariance",
+      "kind": "three_seed_retraining",
+      "config": "configs/chromatin-ablation-no-domain-invariance.json",
+      "common_parent": "validation-selected healthy_prior/best.pt for the same seed",
+      "status": "executable"
+    },
+    {
+      "label": "2 kb local CNN",
+      "kind": "matched_data_sequence_baseline",
+      "config": "configs/chromatin-ablation-direct-2kb-cnn.json",
+      "implementation": "DirectConditionalCNN exhaustively tiles each 196,608 bp shard into 96 non-overlapping 2,048 bp contexts, slices the same 128 bp targets, then reconstructs the exact parent IDs before the 896-bin crop; 2,259,947 parameters and 16x384 tile accumulation, exactly matching the long control's 98,304 target bins per optimizer step.",
+      "status": "executable"
+    },
+    {
+      "label": "matched-parameter long-range candidate",
+      "kind": "matched_data_architecture_control",
+      "config": "configs/chromatin-ablation-direct-long-cnn.json",
+      "implementation": "DirectConditionalCNN at 196,608 bp with 2,259,947 parameters versus 2,248,306 for local PDACircuitFormer (+0.518%); no landmark mixing or causal residual decomposition.",
+      "status": "executable"
+    },
+    {
+      "label": "mean-only landmark memory",
+      "kind": "three_seed_parameter_identical_architecture_ablation",
+      "config": "configs/chromatin-ablation-mean-only-landmarks.json",
+      "implementation": "Duplicates every regional mean so token count, attention tensors, 2,248,306 parameters, data exposure, and optimization match the local candidate exactly; only standardized salience routing is removed. It trains all four stages independently for every seed and does not inherit dual-statistic healthy weights.",
+      "status": "executable"
+    },
+    {
+      "label": "zero-shot frozen Enformer",
+      "kind": "official_frozen_baseline",
+      "runner": "baseline_runners/enformer_export.py",
+      "mapping": "data/metadata/enformer_target_map.json",
+      "status": "executable"
+    },
+    {
+      "label": "grouped condition-aware Enformer adapter",
+      "kind": "grouped_adapter_baseline",
+      "config": "configs/enformer-state-adapter.json",
+      "status": "executable"
+    },
+    {
+      "label": "frozen Borzoi",
+      "kind": "official_frozen_baseline",
+      "runner": "baseline_runners/borzoi_export.py",
+      "mapping": "data/metadata/borzoi_target_map.json",
+      "status": "executable_after_four_weight_assets"
+    }
+  ]
+}

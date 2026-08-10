@@ -1,0 +1,28 @@
+{
+  "schema": "pdac-circuit.borzoi-target-policy/1",
+  "frozen_at": "2026-07-14T23:55:00-05:00",
+  "source_url": "https://raw.githubusercontent.com/calico/borzoi/5c9358222b5026abb733ed5fb84f3f6c77239b37/examples/targets_human.txt",
+  "source_repository": "https://github.com/calico/borzoi",
+  "source_commit": "5c9358222b5026abb733ed5fb84f3f6c77239b37",
+  "head": "human",
+  "allowed_genomes": ["hg38", "hg19"],
+  "selection_policy": "Regexes use official target metadata only, before PDAC labels or predictions are inspected. All matching pancreas tracks and both reported strands are averaged; no best-head selection is allowed.",
+  "input_bp": 524288,
+  "native_bin_bp": 32,
+  "native_output_bins": 16384,
+  "comparison_bin_bp": 128,
+  "comparison_bins": 896,
+  "rules": [
+    {"name": "pancreas_accessibility", "description_regex": "^DNASE:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K27ac", "description_regex": "^CHIP:H3K27ac:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K4me1", "description_regex": "^CHIP:H3K4me1:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K4me3", "description_regex": "^CHIP:H3K4me3:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K27me3", "description_regex": "^CHIP:H3K27me3:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K9me3", "description_regex": "^CHIP:H3K9me3:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_CTCF", "description_regex": "^CHIP:CTCF:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "adult_pancreas_CAGE", "description_regex": "^CAGE:pancreas, adult", "minimum_matches": 1, "maximum_matches": 8, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_RNA", "description_regex": "^RNA:.*pancreas", "minimum_matches": 1, "maximum_matches": 80, "aggregation": "arithmetic_mean"}
+  ],
+  "unsupported_zero_shot_assays": ["WGBS"],
+  "unsupported_policy": "Report unsupported; never substitute a different tissue or modality."
+}

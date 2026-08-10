@@ -4,7 +4,7 @@ title: Overview
 ---
 
 <div class="hero">
-<h1>Designing synthetic gene circuits for pancreatic cancer, and testing every claim until it breaks</h1>
+<h1>Designing synthetic gene circuits for pancreatic cancer</h1>
 <p class="lede">A from-scratch computational pipeline that ranks pancreatic ductal adenocarcinoma
 transcription-factor targets, designs regulatory parts and CRISPRi guides against them, and simulates the
 resulting circuits. Everything is trained on real public genomics data. Roughly half of the total effort went

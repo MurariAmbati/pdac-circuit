@@ -1,0 +1,248 @@
+{
+  "schema": "pdac-circuit.chromatin-campaign/1",
+  "frozen_at": "2026-07-15T06:05:00-05:00",
+  "objective": "Test whether a healthy-pancreas counterfactual plus functionally separated PDAC state and signed intervention residuals outperform frozen Enformer on preregistered PDAC regulatory-genomics tasks, using native mouse mechanistic curricula, multi-study human adaptation, patient-only checkpoint validation, and rotation-invariant three-seed circuit gates.",
+  "claim_policy": "ABSTAIN unless every required chromatin_registry.json axis passes with exact matched geometry and calibrated intervals.",
+  "research_use_only": true,
+  "seeds": [20260620, 20260714, 20260808],
+  "data_planes": [
+    {
+      "name": "healthy_pancreas_prior",
+      "source": "data/metadata/encode_bulk.ndjson",
+      "role": "healthy multi-assay pretraining only",
+      "test_access": false
+    },
+    {
+      "name": "mouse_progression",
+      "source": "data/processed/chromatin_gse99275_full_v1",
+      "surface_index": "results/frozen/gse99275.surfaces.json",
+      "role": "normal-PanIN-primary-metastatic mechanistic and state generalization",
+      "headline_enformer_surface": false,
+      "state_pair_policy": "independent organoid lines are not fabricated into biological pairs"
+    },
+    {
+      "name": "mixed_species_intervention",
+      "source": "data/processed/chromatin_gse99311_full_v1",
+      "role": "H3K27ac/FOXA1 profile state transfer plus exact vector-matched control/intervention supervision; RNA tables remain a separately registered auxiliary endpoint",
+      "native_genomes": ["mm9"],
+      "excluded_profiles": "two depositor-labeled hg19 H3K27ac files carry exact hg18 chromosome sizes and are excluded",
+      "status": "compiled_and_paired_verified"
+    },
+    {
+      "name": "open_human_adaptation",
+      "contract": "configs/chromatin-human-cohort.json",
+      "training_sources": ["GSE99311", "GSE149103", "GSE272459", "GSE272461", "GSE272462", "GSE272586"],
+      "validation_only_source": "GSE272463",
+      "role": "multi-assay human PDAC adaptation plus the explicitly labeled mouse GSE99311 regularizer, with patient-study checkpoint validation",
+      "protected_from_training": ["GSE272463"]
+    },
+    {
+      "name": "human_external",
+      "sources": ["GSE124229", "GSE124230"],
+      "role": "one-shot principal human external test",
+      "protected_from_training": true,
+      "open_labels_only_after_freeze": true
+    },
+    {
+      "name": "perturbation_external",
+      "sources": ["GSE301272", "GSE301284", "GSE295354"],
+      "role": "one-shot KLF5-degradation PDAC chromatin test across exactly three cell-line/study contexts from two independent research programs",
+      "protected_from_training": true,
+      "design_metadata_visible_before_freeze": true,
+      "open_target_signals_only_after_freeze": true,
+      "independence_contract": "configs/chromatin-claim-surfaces.json"
+    }
+  ],
+  "curriculum": [
+    {
+      "stage": 1,
+      "name": "healthy_prior",
+      "trainable_components": ["encoder", "healthy_baseline", "uncertainty"],
+      "state_coefficients": "fixed_zero",
+      "intervention_coefficients": "fixed_zero",
+      "selection_surface": "validation"
+    },
+    {
+      "stage": 2,
+      "name": "progression_state_residual",
+      "trainable_components": ["encoder", "healthy_baseline", "state_basis", "state_coefficients", "uncertainty"],
+      "intervention_coefficients": "fixed_zero",
+      "selection_surface": "validation",
+      "diagnostics_only": ["locus_test", "state_test", "joint_locus_state_test"]
+    },
+    {
+      "stage": 3,
+      "name": "signed_intervention_residual",
+      "trainable_components": ["perturbation_conditioner", "intervention_basis", "intervention_coefficients", "uncertainty"],
+      "required_supervision": "registered exact control-intervention pairs",
+      "selection_surface": "validation"
+    },
+    {
+      "stage": 4,
+      "name": "human_state_adaptation",
+      "trainable_components": ["all_candidate_components"],
+      "selection_surface": "validation",
+      "forbidden": ["external_study_test", "temporal_test", "joint_locus_state_test outcome tuning"]
+    },
+    {
+      "stage": 5,
+      "name": "freeze_and_one_shot_test",
+      "freeze": ["architecture", "weights", "preprocessing", "condition vectors", "track maps", "calibration rule", "circuit interpretation gate"],
+      "then_run": ["official Enformer", "Enformer grouped state adapter", "Borzoi", "candidate", "rotation-invariant circuit stability audit", "registered benchmark"]
+    }
+  ],
+  "profiles": [
+    {
+      "config": "configs/chromatin-local-12gb.json",
+      "hardware": "12 GB GPU",
+      "minimum_free_vram_gb": 10,
+      "role": "resumable development and seed-0 feasibility",
+      "promotion_gate": "finite train/validation curves, no leakage, stable memory"
+    },
+    {
+      "config": "configs/chromatin-scale-24gb.json",
+      "hardware": "24 GB GPU",
+      "minimum_free_vram_gb": 20,
+      "role": "primary multi-seed efficiency campaign",
+      "promotion_gate": "validation improvement over local profile on at least two seeds"
+    },
+    {
+      "config": "configs/chromatin-scale-48gb.json",
+      "hardware": "48 GB GPU",
+      "minimum_free_vram_gb": 44,
+      "role": "main Enformer-length capacity run",
+      "promotion_gate": "frozen only if validation gain exceeds compute-normalized minimum"
+    },
+    {
+      "config": "configs/chromatin-scale-80gb.json",
+      "hardware": "80 GB GPU",
+      "minimum_free_vram_gb": 72,
+      "role": "524 kb extended-context Borzoi-length ablation only",
+      "promotion_gate": "run after Enformer-length architecture and mappings are frozen"
+    }
+  ],
+  "ablation_profiles": [
+    {
+      "config": "configs/chromatin-ablation-no-progression-graph.json",
+      "hardware": "12 GB GPU",
+      "minimum_free_vram_gb": 10,
+      "role": "three-seed loss ablation sharing the selected healthy parent",
+      "reuse_healthy_from": "configs/chromatin-local-12gb.json"
+    },
+    {
+      "config": "configs/chromatin-ablation-no-domain-invariance.json",
+      "hardware": "12 GB GPU",
+      "minimum_free_vram_gb": 10,
+      "role": "three-seed species-invariance ablation sharing the selected healthy parent",
+      "reuse_healthy_from": "configs/chromatin-local-12gb.json"
+    },
+    {
+      "config": "configs/chromatin-ablation-direct-long-cnn.json",
+      "hardware": "12 GB GPU",
+      "minimum_free_vram_gb": 10,
+      "role": "parameter-matched direct convolutional 196 kb control"
+    },
+    {
+      "config": "configs/chromatin-ablation-direct-2kb-cnn.json",
+      "hardware": "12 GB GPU",
+      "minimum_free_vram_gb": 10,
+      "role": "parameter-identical 2 kb tiled-context control"
+    },
+    {
+      "config": "configs/chromatin-ablation-mean-only-landmarks.json",
+      "hardware": "12 GB GPU",
+      "minimum_free_vram_gb": 10,
+      "role": "three-seed parameter-identical mean-only landmark routing control"
+    }
+  ],
+  "required_ablations": [
+    "healthy baseline only",
+    "no state residual",
+    "no intervention residual",
+    "no progression counterfactual loss",
+    "no species-label invariance",
+    "2 kb local CNN",
+    "matched-parameter long-range candidate",
+    "mean-only landmark memory",
+    "zero-shot frozen Enformer",
+    "grouped condition-aware Enformer adapter",
+    "frozen Borzoi"
+  ],
+  "selection": {
+    "unit": "independent biological group",
+    "early_stopping": "mean validation-group log-profile error",
+    "maximum_tuning_uses_of_test_surfaces": 0,
+    "multiple_seed_rule": "report all three frozen seeds; no best-seed-only claim",
+    "capacity_rule": "report accuracy, peak VRAM, wall time, parameter count, and energy proxy"
+  },
+  "hardware_safety": {
+    "unregistered_cli_default_minimum_free_vram_gb": 8,
+    "frozen_profiles_use_profile_minimum": true,
+    "do_not_interrupt_other_gpu_workloads": true,
+    "cpu_smoke_before_gpu": true,
+    "sequential_shard_compilation": true,
+    "data_loader_workers_local": 0
+  },
+  "execution": {
+    "checkpoint_root": "models/chromatin/campaign",
+    "baseline_asset_manifests": {
+      "enformer": "baseline_assets/enformer-model.json",
+      "borzoi": "baseline_assets/borzoi-models.json"
+    },
+    "baseline_target_maps": {
+      "enformer_human": "data/metadata/enformer_target_map.json",
+      "enformer_mouse": "data/metadata/enformer_target_map_mouse.json",
+      "borzoi_human": "data/metadata/borzoi_target_map.json"
+    },
+    "baseline_adapter_configs": {
+      "enformer_human": "configs/enformer-state-adapter.json",
+      "enformer_mouse": "configs/enformer-mouse-state-adapter.json"
+    },
+    "require_complete_markers": true,
+    "stage_compile_contracts": {
+      "healthy_prior": {"negative_keep_probability": 0.05},
+      "progression_state_residual": {"negative_keep_probability": 1.0},
+      "signed_intervention_residual": {"negative_keep_probability": 1.0},
+      "human_state_adaptation": {"negative_keep_probability": 1.0}
+    },
+    "stage_validation_studies": {
+      "healthy_prior": null,
+      "progression_state_residual": null,
+      "signed_intervention_residual": null,
+      "human_state_adaptation": ["GSE272463"]
+    },
+    "stage_data": {
+      "healthy_prior": "data/processed/chromatin_encode_healthy_full_v1/**/*.npz",
+      "progression_state_residual": "data/processed/chromatin_gse99275_full_v1/**/*.npz",
+      "signed_intervention_residual": "data/processed/chromatin_gse99311_paired_v1/**/*.npz",
+      "human_state_adaptation": [
+        "data/processed/chromatin_gse99311_full_v1/**/*.npz",
+        "data/processed/chromatin_gse149103_full_v1/**/*.npz",
+        "data/processed/chromatin_gse272459_full_v1/**/*.npz",
+        "data/processed/chromatin_gse272461_full_v1/**/*.npz",
+        "data/processed/chromatin_gse272462_full_v1/**/*.npz",
+        "data/processed/chromatin_gse272586_full_v1/**/*.npz",
+        "data/processed/chromatin_gse272463_validation_v1/**/*.npz"
+      ]
+    },
+    "profile_stage_data": {
+      "configs/chromatin-scale-80gb.json": {
+        "healthy_prior": "data/processed/chromatin_encode_healthy_524kb_v1/**/*.npz",
+        "progression_state_residual": "data/processed/chromatin_gse99275_524kb_v1/**/*.npz",
+        "signed_intervention_residual": "data/processed/chromatin_gse99311_paired_524kb_v1/**/*.npz",
+        "human_state_adaptation": [
+          "data/processed/chromatin_gse99311_524kb_v1/**/*.npz",
+          "data/processed/chromatin_gse149103_524kb_v1/**/*.npz",
+          "data/processed/chromatin_gse272459_524kb_v1/**/*.npz",
+          "data/processed/chromatin_gse272461_524kb_v1/**/*.npz",
+          "data/processed/chromatin_gse272462_524kb_v1/**/*.npz",
+          "data/processed/chromatin_gse272586_524kb_v1/**/*.npz",
+          "data/processed/chromatin_gse272463_validation_524kb_v1/**/*.npz"
+        ]
+      }
+    },
+    "data_binding": "Every train command recomputes a SHA-256 over every selected shard and stores the collection fingerprint in its checkpoint. The signed-intervention stage accepts only an atomically completed pair-plan materialization with source-shard hashes and an exact vector/control-technology family.",
+    "resume_policy": "Same-stage resume only. Stage transitions load weights only into a new checkpoint directory.",
+    "parallelism": "One training process per GPU; replicas and stages are sequential on local hardware."
+  }
+}

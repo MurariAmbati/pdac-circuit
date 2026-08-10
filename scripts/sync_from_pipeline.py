@@ -16,6 +16,7 @@ TREES = [
     ("tests", "tests"),
     ("docs", "docs"),
     ("models", "models"),
+    ("configs", "configs"),
     ("data/manifests", "data/manifests"),
 ]
 FILES = [

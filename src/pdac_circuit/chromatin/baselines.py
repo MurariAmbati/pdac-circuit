@@ -133,7 +133,7 @@ def build_enformer_target_map(
     import requests
 
     root=Path(project_root)
-    policy_path=Path(policy_path) if policy_path else root / "enformer_target_policy.json"
+    policy_path=Path(policy_path) if policy_path else root / "configs" / "enformer_target_policy.json"
     if not policy_path.is_absolute():
         policy_path=root / policy_path
     policy=json.loads(policy_path.read_text(encoding="utf-8"))
@@ -273,7 +273,7 @@ def build_borzoi_target_map(
     import requests
 
     root=Path(project_root)
-    policy_path=root / "borzoi_target_policy.json"
+    policy_path=root / "configs" / "borzoi_target_policy.json"
     policy=json.loads(policy_path.read_text(encoding="utf-8"))
     metadata_path=root / "data" / "metadata" / "borzoi_targets_human.txt"
     metadata_path.parent.mkdir(parents=True,exist_ok=True)

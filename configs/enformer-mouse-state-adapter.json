@@ -1,0 +1,35 @@
+{
+  "schema": "pdac-circuit.enformer-state-adapter/1",
+  "profile": "strong-condition-aware-mouse-baseline",
+  "model": {
+    "bins": 896,
+    "assay_features": 12,
+    "state_features": 18,
+    "perturbation_features": 22,
+    "channels": 48,
+    "layers": 6,
+    "kernel_size": 7,
+    "dilation_cycle": [1, 2, 4, 8, 16, 32],
+    "dropout": 0.1
+  },
+  "training_policy": {
+    "species": "Mus musculus",
+    "head": "mouse",
+    "allowed_genomes": ["mm10", "mm9"],
+    "target_map": "data/metadata/enformer_target_map_mouse.json",
+    "primary_rule": "mouse_H3K27ac_all_tissues",
+    "inputs": "frozen official mouse-head Enformer predictions plus preregistered condition vectors only",
+    "forbidden": ["candidate embeddings", "candidate predictions", "test loci during fitting", "protected studies", "test-label tuning"],
+    "within_study_policy": "fit only on registered non-test chromosomes; chr8 and chr9 remain absent from adapter gradients and selection",
+    "outer_group": "registered_biological_context",
+    "validation_scope": "locus_disjoint_same_groups_allowed",
+    "target_blind_sampling": {
+      "method": "sha256_rank_within_group_and_exact_condition_vector",
+      "seed": 20260715,
+      "maximum_train_examples_per_condition_group": 1024,
+      "maximum_validation_examples_per_condition_group": 256,
+      "test_surface_capped": false
+    },
+    "role": "required strong condition-aware comparator for the GSE99311 H3K27ac perturbation axis"
+  }
+}

@@ -2832,7 +2832,7 @@ def test_chromatin_registries_are_valid_json():
         (ROOT / "baseline_assets" / "enformer-model.json").read_text(encoding="utf-8")
     )
     mouse_policy=json.loads(
-        (ROOT / "enformer_mouse_target_policy.json").read_text(encoding="utf-8")
+        (ROOT / "configs" / "enformer_mouse_target_policy.json").read_text(encoding="utf-8")
     )
     mouse_map=json.loads(
         (ROOT / "data" / "metadata" / "enformer_target_map_mouse.json").read_text(

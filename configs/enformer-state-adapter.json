@@ -1,0 +1,22 @@
+{
+  "schema": "pdac-circuit.enformer-state-adapter/1",
+  "profile": "strong-condition-aware-baseline",
+  "model": {
+    "bins": 896,
+    "assay_features": 12,
+    "state_features": 18,
+    "perturbation_features": 22,
+    "channels": 48,
+    "layers": 6,
+    "kernel_size": 7,
+    "dilation_cycle": [1, 2, 4, 8, 16, 32],
+    "dropout": 0.1
+  },
+  "training_policy": {
+    "inputs": "frozen Enformer predictions plus preregistered condition vectors only",
+    "forbidden": ["candidate embeddings", "candidate predictions", "test labels", "test-group tuning"],
+    "outer_group": "donor_or_biological_replicate",
+    "validation_scope": "group_disjoint",
+    "role": "required strong diagnostic comparator on PDAC state and intervention axes"
+  }
+}

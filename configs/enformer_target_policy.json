@@ -1,0 +1,24 @@
+{
+  "schema": "pdac-circuit.enformer-target-policy/1",
+  "frozen_at": "2026-07-14T20:40:00-05:00",
+  "amended_at": "2026-07-14T23:06:00-05:00",
+  "amendment_reason": "Before any baseline prediction, bind the human target metadata to the official human head and native human assemblies; reject mouse windows fail-closed.",
+  "source_url": "https://raw.githubusercontent.com/calico/basenji/24403ec79bc71c803c258efce9e98ddc2ca9a48d/manuscripts/cross2020/targets_human.txt",
+  "source_repository": "https://github.com/calico/basenji",
+  "source_commit": "24403ec79bc71c803c258efce9e98ddc2ca9a48d",
+  "head": "human",
+  "allowed_genomes": ["hg38", "hg19"],
+  "selection_policy": "Regexes use target metadata only, before PDAC labels or predictions are inspected. Every matching pancreas track is averaged; no best-head selection is allowed.",
+  "rules": [
+    {"name": "pancreas_accessibility", "description_regex": "^DNASE:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K27ac", "description_regex": "^CHIP:H3K27ac:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K4me1", "description_regex": "^CHIP:H3K4me1:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K4me3", "description_regex": "^CHIP:H3K4me3:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K27me3", "description_regex": "^CHIP:H3K27me3:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_H3K9me3", "description_regex": "^CHIP:H3K9me3:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "pancreas_CTCF", "description_regex": "^CHIP:CTCF:.*pancreas", "minimum_matches": 1, "maximum_matches": 20, "aggregation": "arithmetic_mean"},
+    {"name": "adult_pancreas_CAGE", "description_regex": "^CAGE:pancreas, adult", "minimum_matches": 1, "maximum_matches": 4, "aggregation": "arithmetic_mean"}
+  ],
+  "unsupported_zero_shot_assays": ["bulk_RNA_plus", "bulk_RNA_minus", "WGBS"],
+  "unsupported_policy": "Report unsupported; never substitute a convenient output from another tissue or modality."
+}
