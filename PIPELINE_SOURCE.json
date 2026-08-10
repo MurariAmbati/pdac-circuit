@@ -1,9 +1,9 @@
 {
   "schema": "pdac-circuit.pipeline-sync/1",
   "source_repo": "https://github.com/MurariAmbati/pdac-chromatin-circuit",
-  "source_commit": "bfd9d3888b3b3aee6429be4ed75a5ff676a42869",
-  "source_subject": "Use readable link labels in the chromatin addendum",
-  "synced_at": "2026-08-10T14:47:01Z",
+  "source_commit": "cdd9557619d7f98571c3c847fb1e8093c12a2aba",
+  "source_subject": "Consolidate the four scattered self-corrections in the attractor-model addendum",
+  "synced_at": "2026-08-10T16:13:15Z",
   "files": 332,
   "note": "Mirrored from the pipeline repository by scripts/sync_from_pipeline.py. The pipeline repository is authoritative; rerun the script to refresh. Raw data and trained weights are excluded, as in the source."
 }

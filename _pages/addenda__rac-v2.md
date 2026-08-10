@@ -21,6 +21,43 @@ Results: `results/directed_grn.npz`, `results/directed_grn.meta.json`,
 
 ---
 
+## Corrections to this addendum
+
+Four claims below were revised by later analysis in the same investigation, collected here so a reader
+meets them before the phase-by-phase record rather than scattered through it.
+
+**The predeclared confound was the wrong one, revising Phase 5.** The prediction, with a 0.62
+threshold declared in advance, was that the PDAC-against-other expression differential would carry the
+confound. It does not. The differential scores 0.5566 and adding it to the full model hurts, 0.651 to
+0.634. The confound is absolute PDAC expression level instead. `expr_mean_raw` predicts absolute
+essentiality at 0.809 and selective at 0.777, nearly equally, and since the selective endpoint is a
+difference whose PDAC term is itself expression-driven, high expression inflates the PDAC arm.
+Expression confounds the minuend, not the difference, so a reader checking only the differential would
+have wrongly cleared the finding.
+
+**The peripherality inference is withdrawn, revising Phase 5.** Two errors made it unsound. Logistic
+CV-AUC is exactly invariant to negating a feature, verified to machine precision at
+`AUC(x) = AUC(-x) = 0.423986`, so the peripherality composite re-tested centrality under a new name.
+And at 14 positives a fitted out-of-fold AUC below 0.5 does not indicate inverted signal. On synthetic
+data carrying a genuinely positive association, model-free AUC 0.562, the five-fold logistic
+out-of-fold AUC comes out at 0.424, dragged below chance by roughly 2.8 positives per fold. The
+sub-0.5 rows carry no directional information. The ablation numbers stand.
+
+**Nothing survives BH was over-generalised, revising Phase 6.** True of the continuous Spearman tests,
+false of the dichotomised endpoint. Recomputing BH over Mann-Whitney p-values there, at 14 against
+405, `expr_mean_raw` survives robustly at p = 0.00018 and q = 0.0030. Nothing else does, the next four
+features (`expr_var_norm`, `expr_mean_norm`, `disease_log2fc_LEVEL`, `in_strength`) sitting at
+q = 0.374 or worse. The first attempt at this had a BH bug, a forward running minimum where the
+step-up procedure requires a reverse cumulative minimum, caught because it reported a q three orders
+below its own p.
+
+**Refuted was too strong, revising Phase 6.** With power of 7 to 19 per cent for effects in the 0.60
+to 0.65 range, non-significance alone proves nothing about centrality effects of that size in either
+direction. The refutation rests entirely on its other leg, that the model-free point estimates
+contradict the hypothesis, with centralities landing slightly above 0.5 rather than below and
+disagreeing with one another. The calibrated verdict is unsupported, with point estimates pointing the
+wrong way, and underpowered to settle definitively.
+
 ## 1. The rebuild principle, substrate before dynamics
 
 The retraction arc established, in order:
@@ -150,17 +187,7 @@ is network degree.
 
 ---
 
-## 7. One-line summary
-
-The RAC rebuild was executed substrate-first and stopped at its own gate: a directed motif-regulatory
-graph fails to predict PDAC-TF essentiality beyond node degree exactly as the co-expression graph
-did (no property > 0.55 matched AUC; all partial correlations n.s.), so the §18 structural failure
-is confirmed across two independent topologies, the signal is not in the graph, and no dynamics
-over it can recover it.
-
----
-
-## 8. The achievable ceiling (Phase 4), and the one weak positive of the whole investigation
+## 7. The achievable ceiling (Phase 4), and the one weak positive of the whole investigation
 
 The rebuild stopped at the substrate gate (§3): no graph topology beats degree. That leaves the
 quantitative question. Is degree the ceiling for *any* available feature, or only for topology? A
@@ -171,7 +198,7 @@ expression mean/variance (normalised and raw), and disease log2FC.
 Scripts: `supervised_ceiling.py`, `locate_ceiling_signal.py`, `selective_ceiling.py`,
 `selective_null.py`, `selective_robustness.py`.
 
-### 8.1 Absolute essentiality, beats degree, but on a confound
+### 7.1 Absolute essentiality, beats degree, but on a confound
 
 Full model CV-AUC **0.85** vs degree-alone **0.62**. But locating the signal
 (`locate_ceiling_signal.py`) shows it is carried by **expression level**, not topology: univariate
@@ -180,7 +207,7 @@ This is the known DepMap tautology: a gene not expressed in a line has Chronos �
 untranscribed gene does nothing), so "expressed" is a near-necessary condition for "essential". The
 absolute ceiling is real but recovers *being expressed*, which is not a therapeutic target.
 
-### 8.2 Selective essentiality, the endpoint that matters, tested to destruction
+### 7.2 Selective essentiality, the endpoint that matters, tested to destruction
 
 PDAC-selective essentiality (Chronos PDAC minus other lineages) is a *difference*, which cancels the
 expression-level confound. Degree is **anti**-predictive here (AUC 0.424, hubs are core-essential,
@@ -210,12 +237,12 @@ then 6, inflating the null's p95, a **power** effect, not an effect-size collaps
 signature of a real but underpowered signal, and it is qualitatively different from the collapse
 hint.
 
-### 8.3 The honest verdict, weak, real, underpowered
+### 7.3 The honest verdict, weak, real, underpowered
 
-> **SUPERSEDED BY §9.** The confound this section names but does not test was tested in §9, and the
+> **SUPERSEDED BY §8.** The confound this section names but does not test was tested in §8, and the
 > claim does not survive intact: a *single* expression feature (`expr_mean_raw`, univariate CV-AUC
 > **0.777**) outperforms this entire 16-feature model (0.651 / 0.683), and removing expression
-> collapses the linear model to 0.450. Read §9 before relying on anything below.
+> collapses the linear model to 0.450. Read §8 before relying on anything below.
 
 A supervised multi-omic model recovers a **weak PDAC-selective essentiality signal that degree,
 graph topology, and RAC dynamics all miss** (degree is anti-predictive at 0.424). It is significant
@@ -226,7 +253,7 @@ it leans on raw expression, which for the selective difference is biologically p
 proven free of a measurement confound. It should be tested prospectively on a larger PDAC-selective
 dependency panel, not reported as an established predictor.
 
-### 8.4 What the rebuild concluded
+### 7.4 What the rebuild concluded
 
 - **RAC's mechanism (attractor dynamics over a graph) is a dead end for essentiality**, retracted
   (§15), retired (§17), unrescuable by gain (§18) or by a directed substrate (§3 here).
@@ -240,9 +267,9 @@ dependency panel, not reported as an established predictor.
 
 ---
 
-## 9. Phase 5. The confound test: the last positive is expression, and the model is worse than its own feature
+## 8. Phase 5. The confound test: the last positive is expression, and the model is worse than its own feature
 
-§8.3 conceded the danger it never tested: *"it leans on raw expression, which for the selective
+§7.3 conceded the danger it never tested: *"it leans on raw expression, which for the selective
 difference is biologically plausible but not proven free of a measurement confound."* This is that
 test. Script `scripts/selective_confound_test.py` → `results/selective_confound_test.json`.
 
@@ -251,7 +278,7 @@ DepMap expression and DepMap CRISPR are measured in *the same cell lines*. So an
 can predict the PDAC arm of `sel = −(pdac_chronos − other_chronos)` near-definitionally, without any
 discovery having occurred. Note what had and had not been measured before: `selective_ceiling.py`'s
 artifact check computed univariate AUCs only for ABSOLUTE essentiality (where `expr_mean_raw` alone
-scores 0.809 against a full model of 0.847, absolute essentiality was already conceded in §8.1 to
+scores 0.809 against a full model of 0.847, absolute essentiality was already conceded in §7.1 to
 be essentially an expression detector). **No feature had ever had its univariate AUC measured on the
 SELECTIVE endpoint**, the one claim still standing.
 
@@ -260,7 +287,7 @@ SELECTIVE endpoint**, the one claim still standing.
 below is therefore directly comparable. (This guard exists because I previously ran a null on a
 mismatched 14-feature set and got a spurious collapse.)
 
-### 9.1 A single expression feature beats the entire multi-omic model
+### 8.1 A single expression feature beats the entire multi-omic model
 
 Univariate CV-AUC on the **selective** endpoint, all 16 features plus the new differential:
 
@@ -286,33 +313,15 @@ Univariate CV-AUC on the **selective** endpoint, all 16 features plus the new di
 
 **`expr_mean_raw` alone (0.777) outperforms the full 16-feature model (0.651 logistic, 0.683 GBM).**
 The multi-omic integration does not add value to this endpoint, it *dilutes* a single strong
-feature. The §8 framing ("a supervised multi-omic model recovers selective signal that degree
+feature. The §7 framing ("a supervised multi-omic model recovers selective signal that degree
 misses") therefore cannot stand as written: what recovers the signal is mean PDAC expression, and
 the model is worse than that one column.
 
-### 9.2 My predeclared hypothesis was wrong, and the correction is informative
+### 8.2 Ablation splits by model class, reported, not collapsed
 
-I predeclared that the **PDAC-vs-other expression differential** would carry the confound
-(threshold: ≥ 0.62 ⇒ "tautology-dominated"), reasoning that "selectively expressed ⇒ selectively
-essential" was the tautology. **That is refuted.** The differential scores only **0.5566**, and
-adding it to the full model *hurts* (0.651 → 0.634).
-
-The confound is real but takes a different form than I predicted. It is **absolute PDAC expression
-level**, not the PDAC-vs-other contrast. The mechanism: `expr_mean_raw` predicts absolute
-essentiality at 0.809 and selective at 0.777, nearly equally. Since the selective endpoint is a
-difference whose PDAC term is itself expression-driven, high PDAC expression inflates the PDAC arm
-of the contrast. Expression is confounding the *minuend*, not the difference. Recording the
-refutation of my own hypothesis matters: the naive tautology I expected is not what is happening,
-and a reader checking only the differential would have wrongly cleared the finding.
-
-### 9.3 Ablation splits by model class, reported, not collapsed
-
-> **PARTIALLY RETRACTED BY §10.** The "inverted predictiveness is predictiveness … selective
-> dependencies sit at the periphery of the co-expression graph" inference below is **unsound and
-> withdrawn**. Fitted logistic OOF AUC is exactly invariant to negating a feature, and at 14
-> positives it drags genuinely-predictive features below 0.5, so the sub-0.5 entries carry no
-> directional information. Model-free, the centrality features mostly sit slightly *above* 0.5.
-> The ablation numbers themselves stand; the peripherality interpretation does not. See §10.
+> **PARTIALLY RETRACTED.** The peripherality inference below, that selective dependencies sit at the
+> periphery of the co-expression graph, is unsound and withdrawn. The ablation numbers themselves
+> stand. See the corrections ledger above for why, and §9 for the model-free retest.
 
 Removing all five expression-derived features (leaving 11: topology + CNA + methylation):
 
@@ -330,7 +339,7 @@ five folds is about 2.8 per fold, the seed spread is the widest in the table at 
 the most freedom to fit noise. Several topology features are strongly anti-predictive, with pagerank
 at 0.363, out_degree 0.376, hits_hub 0.380 and coexpr_degree 0.424, which was read at the time as
 selective dependencies sitting at the periphery of the graph rather than at hubs. It was reported as
-an underpowered hypothesis rather than a result, and §10 withdraws the interpretation.
+an underpowered hypothesis rather than a result, and §9 withdraws the interpretation.
 
 **A limitation of the ablation, disclosed.** Removing expression levels does not remove all
 expression-derived information, because `coexpr_degree` and `eigenvector` are built from the
@@ -338,9 +347,9 @@ co-expression graph, which is itself derived from expression correlations. This 
 ablation. What mitigates it is that §15 established topology is anti-predictive for selective
 essentiality at 0.424, so topology is not smuggling in the expression signal.
 
-### 9.4 Corrected statement of the investigation's one positive
+### 8.3 Corrected statement of the investigation's one positive
 
-The §8.3 claim is re-described, not deleted:
+The §7.3 claim is re-described, not deleted:
 
 - **Not supported:** "a supervised *multi-omic* model recovers a weak PDAC-selective essentiality
   signal." The multi-omic model is *worse* than one of its own features.
@@ -348,9 +357,9 @@ The §8.3 claim is re-described, not deleted:
   PDAC expression** (univariate CV-AUC 0.777), a channel that is substantially near-definitional, expression and CRISPR are measured in the same lines and expression drives the PDAC arm of the
   essentiality contrast. This is expected biology, not a discovery, and it needs neither a network
   model nor multi-omic integration to state.
-- **Hypothesis only:** a nonlinear residual (GBM 0.625 without expression) suggests selective
-  dependencies are graph-*peripheral* rather than hubs, 14 positives, widest variance in the study,
-  needs a larger selective panel to test.
+- **Withdrawn:** the nonlinear residual (GBM 0.625 without expression) was read as evidence that
+  selective dependencies are graph-peripheral. That reading is unsound for the reasons in the
+  corrections ledger. The residual itself stands and remains unexplained.
 
 **Net effect on the whole investigation.** Every attractor-shaped claim was already retracted
 (§15), retired (§17), and shown unrescuable (§18, RAC v2 §3). The single positive that survived to
@@ -360,38 +369,23 @@ CNA-corroborated), not the attractor model, and not the supervised ceiling.
 
 ---
 
-## 10. Phase 6. The graph-peripheral hypothesis is refuted, and the screen that produced it was unsound
+## 9. Phase 6. The graph-peripheral hypothesis is unsupported, and the screen that produced it was unsound
 
-§9.3 offered one new observation: on the selective endpoint several centrality features scored below
-0.5 (pagerank 0.363, out_degree 0.376, hits_hub 0.380, coexpr_degree 0.424), from which I inferred
-*"inverted predictiveness is predictiveness: selective dependencies sit at the periphery of the
-co-expression graph."* Tested, that inference is wrong twice over, once in the hypothesis and once
-in the instrument that produced it. Scripts: `peripherality_test.py`, `univariate_screen_modelfree.py`.
+§8.2 offered one new observation. On the selective endpoint several centrality features scored below
+0.5 (pagerank 0.363, out_degree 0.376, hits_hub 0.380, coexpr_degree 0.424), from which the inference
+drawn was that inverted predictiveness is predictiveness, so selective dependencies sit at the
+periphery of the co-expression graph. That inference is wrong twice over, once in the hypothesis and
+once in the instrument that produced it. The instrument failures are set out in the corrections ledger
+above, and what follows tests the hypothesis on its merits. Scripts: `peripherality_test.py`,
+`univariate_screen_modelfree.py`.
 
-### 10.1 Two demonstrated errors in the Phase 5 screen
-
-**(a) Logistic CV-AUC is exactly invariant to negating a feature.** Fitting on `−x` flips the learned
-coefficient and leaves the predicted probabilities identical. Verified to machine precision:
-`AUC(x) = AUC(−x) = 0.423986`. The Phase 6 "peripherality = −centrality" composite was therefore a
-**no-op**, it re-tested centrality under a new name. Any construction of the form "invert the
-feature and re-score with a model that learns its own sign" is meaningless.
-
-**(b) At 14 positives, a fitted OOF AUC below 0.5 does not mean inverted signal, it means the
-relationship does not generalise.** Verified on synthetic data built to have a genuinely *positive*
-association (`x = noise + 0.4·y`, model-free AUC **0.562**): the 5-fold logistic OOF AUC comes out at
-**0.424**, below chance, purely from instability at ~2.8 positives per test fold. A real effect is
-dragged below 0.5 by the protocol itself.
-
-Together these mean the sub-0.5 rows of the §9 table carry **no directional information**, and the
-peripherality claim built on them is withdrawn.
-
-### 10.2 The model-free screen, several directions flip
+### 9.1 The model-free screen, several directions flip
 
 Recomputing univariately with **rank AUC** (no fitting, no folds, so no sign-learning and no
 small-fold instability) plus Spearman against the *continuous* selective endpoint (all 419 genes,
 far better powered than a 14-positive dichotomy):
 
-| feature | fitted OOF (§9) | model-free rank AUC | direction | ρ (continuous) | p | q (BH) |
+| feature | fitted OOF (§8) | model-free rank AUC | direction | ρ (continuous) | p | q (BH) |
 |---|---|---|---|---|---|---|
 | expr_mean_raw | 0.777 | **0.794** | higher ⇒ more selective | 0.111 | 0.024 | 0.402 |
 | expr_var_norm | 0.604 | **0.373** | *flipped* | −0.064 | 0.194 | 0.474 |
@@ -409,38 +403,40 @@ far better powered than a 14-positive dichotomy):
 opposite of peripheral, while pagerank and in_strength stay below. Directions are inconsistent
 among centralities, which is the signature of noise, not structure.
 
-### 10.3 Verdict, and what it does to the rest of the record
+### 9.2 Verdict, and what it does to the rest of the record
 
-**The graph-peripheral hypothesis is REFUTED.** No centrality feature survives Benjamini-Hochberg;
-in fact **nothing does**, over 17 continuous tests the best raw p is expr_mean_raw at 0.024, giving
-**q = 0.402**. At this sample size the selective endpoint cannot support *any* feature-level claim
-that survives multiple-testing correction.
+**The graph-peripheral hypothesis is unsupported**, with point estimates pointing the wrong way and
+too little power to settle it, as calibrated in the corrections ledger. No centrality feature survives
+Benjamini-Hochberg on the continuous tests, where over 17 tests the best raw p is expr_mean_raw at
+0.024, giving q = 0.402. On the continuous endpoint at this sample size, no feature-level claim
+survives correction.
 
 Note the nuance this exposes in the surviving expression result: `expr_mean_raw` is strong on the
 **dichotomised tail** (rank AUC 0.794) but only weakly monotone across all genes (ρ = 0.111). It
 separates the extreme selective genes rather than tracking selectivity continuously, consistent
-with §9's confound account (the top-selective genes are highly expressed), and a further reason not
+with §8's confound account (the top-selective genes are highly expressed), and a further reason not
 to promote it to a predictor.
 
 **Transferable methodological lesson**, worth more than the hypothesis it killed: *for univariate
 screening with a small positive class, use a model-free rank statistic.* A fitted cross-validated
 model (i) cannot express direction, because it learns its own sign, and (ii) is biased below chance
-by fold instability. Reading direction off fitted OOF AUCs, which is what §9.3 did, is unsound,
+by fold instability. Reading direction off fitted OOF AUCs, which is what §8.2 did, is unsound,
 and it produced a confident, wrong, biologically-plausible story about network topology.
 
 ---
 
-## 11. Phase 7. The detection floor: what this design could and could not have seen
+## 10. Phase 7. The detection floor: what this design could and could not have seen
 
-§10 ended on "nothing survives BH", which is an ambiguous stopping point: it is consistent with
-*there is no signal* and with *we could never have seen one*, and those demand opposite follow-ups.
+§9 ended on nothing surviving BH, an ambiguous stopping point consistent both with there being no
+signal and with our never having been able to see one, and those demand opposite follow-ups. The
+corrections ledger above narrows that statement to the continuous tests.
 This quantifies the floor. Script: `scripts/selective_power_floor.py` →
 `results/selective_power_floor.json`. Method: the univariate screen is a rank comparison of 14
 positives against 405 negatives, so its power is Mann-Whitney power; for a target rank-AUC `a`,
 normal scores separated by `d = √2·Φ⁻¹(a)` reproduce that AUC exactly. BH across 17 features is
 bounded conservatively by Bonferroni α/17 (correct for the best-ranked feature).
 
-### 11.1 Power at the actual design
+### 10.1 Power at the actual design
 
 BH-corrected power by design size and true effect:
 
@@ -457,27 +453,7 @@ required for the effects actually observed: `expr_mean_raw` (0.794) → **14, i.
 the expression differential (0.611) → **120**; the best centrality, eigenvector (0.563) → **>400**;
 `coexpr_degree` (0.527) → **>400**.
 
-### 11.2 A correction to §10: "nothing survives BH" was over-generalised
-
-§10 applied BH to the **continuous** Spearman tests and concluded that the selective endpoint
-"supports no feature-level claim that survives multiple testing". That is true of the continuous
-test and **false of the dichotomised one**. Recomputing BH over Mann-Whitney p-values on the
-dichotomised endpoint (normal approximation from the rank AUCs, ample at 14 vs 405):
-
-| feature | p (dichotomised MWU) | q (BH) | survives? |
-|---|---|---|---|
-| **expr_mean_raw** | **0.00018** | **0.0030** | **YES** |
-| expr_var_norm | 0.105 | 0.374 | no |
-| expr_mean_norm | 0.105 | 0.374 | no |
-| disease_log2fc_LEVEL | 0.105 | 0.374 | no |
-| in_strength | 0.121 | 0.374 | no |
-
-**`expr_mean_raw` survives multiple-testing correction robustly (q = 0.0030); nothing else does.**
-(The first attempt at this table had a BH bug of my own, a forward running minimum instead of the
-reverse cumulative minimum BH's step-up requires, which reported q = 0.003 for a p of 0.105. Caught
-because a q three orders below its own p is impossible; corrected above.)
-
-### 11.3 The synthesis, a threshold confound, not a graded predictor
+### 10.2 The synthesis, a threshold confound, not a graded predictor
 
 Putting Phases 5–7 together, the picture is consistent and sharper than any single phase:
 
@@ -489,24 +465,13 @@ Putting Phases 5–7 together, the picture is consistent and sharper than any si
 - **That combination is the signature of a threshold-like confound**, not a biological predictor:
   *whether a gene is expressed in PDAC at all* cleanly separates the top-14 selective genes while
   carrying almost no monotone information across the range, exactly the near-definitional channel
-  §9/§21 identified (a gene cannot be essential where it is not expressed, and expression and CRISPR
+  §8/§21 identified (a gene cannot be essential where it is not expressed, and expression and CRISPR
   are measured in the same lines).
 - **Everything else was undetectable by construction.** The differential needed ~120 positives and
   the centralities >400; at 14, power for a 0.65 effect is **7%**. Their non-significance carries no
   information.
 
-### 11.4 Calibrating the §10 refutation, the null was not powered, the directions were
-
-This forces a correction to my own language. §10 called the graph-peripheral hypothesis "REFUTED".
-With power of 7–19% for effects in the 0.60–0.65 range, **non-significance alone proves nothing**
-about centrality effects of that size in either direction. The refutation therefore rests entirely
-on its *other* leg. That the model-free point estimates **contradict** the hypothesis (centralities
-landed slightly *above* 0.5, opposite to "peripheral", and disagreed with one another), not on the
-null. The calibrated verdict: **unsupported, with point estimates pointing the wrong way, and
-underpowered to settle definitively.** That is weaker than "refuted" and it is what the data
-supports.
-
-### 11.5 What a future study needs
+### 10.3 What a future study needs
 
 The floor converts this null into a design specification. To detect, at 80% power with BH across
 ~17 features:
