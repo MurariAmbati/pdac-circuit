@@ -147,7 +147,7 @@ out-of-sample comparison rather than a circular restatement of how they were cho
 </div>
 
 <figure>
-  <img src="{{ '/images/fig8_evidence_heatmap.png' | relative_url }}" alt="Heatmap of multi-omic evidence layers across the prioritised target genes">
+  <img src="{{ '/images/fig7_evidence_heatmap.png' | relative_url }}" alt="Heatmap of multi-omic evidence layers across the prioritised target genes">
   <figcaption><b>Figure 7.</b> Multi-omic evidence for each prioritised target, with every layer standardised
   within its own column so that quantities on different scales can be read side by side. Red indicates a
   higher value within a layer and blue a lower one. Hatched cells are layers in which that gene was not

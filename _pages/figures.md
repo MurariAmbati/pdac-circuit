@@ -58,9 +58,9 @@ Each figure is generated directly from the pipeline's result files by `scripts/m
 </figure>
 
 <figure id="fig7">
-  <img src="{{ '/images/fig8_evidence_heatmap.png' | relative_url }}" alt="Heatmap of multi-omic evidence layers across the prioritised target genes">
+  <img src="{{ '/images/fig7_evidence_heatmap.png' | relative_url }}" alt="Heatmap of multi-omic evidence layers across the prioritised target genes">
   <figcaption><b>Figure 7.</b> Multi-omic evidence for each prioritised target, with every layer standardised within its own column so that quantities on different scales can be read side by side. Red indicates a higher value within a layer and blue a lower one. Hatched cells are layers in which that gene was not measured, and two columns are hatched throughout, which records that promoter methylation and the ATAC residual are unavailable for this target set rather than that they were zero. The pattern is deliberately uneven, since no single layer nominates a target and the prioritisation depends on agreement across several. Assembled by <code>scripts/rac_target_dossiers.py</code>.
-  <span class="figmeta">Appears in <a href="{{ '/results/' | relative_url }}">Results</a>. Vector copy <a href="{{ '/images/fig8_evidence_heatmap.pdf' | relative_url }}">fig8_evidence_heatmap.pdf</a>.</span></figcaption>
+  <span class="figmeta">Appears in <a href="{{ '/results/' | relative_url }}">Results</a>. Vector copy <a href="{{ '/images/fig7_evidence_heatmap.pdf' | relative_url }}">fig7_evidence_heatmap.pdf</a>.</span></figcaption>
 </figure>
 
 <figure id="fig8">
@@ -70,9 +70,9 @@ Each figure is generated directly from the pipeline's result files by `scripts/m
 </figure>
 
 <figure id="fig9">
-  <img src="{{ '/images/fig7_architecture.png' | relative_url }}" alt="Block diagram of the eight-module pipeline and its data sources">
+  <img src="{{ '/images/fig8_architecture.png' | relative_url }}" alt="Block diagram of the eight-module pipeline and its data sources">
   <figcaption><b>Figure 9.</b> Pipeline organisation. The five modules on the main path run left to right, each drawing directly on the real data corpora above them. Module VII supplies generated promoter libraries into the parts stage, and Module VIII fed the target-prioritisation stage before its predictive claim was withdrawn, which is why that edge is drawn dashed. Any stage lacking the evidence to proceed returns a certified negative rather than a default value.
-  <span class="figmeta">Appears in <a href="{{ '/methods/' | relative_url }}">Methods</a>. Vector copy <a href="{{ '/images/fig7_architecture.pdf' | relative_url }}">fig7_architecture.pdf</a>.</span></figcaption>
+  <span class="figmeta">Appears in <a href="{{ '/methods/' | relative_url }}">Methods</a>. Vector copy <a href="{{ '/images/fig8_architecture.pdf' | relative_url }}">fig8_architecture.pdf</a>.</span></figcaption>
 </figure>
 
 <figure id="fig10">

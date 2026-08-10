@@ -13,7 +13,7 @@ pseudo-labels, or training targets at any stage. Frozen third-party predictors a
 role, as hash-locked evaluation baselines, and never as an input to a design decision.
 
 <figure>
-  <img src="{{ '/images/fig7_architecture.png' | relative_url }}" alt="Block diagram of the eight-module pipeline and its data sources">
+  <img src="{{ '/images/fig8_architecture.png' | relative_url }}" alt="Block diagram of the eight-module pipeline and its data sources">
   <figcaption><b>Figure 9.</b> Pipeline organisation. The five modules on the main path run left to right,
   each drawing directly on the real data corpora above them. Module VII supplies generated promoter libraries
   into the parts stage, and Module VIII fed the target-prioritisation stage before its predictive claim was
