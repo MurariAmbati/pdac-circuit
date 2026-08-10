@@ -1,0 +1,48 @@
+title: PDAC Chromatin-Circuit
+tagline: Computational design and adversarial validation of synthetic gene circuits for pancreatic cancer
+description: >-
+  A from-scratch computational pipeline that designs synthetic gene circuits against
+  pancreatic-ductal-adenocarcinoma transcription factors, trained entirely on real public
+  genomics data, with every claim put through adversarial validation.
+author: Murari Ambati
+email: murariambofficial@gmail.com
+
+url: "https://murariambati.github.io"
+baseurl: "/pdac-circuit"
+repository: MurariAmbati/pdac-circuit
+
+github_username: MurariAmbati
+
+nav:
+  - title: Overview
+    url: /
+  - title: Results
+    url: /results/
+  - title: Methods
+    url: /methods/
+  - title: Validation
+    url: /validation/
+  - title: Data
+    url: /data/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  math_engine: null
+
+include:
+  - _pages
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - scripts/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
