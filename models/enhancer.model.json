@@ -1,0 +1,23 @@
+{
+  "arch": "cnn",
+  "cert": "real",
+  "data_lineage": [
+    "encode-pancreas-atac",
+    "encode-pancreas-h3k27ac",
+    "hg38-ref"
+  ],
+  "metrics": {
+    "auroc": 0.8375,
+    "note": "Retrained on the full ENCODE pancreas peak set: 10 ATAC and 14 H3K27ac released narrowPeak files, up from 4 and 4, giving 1,376,493 accessible H3K27ac-marked regions against 470,874 before. Trained on 540,199 rows (320,000 actives), which is eight times the previous training set, using index-encoded sequence with per-batch one-hot so the data need not fit on the GPU. Fixed held-out test is all 54,103 rows on chr8 and chr9 of the enriched dataset, and the previously deployed model was re-scored on that same test for comparability: 0.8300 to 0.8375, +0.0074. That gain is about 1.2 times the 0.0063 non-monotonicity of the curve itself and therefore is NOT established as an improvement; the curve remains non-monotone and the signal head is marginally worse. The model is retained because it rests on far more biological replication, not because the benchmark moved. results/enhancer_maxdata.json",
+    "perm_p": 0.000999000999000999,
+    "signal_spearman": 0.5162,
+    "training_data": "ENCODE pancreas ATAC and H3K27ac, all released GRCh38 narrowPeak files (10 + 14), 320,000 actives of 1,376,493 available"
+  },
+  "model_key": "enhancer",
+  "module": "II",
+  "schema": "pdac-circuit.model/1",
+  "seed": 20260620,
+  "weight_path": "C:\\Users\\murar\\pdac-circuit\\models\\enhancer.pt",
+  "weight_sha256": "2b7f09279f8fc5a95bb7aea295d28b2ca459f62796fb8dd1ba974dfdf52623a5",
+  "weights_absent": false
+}

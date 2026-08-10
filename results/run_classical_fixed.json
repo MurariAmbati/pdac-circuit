@@ -1,0 +1,39 @@
+{
+  "schema": "pdac-circuit.run/1",
+  "ruo_banner": "RESEARCH USE ONLY \u2014 not for clinical or diagnostic use",
+  "subtype": "classical",
+  "seed": 20260620,
+  "verdict": "ABSTAIN",
+  "data_class": "REAL",
+  "cert": "certified-negative",
+  "payload": null,
+  "caveats": [
+    "no viable circuit assembled for subtype=classical",
+    "tumor-vs-normal specificity is CROSS-PLATFORM (TCGA RSEM vs GTEx TPM) \u2014 coarse signal, down-weighted.",
+    "DepMap dependency scope = pdac (corroboration axis; not folded into MCDA).",
+    "Module VII: 8 de-novo GAN promoters available; best generated strength=0.99.",
+    "ELF3: repressor design abstained (no guide clears specificity>=0.5 (best cfd_spec=0.09; off-target scope: genome_wide_hg38_le_4mm_both_strands)).",
+    "CREB3L1: repressor design abstained (no guide clears specificity>=0.5 (best cfd_spec=0.28; off-target scope: genome_wide_hg38_le_4mm_both_strands)).",
+    "KLF5: repressor design abstained (no guide clears specificity>=0.5 (best cfd_spec=0.15; off-target scope: genome_wide_hg38_le_4mm_both_strands)).",
+    "TCF7L2: repressor design abstained (no guide clears specificity>=0.5 (best cfd_spec=0.14; off-target scope: genome_wide_hg38_le_4mm_both_strands)).",
+    "MECOM: repressor design abstained (no guide clears specificity>=0.5 (best cfd_spec=0.29; off-target scope: genome_wide_hg38_le_4mm_both_strands)).",
+    "GATA6: repressor design abstained (no guide clears specificity>=0.5 (best cfd_spec=0.18; off-target scope: genome_wide_hg38_le_4mm_both_strands))."
+  ],
+  "audit": {
+    "schema": "pdac-circuit.audit/1",
+    "head": "9dfd517caac1c9cb035ce95712761de1804f15f4300a0cea23decb9c7fbcd77d",
+    "steps": [
+      {
+        "step": "targeting",
+        "inputs": [
+          "lambert-tf",
+          "tcga-paad",
+          "gtex-pancreas",
+          "intogen-pdac"
+        ],
+        "output_sha": "9dfd517caac1c9cb035ce95712761de1804f15f4300a0cea23decb9c7fbcd77d",
+        "ts": "2026-07-21T04:13:16Z"
+      }
+    ]
+  }
+}

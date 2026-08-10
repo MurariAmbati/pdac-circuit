@@ -1,0 +1,9 @@
+{
+  "schema": "pdac-circuit.pipeline-sync/1",
+  "source_repo": "https://github.com/MurariAmbati/pdac-chromatin-circuit",
+  "source_commit": "f3f52bce17718e9ade87bac1d9bb2818a56d2447",
+  "source_subject": "Finishing touches",
+  "synced_at": "2026-08-10T06:13:04Z",
+  "files": 327,
+  "note": "Mirrored from the pipeline repository by scripts/sync_from_pipeline.py. The pipeline repository is authoritative; rerun the script to refresh. Raw data and trained weights are excluded, as in the source."
+}

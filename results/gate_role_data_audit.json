@@ -1,0 +1,382 @@
+{
+  "schema": "pdac-circuit.gate-role-audit/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "method": "each curated intervention-gate role checked against a data-implied oncogenic direction from TCGA-PAAD log2FC + CNA + HM450 promoter methylation + CPTAC protein; equal fixed weights, mean over available layers. Audit, not a model.",
+  "counts": {
+    "corroborated": 11,
+    "conflict": 1,
+    "no_directional_prediction": 4,
+    "no_evidence": 1,
+    "total": 18
+  },
+  "caveat": "TCGA-PAAD is classical-dominant; basal factors can read silenced here without the curated role being wrong. Conflicts are surfaced for adjudication, not auto-corrected.",
+  "per_gene": [
+    {
+      "gene": "GATA6",
+      "role": "lineage_state_maintaining",
+      "status": "quarantine",
+      "admissible": [
+        "activate"
+      ],
+      "data_direction": 0.689,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 5.9159,
+        "amp": 0.2951,
+        "del": 0.0,
+        "beta": 0.0449,
+        "det": 0.6681
+      },
+      "verdict": "CONFLICT: data direction opposes curated role"
+    },
+    {
+      "gene": "ARID1B",
+      "role": "chromatin_context_dependent",
+      "status": "quarantine",
+      "admissible": [],
+      "data_direction": -0.7,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 8.4556,
+        "amp": 0.0219,
+        "del": 0.4809,
+        "beta": 0.0272,
+        "det": 1.0
+      },
+      "verdict": "no directional prediction (quarantine-only role)"
+    },
+    {
+      "gene": "ATM",
+      "role": "dna_repair_tumour_suppressor",
+      "status": "quarantine",
+      "admissible": [],
+      "data_direction": 0.23,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 7.0749,
+        "amp": 0.0984,
+        "del": 0.0,
+        "beta": 0.0226,
+        "det": 1.0
+      },
+      "verdict": "no directional prediction (quarantine-only role)"
+    },
+    {
+      "gene": "BRCA2",
+      "role": "dna_repair_tumour_suppressor",
+      "status": "quarantine",
+      "admissible": [],
+      "data_direction": 0.332,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.052,
+        "amp": 0.1421,
+        "del": 0.0,
+        "beta": 0.0507,
+        "det": 0.3824
+      },
+      "verdict": "no directional prediction (quarantine-only role)"
+    },
+    {
+      "gene": "CDKN2A",
+      "role": "tumour_suppressor",
+      "status": "block",
+      "admissible": [
+        "activate"
+      ],
+      "data_direction": -0.7,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.0355,
+        "amp": 0.0109,
+        "del": 0.9016,
+        "beta": 0.0376,
+        "det": 0.1639
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "E2F1",
+      "role": "proliferation_oncogenic",
+      "status": "allow",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": 0.548,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.8538,
+        "amp": 0.235,
+        "del": 0.0,
+        "beta": 0.0183,
+        "det": null
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "FBXW7",
+      "role": "tumour_suppressor",
+      "status": "block",
+      "admissible": [
+        "activate"
+      ],
+      "data_direction": -0.102,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.1236,
+        "amp": 0.0601,
+        "del": 0.1038,
+        "beta": 0.0259,
+        "det": 0.1555
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "FOSL1",
+      "role": "ap1_oncogenic",
+      "status": "allow",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": 0.191,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 7.9981,
+        "amp": 0.082,
+        "del": 0.0,
+        "beta": 0.2779,
+        "det": 0.1513
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "HNF4G",
+      "role": "stage_dependent",
+      "status": "quarantine",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": 0.504,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.3043,
+        "amp": 0.306,
+        "del": 0.0,
+        "beta": 0.8259,
+        "det": 0.3151
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "KLF5",
+      "role": "lineage_survival_oncogenic",
+      "status": "allow",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": 0.383,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 9.3045,
+        "amp": 0.1639,
+        "del": 0.0,
+        "beta": 0.0461,
+        "det": 0.4664
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "KMT2C",
+      "role": "chromatin_tumour_suppressor",
+      "status": "quarantine",
+      "admissible": [],
+      "data_direction": 0.765,
+      "layers_used": [
+        "cna"
+      ],
+      "evidence": {
+        "log2fc": 7.5614,
+        "amp": 0.2295,
+        "del": 0.0,
+        "beta": null,
+        "det": 0.958
+      },
+      "verdict": "no directional prediction (quarantine-only role)"
+    },
+    {
+      "gene": "MYBL2",
+      "role": "proliferation_oncogenic",
+      "status": "allow",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": 0.599,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 5.5967,
+        "amp": 0.2568,
+        "del": 0.0,
+        "beta": 0.2124,
+        "det": null
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "MYC",
+      "role": "oncogene",
+      "status": "allow",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": 0.7,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 5.396,
+        "amp": 0.3989,
+        "del": 0.0,
+        "beta": 0.0469,
+        "det": 0.1933
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "SETDB1",
+      "role": "chromatin_oncogenic",
+      "status": "allow",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": 0.7,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.4258,
+        "amp": 0.3224,
+        "del": 0.0,
+        "beta": 0.0258,
+        "det": 1.0
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "SMAD4",
+      "role": "tumour_suppressor",
+      "status": "block",
+      "admissible": [
+        "activate"
+      ],
+      "data_direction": -0.7,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.9555,
+        "amp": 0.0383,
+        "del": 0.7705,
+        "beta": 0.0562,
+        "det": 1.0
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "TGIF1",
+      "role": "tumour_suppressor",
+      "status": "block",
+      "admissible": [
+        "activate"
+      ],
+      "data_direction": 0.038,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 8.1083,
+        "amp": 0.1475,
+        "del": 0.1311,
+        "beta": 0.376,
+        "det": 0.1891
+      },
+      "verdict": "inconclusive: no copy-number/methylation signal (a functional or expression-level role that this cohort's CNA cannot adjudicate)"
+    },
+    {
+      "gene": "TP53",
+      "role": "tumour_suppressor",
+      "status": "block",
+      "admissible": [
+        "activate"
+      ],
+      "data_direction": -0.7,
+      "layers_used": [
+        "cna",
+        "methylation"
+      ],
+      "evidence": {
+        "log2fc": 6.9649,
+        "amp": 0.0437,
+        "del": 0.4536,
+        "beta": 0.0385,
+        "det": 0.5462
+      },
+      "verdict": "CORROBORATED by data"
+    },
+    {
+      "gene": "TP63",
+      "role": "basal_state_driver",
+      "status": "quarantine",
+      "admissible": [
+        "repress"
+      ],
+      "data_direction": null,
+      "layers_used": [],
+      "evidence": {
+        "log2fc": null,
+        "amp": null,
+        "del": null,
+        "beta": null,
+        "det": 0.2017
+      },
+      "verdict": "no local evidence available"
+    }
+  ]
+}

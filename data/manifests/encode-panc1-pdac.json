@@ -1,0 +1,145 @@
+{
+  "artifacts": [
+    {
+      "bytes": 601641,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF082JCP_H3K4me3.bed.gz",
+      "name": "ENCFF082JCP_H3K4me3.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "766d75399f103fc201846bb543d3120d0a836e50451075e10ab11df059005e89",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 1122936,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF092ERD_H3K4me1.bed.gz",
+      "name": "ENCFF092ERD_H3K4me1.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "e5570a255b9c16933e7907577bb548af26073215890db973da319e2850330184",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 1073795,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF382VLH_CTCF.bed.gz",
+      "name": "ENCFF382VLH_CTCF.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "e3d320ed8c9d2db9edb6f7e64c2110ed8c573bdb3666f4514ec271ab4e82b75f",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 76512,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF452TJZ_H3K9me3.bed.gz",
+      "name": "ENCFF452TJZ_H3K9me3.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "b5e064d13c58950b8a44b67bb26afad1e26289b75e855ac3d10002d026eb9ba9",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 1085146,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF579DQM_H3K27ac.bed.gz",
+      "name": "ENCFF579DQM_H3K27ac.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "7d73c484585910e5dfd2579d9d07bc0cfb65d5d1f8b485bb9d7a55eac56a7781",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 708242,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF701GAH_H3K36me3.bed.gz",
+      "name": "ENCFF701GAH_H3K36me3.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "0bfdd16e991cef5aa1e0007aed4960207e25a5ac67b565c8f51d3d24261c94be",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 844215,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF711ZMP_H3K27me3.bed.gz",
+      "name": "ENCFF711ZMP_H3K27me3.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "0752acb6a8247ffd38e571900e92976b3ad7ae75a74d131813bb89144458760f",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 197835,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF724WUN_TCF7L2.bed.gz",
+      "name": "ENCFF724WUN_TCF7L2.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "c682b85877e045fb3f0f939cddb9d713fa13bcb22ddfc6bb6782d6cc61a0f15f",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 2239403,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF953NZY_ATAC-seq.bed.gz",
+      "name": "ENCFF953NZY_ATAC-seq.bed.gz",
+      "note": "ENCODE Panc1 (PDAC cell line) released peak calls, GRCh38 \u2014 matched marks to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T12:05:00Z",
+      "sha256": "49f79a943858c832e105fd01ab16824a3ecf0d07d7552b437cacc4437bd71bf6",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 473173386,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF055ZEE_ATAC-seq.signal.bigWig",
+      "name": "ENCFF055ZEE_ATAC-seq.signal.bigWig",
+      "note": "ENCODE Panc1 (PDAC cell line) signal p-value bigWig, GRCh38 \u2014 matched output type to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T14:50:00Z",
+      "sha256": "bbf8215cd33ecdc89528bdde540900b4703ffbeac9c10ecd97a629c218ab2150",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    },
+    {
+      "bytes": 414032162,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-panc1-pdac\\ENCFF528UFR_H3K27ac.signal.bigWig",
+      "name": "ENCFF528UFR_H3K27ac.signal.bigWig",
+      "note": "ENCODE Panc1 (PDAC cell line) signal p-value bigWig, GRCh38 \u2014 matched output type to the healthy-pancreas corpus",
+      "retrievedAt": "2026-07-16T14:50:00Z",
+      "sha256": "594992f57aea38084fa3d2cfdc3a29206f916518d123885e298ad80bf6d279c5",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/biosamples/?term_name=Panc1"
+    }
+  ],
+  "corpus": "encode-panc1-pdac",
+  "generatedAt": "2026-07-16T12:05:00Z",
+  "note": "PDAC (Panc1) chromatin: ATAC, CTCF, H3K27ac, H3K4me1/me3, H3K27me3, H3K9me3, H3K36me3, TCF7L2. Cultured PDAC cell line \u2014 NOT primary tumour.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 11
+  }
+}

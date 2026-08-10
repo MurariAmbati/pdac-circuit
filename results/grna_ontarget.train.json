@@ -1,0 +1,15 @@
+{
+  "status": "SUPERSEDED",
+  "superseded_reason": "Superseded by the Doench+Kim retrain: this file records the Doench-only model (ensemble 0.4938). The deployed model trains on 18,142 real HT guides and scores 0.6571 on the identical held-out Doench genes.",
+  "superseded_at": "2026-07-21 data-scaling programme",
+  "see": "models/grna_ontarget.model.json, results/grna_cnn_kim_retrain.json, docs/ADDENDUM_DATA_SCALING.md",
+  "model": "grna_ontarget",
+  "cert": "real",
+  "n_train": 2665,
+  "n_test": 688,
+  "spearman_ensemble": 0.49381717689271337,
+  "spearman_cnn": 0.39148170165659807,
+  "spearman_gbm": 0.48121618090663004,
+  "perm_p": 0.000999000999000999,
+  "conformal_radius": 0.4548991918563843
+}

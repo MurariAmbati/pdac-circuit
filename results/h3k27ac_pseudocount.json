@@ -1,0 +1,95 @@
+{
+  "schema": "pdac-circuit.h3k27ac-pseudocount/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "mark": "H3K27ac",
+  "window_bp": 2000,
+  "published_pseudocount": 0.1,
+  "n_loci": 1675,
+  "n_loci_with_zero_healthy_signal": 67,
+  "targets_with_zero_healthy_signal": [
+    "HOXA3"
+  ],
+  "why": "\u00a727 showed the pseudocount manufactures HOXA3's entire ratio (healthy = 0.000). A constant that decides one locus outright must be shown not to decide the aggregate.",
+  "sweep": [
+    {
+      "pseudocount": 0.01,
+      "target_mean_log2": 1.1014,
+      "target_mean_fold": 2.146,
+      "target_median_log2": 0.891,
+      "target_median_fold": 1.854,
+      "target_mean_excl_zero_denominator": 0.6765,
+      "target_mean_excl_fold": 1.598,
+      "background_mean_log2": -0.0296,
+      "mwu_p": 0.002121,
+      "set_perm_p": 0.0065,
+      "significant_both": true
+    },
+    {
+      "pseudocount": 0.05,
+      "target_mean_log2": 0.978,
+      "target_mean_fold": 1.97,
+      "target_median_log2": 0.8767,
+      "target_median_fold": 1.836,
+      "target_mean_excl_zero_denominator": 0.6683,
+      "target_mean_excl_fold": 1.589,
+      "background_mean_log2": -0.0789,
+      "mwu_p": 0.002168,
+      "set_perm_p": 0.0023,
+      "significant_both": true
+    },
+    {
+      "pseudocount": 0.1,
+      "target_mean_log2": 0.9194,
+      "target_mean_fold": 1.891,
+      "target_median_log2": 0.8521,
+      "target_median_fold": 1.805,
+      "target_mean_excl_zero_denominator": 0.6585,
+      "target_mean_excl_fold": 1.578,
+      "background_mean_log2": -0.0914,
+      "mwu_p": 0.002239,
+      "set_perm_p": 0.0022,
+      "significant_both": true
+    },
+    {
+      "pseudocount": 0.5,
+      "target_mean_log2": 0.7472,
+      "target_mean_fold": 1.679,
+      "target_median_log2": 0.7071,
+      "target_median_fold": 1.632,
+      "target_mean_excl_zero_denominator": 0.5945,
+      "target_mean_excl_fold": 1.51,
+      "background_mean_log2": -0.0757,
+      "mwu_p": 0.002345,
+      "set_perm_p": 0.0014,
+      "significant_both": true
+    },
+    {
+      "pseudocount": 1.0,
+      "target_mean_log2": 0.6476,
+      "target_mean_fold": 1.567,
+      "target_median_log2": 0.636,
+      "target_median_fold": 1.554,
+      "target_mean_excl_zero_denominator": 0.5364,
+      "target_mean_excl_fold": 1.45,
+      "background_mean_log2": -0.0484,
+      "mwu_p": 0.002591,
+      "set_perm_p": 0.0028,
+      "significant_both": true
+    },
+    {
+      "pseudocount": 2.0,
+      "target_mean_log2": 0.5316,
+      "target_mean_fold": 1.446,
+      "target_median_log2": 0.5641,
+      "target_median_fold": 1.478,
+      "target_mean_excl_zero_denominator": 0.4565,
+      "target_mean_excl_fold": 1.372,
+      "background_mean_log2": -0.0187,
+      "mwu_p": 0.003204,
+      "set_perm_p": 0.0033,
+      "significant_both": true
+    }
+  ],
+  "verdict": "ROBUST TO PSEUDOCOUNT: significant at 6/6 values (0.01-2.0). Mean spans +0.532..+1.101 (pseudocount-sensitive, as expected with a zero denominator present); MEDIAN spans only +0.564..+0.891 and the zero-denominator-excluded mean +0.457..+0.676 -- both stable, so the effect is not manufactured by the constant"
+}

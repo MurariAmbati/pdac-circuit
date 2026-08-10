@@ -1,0 +1,177 @@
+{
+  "schema": "pdac-circuit.deep-run/1",
+  "ruo_banner": "RESEARCH USE ONLY \u2014 not for clinical or diagnostic use",
+  "subtype": "classical",
+  "verdict": "OK",
+  "data_class": "REAL",
+  "cert": "real",
+  "payload": {
+    "subtype": "classical",
+    "n_circuits": 8,
+    "n_individually_simulated": 8,
+    "n_single_tf": 8,
+    "n_multi_tf": 0,
+    "n_pareto_front0": 5,
+    "module_I": {
+      "weights": {
+        "c_expr": 0.25,
+        "c_spec": 0.0,
+        "c_onc": 0.0,
+        "c_subtype": 0.5,
+        "c_breadth": 0.25
+      },
+      "recovery_at_k": 2,
+      "k": 10,
+      "recovery_top_quartile": 5,
+      "perm_p": 0.0029985007496251873,
+      "n_candidates": 1321,
+      "controls_present": 7,
+      "n_tumors": 177,
+      "powered": true
+    },
+    "top_circuits": [
+      {
+        "circuit": "GATA6",
+        "logic": "neg-feedback",
+        "pareto_rank": 0,
+        "composite": 0.0,
+        "efficacy": 0.915,
+        "specificity": 0.794,
+        "robustness": 1.0,
+        "safety": 0.877,
+        "tf_knockdown": 0.647,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": "bivalent_poised"
+      },
+      {
+        "circuit": "ZNF790",
+        "logic": "neg-feedback",
+        "pareto_rank": 0,
+        "composite": 0.0,
+        "efficacy": 0.904,
+        "specificity": 0.581,
+        "robustness": 1.0,
+        "safety": 0.898,
+        "tf_knockdown": 0.574,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": null
+      },
+      {
+        "circuit": "SETDB1",
+        "logic": "neg-feedback",
+        "pareto_rank": 0,
+        "composite": 0.0,
+        "efficacy": 0.954,
+        "specificity": 0.573,
+        "robustness": 1.0,
+        "safety": 0.887,
+        "tf_knockdown": 0.658,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": null
+      },
+      {
+        "circuit": "E2F1",
+        "logic": "neg-feedback",
+        "pareto_rank": 0,
+        "composite": 0.0,
+        "efficacy": 0.93,
+        "specificity": 0.511,
+        "robustness": 1.0,
+        "safety": 0.9,
+        "tf_knockdown": 0.61,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": null
+      },
+      {
+        "circuit": "SOX13",
+        "logic": "neg-feedback",
+        "pareto_rank": 0,
+        "composite": 0.0,
+        "efficacy": 0.898,
+        "specificity": 0.58,
+        "robustness": 1.0,
+        "safety": 0.899,
+        "tf_knockdown": 0.641,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": null
+      },
+      {
+        "circuit": "AHR",
+        "logic": "neg-feedback",
+        "pareto_rank": 1,
+        "composite": 0.0,
+        "efficacy": 0.76,
+        "specificity": 0.451,
+        "robustness": 1.0,
+        "safety": 0.898,
+        "tf_knockdown": 0.617,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": "insulator"
+      },
+      {
+        "circuit": "MYBL2",
+        "logic": "neg-feedback",
+        "pareto_rank": 1,
+        "composite": 0.0,
+        "efficacy": 0.911,
+        "specificity": 0.431,
+        "robustness": 1.0,
+        "safety": 0.898,
+        "tf_knockdown": 0.623,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": "polycomb_repressed"
+      },
+      {
+        "circuit": "ZNF331",
+        "logic": "neg-feedback",
+        "pareto_rank": 1,
+        "composite": 0.0,
+        "efficacy": 0.863,
+        "specificity": 0.497,
+        "robustness": 1.0,
+        "safety": 0.896,
+        "tf_knockdown": 0.606,
+        "stable": true,
+        "promoter_source": "gan-generated",
+        "chromatin_state": "quiescent"
+      }
+    ]
+  },
+  "caveats": [
+    "tumor-vs-normal specificity is CROSS-PLATFORM (TCGA RSEM vs GTEx TPM) \u2014 coarse signal, down-weighted.",
+    "DepMap dependency scope = pdac (corroboration axis; not folded into MCDA).",
+    "4 requested target(s) absent from the Module I feature matrix and cannot be designed: BRCA2, KMT2C, AGR2, SF3B1",
+    "dbSNP: 26 common SNPs in 8 CRISPRi windows; guides SNP-aware."
+  ],
+  "audit": {
+    "schema": "pdac-circuit.audit/1",
+    "head": "be01e5d2cc8835ee248ab2802b180425b7010f0bc0a8d40c3af204bf3a89c94a",
+    "steps": [
+      {
+        "step": "targeting",
+        "inputs": [
+          "tcga-paad",
+          "gtex-pancreas",
+          "intogen-pdac"
+        ],
+        "output_sha": "63cbb34da97194789db904e362a1c545a61091b4a91387b0eb9b023ff95776b3",
+        "ts": "2026-07-16T22:12:24Z"
+      },
+      {
+        "step": "simulate",
+        "inputs": [
+          "classical"
+        ],
+        "output_sha": "be01e5d2cc8835ee248ab2802b180425b7010f0bc0a8d40c3af204bf3a89c94a",
+        "ts": "2026-07-16T22:12:43Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "schema": "pdac-circuit.disease-residual/1",
+  "data_class": "REAL",
+  "method": "matched ENCODE ATAC-seq signal p-value, PDAC (Panc1) vs healthy pancreas, log2((pdac+0.1)/(healthy+0.1)) over TSS +/- 2kb, GRCh38",
+  "sealed_studies_touched": false,
+  "pdac_track": "ENCFF528UFR_H3K27ac.signal.bigWig",
+  "healthy_tracks": [
+    "ENCFF931BVK.bigWig",
+    "ENCFF963BKH.bigWig",
+    "ENCFF047CXK.bigWig",
+    "ENCFF382AWG.bigWig",
+    "ENCFF184AJS.bigWig",
+    "ENCFF908MQD.bigWig"
+  ],
+  "n_loci": 1675,
+  "residual_all": {
+    "mean": 0.2767,
+    "median": 0.2325,
+    "frac_pdac_up": 0.5427
+  },
+  "rac_targets": {
+    "n": 20,
+    "mean_log2_residual": 1.5964,
+    "frac_pdac_up": 0.8
+  },
+  "background": {
+    "n": 1655,
+    "mean_log2_residual": 0.2607,
+    "frac_pdac_up": 0.5396
+  },
+  "test_targets_more_pdac_open": {
+    "mannwhitney_p_greater": 0.00062
+  },
+  "top_pdac_up_loci": [
+    {
+      "gene": "HOXC10",
+      "pdac_atac": 102.645,
+      "healthy_atac": 0.5589,
+      "log2_residual": 7.2849
+    },
+    {
+      "gene": "HOXB6",
+      "pdac_atac": 129.2588,
+      "healthy_atac": 0.7411,
+      "log2_residual": 7.2649
+    },
+    {
+      "gene": "HOXB3",
+      "pdac_atac": 130.2062,
+      "healthy_atac": 0.7791,
+      "log2_residual": 7.2116
+    },
+    {
+      "gene": "HOXB8",
+      "pdac_atac": 96.8844,
+      "healthy_atac": 0.6355,
+      "log2_residual": 7.0429
+    },
+    {
+      "gene": "HOXC8",
+      "pdac_atac": 78.4484,
+      "healthy_atac": 0.597,
+      "log2_residual": 6.8163
+    },
+    {
+      "gene": "HOXC6",
+      "pdac_atac": 70.0163,
+      "healthy_atac": 0.5617,
+      "log2_residual": 6.7275
+    },
+    {
+      "gene": "HOXC9",
+      "pdac_atac": 85.1604,
+      "healthy_atac": 0.771,
+      "log2_residual": 6.613
+    },
+    {
+      "gene": "PAX2",
+      "pdac_atac": 67.2924,
+      "healthy_atac": 0.6179,
+      "log2_residual": 6.5527
+    },
+    {
+      "gene": "HOXC4",
+      "pdac_atac": 78.4537,
+      "healthy_atac": 0.7444,
+      "log2_residual": 6.5397
+    },
+    {
+      "gene": "HOXB5",
+      "pdac_atac": 96.9308,
+      "healthy_atac": 1.1089,
+      "log2_residual": 6.3267
+    },
+    {
+      "gene": "HOXC11",
+      "pdac_atac": 49.9512,
+      "healthy_atac": 0.6144,
+      "log2_residual": 6.1305
+    },
+    {
+      "gene": "HOXB4",
+      "pdac_atac": 90.5501,
+      "healthy_atac": 1.2276,
+      "log2_residual": 6.0934
+    },
+    {
+      "gene": "HOXC13",
+      "pdac_atac": 40.3129,
+      "healthy_atac": 0.6144,
+      "log2_residual": 5.822
+    },
+    {
+      "gene": "FOSL1",
+      "pdac_atac": 60.1146,
+      "healthy_atac": 0.966,
+      "log2_residual": 5.8198
+    },
+    {
+      "gene": "HOXB2",
+      "pdac_atac": 93.6718,
+      "healthy_atac": 1.5726,
+      "log2_residual": 5.809
+    },
+    {
+      "gene": "HOXB9",
+      "pdac_atac": 34.4906,
+      "healthy_atac": 0.5565,
+      "log2_residual": 5.7194
+    },
+    {
+      "gene": "TFAP2A",
+      "pdac_atac": 31.3615,
+      "healthy_atac": 0.538,
+      "log2_residual": 5.6238
+    },
+    {
+      "gene": "HMGA2",
+      "pdac_atac": 48.6204,
+      "healthy_atac": 0.9382,
+      "log2_residual": 5.5524
+    },
+    {
+      "gene": "ZNF780B",
+      "pdac_atac": 62.3778,
+      "healthy_atac": 1.2606,
+      "log2_residual": 5.521
+    },
+    {
+      "gene": "GATA5",
+      "pdac_atac": 37.1582,
+      "healthy_atac": 0.7195,
+      "log2_residual": 5.5066
+    },
+    {
+      "gene": "TGIF1",
+      "pdac_atac": 24.014,
+      "healthy_atac": 0.431,
+      "log2_residual": 5.5051
+    },
+    {
+      "gene": "ZNF217",
+      "pdac_atac": 43.7724,
+      "healthy_atac": 0.8804,
+      "log2_residual": 5.4839
+    },
+    {
+      "gene": "FOXL1",
+      "pdac_atac": 28.78,
+      "healthy_atac": 0.6447,
+      "log2_residual": 5.2773
+    },
+    {
+      "gene": "E2F8",
+      "pdac_atac": 23.2669,
+      "healthy_atac": 0.5795,
+      "log2_residual": 5.1039
+    },
+    {
+      "gene": "VAX1",
+      "pdac_atac": 22.3177,
+      "healthy_atac": 0.627,
+      "log2_residual": 4.9465
+    }
+  ],
+  "per_target": {
+    "BRCA2": {
+      "pdac_atac": 17.6212,
+      "healthy_atac": 7.2954,
+      "log2_residual": 1.2608
+    },
+    "GATA6": {
+      "pdac_atac": 0.6796,
+      "healthy_atac": 12.5141,
+      "log2_residual": -4.0162
+    },
+    "ZNF790": {
+      "pdac_atac": 15.3838,
+      "healthy_atac": 4.8356,
+      "log2_residual": 1.6495
+    },
+    "SETDB1": {
+      "pdac_atac": 31.5009,
+      "healthy_atac": 3.334,
+      "log2_residual": 3.202
+    },
+    "KMT2C": {
+      "pdac_atac": 7.5736,
+      "healthy_atac": 15.7025,
+      "log2_residual": -1.0422
+    },
+    "E2F1": {
+      "pdac_atac": 8.0404,
+      "healthy_atac": 1.1001,
+      "log2_residual": 2.7619
+    },
+    "SOX13": {
+      "pdac_atac": 10.3556,
+      "healthy_atac": 5.8746,
+      "log2_residual": 0.8074
+    },
+    "AHR": {
+      "pdac_atac": 1.9784,
+      "healthy_atac": 0.44,
+      "log2_residual": 1.9444
+    },
+    "MYBL2": {
+      "pdac_atac": 6.6732,
+      "healthy_atac": 0.7206,
+      "log2_residual": 3.0451
+    },
+    "AGR2": {
+      "pdac_atac": 0.8317,
+      "healthy_atac": 0.4654,
+      "log2_residual": 0.7205
+    },
+    "ZNF331": {
+      "pdac_atac": 21.591,
+      "healthy_atac": 2.0282,
+      "log2_residual": 3.3494
+    },
+    "SF3B1": {
+      "pdac_atac": 52.0399,
+      "healthy_atac": 15.5765,
+      "log2_residual": 1.7338
+    },
+    "SMAD3": {
+      "pdac_atac": 39.1823,
+      "healthy_atac": 8.0609,
+      "log2_residual": 2.2671
+    },
+    "HOXA3": {
+      "pdac_atac": 9.432,
+      "healthy_atac": 0.5758,
+      "log2_residual": 3.818
+    },
+    "ATM": {
+      "pdac_atac": 53.3361,
+      "healthy_atac": 10.3896,
+      "log2_residual": 2.3488
+    },
+    "ZNF528": {
+      "pdac_atac": 8.3378,
+      "healthy_atac": 1.5306,
+      "log2_residual": 2.3715
+    },
+    "FAM83A": {
+      "pdac_atac": 0.4377,
+      "healthy_atac": 0.5297,
+      "log2_residual": -0.2279
+    },
+    "ZNF93": {
+      "pdac_atac": 10.2371,
+      "healthy_atac": 7.9301,
+      "log2_residual": 0.3643
+    },
+    "FOSL1": {
+      "pdac_atac": 60.1146,
+      "healthy_atac": 0.966,
+      "log2_residual": 5.8198
+    },
+    "ZNF85": {
+      "pdac_atac": 4.5015,
+      "healthy_atac": 5.3748,
+      "log2_residual": -0.2507
+    }
+  }
+}

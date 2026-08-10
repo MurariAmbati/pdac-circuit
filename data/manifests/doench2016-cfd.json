@@ -1,0 +1,49 @@
+{
+ "artifacts": [
+  {
+   "bytes": 3311,
+   "dataClass": "REAL",
+   "license": "MIT (crisprScore redistribution)",
+   "localPath": "data\\raw\\doench2016-cfd\\cfd.mm.scores.cas9.txt",
+   "name": "cfd.mm.scores.cas9.txt",
+   "note": "Doench et al. 2016 (Nat Biotechnol 34:184-191, doi:10.1038/nbt.3437) CFD nucleotide-pair mismatch weights for SpCas9, 12 mismatch types x 20 positions = 240 entries. Redistributed as plain text by the Bioconductor package crisprScore (crisprVerse/crisprScore, inst/cfd_cas9/). Keys are {spacer_base}{protospacer_base}{position} in DNA space with NO reverse-complement (the revcomp of the original cfd_score_calculator.py is already absorbed); verified against the package's own published test vectors.",
+   "retrievedAt": "2026-07-19T05:35:47Z",
+   "sha256": "636e1d8e65f429db8c578036a673cb4516e896c05f594e3ab134734aab84dafc",
+   "status": "REAL",
+   "url": "https://raw.githubusercontent.com/crisprVerse/crisprScore/master/inst/cfd_cas9/cfd.mm.scores.cas9.txt"
+  },
+  {
+   "bytes": 140,
+   "dataClass": "REAL",
+   "license": "MIT (crisprScore redistribution)",
+   "localPath": "data\\raw\\doench2016-cfd\\cfd.pam.scores.cas9.txt",
+   "name": "cfd.pam.scores.cas9.txt",
+   "note": "CFD PAM weights for SpCas9, 16 dinucleotides keyed on the last 2 nt of the 3-nt PAM.",
+   "retrievedAt": "2026-07-19T05:35:47Z",
+   "sha256": "3f83c4f659cda48795312c080f8528984a3ce25f9b2475d79cb80b4835fb3b45",
+   "status": "REAL",
+   "url": "https://raw.githubusercontent.com/crisprVerse/crisprScore/master/inst/cfd_cas9/cfd.pam.scores.cas9.txt"
+  },
+  {
+   "bytes": 157,
+   "dataClass": "REAL",
+   "license": "MIT (crisprScore redistribution)",
+   "localPath": "data\\raw\\doench2016-cfd\\mit.weights.txt",
+   "name": "mit.weights.txt",
+   "note": "Hsu 2013 MIT position weights (20). Downloaded as an independent cross-check: matched this repo's hardcoded HSU_WEIGHTS exactly.",
+   "retrievedAt": "2026-07-19T05:35:47Z",
+   "sha256": "467d6e821a03b2b2b6caa97bc913b2c35302640e37ec93c85375b3a2ebf80dcb",
+   "status": "REAL",
+   "url": "https://raw.githubusercontent.com/crisprVerse/crisprScore/master/inst/mit/mit.weights.txt"
+  }
+ ],
+ "corpus": "doench2016-cfd",
+ "generatedAt": "2026-07-19T05:35:47Z",
+ "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. Obtained as PLAIN TEXT deliberately: CRISPOR distributes the same matrix as a Python pickle, which is arbitrary code execution on load and was not used; coefficients were never reconstructed from memory. Validated on load against 7 published Cas9 test vectors (see grna/cfd_doench.py).",
+ "schema": "pdac-circuit.provenance/1",
+ "summary": {
+  "gated": 0,
+  "pointer": 0,
+  "real": 3
+ }
+}

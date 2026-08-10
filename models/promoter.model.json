@@ -1,0 +1,25 @@
+{
+ "arch": "rf+cnn",
+ "cert": "real",
+ "data_lineage": [
+  "fantom5-cage",
+  "hg38-ref"
+ ],
+ "metrics": {
+  "conformal_radius": 1.2190157175064087,
+  "perm_p": 0.000999000999000999,
+  "spearman_cnn": 0.5247,
+  "spearman_rf": 0.5081,
+  "spearman_ensemble": 0.5275,
+  "ensemble_weight_cnn": 0.86,
+  "note": "CNN+RF retrained on the FULL real FANTOM5 set (181428 train peaks; 60k cap removed). Fixed held-out test = ALL 16940 peaks on chr8/chr9 (apples-to-apples): ensemble 0.5199 -> 0.5275 (+0.0075); the CNN carries the gain (0.4988 -> 0.5247, data-hungry), RF ~flat (0.5020 -> 0.5081). Weight 0.86 CNN selected on held-out val chrom chr7 (no test peeking). Near data-saturation ceiling for this arch. results/promoter_scaleup.json",
+  "training_data": "FANTOM5 CAGE, full 209374 std-chrom peaks (was capped 60000)"
+ },
+ "model_key": "promoter",
+ "module": "II",
+ "schema": "pdac-circuit.model/1",
+ "seed": 20260620,
+ "weight_path": "C:\\Users\\murar\\pdac-circuit\\models\\promoter.pt",
+ "weight_sha256": "8adb0389610f8d2b771b02c74b3526aea820fbced6173886a020decfb43a49cc",
+ "weights_absent": false
+}

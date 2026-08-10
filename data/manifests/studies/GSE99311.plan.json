@@ -1,0 +1,41 @@
+{
+  "accession": "GSE99311",
+  "asset": {
+    "biological_state": "normal_primary_metastatic_organoid_progression",
+    "id": "GSE99311",
+    "modalities": [
+      "H3K27ac_ChIP_seq",
+      "RNA_seq"
+    ],
+    "reference_genomes": [
+      "mm9",
+      "hg19"
+    ],
+    "role": "paired_enhancer_state_and_progression",
+    "sha256": null,
+    "species": "human_and_mouse",
+    "split": "paired_with_GSE99275",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99311"
+  },
+  "files": [
+    {
+      "bytes": 17017630720,
+      "name": "GSE99311_RAW.tar",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE99nnn/GSE99311/suppl/GSE99311_RAW.tar"
+    },
+    {
+      "bytes": 7262,
+      "name": "filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE99nnn/GSE99311/suppl/filelist.txt"
+    }
+  ],
+  "generated_at": "2026-07-14T22:07:57.402338-05:00",
+  "known_total_bytes": 17017637982,
+  "listing_sha256": "88893dc14e32edee406c74fc426e35d73597112b30639e3f22355272549e2464",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE99nnn/GSE99311/suppl/",
+  "protected_from_training": false,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "size_probe_failures": [],
+  "unknown_size_files": 0
+}

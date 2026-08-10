@@ -1,0 +1,21 @@
+{
+  "schema": "pdac-circuit.grna-kim-augment/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "eval": "held-out Doench GENES, gene-grouped, 688 guides (apples-to-apples with shipped 0.494)",
+  "doench_only_gbm": 0.525,
+  "doench_plus_kim_gbm": 0.6496,
+  "cnn_doench_only": 0.3915,
+  "deployed_ensemble": 0.6477,
+  "shipped_ensemble": 0.4938,
+  "gain": 0.1539,
+  "n_train": 17454,
+  "kim_guides": 12832,
+  "cross_dataset_doench_to_kim": 0.5918,
+  "kim_within_ceiling": 0.7217,
+  "caveats": [
+    "endpoints differ (Doench drug-rank vs Kim indel-rank); rank-normalised within-dataset before pooling; cross-dataset generalisation 0.59 confirms shared real signal",
+    "CNN still Doench-only (GPU-blocked to retrain); retraining it on Kim would likely raise the ensemble further",
+    "deployed model predicts a pooled efficiency RANK, used only to ORDER candidate guides"
+  ]
+}

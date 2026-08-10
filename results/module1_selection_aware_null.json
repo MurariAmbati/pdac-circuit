@@ -1,0 +1,35 @@
+{
+  "schema": "pdac-circuit.module1-selection-aware-null/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "B": 2000,
+  "seed": 20260620,
+  "n_pool": 1321,
+  "n_grid": 70,
+  "selected_weights_observed": {
+    "c_expr": 0.25,
+    "c_spec": 0.0,
+    "c_onc": 0.0,
+    "c_subtype": 0.5,
+    "c_breadth": 0.25
+  },
+  "design": "the MCDA weight grid search is re-run inside every permutation under that replicate's shuffled labels, with the same recovery@k objective and the same most-balanced tie-break; the fixed-weight null on identical draws is reported alongside to quantify the inflation from selection reuse",
+  "results": {
+    "recovery_at_k": {
+      "observed": 2,
+      "n_controls": 7,
+      "k": 10,
+      "p_selection_aware": 0.012993503248375811,
+      "p_naive_fixed_weights": 0.0014992503748125937,
+      "null_mean_selection_aware": 0.326,
+      "null_mean_naive": 0.053
+    },
+    "mean_rank_of_controls": {
+      "observed": -298.714,
+      "p_selection_aware": 0.0074962518740629685,
+      "p_naive_fixed_weights": 0.004497751124437781,
+      "null_mean_selection_aware": -653.725,
+      "null_mean_naive": -662.371
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "accession": "GSE124230",
+  "asset": {
+    "biological_state": "matched_primary_PDAC",
+    "id": "GSE124230",
+    "modalities": [
+      "RNA_Quant_seq"
+    ],
+    "role": "matched_expression_external_validation",
+    "sha256": null,
+    "species": "human",
+    "split": "external_study_test",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124230"
+  },
+  "files": [
+    {
+      "bytes": 1832575,
+      "name": "GSE124230_counts_quantseq.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124230/suppl/GSE124230_counts_quantseq.txt.gz"
+    }
+  ],
+  "generated_at": "2026-07-14T21:14:39.423316-05:00",
+  "known_total_bytes": 1832575,
+  "listing_sha256": "03b5e899c7152f677c1b0464c12714d961038b55c77b80c28de36b29b004500e",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124230/suppl/",
+  "protected_from_training": true,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "unknown_size_files": 0
+}

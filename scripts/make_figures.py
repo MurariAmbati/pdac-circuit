@@ -17,7 +17,8 @@ from figstyle import (
     ygrid,
 )
 
-SRC=Path("C:/Users/murar/pdac-circuit")
+_HERE=Path(__file__).resolve().parents[1]
+SRC=_HERE if (_HERE/"results").is_dir() else Path("C:/Users/murar/pdac-circuit")
 OUT=Path(__file__).resolve().parents[1] / "images"
 
 INK=PALETTE["ink"]

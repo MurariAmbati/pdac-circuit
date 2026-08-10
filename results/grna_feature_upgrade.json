@@ -1,0 +1,26 @@
+{
+  "schema": "pdac-circuit.grna-feature-upgrade/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "eval": "gene-grouped held-out split (identical to the shipped model); GBM-only (HistGBR max_iter 400 lr 0.05 depth 6) to isolate the feature contribution from the CNN",
+  "n_guides": 5310,
+  "n_genes": 17,
+  "n_train": 4622,
+  "n_test": 688,
+  "spearman": {
+    "chance_label_permutation": -0.0365,
+    "gc_only_floor": 0.1736,
+    "shipped_features": 0.5249,
+    "position_specific_dinuc_only": 0.5268,
+    "segmented_tm_only": 0.5343,
+    "improved_full": 0.5328
+  },
+  "gain_improved_minus_shipped": 0.0079,
+  "feature_counts": {
+    "shipped": 140,
+    "added_position_specific_dinuc": 464,
+    "added_segmented_tm": 4,
+    "improved_total": 608
+  },
+  "verdict": "NO MATERIAL GAIN (+0.0079): the shipped feature set was already at the achievable ceiling for this data; the Azimuth extras do not help here."
+}

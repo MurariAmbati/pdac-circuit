@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "bytes": 2107299,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\lambert-tf\\DatabaseExtract_v_1.01.csv",
+      "name": "DatabaseExtract_v_1.01.csv",
+      "retrievedAt": "2026-06-20T05:40:11Z",
+      "sha256": "5438940ddef71b6fb8017af609e7599338159f47e2e03ca0439dc0711a8d4cc9",
+      "status": "REAL",
+      "url": "http://humantfs.ccbr.utoronto.ca/download/v_1.01/DatabaseExtract_v_1.01.csv"
+    }
+  ],
+  "corpus": "lambert-tf",
+  "generatedAt": "2026-06-20T05:40:11Z",
+  "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. POINTER = open but resolved at ingest / not statically pulled this run. GATED = behind an auth/DUC wall, recorded as a pointer and never bypassed. sha256 is present only when actually hashed and is never fabricated.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 1
+  }
+}

@@ -1,0 +1,865 @@
+{
+  "status": "SUPERSEDED",
+  "superseded_reason": "Same as run_basal.json: wrong promoter window, fail-open acceptance, stale off-target values. Superseded by the fixed pipeline; see run_classical_fixed.json.",
+  "superseded_at": "2026-07 audit-response",
+  "see": "REVIEW_RESPONSE.md \u00a713/\u00a714/\u00a724, AUDIT_RESPONSE.md",
+  "schema": "pdac-circuit.run/1",
+  "ruo_banner": "RESEARCH USE ONLY \u2014 not for clinical or diagnostic use",
+  "subtype": "classical",
+  "seed": 20260620,
+  "verdict": "OK",
+  "data_class": "REAL",
+  "cert": "real",
+  "payload": {
+    "subtype": "classical",
+    "module_I": {
+      "weights": {
+        "c_expr": 0.25,
+        "c_spec": 0.0,
+        "c_onc": 0.0,
+        "c_subtype": 0.5,
+        "c_breadth": 0.25
+      },
+      "recovery_at_k": 2,
+      "k": 10,
+      "recovery_top_quartile": 5,
+      "perm_p": 0.0029985007496251873,
+      "n_candidates": 1321,
+      "controls_present": 7,
+      "n_tumors": 177,
+      "powered": true
+    },
+    "ranked_circuits": [
+      {
+        "target_tf": "CREB3L1",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.8859050273895264,
+          "signal": 0.532317042350769,
+          "locus": {
+            "chrom": "chr11",
+            "start": 46243092,
+            "end": 46243829
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr11",
+          "start": 46277666,
+          "end": 46277686,
+          "strand": "+",
+          "protospacer": "GGAAAGTGACAGAAGACGTG",
+          "pam": "CGG",
+          "on_target": 0.9726078799249531,
+          "on_conf": [
+            0.5177086880685688,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": true,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.556,
+          "gc_after": 0.5496,
+          "n_edits": 30,
+          "unsatisfied": [
+            "gc_out_of_band: window@2270 gc=0.920 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0053511705685618735,
+          "interval": [
+            0.0,
+            0.2553511705685619
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.9473810400533135,
+          "specificity": 0.8975139609584236,
+          "robustness": 1.0,
+          "safety": 0.8951839464882944
+        },
+        "pareto_rank": 0,
+        "composite": 0.9350197368750078,
+        "acceptable": true
+      },
+      {
+        "target_tf": "HNF4G",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.8966194987297058,
+          "signal": 0.5570343732833862,
+          "locus": {
+            "chrom": "chr8",
+            "start": 75406920,
+            "end": 75408690
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr8",
+          "start": 75408100,
+          "end": 75408120,
+          "strand": "+",
+          "protospacer": "TGTTGAAAGCAGATACCCCG",
+          "pam": "AGG",
+          "on_target": 0.9362101313320825,
+          "on_conf": [
+            0.48131093947569825,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": true,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.522,
+          "gc_after": 0.5168,
+          "n_edits": 33,
+          "unsatisfied": [
+            "gc_out_of_band: window@2060 gc=0.860 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0026755852842809368,
+          "interval": [
+            0.0,
+            0.2526755852842809
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.9391685570903285,
+          "specificity": 0.8900571392698522,
+          "robustness": 1.0,
+          "safety": 0.8975919732441472
+        },
+        "pareto_rank": 0,
+        "composite": 0.931704417401082,
+        "acceptable": true
+      },
+      {
+        "target_tf": "TCF7L2",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.7758910059928894,
+          "signal": 0.36031079292297363,
+          "locus": {
+            "chrom": "chr10",
+            "start": 112949566,
+            "end": 112950455
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr10",
+          "start": 112950353,
+          "end": 112950373,
+          "strand": "+",
+          "protospacer": "TCAACTCACTCAAATCCGAG",
+          "pam": "CGG",
+          "on_target": 0.8649155722326454,
+          "on_conf": [
+            0.4100163803762611,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": true,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.4572,
+          "gc_after": 0.4528,
+          "n_edits": 11,
+          "unsatisfied": [
+            "gc_out_of_band: window@1140 gc=0.200 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0,
+          "interval": [
+            0.0,
+            0.25
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.871648091453475,
+          "specificity": 0.8685707667926377,
+          "robustness": 1.0,
+          "safety": 0.9
+        },
+        "pareto_rank": 0,
+        "composite": 0.9100547145615282,
+        "acceptable": true
+      },
+      {
+        "target_tf": "KLF5",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.9469757080078125,
+          "signal": 0.6732643842697144,
+          "locus": {
+            "chrom": "chr13",
+            "start": 73058488,
+            "end": 73060066
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr13",
+          "start": 73055108,
+          "end": 73055128,
+          "strand": "+",
+          "protospacer": "TACTTATTATACTAACAAGG",
+          "pam": "TGG",
+          "on_target": 0.7891181988742965,
+          "on_conf": [
+            0.3342190070179122,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": false,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.362,
+          "gc_after": 0.3608,
+          "n_edits": 9,
+          "unsatisfied": [
+            "gc_out_of_band: window@1200 gc=0.120 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0,
+          "interval": [
+            0.0,
+            0.25
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.9034622375638457,
+          "specificity": 0.520396914426225,
+          "robustness": 1.0,
+          "safety": 0.9
+        },
+        "pareto_rank": 0,
+        "composite": 0.8309647879975176,
+        "acceptable": true
+      },
+      {
+        "target_tf": "MYRF",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.9287070631980896,
+          "signal": 0.6238747239112854,
+          "locus": {
+            "chrom": "chr11",
+            "start": 61791990,
+            "end": 61793191
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr11",
+          "start": 61752782,
+          "end": 61752802,
+          "strand": "+",
+          "protospacer": "CTTCGAAGGTGAGAGACCGC",
+          "pam": "GGG",
+          "on_target": 0.9729831144465291,
+          "on_conf": [
+            0.5180839225901448,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": false,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.5776,
+          "gc_after": 0.5732,
+          "n_edits": 41,
+          "unsatisfied": [
+            "gc_out_of_band: window@1870 gc=0.960 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0053511705685618735,
+          "interval": [
+            0.0,
+            0.2553511705685619
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.9625228675208624,
+          "specificity": 0.44705827546592447,
+          "robustness": 1.0,
+          "safety": 0.8951839464882944
+        },
+        "pareto_rank": 0,
+        "composite": 0.8261912723687703,
+        "acceptable": true
+      },
+      {
+        "target_tf": "GATA6",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.8007106184959412,
+          "signal": 0.4347158968448639,
+          "locus": {
+            "chrom": "chr18",
+            "start": 22168993,
+            "end": 22170595
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr18",
+          "start": 22169856,
+          "end": 22169876,
+          "strand": "-",
+          "protospacer": "AGAGACTAGAAGTTGGTCCG",
+          "pam": "CGG",
+          "on_target": 0.9703564727954972,
+          "on_conf": [
+            0.5154572809391129,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": true,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.5944,
+          "gc_after": 0.59,
+          "n_edits": 35,
+          "unsatisfied": [
+            "gc_out_of_band: window@1980 gc=0.860 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.025418060200668897,
+          "interval": [
+            0.0,
+            0.2754180602006689
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.9152758510237056,
+          "specificity": 0.8582152571953597,
+          "robustness": 1.0,
+          "safety": 0.877123745819398
+        },
+        "pareto_rank": 1,
+        "composite": 0.9126537135096158,
+        "acceptable": true
+      },
+      {
+        "target_tf": "KLF3",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.8711427450180054,
+          "signal": 0.5489000082015991,
+          "locus": {
+            "chrom": "chr4",
+            "start": 38663365,
+            "end": 38665358
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr4",
+          "start": 38664256,
+          "end": 38664276,
+          "strand": "+",
+          "protospacer": "GAGCCAGGAGCGGAGCCGCG",
+          "pam": "CGG",
+          "on_target": 0.8900562851782364,
+          "on_conf": [
+            0.43515709332185215,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": true,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.6352,
+          "gc_after": 0.6332,
+          "n_edits": 53,
+          "unsatisfied": [
+            "gc_out_of_band: window@2070 gc=0.980 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.010702341137123747,
+          "interval": [
+            0.0,
+            0.26070234113712376
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.9146437492598695,
+          "specificity": 0.817544911081524,
+          "robustness": 1.0,
+          "safety": 0.8903678929765886
+        },
+        "pareto_rank": 1,
+        "composite": 0.9056391383294955,
+        "acceptable": true
+      },
+      {
+        "target_tf": "MECOM",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.8950203657150269,
+          "signal": 0.5502446889877319,
+          "locus": {
+            "chrom": "chr3",
+            "start": 169668107,
+            "end": 169669419
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr3",
+          "start": 169663569,
+          "end": 169663589,
+          "strand": "-",
+          "protospacer": "AAATACAGAGAGTGAGTGTG",
+          "pam": "TGG",
+          "on_target": 0.8829268292682927,
+          "on_conf": [
+            0.4280276374119084,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": false,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.4772,
+          "gc_after": 0.4844,
+          "n_edits": 62,
+          "unsatisfied": [
+            "gc_out_of_band: window@2240 gc=0.980 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0053511705685618735,
+          "interval": [
+            0.0,
+            0.2553511705685619
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.9204543391108273,
+          "specificity": 0.5144711042043376,
+          "robustness": 1.0,
+          "safety": 0.8951839464882944
+        },
+        "pareto_rank": 1,
+        "composite": 0.8325273474508648,
+        "acceptable": true
+      },
+      {
+        "target_tf": "ELF3",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.8448734879493713,
+          "signal": 0.47679558396339417,
+          "locus": {
+            "chrom": "chr1",
+            "start": 201982287,
+            "end": 201983634
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr1",
+          "start": 202007935,
+          "end": 202007955,
+          "strand": "+",
+          "protospacer": "GATGAGGCTGTGCTGCCGTG",
+          "pam": "TGG",
+          "on_target": 0.8026266416510319,
+          "on_conf": [
+            0.34772744979464765,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": false,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.5008,
+          "gc_after": 0.4968,
+          "n_edits": 26,
+          "unsatisfied": [
+            "gc_out_of_band: window@150 gc=0.200 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0026755852842809368,
+          "interval": [
+            0.0,
+            0.2526755852842809
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.8746845525901504,
+          "specificity": 0.5179514851814586,
+          "robustness": 1.0,
+          "safety": 0.8975919732441472
+        },
+        "pareto_rank": 1,
+        "composite": 0.8225570027539391,
+        "acceptable": true
+      },
+      {
+        "target_tf": "STAT6",
+        "subtype": "classical",
+        "promoter": {
+          "strength": 0.9868453901254008,
+          "conformal": [
+            0.0,
+            1.4974250849336035
+          ]
+        },
+        "enhancer": {
+          "activity": 0.820816159248352,
+          "signal": 0.4501204788684845,
+          "locus": {
+            "chrom": "chr12",
+            "start": 57127071,
+            "end": 57128686
+          }
+        },
+        "repressor_guide": {
+          "chrom": "chr12",
+          "start": 57131936,
+          "end": 57131956,
+          "strand": "-",
+          "protospacer": "TTGGGGGTTCTGATGTGCAA",
+          "pam": "GGG",
+          "on_target": 0.8195121951219512,
+          "on_conf": [
+            0.3646130032655669,
+            1.0
+          ],
+          "cfd_specificity": 1.0,
+          "off_risk": 0.0,
+          "n_off_targets": 0,
+          "in_open_chromatin": false,
+          "overlaps_common_snp": false
+        },
+        "circuit": {
+          "cert": "real",
+          "robustness": 1.0,
+          "steady_state_ok": true,
+          "stability_ok": true
+        },
+        "sequence_optimization": {
+          "gc_before": 0.5364,
+          "gc_after": 0.5336,
+          "n_edits": 43,
+          "unsatisfied": [
+            "restriction_sites_remain: ['BsmBI'] could not be abolished synonymously",
+            "gc_out_of_band: window@490 gc=0.860 outside (0.4, 0.6); feasibility limited by amino-acid composition (no synonymous swap reaches the band)"
+          ]
+        },
+        "immunogenicity": {
+          "risk": 0.0053511705685618735,
+          "interval": [
+            0.0,
+            0.2553511705685619
+          ],
+          "caveat": "heuristic proxy \u2014 not a clinical prediction"
+        },
+        "sub_scores": {
+          "efficacy": 0.8723353629541118,
+          "specificity": 0.44589057542311117,
+          "robustness": 1.0,
+          "safety": 0.8951839464882944
+        },
+        "pareto_rank": 2,
+        "composite": 0.8033524712163793,
+        "acceptable": true
+      }
+    ],
+    "module_VI": {
+      "n_circuits": 10,
+      "n_passing_floors": 10,
+      "front0_ids": [
+        "CREB3L1",
+        "KLF5",
+        "TCF7L2",
+        "HNF4G",
+        "MYRF"
+      ],
+      "selected": [
+        {
+          "circuit_id": "CREB3L1",
+          "composite": 0.9350197368750078,
+          "pareto_rank": 0,
+          "crowding": Infinity,
+          "sub_scores": {
+            "efficacy": 0.9473810400533135,
+            "specificity": 0.8975139609584236,
+            "robustness": 1.0,
+            "safety": 0.8951839464882944
+          },
+          "front_membership_prob": 0.941,
+          "robust": true
+        },
+        {
+          "circuit_id": "MYRF",
+          "composite": 0.8261912723687703,
+          "pareto_rank": 0,
+          "crowding": Infinity,
+          "sub_scores": {
+            "efficacy": 0.9625228675208624,
+            "specificity": 0.44705827546592447,
+            "robustness": 1.0,
+            "safety": 0.8951839464882944
+          },
+          "front_membership_prob": 0.832,
+          "robust": true
+        },
+        {
+          "circuit_id": "TCF7L2",
+          "composite": 0.9100547145615282,
+          "pareto_rank": 0,
+          "crowding": Infinity,
+          "sub_scores": {
+            "efficacy": 0.871648091453475,
+            "specificity": 0.8685707667926377,
+            "robustness": 1.0,
+            "safety": 0.9
+          },
+          "front_membership_prob": 0.609,
+          "robust": true
+        },
+        {
+          "circuit_id": "KLF5",
+          "composite": 0.8309647879975176,
+          "pareto_rank": 0,
+          "crowding": 2.178752435001338,
+          "sub_scores": {
+            "efficacy": 0.9034622375638457,
+            "specificity": 0.520396914426225,
+            "robustness": 1.0,
+            "safety": 0.9
+          },
+          "front_membership_prob": 0.462,
+          "robust": false
+        },
+        {
+          "circuit_id": "HNF4G",
+          "composite": 0.931704417401082,
+          "pareto_rank": 0,
+          "crowding": 1.547542395631142,
+          "sub_scores": {
+            "efficacy": 0.9391685570903285,
+            "specificity": 0.8900571392698522,
+            "robustness": 1.0,
+            "safety": 0.8975919732441472
+          },
+          "front_membership_prob": 0.889,
+          "robust": true
+        }
+      ],
+      "front_membership": {
+        "ELF3": 0.345,
+        "CREB3L1": 0.941,
+        "KLF5": 0.462,
+        "TCF7L2": 0.609,
+        "MECOM": 0.516,
+        "GATA6": 0.448,
+        "HNF4G": 0.889,
+        "KLF3": 0.483,
+        "STAT6": 0.242,
+        "MYRF": 0.832
+      },
+      "floors": {
+        "safety_floor": 0.7,
+        "efficacy_floor": 0.5,
+        "front_membership_min": 0.5
+      }
+    }
+  },
+  "caveats": [
+    "tumor-vs-normal specificity is CROSS-PLATFORM (TCGA RSEM vs GTEx TPM) \u2014 coarse signal, down-weighted.",
+    "DepMap dependency scope = pdac (corroboration axis; not folded into MCDA).",
+    "Module VII: 8 de-novo GAN promoters available; best generated strength=0.99."
+  ],
+  "audit": {
+    "schema": "pdac-circuit.audit/1",
+    "head": "962f5768264c67eadd1b0a231629c2af0d2ad3de5ebd58a96645e7f52bdb1d3b",
+    "steps": [
+      {
+        "step": "targeting",
+        "inputs": [
+          "lambert-tf",
+          "tcga-paad",
+          "gtex-pancreas",
+          "intogen-pdac"
+        ],
+        "output_sha": "9dfd517caac1c9cb035ce95712761de1804f15f4300a0cea23decb9c7fbcd77d",
+        "ts": "2026-07-16T03:09:44Z"
+      },
+      {
+        "step": "scoring",
+        "inputs": [
+          "ELF3",
+          "CREB3L1",
+          "KLF5",
+          "TCF7L2",
+          "MECOM",
+          "GATA6",
+          "HNF4G",
+          "KLF3",
+          "STAT6",
+          "MYRF"
+        ],
+        "output_sha": "962f5768264c67eadd1b0a231629c2af0d2ad3de5ebd58a96645e7f52bdb1d3b",
+        "ts": "2026-07-16T03:12:39Z"
+      }
+    ]
+  }
+}

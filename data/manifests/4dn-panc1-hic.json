@@ -1,0 +1,49 @@
+{
+  "artifacts": [
+    {
+      "bytes": 205341,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\4dn-panc1-hic\\4DNFIB125UJV.bed.gz",
+      "name": "4DNFIB125UJV.bed.gz",
+      "note": "4DN PANC-1 Hi-C released derived tracks (A/B compartment eigenvector, diamond insulation, TAD boundaries); hg38; experiment set 4DNESCCP4KTY.",
+      "retrievedAt": "2026-07-16T11:45:00Z",
+      "sha256": "0676bd223e912b6a4586d9d718bac3a22ca834055e2d3abed576b39a7531c55e",
+      "status": "REAL",
+      "url": "https://data.4dnucleome.org/experiment-set-replicates/4DNESCCP4KTY/"
+    },
+    {
+      "bytes": 4182322,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\4dn-panc1-hic\\4DNFIR1EGUXI.bw",
+      "name": "4DNFIR1EGUXI.bw",
+      "note": "4DN PANC-1 Hi-C released derived tracks (A/B compartment eigenvector, diamond insulation, TAD boundaries); hg38; experiment set 4DNESCCP4KTY.",
+      "retrievedAt": "2026-07-16T11:45:00Z",
+      "sha256": "e257194b91e0deaabba423e597c54fc5fcf7cdc49c325ec3205cb7cfddce3692",
+      "status": "REAL",
+      "url": "https://data.4dnucleome.org/experiment-set-replicates/4DNESCCP4KTY/"
+    },
+    {
+      "bytes": 211423,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\4dn-panc1-hic\\4DNFIY4C6GHK.bw",
+      "name": "4DNFIY4C6GHK.bw",
+      "note": "4DN PANC-1 Hi-C released derived tracks (A/B compartment eigenvector, diamond insulation, TAD boundaries); hg38; experiment set 4DNESCCP4KTY.",
+      "retrievedAt": "2026-07-16T11:45:00Z",
+      "sha256": "a4e0123d8fa3b09f5a945cf5363630e2cdad659562bcaf73d70f84edde2ff6b2",
+      "status": "REAL",
+      "url": "https://data.4dnucleome.org/experiment-set-replicates/4DNESCCP4KTY/"
+    }
+  ],
+  "corpus": "4dn-panc1-hic",
+  "generatedAt": "2026-07-16T11:45:00Z",
+  "note": "4DN PANC-1 Hi-C released derived tracks (A/B compartment eigenvector, diamond insulation, TAD boundaries); hg38; experiment set 4DNESCCP4KTY.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 3
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "pdac-circuit.selective-ceiling/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "n_genes": 419,
+  "expr_var_artifact_check": {
+    "note": "univariate CV-AUC on absolute essentiality; if raw ~ normalised, expr_var is real biology not a normalisation artifact",
+    "values": {
+      "expr_var_norm": 0.6994,
+      "expr_var_raw": 0.671,
+      "expr_mean_norm": 0.6782,
+      "expr_mean_raw": 0.8086,
+      "coexpr_degree": 0.6153
+    }
+  },
+  "absolute_vs_selective": {
+    "absolute": {
+      "n_positive": 31,
+      "auc_degree": [
+        0.6153,
+        0.0091
+      ],
+      "auc_full_logistic": [
+        0.8466,
+        0.0061
+      ],
+      "auc_full_gbm": [
+        0.8296,
+        0.0117
+      ]
+    },
+    "selective": {
+      "n_positive": 14,
+      "auc_degree": [
+        0.4242,
+        0.0622
+      ],
+      "auc_full_logistic": [
+        0.651,
+        0.0099
+      ],
+      "auc_full_gbm": [
+        0.6833,
+        0.0307
+      ]
+    }
+  },
+  "delta_full_minus_degree": {
+    "absolute": 0.2313,
+    "selective": 0.2268
+  },
+  "verdict": "SELECTIVE SIGNAL EXISTS: the multivariate model beats degree even for PDAC-SELECTIVE essentiality; the feature set recovers therapeutically relevant signal degree misses"
+}

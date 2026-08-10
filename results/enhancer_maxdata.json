@@ -1,0 +1,49 @@
+{
+  "schema": "pdac-circuit.enhancer-maxdata/1",
+  "data_class": "REAL",
+  "eval": "fixed held-out test = ALL rows on ['chr8', 'chr9'] (54103 rows); the previously deployed model is re-scored on this same set",
+  "peak_files": {
+    "atac": 10,
+    "h3k27ac": 14,
+    "previously": 4
+  },
+  "actives_available": 1376493,
+  "max_active_used": 320000,
+  "n_train": 540199,
+  "n_test": 54103,
+  "baseline_deployed_auroc": 0.8300359677317102,
+  "baseline_deployed_signal": 0.5212897234784688,
+  "best_auroc": 0.8374805256990071,
+  "delta_auroc": 0.0074445579672969275,
+  "curve": [
+    {
+      "target_actives": 40000,
+      "n_train": 67524,
+      "auroc": 0.8235591071897088,
+      "signal_spearman": 0.5192830344765132,
+      "val_auroc": 0.8069706185443867
+    },
+    {
+      "target_actives": 80000,
+      "n_train": 135049,
+      "auroc": 0.8334371400874186,
+      "signal_spearman": 0.5169903710497726,
+      "val_auroc": 0.8134710097884066
+    },
+    {
+      "target_actives": 160000,
+      "n_train": 270099,
+      "auroc": 0.8271678199179899,
+      "signal_spearman": 0.4847084359028112,
+      "val_auroc": 0.8165996727482092
+    },
+    {
+      "target_actives": 320000,
+      "n_train": 540199,
+      "auroc": 0.8374805256990071,
+      "signal_spearman": 0.5161702091997173,
+      "val_auroc": 0.812483017164406
+    }
+  ],
+  "deployed": true
+}

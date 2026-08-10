@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "bytes": 5500816,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\fantom5-cage\\hg38_CAGE_peaks.bed.gz",
+      "name": "hg38_CAGE_peaks.bed.gz",
+      "retrievedAt": "2026-06-20T05:41:33Z",
+      "sha256": "7e007c3e1fd7a2e24404ad9d5a57d27f76cd7920a6fdc1acaa06b5c4fcfcb018",
+      "status": "REAL",
+      "url": "https://fantom.gsc.riken.jp/5/datafiles/reprocessed/hg38_latest/extra/CAGE_peaks/hg38_fair+new_CAGE_peaks_phase1and2.bed.gz"
+    }
+  ],
+  "corpus": "fantom5-cage",
+  "generatedAt": "2026-06-20T05:41:33Z",
+  "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. POINTER = open but resolved at ingest / not statically pulled this run. GATED = behind an auth/DUC wall, recorded as a pointer and never bypassed. sha256 is present only when actually hashed and is never fabricated.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 1
+  }
+}

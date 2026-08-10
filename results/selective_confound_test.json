@@ -1,0 +1,68 @@
+{
+  "schema": "pdac-circuit.selective-confound/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "protocol": "identical to selective_ceiling.py (nested CV, 5 seeds, StratifiedKFold-5, in-fold standardisation)",
+  "n_genes": 419,
+  "n_selective_positive": 14,
+  "selective_cut": 0.15,
+  "reproduce": {
+    "full_logistic": [
+      0.651,
+      0.0099
+    ],
+    "full_gbm": [
+      0.6833,
+      0.0307
+    ],
+    "expected_logistic": 0.651,
+    "protocol_reproduced": true
+  },
+  "univariate_on_selective": {
+    "expr_mean_raw": 0.7768,
+    "disease_log2fc_LEVEL": 0.6103,
+    "expr_var_norm": 0.6035,
+    "expr_mean_norm": 0.5994,
+    "in_strength": 0.5971,
+    "cna_amp": 0.5663,
+    "expr_pdac_minus_other_DIFFERENTIAL": 0.5566,
+    "methylation": 0.5557,
+    "cna_mean": 0.5437,
+    "out_strength": 0.5296,
+    "eigenvector": 0.5029,
+    "in_degree": 0.4526,
+    "coexpr_degree": 0.4242,
+    "expr_var_raw": 0.4116,
+    "hits_hub": 0.3795,
+    "out_degree": 0.376,
+    "pagerank": 0.363
+  },
+  "expression_differential_univariate": 0.5566,
+  "ablation_no_expression": {
+    "n_features": 11,
+    "features": [
+      "coexpr_degree",
+      "eigenvector",
+      "out_strength",
+      "in_strength",
+      "out_degree",
+      "in_degree",
+      "pagerank",
+      "hits_hub",
+      "cna_amp",
+      "cna_mean",
+      "methylation"
+    ],
+    "logistic": [
+      0.45,
+      0.0272
+    ],
+    "gbm": [
+      0.6247,
+      0.0426
+    ]
+  },
+  "full_plus_differential_logistic": 0.634,
+  "best_expression_univariate": 0.7768,
+  "verdict": "EXPRESSION-CARRIED: ablating expression collapses the model to 0.450; the one positive of the investigation is carried by expression and must be re-described as such"
+}

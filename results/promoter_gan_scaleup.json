@@ -1,0 +1,18 @@
+{
+  "schema": "pdac-circuit.gan-scaleup/1",
+  "data_class": "REAL",
+  "eval": "fixed real reference (2000 top-quartile FANTOM5 promoters); shipped + scaleup scored identically with the current promoter model",
+  "n_train_uncapped": 52342,
+  "shipped_cap": 12000,
+  "baseline_js_gen_vs_real": 0.008844393084932765,
+  "baseline_js_random_vs_real": 0.050773002833673954,
+  "baseline_p90": 0.9369286989880283,
+  "baseline_strength_uplift": -0.02090912097360942,
+  "scaleup_js_gen_vs_real": 0.012279603277353592,
+  "scaleup_js_random_vs_real": 0.050773002833673954,
+  "scaleup_p90": 0.9917509976409374,
+  "scaleup_strength_uplift": 0.10602828670326514,
+  "delta_js_gen": 0.003435210192420827,
+  "deployed": true,
+  "gate": "certified-real (js_gen<=0.05, beats random, p90>=0.7) AND selectable tail p90 >= shipped; the pipeline selects the strongest generated promoter"
+}

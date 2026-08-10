@@ -1,0 +1,70 @@
+{
+  "schema": "pdac-circuit.gain-sweep-rescue/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "endpoint": "absolute essentiality (Chronos abs > 0.4), 419-gene panel, same as \u00a715/part A",
+  "degree_auc_reference": 0.629,
+  "per_gain": [
+    {
+      "gain": 4.0,
+      "fit_fp_error": 0.03875,
+      "dead_activation": 0.1582,
+      "converged_fraction": 0.0,
+      "spectral_radius": 1.0193,
+      "stable_and_convergent": false,
+      "auc_collapse": 0.6062,
+      "auc_degree": 0.629,
+      "delta_auc_collapse_minus_degree": -0.0228,
+      "collapse_beats_degree": false
+    },
+    {
+      "gain": 5.0,
+      "fit_fp_error": 0.03935,
+      "dead_activation": 0.1556,
+      "converged_fraction": 0.0,
+      "spectral_radius": 1.2618,
+      "stable_and_convergent": false,
+      "auc_collapse": 0.5724,
+      "auc_degree": 0.629,
+      "delta_auc_collapse_minus_degree": -0.0566,
+      "collapse_beats_degree": false
+    },
+    {
+      "gain": 6.0,
+      "fit_fp_error": 0.03959,
+      "dead_activation": 0.1553,
+      "converged_fraction": 0.0,
+      "spectral_radius": 1.3372,
+      "stable_and_convergent": false,
+      "auc_collapse": 0.5861,
+      "auc_degree": 0.629,
+      "delta_auc_collapse_minus_degree": -0.0429,
+      "collapse_beats_degree": false
+    },
+    {
+      "gain": 7.0,
+      "fit_fp_error": 0.04026,
+      "dead_activation": 0.1546,
+      "converged_fraction": 0.0,
+      "spectral_radius": 0.959,
+      "stable_and_convergent": false,
+      "auc_collapse": 0.674,
+      "auc_degree": 0.629,
+      "delta_auc_collapse_minus_degree": 0.045,
+      "collapse_beats_degree": true
+    },
+    {
+      "gain": 8.0,
+      "fit_fp_error": 0.04176,
+      "dead_activation": 0.1522,
+      "converged_fraction": 0.0,
+      "spectral_radius": 0.9221,
+      "stable_and_convergent": false,
+      "auc_collapse": 0.6151,
+      "auc_degree": 0.629,
+      "delta_auc_collapse_minus_degree": -0.0139,
+      "collapse_beats_degree": false
+    }
+  ],
+  "verdict": "INCONCLUSIVE ON BISTABILITY: no swept gain produced a convergent, spectrally stable regime, so the constructive fix (operate above the bifurcation) does not by itself yield a bistable system with this graph/fit; collapse never beats degree"
+}

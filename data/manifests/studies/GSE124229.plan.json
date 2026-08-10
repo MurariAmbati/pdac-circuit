@@ -1,0 +1,43 @@
+{
+  "accession": "GSE124229",
+  "asset": {
+    "biological_state": "EpCAM_positive_primary_treatment_naive_PDAC",
+    "embargo": "Do not expose labels during model or hyperparameter selection.",
+    "id": "GSE124229",
+    "modalities": [
+      "ATAC_seq"
+    ],
+    "n_donors_reported": 54,
+    "role": "primary_human_external_validation",
+    "sha256": null,
+    "species": "human",
+    "split": "external_study_test",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124229"
+  },
+  "files": [
+    {
+      "bytes": 12266001,
+      "name": "GSE124229_Atlas_counts.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124229/suppl/GSE124229_Atlas_counts.txt.gz"
+    },
+    {
+      "bytes": 54644510720,
+      "name": "GSE124229_RAW.tar",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124229/suppl/GSE124229_RAW.tar"
+    },
+    {
+      "bytes": 1474,
+      "name": "filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124229/suppl/filelist.txt"
+    }
+  ],
+  "generated_at": "2026-07-14T21:15:56.958229-05:00",
+  "known_total_bytes": 54656778195,
+  "listing_sha256": "cbaa96926709f6271df732a71f13b966a7d09630d5d49d22d6f79241653b1e28",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE124nnn/GSE124229/suppl/",
+  "protected_from_training": true,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "size_probe_failures": [],
+  "unknown_size_files": 0
+}

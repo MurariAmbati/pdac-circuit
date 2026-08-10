@@ -1,0 +1,51 @@
+{
+  "targets": [
+    "ZNF462",
+    "BRCA2",
+    "ZNF790",
+    "ZHX2",
+    "ZNF544",
+    "ZNF655"
+  ],
+  "steps": [
+    {
+      "target": "ZNF462",
+      "step_net": 39.6941,
+      "efficacy_toward_healthy": 40.8594,
+      "essential_collapse_cost": 0.5827
+    },
+    {
+      "target": "BRCA2",
+      "step_net": 53.1863,
+      "efficacy_toward_healthy": 55.625,
+      "essential_collapse_cost": 1.2193
+    },
+    {
+      "target": "ZNF790",
+      "step_net": 68.7749,
+      "efficacy_toward_healthy": 71.3872,
+      "essential_collapse_cost": 1.3061
+    },
+    {
+      "target": "ZHX2",
+      "step_net": 70.0549,
+      "efficacy_toward_healthy": 72.6594,
+      "essential_collapse_cost": 1.3023
+    },
+    {
+      "target": "ZNF544",
+      "step_net": 70.4683,
+      "efficacy_toward_healthy": 73.0728,
+      "essential_collapse_cost": 1.3023
+    },
+    {
+      "target": "ZNF655",
+      "step_net": 70.8608,
+      "efficacy_toward_healthy": 73.4653,
+      "essential_collapse_cost": 1.3023
+    }
+  ],
+  "net_healthy_shift": 10.5811,
+  "baseline_attractor_mean": 0.3953,
+  "controlled_attractor_mean": 0.3654
+}

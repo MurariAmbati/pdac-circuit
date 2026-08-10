@@ -1,0 +1,2717 @@
+{
+  "marks": [
+    "CTCF",
+    "H3K27ac",
+    "H3K27me3",
+    "H3K36me3",
+    "H3K4me1",
+    "H3K4me3",
+    "H3K9ac",
+    "H3K9me3"
+  ],
+  "n_bams_used": 8,
+  "n_loci": 150,
+  "schema": "pdac-circuit.chromatin/1",
+  "states": {
+    "AEBP1": {
+      "active_signal": 0.7071506072857665,
+      "activity_score": -0.3751715765599354,
+      "bivalency": 0.12188655702912338,
+      "ctcf_occupancy": 0.6450403841221273,
+      "marks": {
+        "CTCF": 0.645,
+        "H3K27ac": 0.974,
+        "H3K27me3": 2.509,
+        "H3K36me3": 0.811,
+        "H3K4me1": 0.26,
+        "H3K4me3": 0.122,
+        "H3K9ac": 1.472,
+        "H3K9me3": 0.604
+      },
+      "repressive_signal": 1.5563533190505385,
+      "state": "polycomb_repressed"
+    },
+    "AHR": {
+      "active_signal": 0.5297057088974508,
+      "activity_score": -0.13901145808496854,
+      "bivalency": 0.426602945818075,
+      "ctcf_occupancy": 4.842103429039685,
+      "marks": {
+        "CTCF": 4.842,
+        "H3K27ac": 0.134,
+        "H3K27me3": 0.539,
+        "H3K36me3": 1.081,
+        "H3K4me1": 0.955,
+        "H3K4me3": 0.427,
+        "H3K9ac": 0.603,
+        "H3K9me3": 0.863
+      },
+      "repressive_signal": 0.7007538213188178,
+      "state": "insulator"
+    },
+    "ARHGAP35": {
+      "active_signal": 5.009448669810606,
+      "activity_score": 0.8844271772841569,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 2.303715729504442,
+      "marks": {
+        "CTCF": 2.304,
+        "H3K27ac": 4.556,
+        "H3K27me3": 0.269,
+        "H3K36me3": 0.385,
+        "H3K4me1": 1.515,
+        "H3K4me3": 6.468,
+        "H3K9ac": 7.499,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.3072314205462436,
+      "state": "active_promoter"
+    },
+    "ARNT2": {
+      "active_signal": 5.005662036529557,
+      "activity_score": 0.9377285114376319,
+      "bivalency": 0.30101644663874094,
+      "ctcf_occupancy": 0.28443211093069304,
+      "marks": {
+        "CTCF": 0.284,
+        "H3K27ac": 6.138,
+        "H3K27me3": 0.301,
+        "H3K36me3": 0.901,
+        "H3K4me1": 3.189,
+        "H3K4me3": 3.322,
+        "H3K9ac": 7.374,
+        "H3K9me3": 0.021
+      },
+      "repressive_signal": 0.16086313778551803,
+      "state": "active_promoter"
+    },
+    "BACH1": {
+      "active_signal": 0.8130042128073023,
+      "activity_score": -0.39422867560826524,
+      "bivalency": 0.34087606729858105,
+      "ctcf_occupancy": 1.196089223162932,
+      "marks": {
+        "CTCF": 1.196,
+        "H3K27ac": 1.406,
+        "H3K27me3": 3.052,
+        "H3K36me3": 1.043,
+        "H3K4me1": 1.251,
+        "H3K4me3": 0.341,
+        "H3K9ac": 0.254,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 1.8711915461715223,
+      "state": "polycomb_repressed"
+    },
+    "BARX2": {
+      "active_signal": 1.1515308366623267,
+      "activity_score": -0.2819288260661175,
+      "bivalency": 1.2798088677250796,
+      "ctcf_occupancy": 5.160323072977018,
+      "marks": {
+        "CTCF": 5.16,
+        "H3K27ac": 1.05,
+        "H3K27me3": 3.894,
+        "H3K36me3": 0.941,
+        "H3K4me1": 0.347,
+        "H3K4me3": 1.28,
+        "H3K9ac": 1.929,
+        "H3K9me3": 0.217
+      },
+      "repressive_signal": 2.055758411054415,
+      "state": "polycomb_repressed"
+    },
+    "BATF": {
+      "active_signal": 0.7835220698016914,
+      "activity_score": -0.2725118523848939,
+      "bivalency": 0.426602945818075,
+      "ctcf_occupancy": 0.7371890169639626,
+      "marks": {
+        "CTCF": 0.737,
+        "H3K27ac": 0.67,
+        "H3K27me3": 1.706,
+        "H3K36me3": 1.234,
+        "H3K4me1": 0.955,
+        "H3K4me3": 0.427,
+        "H3K9ac": 1.083,
+        "H3K9me3": 1.035
+      },
+      "repressive_signal": 1.3705259614307228,
+      "state": "quiescent"
+    },
+    "BCL11B": {
+      "active_signal": 0.3457568338567487,
+      "activity_score": -0.7597188611740119,
+      "bivalency": 0.426602945818075,
+      "ctcf_occupancy": 4.232693764788001,
+      "marks": {
+        "CTCF": 4.233,
+        "H3K27ac": 0.0,
+        "H3K27me3": 4.805,
+        "H3K36me3": 0.36,
+        "H3K4me1": 0.347,
+        "H3K4me3": 0.427,
+        "H3K9ac": 0.609,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 2.5321820289732386,
+      "state": "polycomb_repressed"
+    },
+    "BCL6": {
+      "active_signal": 7.626266923575425,
+      "activity_score": 0.8920928014366518,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 8.025530917677704,
+      "marks": {
+        "CTCF": 8.026,
+        "H3K27ac": 9.136,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.27,
+        "H3K4me1": 1.736,
+        "H3K4me3": 10.717,
+        "H3K9ac": 8.915,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.43493015062564777,
+      "state": "active_promoter"
+    },
+    "BHLHE40": {
+      "active_signal": 10.36191569413704,
+      "activity_score": 0.9585670919405318,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 12.197406747733854,
+      "marks": {
+        "CTCF": 12.197,
+        "H3K27ac": 15.781,
+        "H3K27me3": 0.18,
+        "H3K36me3": 1.021,
+        "H3K4me1": 2.128,
+        "H3K4me3": 10.9,
+        "H3K9ac": 12.638,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.2192027750668881,
+      "state": "active_promoter"
+    },
+    "BHLHE41": {
+      "active_signal": 9.57681359735644,
+      "activity_score": 0.7884449774665266,
+      "bivalency": 1.8342254516754402,
+      "ctcf_occupancy": 7.380491128574928,
+      "marks": {
+        "CTCF": 7.38,
+        "H3K27ac": 11.456,
+        "H3K27me3": 1.834,
+        "H3K36me3": 1.995,
+        "H3K4me1": 1.899,
+        "H3K4me3": 15.358,
+        "H3K9ac": 9.595,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 1.1328401228270704,
+      "state": "active_promoter"
+    },
+    "CAMTA2": {
+      "active_signal": 6.02849185833741,
+      "activity_score": 0.8784622384903606,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 6.795654115737413,
+      "marks": {
+        "CTCF": 6.796,
+        "H3K27ac": 4.431,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.63,
+        "H3K4me1": 1.562,
+        "H3K4me3": 4.327,
+        "H3K9ac": 13.793,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.3900469821890088,
+      "state": "active_promoter"
+    },
+    "CDX2": {
+      "active_signal": 0.7768049232624221,
+      "activity_score": -0.5025902199587527,
+      "bivalency": 0.6703761052826036,
+      "ctcf_occupancy": 1.5419536491898371,
+      "marks": {
+        "CTCF": 1.542,
+        "H3K27ac": 0.603,
+        "H3K27me3": 4.089,
+        "H3K36me3": 1.171,
+        "H3K4me1": 0.26,
+        "H3K4me3": 0.67,
+        "H3K9ac": 1.574,
+        "H3K9me3": 0.604
+      },
+      "repressive_signal": 2.3465963676937642,
+      "state": "polycomb_repressed"
+    },
+    "CEBPA": {
+      "active_signal": 0.8611797970588451,
+      "activity_score": -0.20127242324139444,
+      "bivalency": 0.36769111029905105,
+      "ctcf_occupancy": 11.482333364204528,
+      "marks": {
+        "CTCF": 11.482,
+        "H3K27ac": 0.335,
+        "H3K27me3": 2.227,
+        "H3K36me3": 0.811,
+        "H3K4me1": 0.608,
+        "H3K4me3": 0.368,
+        "H3K9ac": 2.135,
+        "H3K9me3": 0.363
+      },
+      "repressive_signal": 1.2951997314654986,
+      "state": "polycomb_repressed"
+    },
+    "CEBPB": {
+      "active_signal": 3.185589878034965,
+      "activity_score": 0.7892974474954478,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 9.534925474194589,
+      "marks": {
+        "CTCF": 9.535,
+        "H3K27ac": 4.181,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.6,
+        "H3K4me1": 0.314,
+        "H3K4me3": 2.679,
+        "H3K9ac": 5.569,
+        "H3K9me3": 0.391
+      },
+      "repressive_signal": 0.3751255165409788,
+      "state": "active_promoter"
+    },
+    "CREB3L1": {
+      "active_signal": 3.107015183359552,
+      "activity_score": 0.785722996666952,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 5.344620521743566,
+      "marks": {
+        "CTCF": 5.345,
+        "H3K27ac": 1.805,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.875,
+        "H3K4me1": 3.23,
+        "H3K4me3": 1.585,
+        "H3K9ac": 5.808,
+        "H3K9me3": 0.387
+      },
+      "repressive_signal": 0.3728244068762121,
+      "state": "insulator"
+    },
+    "CREB3L4": {
+      "active_signal": 4.709813453552266,
+      "activity_score": 0.9458066798419738,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 4.047167829917047,
+      "marks": {
+        "CTCF": 4.047,
+        "H3K27ac": 3.147,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.27,
+        "H3K4me1": 2.236,
+        "H3K4me3": 7.313,
+        "H3K9ac": 6.143,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.13117412187473143,
+      "state": "active_promoter"
+    },
+    "CREBL2": {
+      "active_signal": 4.813057026637793,
+      "activity_score": 0.848836334575594,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 2.303715729504442,
+      "marks": {
+        "CTCF": 2.304,
+        "H3K27ac": 4.888,
+        "H3K27me3": 0.269,
+        "H3K36me3": 1.24,
+        "H3K4me1": 1.476,
+        "H3K4me3": 6.174,
+        "H3K9ac": 6.714,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.393522390057279,
+      "state": "active_promoter"
+    },
+    "DEAF1": {
+      "active_signal": 3.9711682281773037,
+      "activity_score": 0.8175081639159909,
+      "bivalency": 0.5385980546802347,
+      "ctcf_occupancy": 2.303715729504442,
+      "marks": {
+        "CTCF": 2.304,
+        "H3K27ac": 5.36,
+        "H3K27me3": 0.539,
+        "H3K36me3": 0.36,
+        "H3K4me1": 0.521,
+        "H3K4me3": 0.67,
+        "H3K9ac": 9.333,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.3987354655337275,
+      "state": "insulator"
+    },
+    "DNTTIP1": {
+      "active_signal": 3.854344942906991,
+      "activity_score": 0.8538965394691415,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 1.7508239324534307,
+      "marks": {
+        "CTCF": 1.751,
+        "H3K27ac": 2.411,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.54,
+        "H3K4me1": 2.257,
+        "H3K4me3": 3.9,
+        "H3K9ac": 6.85,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.3037560448238593,
+      "state": "active_promoter"
+    },
+    "EHF": {
+      "active_signal": 3.862062404888873,
+      "activity_score": 0.8046219314021009,
+      "bivalency": 0.663672463881193,
+      "ctcf_occupancy": 0.5528917970510113,
+      "marks": {
+        "CTCF": 0.553,
+        "H3K27ac": 4.806,
+        "H3K27me3": 0.664,
+        "H3K36me3": 0.474,
+        "H3K4me1": 3.858,
+        "H3K4me3": 4.837,
+        "H3K9ac": 1.947,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.418127185378689,
+      "state": "active_promoter"
+    },
+    "ELF3": {
+      "active_signal": 2.8900061186211037,
+      "activity_score": 0.8700695858875782,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 10.469927529838818,
+      "marks": {
+        "CTCF": 10.47,
+        "H3K27ac": 6.226,
+        "H3K27me3": 0.18,
+        "H3K36me3": 1.404,
+        "H3K4me1": 1.128,
+        "H3K4me3": 0.366,
+        "H3K9ac": 3.84,
+        "H3K9me3": 0.222
+      },
+      "repressive_signal": 0.2007940370475929,
+      "state": "insulator"
+    },
+    "ELF4": {
+      "active_signal": 1.4878336066526212,
+      "activity_score": 0.1108097806425079,
+      "bivalency": 0.4875462281164935,
+      "ctcf_occupancy": 2.2115671882040453,
+      "marks": {
+        "CTCF": 2.212,
+        "H3K27ac": 1.607,
+        "H3K27me3": 1.346,
+        "H3K36me3": 0.36,
+        "H3K4me1": 0.608,
+        "H3K4me3": 0.488,
+        "H3K9ac": 3.249,
+        "H3K9me3": 1.035
+      },
+      "repressive_signal": 1.190993276537311,
+      "state": "insulator"
+    },
+    "ETS2": {
+      "active_signal": 5.01478897861956,
+      "activity_score": 0.7174858955996513,
+      "bivalency": 0.9634920280347243,
+      "ctcf_occupancy": 8.68838686770329,
+      "marks": {
+        "CTCF": 8.688,
+        "H3K27ac": 4.897,
+        "H3K27me3": 0.963,
+        "H3K36me3": 0.898,
+        "H3K4me1": 2.262,
+        "H3K4me3": 6.589,
+        "H3K9ac": 6.311,
+        "H3K9me3": 0.686
+      },
+      "repressive_signal": 0.8248963809224755,
+      "state": "active_promoter"
+    },
+    "ETV4": {
+      "active_signal": 0.7503981448678918,
+      "activity_score": -0.2789677302812656,
+      "bivalency": 0.18282984689525553,
+      "ctcf_occupancy": 0.6450403841221273,
+      "marks": {
+        "CTCF": 0.645,
+        "H3K27ac": 0.536,
+        "H3K27me3": 2.104,
+        "H3K36me3": 0.811,
+        "H3K4me1": 1.042,
+        "H3K4me3": 0.183,
+        "H3K9ac": 1.241,
+        "H3K9me3": 0.559
+      },
+      "repressive_signal": 1.3310573346336785,
+      "state": "polycomb_repressed"
+    },
+    "ETV6": {
+      "active_signal": 9.834194566782621,
+      "activity_score": 0.9415300438324168,
+      "bivalency": 0.24715664562945974,
+      "ctcf_occupancy": 3.4094993236064646,
+      "marks": {
+        "CTCF": 3.409,
+        "H3K27ac": 10.219,
+        "H3K27me3": 0.247,
+        "H3K36me3": 0.27,
+        "H3K4me1": 1.744,
+        "H3K4me3": 18.008,
+        "H3K9ac": 9.366,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.29616022969091477,
+      "state": "active_promoter"
+    },
+    "FOSL1": {
+      "active_signal": 1.9609706418054245,
+      "activity_score": 0.22784543705195667,
+      "bivalency": 0.7313193875810221,
+      "ctcf_occupancy": 1.5665266667697604,
+      "marks": {
+        "CTCF": 1.567,
+        "H3K27ac": 1.138,
+        "H3K27me3": 1.862,
+        "H3K36me3": 1.891,
+        "H3K4me1": 0.694,
+        "H3K4me3": 0.731,
+        "H3K9ac": 5.28,
+        "H3K9me3": 0.604
+      },
+      "repressive_signal": 1.2331944684074285,
+      "state": "quiescent"
+    },
+    "FOSL2": {
+      "active_signal": 7.912048935385334,
+      "activity_score": 0.9260555700668761,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 10.087817454328478,
+      "marks": {
+        "CTCF": 10.088,
+        "H3K27ac": 9.529,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.54,
+        "H3K4me1": 0.434,
+        "H3K4me3": 6.387,
+        "H3K9ac": 15.298,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.3037560448238593,
+      "state": "active_promoter"
+    },
+    "FOXA3": {
+      "active_signal": 7.602636841426586,
+      "activity_score": 0.892184636676624,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 8.938417294116578,
+      "marks": {
+        "CTCF": 8.938,
+        "H3K27ac": 5.692,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.711,
+        "H3K4me1": 0.955,
+        "H3K4me3": 9.573,
+        "H3K9ac": 14.192,
+        "H3K9me3": 0.777
+      },
+      "repressive_signal": 0.43319248301746943,
+      "state": "active_promoter"
+    },
+    "FOXC1": {
+      "active_signal": 1.160824245574488,
+      "activity_score": -0.28970820114195817,
+      "bivalency": 1.9981270443513437,
+      "ctcf_occupancy": 0.829337695576517,
+      "marks": {
+        "CTCF": 0.829,
+        "H3K27ac": 0.593,
+        "H3K27me3": 3.698,
+        "H3K36me3": 1.23,
+        "H3K4me1": 0.84,
+        "H3K4me3": 1.998,
+        "H3K9ac": 1.213,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 2.1077602778421753,
+      "state": "polycomb_repressed"
+    },
+    "FOXK1": {
+      "active_signal": 5.717108441319452,
+      "activity_score": 0.9122499873510054,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 4.33098546894194,
+      "marks": {
+        "CTCF": 4.331,
+        "H3K27ac": 6.756,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.488,
+        "H3K4me1": 0.773,
+        "H3K4me3": 4.36,
+        "H3K9ac": 10.979,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.26234824374946286,
+      "state": "active_promoter"
+    },
+    "FOXK2": {
+      "active_signal": 3.5009295185783706,
+      "activity_score": 0.855622041341508,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 1.8429726568367044,
+      "marks": {
+        "CTCF": 1.843,
+        "H3K27ac": 3.808,
+        "H3K27me3": 0.0,
+        "H3K36me3": 0.55,
+        "H3K4me1": 0.781,
+        "H3K4me3": 5.302,
+        "H3K9ac": 4.112,
+        "H3K9me3": 0.545
+      },
+      "repressive_signal": 0.2723917858359482,
+      "state": "active_promoter"
+    },
+    "FOXL1": {
+      "active_signal": 0.35444500356554165,
+      "activity_score": -0.7689419529680288,
+      "bivalency": 0.36565969379051105,
+      "ctcf_occupancy": 3.1723700152010963,
+      "marks": {
+        "CTCF": 3.172,
+        "H3K27ac": 0.335,
+        "H3K27me3": 5.053,
+        "H3K36me3": 0.811,
+        "H3K4me1": 0.26,
+        "H3K4me3": 0.366,
+        "H3K9ac": 0.457,
+        "H3K9me3": 0.375
+      },
+      "repressive_signal": 2.7135752847516543,
+      "state": "polycomb_repressed"
+    },
+    "FOXM1": {
+      "active_signal": 3.927648041660591,
+      "activity_score": 0.7281149001077213,
+      "bivalency": 0.7181306949862234,
+      "ctcf_occupancy": 3.1330533335395208,
+      "marks": {
+        "CTCF": 3.133,
+        "H3K27ac": 2.487,
+        "H3K27me3": 0.718,
+        "H3K36me3": 0.794,
+        "H3K4me1": 1.823,
+        "H3K4me3": 5.607,
+        "H3K9ac": 5.794,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.617938223880332,
+      "state": "active_promoter"
+    },
+    "FOXP4": {
+      "active_signal": 4.203329867596712,
+      "activity_score": 0.9546387442770924,
+      "bivalency": 0.19509217949484878,
+      "ctcf_occupancy": 2.395864270804839,
+      "marks": {
+        "CTCF": 2.396,
+        "H3K27ac": 4.67,
+        "H3K27me3": 0.195,
+        "H3K36me3": 0.752,
+        "H3K4me1": 0.627,
+        "H3K4me3": 2.194,
+        "H3K9ac": 9.322,
+        "H3K9me3": 0.0
+      },
+      "repressive_signal": 0.09754608974742439,
+      "state": "active_promoter"
+    },
+    "FOXQ1": {
+      "active_signal": 3.7441419416265127,
+      "activity_score": 0.6674026229214504,
+      "bivalency": 1.0622349779736469,
+      "ctcf_occupancy": 3.317350782306068,
+      "marks": {
+        "CTCF": 3.317,
+        "H3K27ac": 3.482,
+        "H3K27me3": 1.062,
+        "H3K36me3": 0.902,
+        "H3K4me1": 0.57,
+        "H3K4me3": 5.202,
+        "H3K9ac": 5.722,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.7468448859761737,
+      "state": "active_promoter"
+    },
+    "GATA6": {
+      "active_signal": 5.117927505219919,
+      "activity_score": 0.48807424393527615,
+      "bivalency": 3.003581802215303,
+      "ctcf_occupancy": 5.085375534132842,
+      "marks": {
+        "CTCF": 5.085,
+        "H3K27ac": 6.849,
+        "H3K27me3": 3.004,
+        "H3K36me3": 0.924,
+        "H3K4me1": 0.434,
+        "H3K4me3": 5.039,
+        "H3K9ac": 8.15,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 1.760663777494872,
+      "state": "bivalent_poised"
+    },
+    "GLI2": {
+      "active_signal": 0.573463929107936,
+      "activity_score": -0.6200651075445703,
+      "bivalency": 0.4875462281164935,
+      "ctcf_occupancy": 4.363544927780647,
+      "marks": {
+        "CTCF": 4.364,
+        "H3K27ac": 0.402,
+        "H3K27me3": 3.972,
+        "H3K36me3": 1.26,
+        "H3K4me1": 0.174,
+        "H3K4me3": 0.488,
+        "H3K9ac": 1.231,
+        "H3K9me3": 0.919
+      },
+      "repressive_signal": 2.4452861279575027,
+      "state": "polycomb_repressed"
+    },
+    "GRHL1": {
+      "active_signal": 4.615428050346541,
+      "activity_score": 0.907948029581394,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 1.474378033927925,
+      "marks": {
+        "CTCF": 1.474,
+        "H3K27ac": 2.356,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.674,
+        "H3K4me1": 2.505,
+        "H3K4me3": 7.255,
+        "H3K9ac": 6.346,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.22267815046560208,
+      "state": "active_promoter"
+    },
+    "GRHL2": {
+      "active_signal": 1.4993816614927282,
+      "activity_score": -0.18521850083238336,
+      "bivalency": 1.6036208002392591,
+      "ctcf_occupancy": 0.7371890169639626,
+      "marks": {
+        "CTCF": 0.737,
+        "H3K27ac": 1.808,
+        "H3K27me3": 3.844,
+        "H3K36me3": 1.647,
+        "H3K4me1": 1.215,
+        "H3K4me3": 1.604,
+        "H3K9ac": 1.371,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 2.1810694916906757,
+      "state": "polycomb_repressed"
+    },
+    "GTF2IRD1": {
+      "active_signal": 4.4704938956048785,
+      "activity_score": 0.8682307931284314,
+      "bivalency": 0.2854569520373037,
+      "ctcf_occupancy": 1.1979321354024195,
+      "marks": {
+        "CTCF": 1.198,
+        "H3K27ac": 9.681,
+        "H3K27me3": 0.285,
+        "H3K36me3": 0.818,
+        "H3K4me1": 1.042,
+        "H3K4me3": 1.158,
+        "H3K9ac": 6.002,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.31531038289483676,
+      "state": "quiescent"
+    },
+    "HES1": {
+      "active_signal": 7.868384556446024,
+      "activity_score": 0.9462108353922141,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 6.237233765050817,
+      "marks": {
+        "CTCF": 6.237,
+        "H3K27ac": 11.979,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.45,
+        "H3K4me1": 2.034,
+        "H3K4me3": 6.924,
+        "H3K9ac": 10.537,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.21746507531282389,
+      "state": "active_promoter"
+    },
+    "HMGA1": {
+      "active_signal": 3.257607132560875,
+      "activity_score": 0.8748425933473298,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 3.225201874839917,
+      "marks": {
+        "CTCF": 3.225,
+        "H3K27ac": 4.772,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.63,
+        "H3K4me1": 1.328,
+        "H3K4me3": 1.463,
+        "H3K9ac": 5.468,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.21746507531282389,
+      "state": "insulator"
+    },
+    "HMGA2": {
+      "active_signal": 0.8256678213448372,
+      "activity_score": -0.48501112582314565,
+      "bivalency": 1.4606072375700858,
+      "ctcf_occupancy": 2.4880129951881127,
+      "marks": {
+        "CTCF": 2.488,
+        "H3K27ac": 0.268,
+        "H3K27me3": 4.151,
+        "H3K36me3": 0.982,
+        "H3K4me1": 0.781,
+        "H3K4me3": 1.461,
+        "H3K9ac": 0.793,
+        "H3K9me3": 0.61
+      },
+      "repressive_signal": 2.3808793692915735,
+      "state": "polycomb_repressed"
+    },
+    "HNF1B": {
+      "active_signal": 5.716272012862328,
+      "activity_score": 0.7198214360154641,
+      "bivalency": 1.2567287050790352,
+      "ctcf_occupancy": 3.6963887271410063,
+      "marks": {
+        "CTCF": 3.696,
+        "H3K27ac": 6.284,
+        "H3K27me3": 1.257,
+        "H3K36me3": 1.081,
+        "H3K4me1": 2.306,
+        "H3K4me3": 4.632,
+        "H3K9ac": 9.643,
+        "H3K9me3": 0.606
+      },
+      "repressive_signal": 0.9312456110547764,
+      "state": "active_promoter"
+    },
+    "HNF4A": {
+      "active_signal": 6.53540344868561,
+      "activity_score": 0.8849933890961535,
+      "bivalency": 0.5385980546802347,
+      "ctcf_occupancy": 2.1194184638207716,
+      "marks": {
+        "CTCF": 2.119,
+        "H3K27ac": 4.888,
+        "H3K27me3": 0.539,
+        "H3K36me3": 0.36,
+        "H3K4me1": 3.736,
+        "H3K4me3": 10.51,
+        "H3K9ac": 7.008,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.3987354655337275,
+      "state": "active_promoter"
+    },
+    "HNF4G": {
+      "active_signal": 2.7976466331161083,
+      "activity_score": 0.19526607200855287,
+      "bivalency": 2.740267031245254,
+      "ctcf_occupancy": 2.087473614200022,
+      "marks": {
+        "CTCF": 2.087,
+        "H3K27ac": 3.549,
+        "H3K27me3": 2.74,
+        "H3K36me3": 1.261,
+        "H3K4me1": 0.868,
+        "H3K4me3": 3.474,
+        "H3K9ac": 3.3,
+        "H3K9me3": 1.027
+      },
+      "repressive_signal": 1.8835646904544538,
+      "state": "bivalent_poised"
+    },
+    "HOXA3": {
+      "active_signal": 0.5380522505967482,
+      "activity_score": -0.7477282131684566,
+      "bivalency": 0.6013070358666068,
+      "ctcf_occupancy": 8.408255419323126,
+      "marks": {
+        "CTCF": 8.408,
+        "H3K27ac": 0.0,
+        "H3K27me3": 6.247,
+        "H3K36me3": 2.071,
+        "H3K4me1": 0.434,
+        "H3K4me3": 0.601,
+        "H3K9ac": 1.117,
+        "H3K9me3": 1.208
+      },
+      "repressive_signal": 3.7276060794022694,
+      "state": "polycomb_repressed"
+    },
+    "HOXB6": {
+      "active_signal": 0.485068415520579,
+      "activity_score": -0.8097316224790444,
+      "bivalency": 0.6094328229841851,
+      "ctcf_occupancy": 8.80019411600023,
+      "marks": {
+        "CTCF": 8.8,
+        "H3K27ac": 0.335,
+        "H3K27me3": 7.253,
+        "H3K36me3": 3.719,
+        "H3K4me1": 0.285,
+        "H3K4me3": 0.609,
+        "H3K9ac": 0.711,
+        "H3K9me3": 1.975
+      },
+      "repressive_signal": 4.613717065350684,
+      "state": "polycomb_repressed"
+    },
+    "HSF2": {
+      "active_signal": 6.1702839915010745,
+      "activity_score": 0.8810891022730931,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 2.395864270804839,
+      "marks": {
+        "CTCF": 2.396,
+        "H3K27ac": 4.152,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.627,
+        "H3K4me1": 4.431,
+        "H3K4me3": 10.665,
+        "H3K9ac": 5.433,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.3900469821890088,
+      "state": "active_promoter"
+    },
+    "IKZF2": {
+      "active_signal": 8.539148132367282,
+      "activity_score": 0.9200447643815245,
+      "bivalency": 0.5385980546802347,
+      "ctcf_occupancy": 9.030565835416974,
+      "marks": {
+        "CTCF": 9.031,
+        "H3K27ac": 4.585,
+        "H3K27me3": 0.539,
+        "H3K36me3": 1.081,
+        "H3K4me1": 1.904,
+        "H3K4me3": 22.373,
+        "H3K9ac": 5.294,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.3555899807782098,
+      "state": "active_promoter"
+    },
+    "IRF1": {
+      "active_signal": 0.5720443160737245,
+      "activity_score": 0.0052190048664583115,
+      "bivalency": 0.24377311405824675,
+      "ctcf_occupancy": 3.925531594287591,
+      "marks": {
+        "CTCF": 3.926,
+        "H3K27ac": 0.067,
+        "H3K27me3": 0.269,
+        "H3K36me3": 0.18,
+        "H3K4me1": 1.215,
+        "H3K4me3": 0.244,
+        "H3K9ac": 0.762,
+        "H3K9me3": 0.863
+      },
+      "repressive_signal": 0.5661043076487592,
+      "state": "insulator"
+    },
+    "IRF9": {
+      "active_signal": 4.334971963240639,
+      "activity_score": 0.9212033535887443,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 11.057835208688719,
+      "marks": {
+        "CTCF": 11.058,
+        "H3K27ac": 3.632,
+        "H3K27me3": 0.269,
+        "H3K36me3": 2.522,
+        "H3K4me1": 1.799,
+        "H3K4me3": 4.388,
+        "H3K9ac": 7.521,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.1777949903891049,
+      "state": "active_promoter"
+    },
+    "JRKL": {
+      "active_signal": 6.9054807746761036,
+      "activity_score": 0.8837852562212802,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 2.226925278420778,
+      "marks": {
+        "CTCF": 2.227,
+        "H3K27ac": 2.946,
+        "H3K27me3": 0.18,
+        "H3K36me3": 1.329,
+        "H3K4me1": 4.34,
+        "H3K4me3": 12.744,
+        "H3K9ac": 7.591,
+        "H3K9me3": 0.672
+      },
+      "repressive_signal": 0.42601341764527223,
+      "state": "active_promoter"
+    },
+    "JUNB": {
+      "active_signal": 9.942291187176188,
+      "activity_score": 0.9697919418030783,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 7.0880726221561705,
+      "marks": {
+        "CTCF": 7.088,
+        "H3K27ac": 15.017,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.811,
+        "H3K4me1": 1.901,
+        "H3K4me3": 4.631,
+        "H3K9ac": 18.221,
+        "H3K9me3": 0.125
+      },
+      "repressive_signal": 0.1524710984075312,
+      "state": "active_promoter"
+    },
+    "KCMF1": {
+      "active_signal": 9.73440437390463,
+      "activity_score": 0.9423738318148496,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 3.1330533335395208,
+      "marks": {
+        "CTCF": 3.133,
+        "H3K27ac": 8.418,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.63,
+        "H3K4me1": 4.309,
+        "H3K4me3": 16.179,
+        "H3K9ac": 10.032,
+        "H3K9me3": 0.488
+      },
+      "repressive_signal": 0.28879892844053306,
+      "state": "active_promoter"
+    },
+    "KDM2A": {
+      "active_signal": 8.290133890621489,
+      "activity_score": 0.9386496904752427,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 5.218069609364975,
+      "marks": {
+        "CTCF": 5.218,
+        "H3K27ac": 6.302,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.63,
+        "H3K4me1": 1.153,
+        "H3K4me3": 14.785,
+        "H3K9ac": 10.921,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.26234824374946286,
+      "state": "active_promoter"
+    },
+    "KDM5B": {
+      "active_signal": 6.779386885846478,
+      "activity_score": 0.9296682972377481,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 2.2748424613104636,
+      "marks": {
+        "CTCF": 2.275,
+        "H3K27ac": 4.828,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.72,
+        "H3K4me1": 2.517,
+        "H3K4me3": 12.467,
+        "H3K9ac": 7.305,
+        "H3K9me3": 0.404
+      },
+      "repressive_signal": 0.24709163454667077,
+      "state": "active_promoter"
+    },
+    "KLF3": {
+      "active_signal": 5.968353463230553,
+      "activity_score": 0.890658647489553,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 1.9271349399611946,
+      "marks": {
+        "CTCF": 1.927,
+        "H3K27ac": 7.416,
+        "H3K27me3": 0.0,
+        "H3K36me3": 0.36,
+        "H3K4me1": 2.186,
+        "H3K4me3": 8.215,
+        "H3K9ac": 6.056,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.3451638137523698,
+      "state": "active_promoter"
+    },
+    "KLF4": {
+      "active_signal": 1.8739527498410564,
+      "activity_score": 0.09237737175382535,
+      "bivalency": 1.534958026233312,
+      "ctcf_occupancy": 4.350643809772728,
+      "marks": {
+        "CTCF": 4.351,
+        "H3K27ac": 1.138,
+        "H3K27me3": 2.424,
+        "H3K36me3": 1.316,
+        "H3K4me1": 1.37,
+        "H3K4me3": 1.535,
+        "H3K9ac": 3.452,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 1.557009392195475,
+      "state": "polycomb_repressed"
+    },
+    "KLF5": {
+      "active_signal": 0.4004138146912032,
+      "activity_score": -0.651956771587844,
+      "bivalency": 0.30471641149209255,
+      "ctcf_occupancy": 0.3685945084819813,
+      "marks": {
+        "CTCF": 0.369,
+        "H3K27ac": 0.134,
+        "H3K27me3": 3.23,
+        "H3K36me3": 0.437,
+        "H3K4me1": 0.554,
+        "H3K4me3": 0.305,
+        "H3K9ac": 0.609,
+        "H3K9me3": 0.571
+      },
+      "repressive_signal": 1.900531056417825,
+      "state": "polycomb_repressed"
+    },
+    "KLF6": {
+      "active_signal": 14.67622485301067,
+      "activity_score": 0.9820499590746512,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 4.438492466624823,
+      "marks": {
+        "CTCF": 4.438,
+        "H3K27ac": 18.729,
+        "H3K27me3": 0.18,
+        "H3K36me3": 2.996,
+        "H3K4me1": 1.325,
+        "H3K4me3": 21.456,
+        "H3K9ac": 17.195,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.13291181359232415,
+      "state": "active_promoter"
+    },
+    "MAFB": {
+      "active_signal": 6.6763306456156455,
+      "activity_score": 0.8076850424940651,
+      "bivalency": 0.6888070183643077,
+      "ctcf_occupancy": 6.818998647212929,
+      "marks": {
+        "CTCF": 6.819,
+        "H3K27ac": 4.785,
+        "H3K27me3": 0.689,
+        "H3K36me3": 2.953,
+        "H3K4me1": 0.26,
+        "H3K4me3": 6.862,
+        "H3K9ac": 14.798,
+        "H3K9me3": 0.732
+      },
+      "repressive_signal": 0.7102771813338808,
+      "state": "active_promoter"
+    },
+    "MAFF": {
+      "active_signal": 2.9370026217642247,
+      "activity_score": 0.8868908798870975,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 3.4961191281883996,
+      "marks": {
+        "CTCF": 3.496,
+        "H3K27ac": 4.21,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.54,
+        "H3K4me1": 0.631,
+        "H3K4me3": 0.766,
+        "H3K9ac": 6.141,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.17605729031137038,
+      "state": "insulator"
+    },
+    "MBD1": {
+      "active_signal": 7.680094825758459,
+      "activity_score": 0.9381134949000708,
+      "bivalency": 0.2315971510280225,
+      "ctcf_occupancy": 3.735705408802582,
+      "marks": {
+        "CTCF": 3.736,
+        "H3K27ac": 4.285,
+        "H3K27me3": 0.232,
+        "H3K36me3": 2.479,
+        "H3K4me1": 3.899,
+        "H3K4me3": 9.421,
+        "H3K9ac": 13.115,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.2452350137076214,
+      "state": "active_promoter"
+    },
+    "MECOM": {
+      "active_signal": 1.7777483823616838,
+      "activity_score": -0.027476194008806035,
+      "bivalency": 2.2715590725198544,
+      "ctcf_occupancy": 12.55740114403884,
+      "marks": {
+        "CTCF": 12.557,
+        "H3K27ac": 1.775,
+        "H3K27me3": 3.325,
+        "H3K36me3": 0.991,
+        "H3K4me1": 0.608,
+        "H3K4me3": 2.272,
+        "H3K9ac": 2.456,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 1.8781999556595204,
+      "state": "bivalent_poised"
+    },
+    "MECP2": {
+      "active_signal": 0.6476967680881014,
+      "activity_score": -0.5824563584411665,
+      "bivalency": 0.36565969379051105,
+      "ctcf_occupancy": 2.672310260871783,
+      "marks": {
+        "CTCF": 2.672,
+        "H3K27ac": 0.37,
+        "H3K27me3": 3.701,
+        "H3K36me3": 0.571,
+        "H3K4me1": 0.434,
+        "H3K4me3": 0.366,
+        "H3K9ac": 1.421,
+        "H3K9me3": 1.208
+      },
+      "repressive_signal": 2.4547193381574903,
+      "state": "polycomb_repressed"
+    },
+    "MTERF2": {
+      "active_signal": 5.553996977905353,
+      "activity_score": 0.896289074739149,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 1.8429726568367044,
+      "marks": {
+        "CTCF": 1.843,
+        "H3K27ac": 3.91,
+        "H3K27me3": 0.09,
+        "H3K36me3": 1.446,
+        "H3K4me1": 3.733,
+        "H3K4me3": 8.532,
+        "H3K9ac": 6.041,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.3037560448238593,
+      "state": "active_promoter"
+    },
+    "MXD1": {
+      "active_signal": 1.671658599277422,
+      "activity_score": 0.7681446539514536,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 0.3685945084819813,
+      "marks": {
+        "CTCF": 0.369,
+        "H3K27ac": 2.678,
+        "H3K27me3": 0.18,
+        "H3K36me3": 2.658,
+        "H3K4me1": 1.562,
+        "H3K4me3": 1.076,
+        "H3K9ac": 1.37,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.2192027750668881,
+      "state": "transcribed"
+    },
+    "MXD4": {
+      "active_signal": 3.3187121069615744,
+      "activity_score": 0.8992450030773109,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 2.94875606785585,
+      "marks": {
+        "CTCF": 2.949,
+        "H3K27ac": 4.473,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.36,
+        "H3K4me1": 0.26,
+        "H3K4me3": 0.379,
+        "H3K9ac": 8.162,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.17605729031137038,
+      "state": "insulator"
+    },
+    "MYBL2": {
+      "active_signal": 0.23822872048431318,
+      "activity_score": -0.6851567968070092,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 0.4607431642091761,
+      "marks": {
+        "CTCF": 0.461,
+        "H3K27ac": 0.201,
+        "H3K27me3": 2.154,
+        "H3K36me3": 0.811,
+        "H3K4me1": 0.0,
+        "H3K4me3": 0.0,
+        "H3K9ac": 0.752,
+        "H3K9me3": 0.396
+      },
+      "repressive_signal": 1.2750900403890686,
+      "state": "polycomb_repressed"
+    },
+    "MYRF": {
+      "active_signal": 4.194655054669826,
+      "activity_score": 0.8627907072591762,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 6.542553023311739,
+      "marks": {
+        "CTCF": 6.543,
+        "H3K27ac": 4.693,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.63,
+        "H3K4me1": 1.373,
+        "H3K4me3": 2.133,
+        "H3K9ac": 8.58,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.308969111940166,
+      "state": "active_promoter"
+    },
+    "NFE2L1": {
+      "active_signal": 7.906752763788216,
+      "activity_score": 0.976203786457904,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 2.672310260871783,
+      "marks": {
+        "CTCF": 2.672,
+        "H3K27ac": 7.719,
+        "H3K27me3": 0.0,
+        "H3K36me3": 0.596,
+        "H3K4me1": 2.957,
+        "H3K4me3": 12.29,
+        "H3K9ac": 8.661,
+        "H3K9me3": 0.19
+      },
+      "repressive_signal": 0.09520769177611567,
+      "state": "active_promoter"
+    },
+    "NFE2L2": {
+      "active_signal": 4.891483377123509,
+      "activity_score": 0.8975529631013495,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 2.395864270804839,
+      "marks": {
+        "CTCF": 2.396,
+        "H3K27ac": 2.086,
+        "H3K27me3": 0.269,
+        "H3K36me3": 0.745,
+        "H3K4me1": 4.791,
+        "H3K4me3": 8.532,
+        "H3K9ac": 4.157,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.26408595186366884,
+      "state": "active_promoter"
+    },
+    "NFE2L3": {
+      "active_signal": 0.7422975178882958,
+      "activity_score": -0.513939115659069,
+      "bivalency": 0.4875462281164935,
+      "ctcf_occupancy": 2.395864270804839,
+      "marks": {
+        "CTCF": 2.396,
+        "H3K27ac": 0.402,
+        "H3K27me3": 3.463,
+        "H3K36me3": 0.941,
+        "H3K4me1": 0.608,
+        "H3K4me3": 0.488,
+        "H3K9ac": 1.472,
+        "H3K9me3": 1.161
+      },
+      "repressive_signal": 2.312043198560691,
+      "state": "polycomb_repressed"
+    },
+    "NFKB2": {
+      "active_signal": 4.5715766494599706,
+      "activity_score": 0.8900963091616693,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 11.334281564921417,
+      "marks": {
+        "CTCF": 11.334,
+        "H3K27ac": 5.164,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.54,
+        "H3K4me1": 0.836,
+        "H3K4me3": 2.948,
+        "H3K9ac": 9.338,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.2658236271846483,
+      "state": "active_promoter"
+    },
+    "NPAS2": {
+      "active_signal": 5.031772545413554,
+      "activity_score": 0.9015146822422728,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 3.18957138382307,
+      "marks": {
+        "CTCF": 3.19,
+        "H3K27ac": 5.072,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.36,
+        "H3K4me1": 2.517,
+        "H3K4me3": 4.72,
+        "H3K9ac": 7.819,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.2606105654259892,
+      "state": "active_promoter"
+    },
+    "NR1I2": {
+      "active_signal": 0.3456743661664353,
+      "activity_score": -0.38994655864216177,
+      "bivalency": 0.24377311405824675,
+      "ctcf_occupancy": 1.2900807682442545,
+      "marks": {
+        "CTCF": 1.29,
+        "H3K27ac": 0.335,
+        "H3K27me3": 0.626,
+        "H3K36me3": 0.54,
+        "H3K4me1": 0.347,
+        "H3K4me3": 0.244,
+        "H3K9ac": 0.457,
+        "H3K9me3": 0.949
+      },
+      "repressive_signal": 0.7875855671611197,
+      "state": "quiescent"
+    },
+    "NRF1": {
+      "active_signal": 7.523617583985683,
+      "activity_score": 0.8872876963063193,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 5.713215053110907,
+      "marks": {
+        "CTCF": 5.713,
+        "H3K27ac": 5.346,
+        "H3K27me3": 0.269,
+        "H3K36me3": 1.161,
+        "H3K4me1": 2.859,
+        "H3K4me3": 10.397,
+        "H3K9ac": 11.492,
+        "H3K9me3": 0.629
+      },
+      "repressive_signal": 0.4493238547431179,
+      "state": "active_promoter"
+    },
+    "OVOL1": {
+      "active_signal": 0.5347677822922139,
+      "activity_score": -0.4288067754024716,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 1.1481719487318078,
+      "marks": {
+        "CTCF": 1.148,
+        "H3K27ac": 0.134,
+        "H3K27me3": 2.417,
+        "H3K36me3": 0.811,
+        "H3K4me1": 0.155,
+        "H3K4me3": 0.0,
+        "H3K9ac": 1.851,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 1.3376913914747977,
+      "state": "polycomb_repressed"
+    },
+    "OVOL2": {
+      "active_signal": 2.7759674912003227,
+      "activity_score": 0.5343949875565379,
+      "bivalency": 1.1669623626323293,
+      "ctcf_occupancy": 0.9214863284183522,
+      "marks": {
+        "CTCF": 0.921,
+        "H3K27ac": 2.009,
+        "H3K27me3": 1.167,
+        "H3K36me3": 0.63,
+        "H3K4me1": 0.955,
+        "H3K4me3": 2.316,
+        "H3K9ac": 5.824,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.842354057703385,
+      "state": "active_promoter"
+    },
+    "PITX1": {
+      "active_signal": 0.46308214492162336,
+      "activity_score": -0.747465328613749,
+      "bivalency": 0.426602945818075,
+      "ctcf_occupancy": 1.3822294010860898,
+      "marks": {
+        "CTCF": 1.382,
+        "H3K27ac": 0.134,
+        "H3K27me3": 5.46,
+        "H3K36me3": 0.811,
+        "H3K4me1": 0.226,
+        "H3K4me3": 0.427,
+        "H3K9ac": 1.066,
+        "H3K9me3": 0.949
+      },
+      "repressive_signal": 3.204394610743379,
+      "state": "polycomb_repressed"
+    },
+    "PLSCR1": {
+      "active_signal": 6.575969413260787,
+      "activity_score": 0.8614376933963088,
+      "bivalency": 0.11609780170874152,
+      "ctcf_occupancy": 1.7508239324534307,
+      "marks": {
+        "CTCF": 1.751,
+        "H3K27ac": 7.257,
+        "H3K27me3": 0.116,
+        "H3K36me3": 0.63,
+        "H3K4me1": 1.736,
+        "H3K4me3": 11.619,
+        "H3K9ac": 5.692,
+        "H3K9me3": 0.863
+      },
+      "repressive_signal": 0.48950369483307127,
+      "state": "active_promoter"
+    },
+    "POU2F3": {
+      "active_signal": 0.45662100176753884,
+      "activity_score": -0.5011801511077194,
+      "bivalency": 0.12188655702912338,
+      "ctcf_occupancy": 6.081809584478248,
+      "marks": {
+        "CTCF": 6.082,
+        "H3K27ac": 0.402,
+        "H3K27me3": 2.058,
+        "H3K36me3": 0.75,
+        "H3K4me1": 0.26,
+        "H3K4me3": 0.122,
+        "H3K9ac": 1.042,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 1.3741852637474532,
+      "state": "polycomb_repressed"
+    },
+    "PPARD": {
+      "active_signal": 3.114531590279113,
+      "activity_score": 0.7532149264592438,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 12.992956772991574,
+      "marks": {
+        "CTCF": 12.993,
+        "H3K27ac": 1.004,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.63,
+        "H3K4me1": 2.344,
+        "H3K4me3": 3.618,
+        "H3K9ac": 5.492,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.4384055501337762,
+      "state": "active_promoter"
+    },
+    "PPARG": {
+      "active_signal": 0.7156074984865451,
+      "activity_score": -0.5974226507602528,
+      "bivalency": 0.7020666023911077,
+      "ctcf_occupancy": 3.8702423962742025,
+      "marks": {
+        "CTCF": 3.87,
+        "H3K27ac": 0.335,
+        "H3K27me3": 4.174,
+        "H3K36me3": 0.63,
+        "H3K4me1": 0.347,
+        "H3K4me3": 0.702,
+        "H3K9ac": 1.478,
+        "H3K9me3": 1.505
+      },
+      "repressive_signal": 2.8395244459672107,
+      "state": "polycomb_repressed"
+    },
+    "RARG": {
+      "active_signal": 1.7218923221178462,
+      "activity_score": -0.009260301227787942,
+      "bivalency": 0.6094328229841851,
+      "ctcf_occupancy": 1.3754719036389056,
+      "marks": {
+        "CTCF": 1.375,
+        "H3K27ac": 1.473,
+        "H3K27me3": 2.99,
+        "H3K36me3": 0.671,
+        "H3K4me1": 1.302,
+        "H3K4me3": 0.609,
+        "H3K9ac": 3.503,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 1.7540808903856515,
+      "state": "polycomb_repressed"
+    },
+    "RELA": {
+      "active_signal": 6.494389178580173,
+      "activity_score": 0.9598894652003765,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 2.9069820478197066,
+      "marks": {
+        "CTCF": 2.907,
+        "H3K27ac": 7.589,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.959,
+        "H3K4me1": 1.007,
+        "H3K4me3": 4.754,
+        "H3K9ac": 12.628,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.13291181359232415,
+      "state": "active_promoter"
+    },
+    "RELB": {
+      "active_signal": 1.552285438836837,
+      "activity_score": 0.6316979451439207,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 1.1979321354024195,
+      "marks": {
+        "CTCF": 1.198,
+        "H3K27ac": 2.812,
+        "H3K27me3": 0.269,
+        "H3K36me3": 0.36,
+        "H3K4me1": 0.521,
+        "H3K4me3": 0.488,
+        "H3K9ac": 2.388,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.3503769106594089,
+      "state": "quiescent"
+    },
+    "REPIN1": {
+      "active_signal": 6.7872769447244,
+      "activity_score": 0.9124519648009848,
+      "bivalency": 0.4488317122335289,
+      "ctcf_occupancy": 1.9351211981371013,
+      "marks": {
+        "CTCF": 1.935,
+        "H3K27ac": 10.336,
+        "H3K27me3": 0.449,
+        "H3K36me3": 0.811,
+        "H3K4me1": 2.197,
+        "H3K4me3": 4.011,
+        "H3K9ac": 10.605,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.3107068095548569,
+      "state": "active_promoter"
+    },
+    "RUNX1": {
+      "active_signal": 0.15316029986174398,
+      "activity_score": -0.8008390966658542,
+      "bivalency": 0.12188655702912338,
+      "ctcf_occupancy": 0.27644589852550566,
+      "marks": {
+        "CTCF": 0.276,
+        "H3K27ac": 0.201,
+        "H3K27me3": 2.166,
+        "H3K36me3": 0.943,
+        "H3K4me1": 0.087,
+        "H3K4me3": 0.122,
+        "H3K9ac": 0.203,
+        "H3K9me3": 0.604
+      },
+      "repressive_signal": 1.3848996076525757,
+      "state": "polycomb_repressed"
+    },
+    "RUNX2": {
+      "active_signal": 2.3475944118636383,
+      "activity_score": 0.7687558864577694,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 0.4607431642091761,
+      "marks": {
+        "CTCF": 0.461,
+        "H3K27ac": 1.403,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.991,
+        "H3K4me1": 4.229,
+        "H3K4me3": 2.742,
+        "H3K9ac": 1.015,
+        "H3K9me3": 0.524
+      },
+      "repressive_signal": 0.30692003578820387,
+      "state": "active_promoter"
+    },
+    "RXRA": {
+      "active_signal": 0.23081560538146761,
+      "activity_score": -0.4269775905146748,
+      "bivalency": 0.06094327851456169,
+      "ctcf_occupancy": 0.5528917970510113,
+      "marks": {
+        "CTCF": 0.553,
+        "H3K27ac": 0.268,
+        "H3K27me3": 0.718,
+        "H3K36me3": 0.874,
+        "H3K4me1": 0.087,
+        "H3K4me3": 0.061,
+        "H3K9ac": 0.508,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.574792744482462,
+      "state": "quiescent"
+    },
+    "SAFB": {
+      "active_signal": 13.738474620895701,
+      "activity_score": 0.9572452221103694,
+      "bivalency": 0.16876072023281302,
+      "ctcf_occupancy": 3.040904792239124,
+      "marks": {
+        "CTCF": 3.041,
+        "H3K27ac": 10.219,
+        "H3K27me3": 0.169,
+        "H3K36me3": 2.463,
+        "H3K4me1": 3.587,
+        "H3K4me3": 17.754,
+        "H3K9ac": 23.393,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.30010775710575677,
+      "state": "active_promoter"
+    },
+    "SAFB2": {
+      "active_signal": 12.183323401773475,
+      "activity_score": 0.9510771586959189,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 2.9192685566096683,
+      "marks": {
+        "CTCF": 2.919,
+        "H3K27ac": 10.432,
+        "H3K27me3": 0.18,
+        "H3K36me3": 1.791,
+        "H3K4me1": 2.623,
+        "H3K4me3": 13.744,
+        "H3K9ac": 21.934,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.3054937338626282,
+      "state": "active_promoter"
+    },
+    "SALL2": {
+      "active_signal": 2.461815532473378,
+      "activity_score": 0.4347757264331625,
+      "bivalency": 1.4218988001499306,
+      "ctcf_occupancy": 0.21501346900249566,
+      "marks": {
+        "CTCF": 0.215,
+        "H3K27ac": 1.433,
+        "H3K27me3": 1.422,
+        "H3K36me3": 0.784,
+        "H3K4me1": 1.996,
+        "H3K4me3": 3.778,
+        "H3K9ac": 2.639,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.9698222764621857,
+      "state": "active_promoter"
+    },
+    "SGSM2": {
+      "active_signal": 6.746782960970242,
+      "activity_score": 0.9256182695453237,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 4.009694060494958,
+      "marks": {
+        "CTCF": 4.01,
+        "H3K27ac": 4.683,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.605,
+        "H3K4me1": 2.085,
+        "H3K4me3": 6.279,
+        "H3K9ac": 13.94,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.2606105654259892,
+      "state": "active_promoter"
+    },
+    "SMAD3": {
+      "active_signal": 2.3196403698610806,
+      "activity_score": 0.6717458617468305,
+      "bivalency": 0.2896460518823933,
+      "ctcf_occupancy": 3.969148526563222,
+      "marks": {
+        "CTCF": 3.969,
+        "H3K27ac": 2.965,
+        "H3K27me3": 0.29,
+        "H3K36me3": 0.901,
+        "H3K4me1": 1.389,
+        "H3K4me3": 0.624,
+        "H3K9ac": 4.301,
+        "H3K9me3": 0.621
+      },
+      "repressive_signal": 0.4554704733197429,
+      "state": "insulator"
+    },
+    "SMAD4": {
+      "active_signal": 6.33001151659705,
+      "activity_score": 0.8611421112657991,
+      "bivalency": 0.34051363553179453,
+      "ctcf_occupancy": 2.378663268348619,
+      "marks": {
+        "CTCF": 2.379,
+        "H3K27ac": 5.843,
+        "H3K27me3": 0.341,
+        "H3K36me3": 1.365,
+        "H3K4me1": 3.094,
+        "H3K4me3": 7.87,
+        "H3K9ac": 8.514,
+        "H3K9me3": 0.604
+      },
+      "repressive_signal": 0.47227515212039706,
+      "state": "active_promoter"
+    },
+    "SNAI2": {
+      "active_signal": 1.7706206639377744,
+      "activity_score": -0.2870551670568391,
+      "bivalency": 2.854989594677942,
+      "ctcf_occupancy": 3.040904792239124,
+      "marks": {
+        "CTCF": 3.041,
+        "H3K27ac": 0.695,
+        "H3K27me3": 5.703,
+        "H3K36me3": 1.351,
+        "H3K4me1": 1.91,
+        "H3K4me3": 2.855,
+        "H3K9ac": 1.623,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 3.1964419351582194,
+      "state": "bivalent_poised"
+    },
+    "SOX12": {
+      "active_signal": 4.87551544147473,
+      "activity_score": 0.9476002679954018,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 4.369073664499108,
+      "marks": {
+        "CTCF": 4.369,
+        "H3K27ac": 4.5,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.63,
+        "H3K4me1": 0.521,
+        "H3K4me3": 4.621,
+        "H3K9ac": 9.86,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 0.13117412187473143,
+      "state": "active_promoter"
+    },
+    "SOX4": {
+      "active_signal": 4.165558987899747,
+      "activity_score": 0.6792232650570287,
+      "bivalency": 0.9874297669137636,
+      "ctcf_occupancy": 2.172864749594673,
+      "marks": {
+        "CTCF": 2.173,
+        "H3K27ac": 2.759,
+        "H3K27me3": 0.987,
+        "H3K36me3": 0.417,
+        "H3K4me1": 1.215,
+        "H3K4me3": 8.161,
+        "H3K9ac": 4.527,
+        "H3K9me3": 0.604
+      },
+      "repressive_signal": 0.7957332178113816,
+      "state": "active_promoter"
+    },
+    "SOX9": {
+      "active_signal": 2.515840490277863,
+      "activity_score": 0.5868969905936258,
+      "bivalency": 0.9646889328136454,
+      "ctcf_occupancy": 8.053790125902356,
+      "marks": {
+        "CTCF": 8.054,
+        "H3K27ac": 1.138,
+        "H3K27me3": 0.965,
+        "H3K36me3": 1.171,
+        "H3K4me1": 1.042,
+        "H3K4me3": 3.386,
+        "H3K9ac": 4.497,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.6549263732830076,
+      "state": "active_promoter"
+    },
+    "SP1": {
+      "active_signal": 5.776580794502157,
+      "activity_score": 0.927439481193267,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 4.538012656883169,
+      "marks": {
+        "CTCF": 4.538,
+        "H3K27ac": 6.923,
+        "H3K27me3": 0.09,
+        "H3K36me3": 1.892,
+        "H3K4me1": 3.523,
+        "H3K4me3": 6.148,
+        "H3K9ac": 6.513,
+        "H3K9me3": 0.345
+      },
+      "repressive_signal": 0.21746507531282389,
+      "state": "active_promoter"
+    },
+    "SP100": {
+      "active_signal": 5.136048389779059,
+      "activity_score": 0.745423188935347,
+      "bivalency": 0.807897082020352,
+      "ctcf_occupancy": 1.3822294010860898,
+      "marks": {
+        "CTCF": 1.382,
+        "H3K27ac": 2.765,
+        "H3K27me3": 0.808,
+        "H3K36me3": 0.402,
+        "H3K4me1": 1.613,
+        "H3K4me3": 12.2,
+        "H3K9ac": 3.966,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.7491123547625458,
+      "state": "active_promoter"
+    },
+    "SP110": {
+      "active_signal": 0.4853251649586844,
+      "activity_score": -0.3325664785604457,
+      "bivalency": 0.4875462281164935,
+      "ctcf_occupancy": 1.0136349612601874,
+      "marks": {
+        "CTCF": 1.014,
+        "H3K27ac": 0.201,
+        "H3K27me3": 1.215,
+        "H3K36me3": 0.811,
+        "H3K4me1": 0.694,
+        "H3K4me3": 0.488,
+        "H3K9ac": 0.558,
+        "H3K9me3": 0.723
+      },
+      "repressive_signal": 0.9689779698168943,
+      "state": "quiescent"
+    },
+    "SP140L": {
+      "active_signal": 1.6964761035753135,
+      "activity_score": 0.27408324529964184,
+      "bivalency": 0.8976634244670578,
+      "ctcf_occupancy": 0.9214863284183522,
+      "marks": {
+        "CTCF": 0.921,
+        "H3K27ac": 1.071,
+        "H3K27me3": 0.898,
+        "H3K36me3": 1.621,
+        "H3K4me1": 2.17,
+        "H3K4me3": 2.377,
+        "H3K9ac": 1.168,
+        "H3K9me3": 1.035
+      },
+      "repressive_signal": 0.9665774650079696,
+      "state": "active_promoter"
+    },
+    "SP6": {
+      "active_signal": 0.4222036373533875,
+      "activity_score": -0.794332063646666,
+      "bivalency": 0.24377311405824675,
+      "ctcf_occupancy": 0.4607431642091761,
+      "marks": {
+        "CTCF": 0.461,
+        "H3K27ac": 0.394,
+        "H3K27me3": 6.598,
+        "H3K36me3": 1.171,
+        "H3K4me1": 0.174,
+        "H3K4me3": 0.244,
+        "H3K9ac": 0.877,
+        "H3K9me3": 0.769
+      },
+      "repressive_signal": 3.683482859097668,
+      "state": "polycomb_repressed"
+    },
+    "SPDEF": {
+      "active_signal": 0.4005889431735227,
+      "activity_score": -0.3837843746686392,
+      "bivalency": 0.06094327851456169,
+      "ctcf_occupancy": 0.7371890169639626,
+      "marks": {
+        "CTCF": 0.737,
+        "H3K27ac": 0.469,
+        "H3K27me3": 0.987,
+        "H3K36me3": 0.47,
+        "H3K4me1": 0.26,
+        "H3K4me3": 0.061,
+        "H3K9ac": 0.812,
+        "H3K9me3": 0.812
+      },
+      "repressive_signal": 0.8995700226115437,
+      "state": "quiescent"
+    },
+    "SRCAP": {
+      "active_signal": 5.9866058425748,
+      "activity_score": 0.9999998329604689,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 1.0136349612601874,
+      "marks": {
+        "CTCF": 1.014,
+        "H3K27ac": 6.226,
+        "H3K27me3": 0.0,
+        "H3K36me3": 0.379,
+        "H3K4me1": 2.679,
+        "H3K4me3": 4.815,
+        "H3K9ac": 10.227,
+        "H3K9me3": 0.0
+      },
+      "repressive_signal": 0.0,
+      "state": "active_promoter"
+    },
+    "STAT1": {
+      "active_signal": 4.051727919627425,
+      "activity_score": 0.8243731827940705,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 2.303715729504442,
+      "marks": {
+        "CTCF": 2.304,
+        "H3K27ac": 3.415,
+        "H3K27me3": 0.09,
+        "H3K36me3": 1.171,
+        "H3K4me1": 3.094,
+        "H3K4me3": 5.011,
+        "H3K9ac": 4.688,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.3900469821890088,
+      "state": "active_promoter"
+    },
+    "STAT5B": {
+      "active_signal": 1.5168465699401206,
+      "activity_score": 0.7901675615245214,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 1.5609977469684213,
+      "marks": {
+        "CTCF": 1.561,
+        "H3K27ac": 1.674,
+        "H3K27me3": 0.269,
+        "H3K36me3": 0.881,
+        "H3K4me1": 0.677,
+        "H3K4me3": 0.366,
+        "H3K9ac": 3.351,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.1777949903891049,
+      "state": "quiescent"
+    },
+    "STAT6": {
+      "active_signal": 1.451421306476751,
+      "activity_score": 0.9422629375473514,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 0.9214863284183522,
+      "marks": {
+        "CTCF": 0.921,
+        "H3K27ac": 1.245,
+        "H3K27me3": 0.0,
+        "H3K36me3": 0.901,
+        "H3K4me1": 1.128,
+        "H3K4me3": 0.305,
+        "H3K9ac": 3.128,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.04314547671904623,
+      "state": "quiescent"
+    },
+    "TCF7L2": {
+      "active_signal": 4.970048071226625,
+      "activity_score": 0.920417396655689,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 2.7871889075126157,
+      "marks": {
+        "CTCF": 2.787,
+        "H3K27ac": 5.758,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.36,
+        "H3K4me1": 1.215,
+        "H3K4me3": 6.158,
+        "H3K9ac": 6.749,
+        "H3K9me3": 0.322
+      },
+      "repressive_signal": 0.2059596234266478,
+      "state": "active_promoter"
+    },
+    "TCFL5": {
+      "active_signal": 1.1508397902931482,
+      "activity_score": 0.23032737359051178,
+      "bivalency": 0.5484895406857666,
+      "ctcf_occupancy": 1.1979321354024195,
+      "marks": {
+        "CTCF": 1.198,
+        "H3K27ac": 0.87,
+        "H3K27me3": 0.549,
+        "H3K36me3": 0.757,
+        "H3K4me1": 1.203,
+        "H3K4me3": 0.548,
+        "H3K9ac": 1.981,
+        "H3K9me3": 0.891
+      },
+      "repressive_signal": 0.7199463107604627,
+      "state": "quiescent"
+    },
+    "TEAD3": {
+      "active_signal": 1.302686550950942,
+      "activity_score": 0.12365578777950978,
+      "bivalency": 0.30471641149209255,
+      "ctcf_occupancy": 3.1226099200719233,
+      "marks": {
+        "CTCF": 3.123,
+        "H3K27ac": 1.004,
+        "H3K27me3": 1.859,
+        "H3K36me3": 0.63,
+        "H3K4me1": 0.174,
+        "H3K4me3": 0.305,
+        "H3K9ac": 3.728,
+        "H3K9me3": 0.173
+      },
+      "repressive_signal": 1.0159710011047927,
+      "state": "insulator"
+    },
+    "TET3": {
+      "active_signal": 1.6573093488572739,
+      "activity_score": 0.6509641539053681,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 4.146688386341147,
+      "marks": {
+        "CTCF": 4.147,
+        "H3K27ac": 1.122,
+        "H3K27me3": 0.269,
+        "H3K36me3": 0.991,
+        "H3K4me1": 0.683,
+        "H3K4me3": 1.118,
+        "H3K9ac": 3.706,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.3503769106594089,
+      "state": "insulator"
+    },
+    "TFAP2A": {
+      "active_signal": 0.5253989472392526,
+      "activity_score": -0.662481161108553,
+      "bivalency": 0.24377311405824675,
+      "ctcf_occupancy": 0.8354809499714978,
+      "marks": {
+        "CTCF": 0.835,
+        "H3K27ac": 0.067,
+        "H3K27me3": 4.207,
+        "H3K36me3": 2.882,
+        "H3K4me1": 0.434,
+        "H3K4me3": 0.244,
+        "H3K9ac": 1.357,
+        "H3K9me3": 0.969
+      },
+      "repressive_signal": 2.587904477277518,
+      "state": "polycomb_repressed"
+    },
+    "TFCP2L1": {
+      "active_signal": 3.3809804002048556,
+      "activity_score": 0.5086228251977482,
+      "bivalency": 1.1669623626323293,
+      "ctcf_occupancy": 1.5665266667697604,
+      "marks": {
+        "CTCF": 1.567,
+        "H3K27ac": 3.53,
+        "H3K27me3": 1.167,
+        "H3K36me3": 0.581,
+        "H3K4me1": 0.781,
+        "H3K4me3": 5.929,
+        "H3K9ac": 3.284,
+        "H3K9me3": 1.035
+      },
+      "repressive_signal": 1.1012269340906053,
+      "state": "active_promoter"
+    },
+    "TGIF1": {
+      "active_signal": 0.23439928633293194,
+      "activity_score": -0.7586051029698497,
+      "bivalency": 0.24377311405824675,
+      "ctcf_occupancy": 0.27644589852550566,
+      "marks": {
+        "CTCF": 0.276,
+        "H3K27ac": 0.201,
+        "H3K27me3": 2.984,
+        "H3K36me3": 0.72,
+        "H3K4me1": 0.087,
+        "H3K4me3": 0.244,
+        "H3K9ac": 0.406,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 1.7076439674331714,
+      "state": "polycomb_repressed"
+    },
+    "THAP5": {
+      "active_signal": 14.044621964872713,
+      "activity_score": 0.9477826702675548,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 2.1194184638207716,
+      "marks": {
+        "CTCF": 2.119,
+        "H3K27ac": 10.544,
+        "H3K27me3": 0.0,
+        "H3K36me3": 0.901,
+        "H3K4me1": 4.839,
+        "H3K4me3": 27.545,
+        "H3K9ac": 13.25,
+        "H3K9me3": 0.753
+      },
+      "repressive_signal": 0.3765161891618488,
+      "state": "active_promoter"
+    },
+    "THRA": {
+      "active_signal": 1.6863937145148418,
+      "activity_score": 0.6202438814192772,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 0.7371890169639626,
+      "marks": {
+        "CTCF": 0.737,
+        "H3K27ac": 1.824,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.991,
+        "H3K4me1": 1.562,
+        "H3K4me3": 0.427,
+        "H3K9ac": 2.932,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.3952600707359061,
+      "state": "quiescent"
+    },
+    "TIGD6": {
+      "active_signal": 10.701789967974873,
+      "activity_score": 0.9679444033904413,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 4.862990255974879,
+      "marks": {
+        "CTCF": 4.863,
+        "H3K27ac": 8.705,
+        "H3K27me3": 0.09,
+        "H3K36me3": 1.261,
+        "H3K4me1": 4.167,
+        "H3K4me3": 16.881,
+        "H3K9ac": 13.054,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.17431960663024915,
+      "state": "active_promoter"
+    },
+    "TSHZ1": {
+      "active_signal": 9.19812697135245,
+      "activity_score": 0.927663468428975,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 2.362076508944602,
+      "marks": {
+        "CTCF": 2.362,
+        "H3K27ac": 10.454,
+        "H3K27me3": 0.0,
+        "H3K36me3": 1.375,
+        "H3K4me1": 2.154,
+        "H3K4me3": 13.959,
+        "H3K9ac": 10.226,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.3451638137523698,
+      "state": "active_promoter"
+    },
+    "VDR": {
+      "active_signal": 0.3304076828120732,
+      "activity_score": -0.6138649620353244,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 1.1057835941020226,
+      "marks": {
+        "CTCF": 1.106,
+        "H3K27ac": 0.201,
+        "H3K27me3": 2.244,
+        "H3K36me3": 0.45,
+        "H3K4me1": 0.26,
+        "H3K4me3": 0.0,
+        "H3K9ac": 0.86,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 1.3809521123836197,
+      "state": "polycomb_repressed"
+    },
+    "XBP1": {
+      "active_signal": 13.3745276638669,
+      "activity_score": 0.9677493591731453,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 2.672310260871783,
+      "marks": {
+        "CTCF": 2.672,
+        "H3K27ac": 12.202,
+        "H3K27me3": 0.18,
+        "H3K36me3": 3.079,
+        "H3K4me1": 1.426,
+        "H3K4me3": 23.408,
+        "H3K9ac": 16.462,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.2192027750668881,
+      "state": "active_promoter"
+    },
+    "YBX3": {
+      "active_signal": 2.370370750148141,
+      "activity_score": 0.022842768627467678,
+      "bivalency": 3.8599524576838116,
+      "ctcf_occupancy": 2.2115671882040453,
+      "marks": {
+        "CTCF": 2.212,
+        "H3K27ac": 2.535,
+        "H3K27me3": 3.86,
+        "H3K36me3": 0.45,
+        "H3K4me1": 0.969,
+        "H3K4me3": 4.437,
+        "H3K9ac": 1.541,
+        "H3K9me3": 0.669
+      },
+      "repressive_signal": 2.2644975041535633,
+      "state": "bivalent_poised"
+    },
+    "ZBED2": {
+      "active_signal": 0.46860289642993014,
+      "activity_score": -0.25566761919527686,
+      "bivalency": 0.2868397161584459,
+      "ctcf_occupancy": 0.18429725424099064,
+      "marks": {
+        "CTCF": 0.184,
+        "H3K27ac": 0.315,
+        "H3K27me3": 0.718,
+        "H3K36me3": 0.18,
+        "H3K4me1": 0.521,
+        "H3K4me3": 0.287,
+        "H3K9ac": 0.752,
+        "H3K9me3": 0.863
+      },
+      "repressive_signal": 0.7905201414718122,
+      "state": "quiescent"
+    },
+    "ZBTB18": {
+      "active_signal": 8.616545715243209,
+      "activity_score": 0.9307671135377578,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 2.7644588021721797,
+      "marks": {
+        "CTCF": 2.764,
+        "H3K27ac": 8.349,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.27,
+        "H3K4me1": 2.348,
+        "H3K4me3": 15.728,
+        "H3K9ac": 8.041,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.308969111940166,
+      "state": "active_promoter"
+    },
+    "ZBTB4": {
+      "active_signal": 6.571182743230069,
+      "activity_score": 0.9101852477861784,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 3.7780938549738057,
+      "marks": {
+        "CTCF": 3.778,
+        "H3K27ac": 7.421,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.693,
+        "H3K4me1": 1.678,
+        "H3K4me3": 7.895,
+        "H3K9ac": 9.291,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.308969111940166,
+      "state": "active_promoter"
+    },
+    "ZBTB7A": {
+      "active_signal": 3.286175641882388,
+      "activity_score": 0.9730514184719246,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 3.9175455191945616,
+      "marks": {
+        "CTCF": 3.918,
+        "H3K27ac": 5.599,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.336,
+        "H3K4me1": 0.434,
+        "H3K4me3": 0.267,
+        "H3K9ac": 6.844,
+        "H3K9me3": 0.0
+      },
+      "repressive_signal": 0.04488316843663896,
+      "state": "insulator"
+    },
+    "ZBTB7B": {
+      "active_signal": 8.336185481653025,
+      "activity_score": 0.9106034731238382,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 6.682618747501822,
+      "marks": {
+        "CTCF": 6.683,
+        "H3K27ac": 12.032,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.645,
+        "H3K4me1": 0.694,
+        "H3K4me3": 4.875,
+        "H3K9ac": 15.743,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.3900469821890088,
+      "state": "active_promoter"
+    },
+    "ZBTB7C": {
+      "active_signal": 1.5054803903030147,
+      "activity_score": 0.2688578957475593,
+      "bivalency": 0.975092456232987,
+      "ctcf_occupancy": 4.146688386341147,
+      "marks": {
+        "CTCF": 4.147,
+        "H3K27ac": 0.469,
+        "H3K27me3": 1.217,
+        "H3K36me3": 1.265,
+        "H3K4me1": 1.431,
+        "H3K4me3": 0.975,
+        "H3K9ac": 3.148,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.8674886567739225,
+      "state": "insulator"
+    },
+    "ZFP3": {
+      "active_signal": 3.4160355571023917,
+      "activity_score": 0.7337058960551797,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 1.474378033927925,
+      "marks": {
+        "CTCF": 1.474,
+        "H3K27ac": 2.411,
+        "H3K27me3": 0.359,
+        "H3K36me3": 1.663,
+        "H3K4me1": 1.096,
+        "H3K4me3": 5.485,
+        "H3K9ac": 4.673,
+        "H3K9me3": 0.69
+      },
+      "repressive_signal": 0.5246964874989257,
+      "state": "active_promoter"
+    },
+    "ZHX3": {
+      "active_signal": 5.759125165372658,
+      "activity_score": 0.8585223697889696,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 1.9351211981371013,
+      "marks": {
+        "CTCF": 1.935,
+        "H3K27ac": 4.468,
+        "H3K27me3": 0.359,
+        "H3K36me3": 0.63,
+        "H3K4me1": 3.807,
+        "H3K4me3": 9.391,
+        "H3K9ac": 5.37,
+        "H3K9me3": 0.518
+      },
+      "repressive_signal": 0.4384055501337762,
+      "state": "active_promoter"
+    },
+    "ZNF181": {
+      "active_signal": 5.65933539275447,
+      "activity_score": 0.8602696566232159,
+      "bivalency": 0.23578625087311209,
+      "ctcf_occupancy": 2.5463737746282726,
+      "marks": {
+        "CTCF": 2.546,
+        "H3K27ac": 4.553,
+        "H3K27me3": 0.236,
+        "H3K36me3": 1.531,
+        "H3K4me1": 1.917,
+        "H3K4me3": 8.349,
+        "H3K9ac": 7.818,
+        "H3K9me3": 0.614
+      },
+      "repressive_signal": 0.42508891903324747,
+      "state": "active_promoter"
+    },
+    "ZNF207": {
+      "active_signal": 12.395400332637633,
+      "activity_score": 0.9588162420318423,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 1.1653730427294666,
+      "marks": {
+        "CTCF": 1.165,
+        "H3K27ac": 6.532,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.94,
+        "H3K4me1": 1.955,
+        "H3K4me3": 30.55,
+        "H3K9ac": 10.544,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.2606105654259892,
+      "state": "active_promoter"
+    },
+    "ZNF217": {
+      "active_signal": 0.6187242966226832,
+      "activity_score": -0.4053211999031509,
+      "bivalency": 0.7922626093377314,
+      "ctcf_occupancy": 0.829337695576517,
+      "marks": {
+        "CTCF": 0.829,
+        "H3K27ac": 0.335,
+        "H3K27me3": 1.803,
+        "H3K36me3": 0.54,
+        "H3K4me1": 0.434,
+        "H3K4me3": 0.792,
+        "H3K9ac": 0.914,
+        "H3K9me3": 1.122
+      },
+      "repressive_signal": 1.4621452389401048,
+      "state": "quiescent"
+    },
+    "ZNF24": {
+      "active_signal": 7.686904127422701,
+      "activity_score": 0.9405242130969991,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 0.829337695576517,
+      "marks": {
+        "CTCF": 0.829,
+        "H3K27ac": 9.35,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.651,
+        "H3K4me1": 2.764,
+        "H3K4me3": 11.05,
+        "H3K9ac": 7.583,
+        "H3K9me3": 0.292
+      },
+      "repressive_signal": 0.23559805552363144,
+      "state": "active_promoter"
+    },
+    "ZNF331": {
+      "active_signal": 1.0648392463534129,
+      "activity_score": 0.46206443882841236,
+      "bivalency": 0.17953267374655585,
+      "ctcf_occupancy": 0.6450403841221273,
+      "marks": {
+        "CTCF": 0.645,
+        "H3K27ac": 1.071,
+        "H3K27me3": 0.18,
+        "H3K36me3": 0.488,
+        "H3K4me1": 0.781,
+        "H3K4me3": 1.036,
+        "H3K9ac": 1.371,
+        "H3K9me3": 0.604
+      },
+      "repressive_signal": 0.3917846712277777,
+      "state": "quiescent"
+    },
+    "ZNF441": {
+      "active_signal": 5.3599974033784905,
+      "activity_score": 0.8425531132109991,
+      "bivalency": 0.4655880670264644,
+      "ctcf_occupancy": 1.474378033927925,
+      "marks": {
+        "CTCF": 1.474,
+        "H3K27ac": 10.047,
+        "H3K27me3": 0.466,
+        "H3K36me3": 0.54,
+        "H3K4me1": 2.317,
+        "H3K4me3": 3.047,
+        "H3K9ac": 6.029,
+        "H3K9me3": 0.45
+      },
+      "repressive_signal": 0.45801342482620677,
+      "state": "active_promoter"
+    },
+    "ZNF512B": {
+      "active_signal": 2.7786584788152706,
+      "activity_score": 0.9694195896605644,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 1.0136349612601874,
+      "marks": {
+        "CTCF": 1.014,
+        "H3K27ac": 4.177,
+        "H3K27me3": 0.0,
+        "H3K36me3": 1.369,
+        "H3K4me1": 0.608,
+        "H3K4me3": 0.305,
+        "H3K9ac": 6.026,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.04314547671904623,
+      "state": "quiescent"
+    },
+    "ZNF554": {
+      "active_signal": 3.3468500983206724,
+      "activity_score": 0.8516829629656318,
+      "bivalency": 0.0,
+      "ctcf_occupancy": 13.085106046623478,
+      "marks": {
+        "CTCF": 13.085,
+        "H3K27ac": 5.394,
+        "H3K27me3": 0.0,
+        "H3K36me3": 0.54,
+        "H3K4me1": 0.694,
+        "H3K4me3": 2.09,
+        "H3K9ac": 5.209,
+        "H3K9me3": 0.536
+      },
+      "repressive_signal": 0.26807722932392497,
+      "state": "active_promoter"
+    },
+    "ZNF618": {
+      "active_signal": 3.4914524325043477,
+      "activity_score": 0.8071803832647266,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 2.1433770552656144,
+      "marks": {
+        "CTCF": 2.143,
+        "H3K27ac": 3.183,
+        "H3K27me3": 0.269,
+        "H3K36me3": 0.36,
+        "H3K4me1": 1.476,
+        "H3K4me3": 7.191,
+        "H3K9ac": 2.116,
+        "H3K9me3": 0.476
+      },
+      "repressive_signal": 0.37252491170159274,
+      "state": "active_promoter"
+    },
+    "ZNF664": {
+      "active_signal": 6.60693055213372,
+      "activity_score": 0.8871037549315391,
+      "bivalency": 0.3590653474931117,
+      "ctcf_occupancy": 4.19767733374048,
+      "marks": {
+        "CTCF": 4.198,
+        "H3K27ac": 4.159,
+        "H3K27me3": 0.359,
+        "H3K36me3": 1.045,
+        "H3K4me1": 3.662,
+        "H3K4me3": 10.144,
+        "H3K9ac": 8.463,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.3952600707359061,
+      "state": "active_promoter"
+    },
+    "ZNF706": {
+      "active_signal": 11.8823137956347,
+      "activity_score": 0.9215632663960941,
+      "bivalency": 0.5385980546802347,
+      "ctcf_occupancy": 5.805363594411303,
+      "marks": {
+        "CTCF": 5.805,
+        "H3K27ac": 11.221,
+        "H3K27me3": 0.539,
+        "H3K36me3": 0.18,
+        "H3K4me1": 3.778,
+        "H3K4me3": 21.739,
+        "H3K9ac": 10.791,
+        "H3K9me3": 0.431
+      },
+      "repressive_signal": 0.48502642432946763,
+      "state": "active_promoter"
+    },
+    "ZNF740": {
+      "active_signal": 6.488703297650332,
+      "activity_score": 0.9217844943776612,
+      "bivalency": 0.26929902734011735,
+      "ctcf_occupancy": 2.94875606785585,
+      "marks": {
+        "CTCF": 2.949,
+        "H3K27ac": 3.043,
+        "H3K27me3": 0.269,
+        "H3K36me3": 1.425,
+        "H3K4me1": 6.693,
+        "H3K4me3": 6.83,
+        "H3K9ac": 9.389,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.26408595186366884,
+      "state": "active_promoter"
+    },
+    "ZNF823": {
+      "active_signal": 3.910305452552839,
+      "activity_score": 0.9559670998030477,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 2.303715729504442,
+      "marks": {
+        "CTCF": 2.304,
+        "H3K27ac": 5.517,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.36,
+        "H3K4me1": 1.823,
+        "H3K4me3": 3.047,
+        "H3K9ac": 5.254,
+        "H3K9me3": 0.086
+      },
+      "repressive_signal": 0.08802864515568519,
+      "state": "active_promoter"
+    },
+    "ZNF853": {
+      "active_signal": 1.8051941210432672,
+      "activity_score": 0.823875918483189,
+      "bivalency": 0.08976633687327792,
+      "ctcf_occupancy": 0.7371890169639626,
+      "marks": {
+        "CTCF": 0.737,
+        "H3K27ac": 1.339,
+        "H3K27me3": 0.09,
+        "H3K36me3": 0.54,
+        "H3K4me1": 0.675,
+        "H3K4me3": 0.305,
+        "H3K9ac": 4.902,
+        "H3K9me3": 0.259
+      },
+      "repressive_signal": 0.17431960663024915,
+      "state": "quiescent"
+    },
+    "ZSCAN18": {
+      "active_signal": 0.31091591343496694,
+      "activity_score": -0.8667210168812371,
+      "bivalency": 0.24377311405824675,
+      "ctcf_occupancy": 0.5528917970510113,
+      "marks": {
+        "CTCF": 0.553,
+        "H3K27ac": 0.268,
+        "H3K27me3": 1.526,
+        "H3K36me3": 4.171,
+        "H3K4me1": 0.174,
+        "H3K4me3": 0.244,
+        "H3K9ac": 0.558,
+        "H3K9me3": 7.183
+      },
+      "repressive_signal": 4.354731130381731,
+      "state": "heterochromatin"
+    }
+  }
+}

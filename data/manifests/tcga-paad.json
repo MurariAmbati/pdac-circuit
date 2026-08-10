@@ -1,0 +1,86 @@
+{
+  "artifacts": [
+    {
+      "bytes": 980419,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tcga-paad\\tcga_paad_mutations.csv",
+      "name": "tcga_paad_mutations.csv",
+      "note": "resolved via portal/REST API",
+      "retrievedAt": "2026-06-20T16:52:41Z",
+      "sha256": "d30d83b9c429c80a852606f27e03da2f7868c688f1f3806663f895609f56c3fc",
+      "status": "REAL",
+      "url": "https://www.cbioportal.org/study/summary?id=paad_tcga_pan_can_atlas_2018"
+    },
+    {
+      "bytes": 2215935,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tcga-paad\\tcga_paad_rsem.csv",
+      "name": "tcga_paad_rsem.csv",
+      "note": "resolved via portal/REST API; cache refreshed 2026-07-15 during RAC integration (re-pulled from same cBioPortal TCGA-PAAD study, superset of genes)",
+      "retrievedAt": "2026-06-20T16:52:41Z",
+      "sha256": "c6b370c823619a9c6fffbba6dd49bb69c2c20d594ce9a407eb99c9b100dd41f6",
+      "status": "REAL",
+      "url": "https://www.cbioportal.org/study/summary?id=paad_tcga_pan_can_atlas_2018",
+      "refreshedAt": "2026-07-15T22:17:00Z"
+    },
+    {
+      "bytes": 1312745,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tcga-paad\\tcga_paad_cna_gistic.csv",
+      "name": "tcga_paad_cna_gistic.csv",
+      "note": "resolved via cBioPortal REST API (data/genomics.py) 2026-07-15",
+      "retrievedAt": "2026-07-15T22:50:00Z",
+      "sha256": "182c591c246425246c49d9e34b96993d9a273bded045b0cee892fb29d5d03dfa",
+      "status": "REAL",
+      "url": "https://www.cbioportal.org/study/summary?id=paad_tcga_pan_can_atlas_2018"
+    },
+    {
+      "bytes": 19791,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tcga-paad\\tcga_paad_rppa.csv",
+      "name": "tcga_paad_rppa.csv",
+      "note": "resolved via cBioPortal REST API (data/genomics.py) 2026-07-15",
+      "retrievedAt": "2026-07-15T22:50:00Z",
+      "sha256": "a59327abd57ec211eb002b2b636cae029435860b2678b64b9fe5b79f5a42451f",
+      "status": "REAL",
+      "url": "https://www.cbioportal.org/study/summary?id=paad_tcga_pan_can_atlas_2018"
+    },
+    {
+      "bytes": 526047,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tcga-paad\\tcga_paad_methylation_promoter.csv",
+      "name": "tcga_paad_methylation_promoter.csv",
+      "note": "HM450 promoter methylation (TSS200/TSS1500/1stExon/5'UTR probes) via cBioPortal generic-assay API 2026-07-16",
+      "retrievedAt": "2026-07-16T10:03:00Z",
+      "sha256": "4df299e9d2d0895189b5f3ad1807613c6b27597c08e87321382c22a1ff25471e",
+      "status": "REAL",
+      "url": "https://www.cbioportal.org/study/summary?id=paad_tcga_pan_can_atlas_2018"
+    },
+    {
+      "bytes": 668277,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tcga-paad\\hm450_promoter_probe_map.json",
+      "name": "hm450_promoter_probe_map.json",
+      "note": "HM450 promoter methylation (TSS200/TSS1500/1stExon/5'UTR probes) via cBioPortal generic-assay API 2026-07-16",
+      "retrievedAt": "2026-07-16T10:03:00Z",
+      "sha256": "8faa1a00c57dce138cdce0dd29aabf4d392c4c975d4d0974a0baa5c512069f56",
+      "status": "REAL",
+      "url": "https://www.cbioportal.org/study/summary?id=paad_tcga_pan_can_atlas_2018"
+    }
+  ],
+  "corpus": "tcga-paad",
+  "generatedAt": "2026-06-20T16:52:41Z",
+  "note": "Resolved via cBioPortal REST API by data/expression.py; cached CSVs hashed as REAL on first pull. rsem refreshed 2026-07-15 (RAC gene superset); loaders now read the cache read-only. Methylation probe map corrected 2026-07-16: HM450 NAME/DESCRIPTION are positionally paired, so gene-body probes are no longer mis-assigned as promoter probes.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 6
+  }
+}

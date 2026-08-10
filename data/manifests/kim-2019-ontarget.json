@@ -1,0 +1,25 @@
+{
+ "artifacts": [
+  {
+   "bytes": 644748,
+   "dataClass": "REAL",
+   "license": "academic (Kim et al. 2019, redistributed by bmds-lab/CRISPR_DeepEnsemble)",
+   "localPath": "data\\raw\\kim-2019-ontarget\\kim2019_spcas9_ht.csv",
+   "name": "kim2019_spcas9_ht.csv",
+   "note": "Kim et al. 2019 (Science Advances eaax9249) DeepSpCas9 high-throughput SpCas9 on-target dataset: 12,832 synthetic-target guides, 30-mer context in the identical (4+20+3+3) format as Doench-2016 (PAM at positions 24-26), endpoint = background-subtracted indel frequency (%). Extracted (context30, indel_pct) from Supplementary Table S1 via bmds-lab/CRISPR_DeepEnsemble. Used to expand Module V on-target training 2.4x.",
+   "retrievedAt": "2026-07-21T05:07:53Z",
+   "sha256": "9e98cc64ce76325e2c9d9f37b41209257ba3b486ee9d4d6da5bfadb2ffd8968d",
+   "status": "REAL",
+   "url": "https://github.com/bmds-lab/CRISPR_DeepEnsemble/tree/master/data/kim_2019"
+  }
+ ],
+ "corpus": "kim-2019-ontarget",
+ "generatedAt": "2026-07-21T05:07:53Z",
+ "note": "Real HT SpCas9 on-target efficiency (Kim 2019). Endpoint (indel %) is rank-normalised within-dataset before merging with Doench-2016 drug-rank, so the two comparable-distribution efficiency ranks are pooled for training.",
+ "schema": "pdac-circuit.provenance/1",
+ "summary": {
+  "gated": 0,
+  "pointer": 0,
+  "real": 1
+ }
+}

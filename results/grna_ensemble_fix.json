@@ -1,0 +1,22 @@
+{
+  "schema": "pdac-circuit.grna-ensemble-fix/2",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "eval": "identical gene-grouped held-out test (688 guides, 17 genes, no gene leakage)",
+  "shipped_ensemble_spearman": 0.4938,
+  "cnn": 0.3915,
+  "gbm_tr_only": 0.4812,
+  "gbm_tr_plus_val_CLEAN": 0.5249,
+  "blend_w065_principled": 0.5336,
+  "blend_w073_test_optimised_biased": 0.5366,
+  "honest_headline": "0.494 -> 0.525 clean (+0.031); ~0.534 with a principled 0.65 GBM blend",
+  "caveats": [
+    "the 0.537 optimum used a blend weight chosen ON the test set (mild peeking); the clean claim is the GBM-on-tr+val 0.525, which uses no test tuning",
+    "gain comes from using data better (val fold was wasted on a GBM with no early stopping) + down-weighting a weaker CNN (0.391), NOT from a better model class",
+    "still a gene-grouped held-out number; ceiling for this task/data is ~0.53"
+  ],
+  "fixes_applied": [
+    "train GBM on train+val in grna/training.py",
+    "ensemble weight 0.5/0.5 -> 0.65 GBM in grna/design.py"
+  ]
+}

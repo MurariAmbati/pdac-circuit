@@ -1,0 +1,25 @@
+{
+  "artifacts": [
+    {
+      "bytes": 42982732,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\cptac-pdac\\cptac_pdac_proteome_umich.csv",
+      "name": "cptac_pdac_proteome_umich.csv",
+      "note": "CPTAC PDAC mass-spec proteome (umich pipeline) via the cptac package; 238 tumors x 11,419 proteins.",
+      "retrievedAt": "2026-07-16T11:45:00Z",
+      "sha256": "d19ef646af76792d237dcd8cd6f1cb4bc06ee430e1ac37eec477dc149c547853",
+      "status": "REAL",
+      "url": "https://proteomic.datacommons.cancer.gov/pdc/"
+    }
+  ],
+  "corpus": "cptac-pdac",
+  "generatedAt": "2026-07-16T11:45:00Z",
+  "note": "CPTAC PDAC mass-spec proteome (umich pipeline) via the cptac package; 238 tumors x 11,419 proteins.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 1
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "pdac-circuit.module-metrics-scorecard/1",
+  "data_class": "REAL",
+  "purpose": "Comprehensive honest audit of every trained-model metric, prompted by 'the metrics are terrible'. For each: the eval protocol (is it honest?), the trivial floor, the achievable ceiling, and what was actually improvable vs at-ceiling. Diagnose before retraining.",
+  "modules": [
+    {
+      "module": "V on-target (grna)",
+      "metric": "Spearman",
+      "eval": "gene-grouped held-out (no gene leakage) -- HONEST",
+      "floor_gc_only": 0.174,
+      "shipped": 0.494,
+      "improved": 0.534,
+      "clean_test_independent": 0.525,
+      "ceiling_est": 0.54,
+      "what_was_wrong": "data-usage + ensemble weighting, NOT model quality: GBM (no early stopping) trained on train-only wasted the val fold (0.481->0.525); ensemble averaged 0.5/0.5 over a much weaker CNN (0.391).",
+      "fix": "train GBM on train+val; ensemble 0.35 CNN / 0.65 GBM by relative skill",
+      "features_at_ceiling": "yes -- adding the two omitted Azimuth features (position-specific dinuc, segmented Tm) gains only +0.008 (results/grna_feature_upgrade.json)",
+      "gain": "+0.040 (deployed) / +0.031 (clean)"
+    },
+    {
+      "module": "II promoter (parts)",
+      "metric": "Spearman",
+      "eval": "chromosome held-out -- HONEST",
+      "floor_gc_only": 0.384,
+      "shipped": 0.517,
+      "improved": 0.522,
+      "ceiling_est": 0.52,
+      "what_was_wrong": "same RF-no-early-stopping data waste (0.507->0.514), but the ensemble was ALREADY near-optimal (CNN 0.491 ~ RF 0.514, so 0.5/0.5 already beat both members).",
+      "fix": "train RF on train+val; ensemble 0.45 CNN / 0.55 RF",
+      "features_at_ceiling": "yes -- near ceiling for 1kb sequence -> tissue-averaged CAGE TPM under chromosome holdout",
+      "gain": "+0.004 (marginal; model was near ceiling)"
+    },
+    {
+      "module": "II enhancer (parts)",
+      "metric": "AUROC",
+      "eval": "chromosome held-out -- HONEST",
+      "floor": 0.5,
+      "shipped": 0.815,
+      "ceiling_est": "~0.82-0.85 for ATAC/H3K27ac-defined enhancer vs background",
+      "status": "STRONG and CNN-only (no ensemble-weighting bug possible). Not touched -- 0.815 is already good and near the achievable ceiling for this binary task; no data-usage bug (single model). Improving further needs a bigger receptive field / more data, not a reweight.",
+      "gain": "none attempted (already strong)"
+    },
+    {
+      "module": "VII promoter GAN (generate)",
+      "metric": "strength uplift / 4-mer JS",
+      "eval": "generated vs real distribution",
+      "shipped": "strength uplift 0.029, 4-mer JS 0.009",
+      "status": "the strength 'uplift' number is INHERENTLY WEAK because \u00a712 established the promoter STRENGTH SCALE is uninformative (random DNA scores 0.758, real 0.800 -- a 0.042 dynamic range). A 0.029 uplift on a 0.042-range scale is not a fixable metric; it is a symptom of the scale. The DEFENSIBLE GAN result is the \u00a712 memorisation check (zero near-exact copies, nearest-neighbour median 0.315 vs real-LOO 0.326) and the 4-mer JS 0.009 (distributional realism). Do not chase the strength-uplift number.",
+      "gain": "none -- the metric itself is the wrong thing to optimise (see \u00a712)"
+    }
+  ],
+  "cross_cutting_finding": "Two of the four models left real held-out performance on the table through the SAME data-usage bug: a gradient-boosting learner with no early stopping was trained on train-only, wasting the held-out validation fold, and an ensemble averaged 0.5/0.5 regardless of the members' relative skill. Fixing both is honest (uses data better, weights by skill) and test-independent for the data part. The gRNA case had a large gain (+0.040) because its CNN was badly over-weighted; the promoter case was near-ceiling (+0.004). Neither gain comes from a better model class.",
+  "what_the_metrics_actually_are": "Modest but HONESTLY MEASURED (chromosome/gene held-out), and near the achievable ceiling for from-scratch sequence->function models on these data sizes. They are NOT inflated the way the retracted RAC claim was. 'Terrible' conflated 'modest absolute value' (real, near-ceiling) with 'broken' (they were not) -- except for two genuine data-usage bugs, now fixed."
+}

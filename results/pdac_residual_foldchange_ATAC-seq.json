@@ -1,0 +1,156 @@
+{
+  "schema": "pdac-circuit.disease-residual-foldchange/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "mark": "ATAC-seq",
+  "method": "ENCODE FOLD CHANGE OVER CONTROL, PDAC (Panc1) vs healthy pancreas, log2((pdac+0.1)/(healthy+0.1)) over TSS +/-2000bp, GRCh38. Fold-change files matched to the derived_from processing run of the signal p-value files they replace, so only normalisation changes.",
+  "limitation": "one healthy fold-change track per mark, versus up to six averaged in the signal p-value run; the healthy reference is noisier and the test is correspondingly more conservative.",
+  "pdac_track": "ENCFF174PXJ_ATAC-seq_pdac.foldchange.bigWig",
+  "healthy_track": "ENCFF140GLW_ATAC-seq_healthy.foldchange.bigWig",
+  "n_loci": 1676,
+  "targets_vs_all_background": {
+    "n_targets": 20,
+    "n_background": 1656,
+    "target_mean_log2": 0.421,
+    "background_mean_log2": 0.1768,
+    "target_frac_up": 0.85,
+    "background_frac_up": 0.7397,
+    "mannwhitney_p_greater": 0.07441
+  },
+  "matched_controls": [
+    {
+      "control": "absolute PDAC expression (log2 DepMap mean)",
+      "caliper_sd": 0.25,
+      "n_matched_background": 60,
+      "target_mean_score": 2.232,
+      "matched_mean_score": 2.23,
+      "target_mean_log2": 0.421,
+      "matched_background_mean_log2": 0.1734,
+      "mannwhitney_p_greater": 0.047239
+    },
+    {
+      "control": "disease_log2fc (the RAC selection variable) -- circularity control",
+      "caliper_sd": 0.25,
+      "n_matched_background": 58,
+      "target_mean_score": 6.867,
+      "matched_mean_score": 6.75,
+      "target_mean_log2": 0.421,
+      "matched_background_mean_log2": 0.1119,
+      "mannwhitney_p_greater": 0.004464
+    },
+    {
+      "control": "co-expression degree (hub-ness) -- is this just a hub effect?",
+      "caliper_sd": 0.25,
+      "n_matched_background": 60,
+      "target_mean_score": 136.8,
+      "matched_mean_score": 136.75,
+      "target_mean_log2": 0.421,
+      "matched_background_mean_log2": 0.2265,
+      "mannwhitney_p_greater": 0.04724
+    }
+  ],
+  "per_target": {
+    "BRCA2": {
+      "pdac_fc": 5.0514,
+      "healthy_fc": 3.3795,
+      "log2_residual": 0.5661
+    },
+    "GATA6": {
+      "pdac_fc": 2.0965,
+      "healthy_fc": 1.5644,
+      "log2_residual": 0.4002
+    },
+    "ZNF790": {
+      "pdac_fc": 4.9408,
+      "healthy_fc": 4.0213,
+      "log2_residual": 0.2906
+    },
+    "SETDB1": {
+      "pdac_fc": 4.3686,
+      "healthy_fc": 3.2892,
+      "log2_residual": 0.3989
+    },
+    "KMT2C": {
+      "pdac_fc": 3.0076,
+      "healthy_fc": 2.5433,
+      "log2_residual": 0.2335
+    },
+    "E2F1": {
+      "pdac_fc": 4.3538,
+      "healthy_fc": 3.597,
+      "log2_residual": 0.2687
+    },
+    "SOX13": {
+      "pdac_fc": 2.6752,
+      "healthy_fc": 2.4551,
+      "log2_residual": 0.1192
+    },
+    "AHR": {
+      "pdac_fc": 1.9888,
+      "healthy_fc": 0.6728,
+      "log2_residual": 1.4345
+    },
+    "MYBL2": {
+      "pdac_fc": 3.3721,
+      "healthy_fc": 4.1272,
+      "log2_residual": -0.2839
+    },
+    "AGR2": {
+      "pdac_fc": 1.1839,
+      "healthy_fc": 0.3721,
+      "log2_residual": 1.4434
+    },
+    "ZNF331": {
+      "pdac_fc": 6.7099,
+      "healthy_fc": 5.1254,
+      "log2_residual": 0.3821
+    },
+    "SF3B1": {
+      "pdac_fc": 3.5099,
+      "healthy_fc": 3.1409,
+      "log2_residual": 0.1555
+    },
+    "SMAD3": {
+      "pdac_fc": 1.6904,
+      "healthy_fc": 1.703,
+      "log2_residual": -0.0101
+    },
+    "HOXA3": {
+      "pdac_fc": 2.3178,
+      "healthy_fc": 1.9295,
+      "log2_residual": 0.2526
+    },
+    "ATM": {
+      "pdac_fc": 4.7991,
+      "healthy_fc": 3.3527,
+      "log2_residual": 0.5048
+    },
+    "ZNF528": {
+      "pdac_fc": 7.6607,
+      "healthy_fc": 5.0434,
+      "log2_residual": 0.5935
+    },
+    "FAM83A": {
+      "pdac_fc": 1.0516,
+      "healthy_fc": 0.2978,
+      "log2_residual": 1.5335
+    },
+    "ZNF93": {
+      "pdac_fc": 5.9924,
+      "healthy_fc": 3.8963,
+      "log2_residual": 0.6084
+    },
+    "FOSL1": {
+      "pdac_fc": 1.5072,
+      "healthy_fc": 3.2546,
+      "log2_residual": -1.0616
+    },
+    "ZNF85": {
+      "pdac_fc": 7.3242,
+      "healthy_fc": 4.8336,
+      "log2_residual": 0.5896
+    }
+  },
+  "verdict": "PRIMARY CONTRAST NOT SIGNIFICANT (p=0.0744) -- does not replicate. Matched-control p-values are NOT used to claim a positive here.",
+  "multiplicity_note": "Three controls of ONE hypothesis, not three hypotheses; they test whether the primary result survives, so they are not Bonferroni-corrected. Stated plainly: the weakest control would not clear a Bonferroni across all three, so this is a robustness demonstration, not an independently-powered confirmation."
+}

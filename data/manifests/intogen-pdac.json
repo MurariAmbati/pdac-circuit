@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "bytes": 964758,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\intogen-pdac\\IntOGen-Drivers.zip",
+      "name": "IntOGen-Drivers.zip",
+      "retrievedAt": "2026-06-20T05:40:18Z",
+      "sha256": "854def4465bcd7f90f0f8c7857dee9a4cf9da66a4c477c3fe4abeb510358a53c",
+      "status": "REAL",
+      "url": "https://www.intogen.org/download?file=IntOGen-Drivers-20240920.zip"
+    }
+  ],
+  "corpus": "intogen-pdac",
+  "generatedAt": "2026-06-20T05:40:18Z",
+  "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. POINTER = open but resolved at ingest / not statically pulled this run. GATED = behind an auth/DUC wall, recorded as a pointer and never bypassed. sha256 is present only when actually hashed and is never fabricated.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 1
+  }
+}

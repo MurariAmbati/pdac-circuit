@@ -1,0 +1,61 @@
+{
+ "artifacts": [
+  {
+   "bytes": 412770219,
+   "dataClass": "REAL",
+   "license": null,
+   "localPath": "C:\\Users\\murar\\pdac-circuit\\data\\raw\\encode-foldchange\\ENCFF047WWJ_H3K27ac_pdac.foldchange.bigWig",
+   "name": "ENCFF047WWJ_H3K27ac_pdac.foldchange.bigWig",
+   "note": "ENCODE H3K27ac FOLD CHANGE OVER CONTROL, Panc1, GRCh38, experiment ENCSR000EXK. Matched processing run of ENCFF528UFR (same derived_from) which was the signal p-value track previously used.",
+   "retrievedAt": "2026-07-19T17:07:28Z",
+   "sha256": "46380fbbcbd5402dfb083807b9dd1b16d173d09175513165d9ce74f3f3af48bd",
+   "status": "REAL",
+   "url": "https://www.encodeproject.org/files/ENCFF047WWJ/"
+  },
+  {
+   "bytes": 2360338970,
+   "dataClass": "REAL",
+   "license": null,
+   "localPath": "C:\\Users\\murar\\pdac-circuit\\data\\raw\\encode-foldchange\\ENCFF140GLW_ATAC-seq_healthy.foldchange.bigWig",
+   "name": "ENCFF140GLW_ATAC-seq_healthy.foldchange.bigWig",
+   "note": "ENCODE ATAC-seq FOLD CHANGE OVER CONTROL, pancreas, GRCh38, experiment ENCSR530XBF. Healthy reference for the PDAC-vs-healthy contrast.",
+   "retrievedAt": "2026-07-19T17:07:29Z",
+   "sha256": "c4f88ce25aa608d7dda7ccc164d7427e23cb4ca0592e6587e72381a1f8c09688",
+   "status": "REAL",
+   "url": "https://www.encodeproject.org/files/ENCFF140GLW/"
+  },
+  {
+   "bytes": 676723757,
+   "dataClass": "REAL",
+   "license": null,
+   "localPath": "C:\\Users\\murar\\pdac-circuit\\data\\raw\\encode-foldchange\\ENCFF174PXJ_ATAC-seq_pdac.foldchange.bigWig",
+   "name": "ENCFF174PXJ_ATAC-seq_pdac.foldchange.bigWig",
+   "note": "ENCODE ATAC-seq FOLD CHANGE OVER CONTROL, Panc1, GRCh38, experiment ENCSR591PIX. Matched processing run of ENCFF055ZEE (same derived_from) which was the signal p-value track previously used.",
+   "retrievedAt": "2026-07-19T17:07:28Z",
+   "sha256": "495b84432f061af1c868be76433ad5e488805276b3b546d5d3877fedb3684d80",
+   "status": "REAL",
+   "url": "https://www.encodeproject.org/files/ENCFF174PXJ/"
+  },
+  {
+   "bytes": 96093611,
+   "dataClass": "REAL",
+   "license": null,
+   "localPath": "C:\\Users\\murar\\pdac-circuit\\data\\raw\\encode-foldchange\\ENCFF592MXT_H3K27ac_healthy.foldchange.bigWig",
+   "name": "ENCFF592MXT_H3K27ac_healthy.foldchange.bigWig",
+   "note": "ENCODE H3K27ac FOLD CHANGE OVER CONTROL, endocrine pancreas, GRCh38, experiment ENCSR492PXH. Healthy reference for the PDAC-vs-healthy contrast.",
+   "retrievedAt": "2026-07-19T17:07:28Z",
+   "sha256": "4adb1f2da090a023c261ce4260dc2cbff4f792f8940f9d654736c4e2a97bc34f",
+   "status": "REAL",
+   "url": "https://www.encodeproject.org/files/ENCFF592MXT/"
+  }
+ ],
+ "corpus": "encode-foldchange",
+ "generatedAt": "2026-07-19T17:07:31Z",
+ "note": "Fold-change-over-control tracks obtained to replace signal p-value tracks, which conflate sequencing depth with enrichment. Fold-change files were selected by matching the derived_from processing run of the p-value files they replace, so an old-vs-new comparison changes normalisation ONLY.",
+ "schema": "pdac-circuit.provenance/1",
+ "summary": {
+  "gated": 0,
+  "pointer": 0,
+  "real": 4
+ }
+}

@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "bytes": 6952331,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\gtex-pancreas\\GTEx_v8_gene_median_tpm.gct.gz",
+      "name": "GTEx_v8_gene_median_tpm.gct.gz",
+      "retrievedAt": "2026-06-20T05:40:14Z",
+      "sha256": "ee7201ff2f280b0de5657d4b08e9a240362d9757efed7f7bd5dba35a5f8617b8",
+      "status": "REAL",
+      "url": "https://storage.googleapis.com/adult-gtex/bulk-gex/v8/rna-seq/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct.gz"
+    }
+  ],
+  "corpus": "gtex-pancreas",
+  "generatedAt": "2026-06-20T05:40:14Z",
+  "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. POINTER = open but resolved at ingest / not statically pulled this run. GATED = behind an auth/DUC wall, recorded as a pointer and never bypassed. sha256 is present only when actually hashed and is never fabricated.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 1
+  }
+}

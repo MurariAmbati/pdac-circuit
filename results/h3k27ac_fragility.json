@@ -1,0 +1,279 @@
+{
+  "schema": "pdac-circuit.h3k27ac-fragility/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "mark": "H3K27ac",
+  "n_loci": 1675,
+  "n_targets": 20,
+  "primary": {
+    "target_mean": 0.9194,
+    "background_mean": -0.0914,
+    "mwu_p": 0.002239
+  },
+  "A_set_level_permutation": {
+    "n_perm": 20000,
+    "p": 0.00155,
+    "null_mean": -0.0926,
+    "null_p95": 0.4613
+  },
+  "B_leave_one_target_out": {
+    "worst_p": 0.00581,
+    "worst_gene": "HOXA3",
+    "all": [
+      {
+        "dropped": "BRCA2",
+        "mean_without": 0.9763,
+        "mwu_p_without": 0.00169,
+        "set_perm_p_without": 0.0005
+      },
+      {
+        "dropped": "GATA6",
+        "mean_without": 1.0854,
+        "mwu_p_without": 0.00057,
+        "set_perm_p_without": 0.0
+      },
+      {
+        "dropped": "ZNF790",
+        "mean_without": 0.9268,
+        "mwu_p_without": 0.00338,
+        "set_perm_p_without": 0.0015
+      },
+      {
+        "dropped": "SETDB1",
+        "mean_without": 0.9161,
+        "mwu_p_without": 0.00376,
+        "set_perm_p_without": 0.0025
+      },
+      {
+        "dropped": "KMT2C",
+        "mean_without": 0.9953,
+        "mwu_p_without": 0.00123,
+        "set_perm_p_without": 0.0025
+      },
+      {
+        "dropped": "E2F1",
+        "mean_without": 0.8735,
+        "mwu_p_without": 0.00479,
+        "set_perm_p_without": 0.001
+      },
+      {
+        "dropped": "SOX13",
+        "mean_without": 0.9801,
+        "mwu_p_without": 0.00158,
+        "set_perm_p_without": 0.001
+      },
+      {
+        "dropped": "AHR",
+        "mean_without": 0.9018,
+        "mwu_p_without": 0.00427,
+        "set_perm_p_without": 0.0045
+      },
+      {
+        "dropped": "MYBL2",
+        "mean_without": 0.8524,
+        "mwu_p_without": 0.00506,
+        "set_perm_p_without": 0.0055
+      },
+      {
+        "dropped": "AGR2",
+        "mean_without": 0.919,
+        "mwu_p_without": 0.00367,
+        "set_perm_p_without": 0.002
+      },
+      {
+        "dropped": "ZNF331",
+        "mean_without": 0.9043,
+        "mwu_p_without": 0.0042,
+        "set_perm_p_without": 0.0025
+      },
+      {
+        "dropped": "SF3B1",
+        "mean_without": 0.9562,
+        "mwu_p_without": 0.00236,
+        "set_perm_p_without": 0.0015
+      },
+      {
+        "dropped": "SMAD3",
+        "mean_without": 0.8561,
+        "mwu_p_without": 0.005,
+        "set_perm_p_without": 0.0025
+      },
+      {
+        "dropped": "HOXA3",
+        "mean_without": 0.6585,
+        "mwu_p_without": 0.00581,
+        "set_perm_p_without": 0.017
+      },
+      {
+        "dropped": "ATM",
+        "mean_without": 0.9337,
+        "mwu_p_without": 0.00315,
+        "set_perm_p_without": 0.003
+      },
+      {
+        "dropped": "ZNF528",
+        "mean_without": 0.8633,
+        "mwu_p_without": 0.00495,
+        "set_perm_p_without": 0.003
+      },
+      {
+        "dropped": "FAM83A",
+        "mean_without": 0.9971,
+        "mwu_p_without": 0.00119,
+        "set_perm_p_without": 0.0005
+      },
+      {
+        "dropped": "ZNF93",
+        "mean_without": 0.964,
+        "mwu_p_without": 0.00211,
+        "set_perm_p_without": 0.002
+      },
+      {
+        "dropped": "FOSL1",
+        "mean_without": 0.8218,
+        "mwu_p_without": 0.00525,
+        "set_perm_p_without": 0.004
+      },
+      {
+        "dropped": "ZNF85",
+        "mean_without": 1.0052,
+        "mwu_p_without": 0.00105,
+        "set_perm_p_without": 0.001
+      }
+    ]
+  },
+  "C_per_gene": [
+    {
+      "gene": "HOXA3",
+      "log2_residual": 5.8757
+    },
+    {
+      "gene": "FOSL1",
+      "log2_residual": 2.7719
+    },
+    {
+      "gene": "MYBL2",
+      "log2_residual": 2.1913
+    },
+    {
+      "gene": "SMAD3",
+      "log2_residual": 2.1205
+    },
+    {
+      "gene": "ZNF528",
+      "log2_residual": 1.9835
+    },
+    {
+      "gene": "E2F1",
+      "log2_residual": 1.7907
+    },
+    {
+      "gene": "AHR",
+      "log2_residual": 1.2519
+    },
+    {
+      "gene": "ZNF331",
+      "log2_residual": 1.2051
+    },
+    {
+      "gene": "SETDB1",
+      "log2_residual": 0.9811
+    },
+    {
+      "gene": "AGR2",
+      "log2_residual": 0.9259
+    },
+    {
+      "gene": "ZNF790",
+      "log2_residual": 0.7783
+    },
+    {
+      "gene": "ATM",
+      "log2_residual": 0.6466
+    },
+    {
+      "gene": "SF3B1",
+      "log2_residual": 0.2193
+    },
+    {
+      "gene": "ZNF93",
+      "log2_residual": 0.0714
+    },
+    {
+      "gene": "BRCA2",
+      "log2_residual": -0.1618
+    },
+    {
+      "gene": "SOX13",
+      "log2_residual": -0.2355
+    },
+    {
+      "gene": "KMT2C",
+      "log2_residual": -0.523
+    },
+    {
+      "gene": "FAM83A",
+      "log2_residual": -0.5586
+    },
+    {
+      "gene": "ZNF85",
+      "log2_residual": -0.7118
+    },
+    {
+      "gene": "GATA6",
+      "log2_residual": -2.2356
+    }
+  ],
+  "D_bootstrap_ci95_target_mean": [
+    0.2444,
+    1.6785
+  ],
+  "E_caliper_sensitivity": [
+    {
+      "caliper_sd": 0.1,
+      "expression": {
+        "p": 0.01714,
+        "n_matched": 60
+      },
+      "disease_log2fc": {
+        "p": 0.03002,
+        "n_matched": 54
+      },
+      "degree": {
+        "p": 0.01026,
+        "n_matched": 60
+      }
+    },
+    {
+      "caliper_sd": 0.25,
+      "expression": {
+        "p": 0.01714,
+        "n_matched": 60
+      },
+      "disease_log2fc": {
+        "p": 0.02485,
+        "n_matched": 58
+      },
+      "degree": {
+        "p": 0.01026,
+        "n_matched": 60
+      }
+    },
+    {
+      "caliper_sd": 0.5,
+      "expression": {
+        "p": 0.01714,
+        "n_matched": 60
+      },
+      "disease_log2fc": {
+        "p": 0.01912,
+        "n_matched": 60
+      },
+      "degree": {
+        "p": 0.01026,
+        "n_matched": 60
+      }
+    }
+  ],
+  "verdict": "ROBUST: survives set-level permutation, leave-one-out, and all calipers"
+}

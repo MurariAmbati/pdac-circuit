@@ -1,0 +1,152 @@
+{
+  "schema": "pdac-circuit.hic-3d/1",
+  "data_class": "REAL",
+  "source": {
+    "portal": "4DN",
+    "experiment_set": "4DNESCCP4KTY",
+    "cell_line": "PANC-1",
+    "assembly": "hg38",
+    "files": {
+      "compartments": "4DNFIY4C6GHK.bw",
+      "insulation": "4DNFIR1EGUXI.bw",
+      "tad_boundaries": "4DNFIB125UJV.bed.gz"
+    },
+    "note": "released derived tracks (A/B eigenvector 250kb, diamond insulation 10kb, called boundaries)"
+  },
+  "n_genes_with_features": 1676,
+  "rac_targets": {
+    "n": 20,
+    "mean_compartment_eigenvector": 0.3682,
+    "fraction_in_A_compartment": 0.9
+  },
+  "background_tfs": {
+    "n": 1621,
+    "mean_compartment_eigenvector": 0.3329,
+    "fraction_in_A_compartment": 0.7014
+  },
+  "test_targets_more_active_than_background": {
+    "mannwhitney_u_p_greater": 0.504072
+  },
+  "per_gene": {
+    "BRCA2": {
+      "compartment_eigenvector": 0.1173,
+      "compartment": "A",
+      "insulation_score": 0.0193,
+      "dist_to_tad_boundary_bp": 90086
+    },
+    "GATA6": {
+      "compartment_eigenvector": 0.3836,
+      "compartment": "A",
+      "insulation_score": 0.2772,
+      "dist_to_tad_boundary_bp": 14589
+    },
+    "ZNF790": {
+      "compartment_eigenvector": 0.3463,
+      "compartment": "A",
+      "insulation_score": -0.4266,
+      "dist_to_tad_boundary_bp": 84213
+    },
+    "SETDB1": {
+      "compartment_eigenvector": 1.498,
+      "compartment": "A",
+      "insulation_score": 0.9553,
+      "dist_to_tad_boundary_bp": 78737
+    },
+    "KMT2C": {
+      "compartment_eigenvector": 0.325,
+      "compartment": "A",
+      "insulation_score": null,
+      "dist_to_tad_boundary_bp": 121644
+    },
+    "E2F1": {
+      "compartment_eigenvector": 0.8255,
+      "compartment": "A",
+      "insulation_score": null,
+      "dist_to_tad_boundary_bp": 58615
+    },
+    "SOX13": {
+      "compartment_eigenvector": 1.1654,
+      "compartment": "A",
+      "insulation_score": 0.7628,
+      "dist_to_tad_boundary_bp": 38115
+    },
+    "AHR": {
+      "compartment_eigenvector": 0.3571,
+      "compartment": "A",
+      "insulation_score": 0.0819,
+      "dist_to_tad_boundary_bp": 78641
+    },
+    "MYBL2": {
+      "compartment_eigenvector": 0.1955,
+      "compartment": "A",
+      "insulation_score": null,
+      "dist_to_tad_boundary_bp": 232019
+    },
+    "AGR2": {
+      "compartment_eigenvector": 0.1171,
+      "compartment": "A",
+      "insulation_score": 0.2905,
+      "dist_to_tad_boundary_bp": 161567
+    },
+    "ZNF331": {
+      "compartment_eigenvector": 0.1743,
+      "compartment": "A",
+      "insulation_score": -0.0799,
+      "dist_to_tad_boundary_bp": 25473
+    },
+    "SF3B1": {
+      "compartment_eigenvector": 0.1014,
+      "compartment": "A",
+      "insulation_score": 0.4634,
+      "dist_to_tad_boundary_bp": 70079
+    },
+    "SMAD3": {
+      "compartment_eigenvector": 0.6071,
+      "compartment": "A",
+      "insulation_score": 0.2733,
+      "dist_to_tad_boundary_bp": 108763
+    },
+    "HOXA3": {
+      "compartment_eigenvector": 0.1982,
+      "compartment": "A",
+      "insulation_score": -0.1243,
+      "dist_to_tad_boundary_bp": 62417
+    },
+    "ATM": {
+      "compartment_eigenvector": 0.1502,
+      "compartment": "A",
+      "insulation_score": 0.1837,
+      "dist_to_tad_boundary_bp": 37804
+    },
+    "ZNF528": {
+      "compartment_eigenvector": 0.1772,
+      "compartment": "A",
+      "insulation_score": 0.2893,
+      "dist_to_tad_boundary_bp": 17151
+    },
+    "FAM83A": {
+      "compartment_eigenvector": 0.5124,
+      "compartment": "A",
+      "insulation_score": 0.2483,
+      "dist_to_tad_boundary_bp": 23960
+    },
+    "ZNF93": {
+      "compartment_eigenvector": -0.222,
+      "compartment": "B",
+      "insulation_score": 0.0665,
+      "dist_to_tad_boundary_bp": 104087
+    },
+    "FOSL1": {
+      "compartment_eigenvector": 0.7031,
+      "compartment": "A",
+      "insulation_score": 1.3567,
+      "dist_to_tad_boundary_bp": 124427
+    },
+    "ZNF85": {
+      "compartment_eigenvector": -0.3688,
+      "compartment": "B",
+      "insulation_score": -0.999,
+      "dist_to_tad_boundary_bp": 11778
+    }
+  }
+}

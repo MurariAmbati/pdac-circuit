@@ -1,0 +1,46 @@
+{
+  "schema": "pdac-circuit.gan-memorisation/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "n_generated": 500,
+  "n_train_reference": 4000,
+  "seed": 20260620,
+  "design": "nearest-neighbour identity on aligned 1024bp TSS windows: generated-to-train vs train-to-train (leave-one-out). The shipped JS-divergence certification cannot detect memorisation, because memorisation minimises JS.",
+  "nn_identity_to_training_set": {
+    "generated": {
+      "median": 0.3154,
+      "p95": 0.3291,
+      "max": 0.3584
+    },
+    "real_train_leave_one_out": {
+      "median": 0.3262,
+      "p95": 0.3653,
+      "max": 0.6221
+    },
+    "random_dna": {
+      "median": 0.2998,
+      "p95": 0.3086
+    }
+  },
+  "mannwhitney_gen_closer_than_real_p": 1.0,
+  "near_exact_copies": 0,
+  "memorising": false,
+  "verdict": "no memorisation detected: generated sequences are no closer to the training set than a real promoter is to its nearest training neighbour",
+  "strength_vs_correct_baseline": {
+    "generated": {
+      "median": 0.7895,
+      "p90": 0.9136
+    },
+    "real_promoters": {
+      "median": 0.8,
+      "p90": 0.9692
+    },
+    "random_dna": {
+      "median": 0.7583,
+      "p90": 0.891
+    },
+    "uplift_vs_random_dna": 0.0312,
+    "gap_to_real_promoters": -0.0105,
+    "note": "the shipped strength_uplift=0.029 is measured against RANDOM DNA, which is not the baseline a part-design tool has to beat; the comparison against real promoters is the informative one"
+  }
+}

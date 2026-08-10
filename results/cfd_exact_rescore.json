@@ -1,0 +1,42 @@
+{
+  "SETDB1": {
+    "n_off": 206,
+    "perfect": 1,
+    "cfd_spec_by_cut": {
+      "2": 0.6667,
+      "3": 0.317,
+      "4": 0.045
+    },
+    "scorer": "doench2016_exact"
+  },
+  "MYBL2": {
+    "n_off": 75,
+    "perfect": 1,
+    "cfd_spec_by_cut": {
+      "2": 1.0,
+      "3": 0.4687,
+      "4": 0.0816
+    },
+    "scorer": "doench2016_exact"
+  },
+  "E2F1": {
+    "n_off": 68,
+    "perfect": 1,
+    "cfd_spec_by_cut": {
+      "2": 1.0,
+      "3": 0.4468,
+      "4": 0.1256
+    },
+    "scorer": "doench2016_exact"
+  },
+  "FOSL1": {
+    "n_off": 35,
+    "perfect": 1,
+    "cfd_spec_by_cut": {
+      "2": 1.0,
+      "3": 0.7005,
+      "4": 0.3079
+    },
+    "scorer": "doench2016_exact"
+  }
+}

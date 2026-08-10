@@ -1,0 +1,27 @@
+{
+  "schema": "pdac-circuit.directed-grn/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "n_nodes": 422,
+  "n_regulators_with_pwm": 205,
+  "n_with_promoter": 422,
+  "score_distribution": {
+    "nonzero_entries": 82397,
+    "mean_nonzero": 0.5799,
+    "pctiles_of_nonzero": {
+      "50": 0.5883,
+      "75": 0.7704,
+      "90": 1.0,
+      "95": 1.0,
+      "99": 1.0
+    }
+  },
+  "edge_density_by_threshold": {
+    "0.7": 28089,
+    "0.8": 17883,
+    "0.85": 13863,
+    "0.9": 11331,
+    "0.95": 9451
+  },
+  "note": "M[i,j] = best normalised JASPAR PWM hit of regulator i in target j's promoter; directed TF->target; independent of DepMap CRISPR (leakage-free)."
+}

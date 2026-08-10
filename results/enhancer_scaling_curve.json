@@ -1,0 +1,26 @@
+{
+  "schema": "pdac-circuit.enhancer-scaling-curve/1",
+  "data_class": "REAL",
+  "eval": "fixed held-out chr8/chr9 test, 13425 rows",
+  "n_test": 13425,
+  "points": [
+    {
+      "n_train": 20000,
+      "auroc": 0.8048798784531603
+    },
+    {
+      "n_train": 40000,
+      "auroc": 0.8036689678855332
+    },
+    {
+      "n_train": 80000,
+      "auroc": 0.8058667050178477
+    },
+    {
+      "n_train": 135402,
+      "auroc": 0.8121421893421132
+    }
+  ],
+  "reverse_xdomain_panc1_to_pancreas": 0.7898703641438644,
+  "forward_xdomain_pancreas_to_panc1": 0.8349
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "pdac-circuit.robustness-diagnostic/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "n_draws": 256,
+  "seed": 20260620,
+  "design": "negative controls (dead circuits) and the repository's own fragile/robust golden fixtures are scored under the shipped metric (one global multiplicative factor per axis, settle-only criterion) and under a corrected one (independent per-gene LHS, agreement with the circuit's compiled Boolean fixed point)",
+  "per_circuit": [
+    {
+      "circuit": "robust_circuit (golden)",
+      "current_metric_global_jitter_settle_only": 1.0,
+      "dead_version_same_metric": 1.0,
+      "per_gene_lhs_settle_only": 1.0,
+      "per_gene_lhs_boolean_correct": 1.0,
+      "boolean_reference_resolved": true
+    },
+    {
+      "circuit": "fragile_circuit (golden)",
+      "current_metric_global_jitter_settle_only": 0.2031,
+      "dead_version_same_metric": 1.0,
+      "per_gene_lhs_settle_only": 0.0508,
+      "per_gene_lhs_boolean_correct": 0.0,
+      "boolean_reference_resolved": false
+    },
+    {
+      "circuit": "monostable_circuit (golden)",
+      "current_metric_global_jitter_settle_only": 1.0,
+      "dead_version_same_metric": 1.0,
+      "per_gene_lhs_settle_only": 1.0,
+      "per_gene_lhs_boolean_correct": 0.0,
+      "boolean_reference_resolved": false
+    },
+    {
+      "circuit": "toggle_switch (golden)",
+      "current_metric_global_jitter_settle_only": 1.0,
+      "dead_version_same_metric": 1.0,
+      "per_gene_lhs_settle_only": 1.0,
+      "per_gene_lhs_boolean_correct": 1.0,
+      "boolean_reference_resolved": true
+    },
+    {
+      "circuit": "repressilator (oscillates: must fail)",
+      "current_metric_global_jitter_settle_only": 0.2031,
+      "dead_version_same_metric": 1.0,
+      "per_gene_lhs_settle_only": 0.0508,
+      "per_gene_lhs_boolean_correct": 0.0,
+      "boolean_reference_resolved": false
+    }
+  ],
+  "verdict": {
+    "current_metric_range": [
+      0.2031,
+      1.0
+    ],
+    "current_metric_spread": 0.7969,
+    "separates_fragile_from_robust": true,
+    "dead_circuits_score_max": 1.0,
+    "dead_circuits_also_pass": true,
+    "per_gene_metric_spread": 0.9492,
+    "conclusion": "the sweep DOES detect instability (spread 0.7969: it fails oscillators and fragile designs), so global-vs-per-gene jitter is not the problem; but a DEAD circuit -- every gene's output drive set to zero -- scores 1.000, the maximum: the criterion asks only whether the system settles, and doing nothing settles perfectly. robustness=1.0 is therefore not evidence that a circuit works, and every circuit the pipeline actually delivers scores exactly 1.0, so the objective contributes no ranking information to NSGA-II"
+  }
+}

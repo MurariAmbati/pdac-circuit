@@ -1,0 +1,40 @@
+{
+  "accession": "GSE195623",
+  "asset": {
+    "biological_state": "patient_derived_PDAC_organoids_with_drug_sensitivity",
+    "id": "GSE195623",
+    "modalities": [
+      "ATAC_seq"
+    ],
+    "role": "drug_response_and_state_holdout",
+    "sha256": null,
+    "species": "human",
+    "split": "state_test_by_organoid_line",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE195623"
+  },
+  "files": [
+    {
+      "bytes": 36682130,
+      "name": "GSE195623_Exocrine_PDPCO_ATAC_openness.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE195nnn/GSE195623/suppl/GSE195623_Exocrine_PDPCO_ATAC_openness.txt.gz"
+    },
+    {
+      "bytes": 872209,
+      "name": "GSE195623_NEN_PDPCO_ATAC_openness.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE195nnn/GSE195623/suppl/GSE195623_NEN_PDPCO_ATAC_openness.txt.gz"
+    },
+    {
+      "bytes": 13925,
+      "name": "GSE195623_PDPCO_drug_screening.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE195nnn/GSE195623/suppl/GSE195623_PDPCO_drug_screening.txt.gz"
+    }
+  ],
+  "generated_at": "2026-07-14T20:34:36.361191-05:00",
+  "known_total_bytes": 37568264,
+  "listing_sha256": "9122bd7d466f58381a23c5890762d5fe618a7fd7c4dc3b72e7ade698b85e8f9b",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE195nnn/GSE195623/suppl/",
+  "protected_from_training": true,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "unknown_size_files": 0
+}

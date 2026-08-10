@@ -1,0 +1,43 @@
+{
+  "accession": "GSE99275",
+  "asset": {
+    "biological_state": "normal_primary_metastatic_organoid_progression",
+    "held_out_sample_groups": [
+      "N6",
+      "P3",
+      "T6",
+      "M10P"
+    ],
+    "id": "GSE99275",
+    "modalities": [
+      "ATAC_seq"
+    ],
+    "reference_genome": "mm10",
+    "role": "progression_residual_pretraining",
+    "sha256": null,
+    "species": "mouse",
+    "split": "train_by_organoid_with_held_out_lines",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99275"
+  },
+  "files": [
+    {
+      "bytes": 2896977920,
+      "name": "GSE99275_RAW.tar",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE99nnn/GSE99275/suppl/GSE99275_RAW.tar"
+    },
+    {
+      "bytes": 779,
+      "name": "filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE99nnn/GSE99275/suppl/filelist.txt"
+    }
+  ],
+  "generated_at": "2026-07-14T22:03:01.486618-05:00",
+  "known_total_bytes": 2896978699,
+  "listing_sha256": "7408d169f9b1666e466dfc00139af300bb821417560b63ef07219d5e2ddb58fc",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE99nnn/GSE99275/suppl/",
+  "protected_from_training": false,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "size_probe_failures": [],
+  "unknown_size_files": 0
+}

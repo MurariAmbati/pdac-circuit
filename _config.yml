@@ -18,6 +18,8 @@ nav:
     url: /
   - title: Results
     url: /results/
+  - title: Circuits
+    url: /circuits/
   - title: Evaluation
     url: /evaluation/
   - title: Methods
@@ -32,6 +34,8 @@ nav:
     url: /addenda/
   - title: Reports
     url: /reports/
+  - title: Code
+    url: /code/
 
 markdown: kramdown
 kramdown:
@@ -50,6 +54,21 @@ defaults:
 
 exclude:
   - scripts/
+  - src/
+  - pipeline/
+  - tests/
+  - results/
+  - data/
+  - docs/
+  - models/
+  - COMPENDIUM.md
+  - METHODS.md
+  - RESULTS.md
+  - FINDINGS.md
+  - REVIEW_RESPONSE.md
+  - AUDIT_RESPONSE.md
+  - pyproject.toml
+  - PIPELINE_SOURCE.json
   - Gemfile
   - Gemfile.lock
   - README.md

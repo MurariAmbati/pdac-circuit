@@ -1,0 +1,200 @@
+{
+  "schema": "pdac-circuit.univariate-modelfree/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "why": "fitted logistic OOF AUC is invariant to feature negation and, at 14 positives, drags genuinely-predictive features below 0.5 (demonstrated: synthetic feature with model-free AUC 0.562 gives OOF 0.424). Sub-0.5 fitted AUCs therefore carry no directional meaning; this screen is model-free.",
+  "n_genes": 419,
+  "n_selective_positive": 14,
+  "per_feature": [
+    {
+      "feature": "expr_mean_raw",
+      "rank_auc": 0.7944,
+      "effect_size_abs": 0.2944,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.1105,
+      "spearman_p": 0.02367,
+      "significant_continuous_p05": true,
+      "spearman_q_BH": 0.40239,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "expr_var_norm",
+      "rank_auc": 0.3725,
+      "effect_size_abs": 0.1275,
+      "direction": "higher => less selective",
+      "spearman_rho_continuous": -0.0636,
+      "spearman_p": 0.19418,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.47364,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "expr_mean_norm",
+      "rank_auc": 0.6273,
+      "effect_size_abs": 0.1273,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0049,
+      "spearman_p": 0.92005,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.95553,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "disease_log2fc_LEVEL",
+      "rank_auc": 0.6272,
+      "effect_size_abs": 0.1272,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": -0.0027,
+      "spearman_p": 0.95553,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.95553,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "in_strength",
+      "rank_auc": 0.3783,
+      "effect_size_abs": 0.1217,
+      "direction": "higher => less selective",
+      "spearman_rho_continuous": -0.0162,
+      "spearman_p": 0.74116,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.93957,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "pagerank",
+      "rank_auc": 0.3864,
+      "effect_size_abs": 0.1136,
+      "direction": "higher => less selective",
+      "spearman_rho_continuous": 0.0702,
+      "spearman_p": 0.1515,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.47364,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "expr_pdac_minus_other_DIFFERENTIAL",
+      "rank_auc": 0.6111,
+      "effect_size_abs": 0.1111,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0827,
+      "spearman_p": 0.09094,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.47364,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "cna_mean",
+      "rank_auc": 0.3937,
+      "effect_size_abs": 0.1063,
+      "direction": "higher => less selective",
+      "spearman_rho_continuous": 0.0457,
+      "spearman_p": 0.35095,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.66291,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "out_strength",
+      "rank_auc": 0.5952,
+      "effect_size_abs": 0.0952,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0501,
+      "spearman_p": 0.30614,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.65055,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "methylation",
+      "rank_auc": 0.4049,
+      "effect_size_abs": 0.0951,
+      "direction": "higher => less selective",
+      "spearman_rho_continuous": 0.0084,
+      "spearman_p": 0.86415,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.95553,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "cna_amp",
+      "rank_auc": 0.4175,
+      "effect_size_abs": 0.0825,
+      "direction": "higher => less selective",
+      "spearman_rho_continuous": 0.0849,
+      "spearman_p": 0.08258,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.47364,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "eigenvector",
+      "rank_auc": 0.5628,
+      "effect_size_abs": 0.0628,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0725,
+      "spearman_p": 0.13819,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.47364,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "out_degree",
+      "rank_auc": 0.5578,
+      "effect_size_abs": 0.0578,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0146,
+      "spearman_p": 0.76584,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.93957,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "hits_hub",
+      "rank_auc": 0.5556,
+      "effect_size_abs": 0.0556,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0141,
+      "spearman_p": 0.77376,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.93957,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "expr_var_raw",
+      "rank_auc": 0.5494,
+      "effect_size_abs": 0.0494,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0345,
+      "spearman_p": 0.48095,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.74329,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "in_degree",
+      "rank_auc": 0.4537,
+      "effect_size_abs": 0.0463,
+      "direction": "higher => less selective",
+      "spearman_rho_continuous": 0.04,
+      "spearman_p": 0.41428,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.70428,
+      "survives_BH_q05": false
+    },
+    {
+      "feature": "coexpr_degree",
+      "rank_auc": 0.5271,
+      "effect_size_abs": 0.0271,
+      "direction": "higher => more selective",
+      "spearman_rho_continuous": 0.0634,
+      "spearman_p": 0.19503,
+      "significant_continuous_p05": false,
+      "spearman_q_BH": 0.47364,
+      "survives_BH_q05": false
+    }
+  ],
+  "bh_survivors_continuous": [],
+  "centrality_features_surviving_BH": [],
+  "graph_peripheral_hypothesis": "REFUTED"
+}

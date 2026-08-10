@@ -1,0 +1,13 @@
+{
+  "cert_lattice": {
+    "cert_diff": "real",
+    "cert_equiv": "certified-negative",
+    "different_is_not_certified_negative": true,
+    "equiv_is_certified_negative": true
+  },
+  "conformal_coverage_0.90": 0.8973333333333333,
+  "fdr_control_0.05": 0.04102652808148164,
+  "ok": true,
+  "permutation_typeI_0.05": 0.06,
+  "schema": "pdac-circuit.validation/1"
+}

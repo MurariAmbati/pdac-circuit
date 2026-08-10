@@ -1,0 +1,42 @@
+{
+  "accession": "GSE301272",
+  "asset": {
+    "biological_state": "L36pl_PDAC_KLF5_dTAG_time_course",
+    "embargo": "Public design metadata may define the frozen 0h-versus-4h contrast; target signal values may open only after final model freeze.",
+    "id": "GSE301272",
+    "independence_context": "ekstrom_johnsen::L36pl_clone2",
+    "metadata_decoder": "external_klf5_dtag_timecourse_v1",
+    "modalities": [
+      "ATAC_seq"
+    ],
+    "reference_genome": "hg38",
+    "release_date": "2025-07-01",
+    "reported_profiles": 12,
+    "role": "protected_external_KLF5_accessibility_perturbation",
+    "sha256": null,
+    "species": "human",
+    "split": "external_study_test",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301272"
+  },
+  "files": [
+    {
+      "bytes": 1695744000,
+      "name": "GSE301272_RAW.tar",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE301nnn/GSE301272/suppl/GSE301272_RAW.tar"
+    },
+    {
+      "bytes": 2563,
+      "name": "filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE301nnn/GSE301272/suppl/filelist.txt"
+    }
+  ],
+  "generated_at": "2026-07-15T06:04:20.853356-05:00",
+  "known_total_bytes": 1695746563,
+  "listing_sha256": "5f9cc1bea98e5cd79e103fc4e51d36c1a214966d4c2936c8e8d944add345a49e",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE301nnn/GSE301272/suppl/",
+  "protected_from_training": true,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "size_probe_failures": [],
+  "unknown_size_files": 0
+}

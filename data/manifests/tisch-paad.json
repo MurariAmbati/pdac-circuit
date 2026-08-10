@@ -1,0 +1,61 @@
+{
+  "artifacts": [
+    {
+      "bytes": 8428132,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tisch-paad\\PAAD_CRA001160_CellMetainfo_table.tsv",
+      "name": "PAAD_CRA001160_CellMetainfo_table.tsv",
+      "note": "TISCH2 annotated PDAC single-cell (malignancy-labelled); Peng 2019 CRA001160 / GSE154778",
+      "retrievedAt": "2026-07-16T11:20:00Z",
+      "sha256": "d7a70cf3e0f9689ef64be5b432f5861d751e987bea8f07e7f7274a1f2c4cc4f3",
+      "status": "REAL",
+      "url": "http://tisch.comp-genomics.org/"
+    },
+    {
+      "bytes": 1154424636,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tisch-paad\\PAAD_CRA001160_expression.h5",
+      "name": "PAAD_CRA001160_expression.h5",
+      "note": "TISCH2 annotated PDAC single-cell (malignancy-labelled); Peng 2019 CRA001160 / GSE154778",
+      "retrievedAt": "2026-07-16T11:20:00Z",
+      "sha256": "e108bf5709d78503cf604c33ce11c682f8af3a1ad5ceabd9c56f9c9ecfcc43c9",
+      "status": "REAL",
+      "url": "http://tisch.comp-genomics.org/"
+    },
+    {
+      "bytes": 1828168,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tisch-paad\\PAAD_GSE154778_CellMetainfo_table.tsv",
+      "name": "PAAD_GSE154778_CellMetainfo_table.tsv",
+      "note": "TISCH2 annotated PDAC single-cell (malignancy-labelled); Peng 2019 CRA001160 / GSE154778",
+      "retrievedAt": "2026-07-16T11:20:00Z",
+      "sha256": "f1f536d5d195a26404cff42182ef7bd87db3949a6e101473dd08080266b52767",
+      "status": "REAL",
+      "url": "http://tisch.comp-genomics.org/"
+    },
+    {
+      "bytes": 299176518,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\tisch-paad\\PAAD_GSE154778_expression.h5",
+      "name": "PAAD_GSE154778_expression.h5",
+      "note": "TISCH2 annotated PDAC single-cell (malignancy-labelled); Peng 2019 CRA001160 / GSE154778",
+      "retrievedAt": "2026-07-16T11:20:00Z",
+      "sha256": "476bc46df2132ff50d6c1ba40981e7c5b121c1c8c877cbe9fd5a6f271dc8479e",
+      "status": "REAL",
+      "url": "http://tisch.comp-genomics.org/"
+    }
+  ],
+  "corpus": "tisch-paad",
+  "generatedAt": "2026-07-16T11:20:00Z",
+  "note": "TISCH2 PDAC single-cell expression + cell metainfo (malignant/stromal/immune labels).",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 4
+  }
+}

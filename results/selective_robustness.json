@@ -1,0 +1,69 @@
+{
+  "schema": "pdac-circuit.selective-robustness/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "n_genes": 419,
+  "cuts_tested": [
+    0.1,
+    0.125,
+    0.15,
+    0.175,
+    0.2
+  ],
+  "n_perm": 200,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "per_cut": [
+    {
+      "cut": 0.1,
+      "n_positive": 20,
+      "observed_auc": 0.7009,
+      "null_mean": 0.4977,
+      "null_p95": 0.6221,
+      "perm_p": 0.01,
+      "significant": true
+    },
+    {
+      "cut": 0.125,
+      "n_positive": 16,
+      "observed_auc": 0.6926,
+      "null_mean": 0.5035,
+      "null_p95": 0.6541,
+      "perm_p": 0.02,
+      "significant": true
+    },
+    {
+      "cut": 0.15,
+      "n_positive": 14,
+      "observed_auc": 0.6513,
+      "null_mean": 0.4975,
+      "null_p95": 0.6767,
+      "perm_p": 0.095,
+      "significant": false
+    },
+    {
+      "cut": 0.175,
+      "n_positive": 9,
+      "observed_auc": 0.6466,
+      "null_mean": 0.4795,
+      "null_p95": 0.6963,
+      "perm_p": 0.13,
+      "significant": false
+    },
+    {
+      "cut": 0.2,
+      "n_positive": 6,
+      "observed_auc": 0.5533,
+      "null_mean": 0.4885,
+      "null_p95": 0.7257,
+      "perm_p": 0.365,
+      "significant": false
+    }
+  ],
+  "n_significant": 2,
+  "n_tested": 5,
+  "verdict": "FRAGILE / THRESHOLD-SENSITIVE: significant at only 2/5 cuts -- like the collapse selective hint (\u00a715b), the supervised selective signal does not survive threshold variation and should be treated as an artifact, not a finding"
+}

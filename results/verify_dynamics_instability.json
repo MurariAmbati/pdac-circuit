@@ -1,0 +1,29 @@
+{
+  "schema": "pdac-circuit.verify-instability/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "D_fixed_point_quality": {
+    "median_one_step_residual": 0.729,
+    "max_one_step_residual": 0.98,
+    "note": "max-abs per-node deviation of a cell state from its one-step image"
+  },
+  "A_convergence": {
+    "cell_state_converged": 0,
+    "cell_state_total": 54,
+    "random_converged": 0,
+    "random_total": 30,
+    "tol": 1e-06,
+    "iters": 2000
+  },
+  "B_perturbation_growth": {
+    "median_growth_20steps": 3.406,
+    "max_growth_20steps": 71.101,
+    "unstable_if_gt_1": true
+  },
+  "C_spectral_radius_crosscheck": {
+    "analytic": 1.0193,
+    "finite_diff": 1.0235,
+    "max_jacobian_elementwise_diff": 0.023696869611740112
+  },
+  "conclusion": "INSTABILITY CONFIRMED by three independent tests: cell states are not stable attractors of the operating map (poor fixed-point quality, non-convergence, growing perturbations, spectral radius > 1 cross-checked analytic vs finite-diff)"
+}

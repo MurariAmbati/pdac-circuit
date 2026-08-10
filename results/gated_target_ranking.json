@@ -1,0 +1,408 @@
+{
+  "schema": "pdac-circuit.gated-ranking/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "design": "direction is decided from gene role BEFORE scoring; evidence is signed for the admissible direction; collapse is a descriptor and carries zero weight (its discrimination did not beat degree and is retracted)",
+  "n_input": 20,
+  "n_rankable": 4,
+  "n_quarantined": 4,
+  "n_unclassified": 12,
+  "ranked_candidates": [
+    {
+      "gene": "SETDB1",
+      "role": "chromatin_oncogenic",
+      "admissible_directions": [
+        "repress"
+      ],
+      "collapse_percentile_descriptor_only": 0.964,
+      "evidence": {
+        "amp": 0.3224043715846995,
+        "del": 0.03278688524590164,
+        "beta": 0.02576612021857923,
+        "det": 1.0,
+        "pmean": 0.06509788268123617,
+        "res_atac": null,
+        "res_k27": 3.202
+      },
+      "status": "allow",
+      "direction": "repress",
+      "modality": "CRISPRi",
+      "direction_aware_score": 0.7781,
+      "score_components": {
+        "expression_change": 1.0,
+        "copy_number": 0.8907103825136612,
+        "promoter_methylation": -0.0,
+        "protein_support": 1.0,
+        "chromatin_concordance": 1.0
+      },
+      "rationale": "disease log2FC +6.43 (favours repress); CNA amp 0.32 / del 0.03; PANC-1-vs-healthy chromatin +3.20 (concordance, one line)",
+      "reason": "H3K9 methyltransferase, DepMap-essential and amplified in PDAC"
+    },
+    {
+      "gene": "MYBL2",
+      "role": "proliferation_oncogenic",
+      "admissible_directions": [
+        "repress"
+      ],
+      "collapse_percentile_descriptor_only": 0.919,
+      "evidence": {
+        "amp": 0.2568306010928962,
+        "del": 0.02185792349726776,
+        "beta": 0.2123524590163934,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": 3.0451
+      },
+      "status": "allow",
+      "direction": "repress",
+      "modality": "CRISPRi",
+      "direction_aware_score": 0.7137,
+      "score_components": {
+        "expression_change": 1.0,
+        "copy_number": 0.7832422586520947,
+        "promoter_methylation": -0.0,
+        "chromatin_concordance": 1.0
+      },
+      "rationale": "disease log2FC +5.60 (favours repress); CNA amp 0.26 / del 0.02; PANC-1-vs-healthy chromatin +3.05 (concordance, one line)",
+      "reason": "proliferation TF, DepMap-essential and amplified"
+    },
+    {
+      "gene": "E2F1",
+      "role": "proliferation_oncogenic",
+      "admissible_directions": [
+        "repress"
+      ],
+      "collapse_percentile_descriptor_only": 1.0,
+      "evidence": {
+        "amp": 0.23497267759562843,
+        "del": 0.0273224043715847,
+        "beta": 0.01830382513661202,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": 2.7619
+      },
+      "status": "allow",
+      "direction": "repress",
+      "modality": "CRISPRi",
+      "direction_aware_score": 0.6923,
+      "score_components": {
+        "expression_change": 1.0,
+        "copy_number": 0.6921675774134791,
+        "promoter_methylation": -0.0,
+        "chromatin_concordance": 1.0
+      },
+      "rationale": "disease log2FC +6.85 (favours repress); CNA amp 0.23 / del 0.03; PANC-1-vs-healthy chromatin +2.76 (concordance, one line)",
+      "reason": "proliferation TF, DepMap-essential and amplified"
+    },
+    {
+      "gene": "FOSL1",
+      "role": "ap1_oncogenic",
+      "admissible_directions": [
+        "repress"
+      ],
+      "collapse_percentile_descriptor_only": 0.855,
+      "evidence": {
+        "amp": 0.08196721311475409,
+        "del": 0.08196721311475409,
+        "beta": 0.2778972677595628,
+        "det": 0.15126050420168066,
+        "pmean": -0.05201676025164353,
+        "res_atac": null,
+        "res_k27": 5.8198
+      },
+      "status": "allow",
+      "direction": "repress",
+      "modality": "CRISPRi",
+      "direction_aware_score": 0.4181,
+      "score_components": {
+        "expression_change": 1.0,
+        "copy_number": 0.0,
+        "promoter_methylation": -0.0,
+        "protein_support": -0.21248499399759904,
+        "chromatin_concordance": 1.0
+      },
+      "rationale": "disease log2FC +8.00 (favours repress); CNA amp 0.08 / del 0.08; protein detected in only 15% of tumours; PANC-1-vs-healthy chromatin +5.82 (concordance, one line)",
+      "reason": "AP-1 family, supports KRAS-driven programmes"
+    }
+  ],
+  "quarantined": [
+    {
+      "gene": "BRCA2",
+      "role": "dna_repair_tumour_suppressor",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.87,
+      "evidence": {
+        "amp": 0.14207650273224043,
+        "del": 0.12021857923497267,
+        "beta": 0.05074644808743169,
+        "det": 0.38235294117647056,
+        "pmean": 0.029092022440160254,
+        "res_atac": null,
+        "res_k27": 1.2608
+      },
+      "status": "quarantine",
+      "reason": "DNA-repair tumour suppressor; repression is a genome-instability liability, not a therapeutic direction. Relevant to synthetic lethality, not CRISPRi design"
+    },
+    {
+      "gene": "GATA6",
+      "role": "lineage_state_maintaining",
+      "admissible_directions": [
+        "activate"
+      ],
+      "collapse_percentile_descriptor_only": 0.899,
+      "evidence": {
+        "amp": 0.29508196721311475,
+        "del": 0.22404371584699453,
+        "beta": 0.04494754098360655,
+        "det": 0.6680672268907563,
+        "pmean": 0.05697699381857816,
+        "res_atac": null,
+        "res_k27": -4.0162
+      },
+      "status": "quarantine",
+      "reason": "GATA6 maintains classical epithelial identity; low GATA6 marks basal-like, chemoresistant disease. Repression risks driving a classical->basal switch, i.e. a more aggressive state. Retain as a state marker / positive control"
+    },
+    {
+      "gene": "KMT2C",
+      "role": "chromatin_tumour_suppressor",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.948,
+      "evidence": {
+        "amp": 0.22950819672131148,
+        "del": 0.08196721311475409,
+        "beta": null,
+        "det": 0.957983193277311,
+        "pmean": -0.11031400968099396,
+        "res_atac": null,
+        "res_k27": -1.0422
+      },
+      "status": "quarantine",
+      "reason": "COMPASS-family chromatin regulator with tumour-suppressive behaviour in PDAC"
+    },
+    {
+      "gene": "ATM",
+      "role": "dna_repair_tumour_suppressor",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.984,
+      "evidence": {
+        "amp": 0.09836065573770492,
+        "del": 0.08743169398907104,
+        "beta": 0.02264918032786885,
+        "det": 1.0,
+        "pmean": 0.03394668691548131,
+        "res_atac": null,
+        "res_k27": 2.3488
+      },
+      "status": "quarantine",
+      "reason": "DNA-damage-response tumour suppressor; repression increases instability"
+    }
+  ],
+  "unclassified": [
+    {
+      "gene": "ZNF790",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.956,
+      "evidence": {
+        "amp": 0.22404371584699453,
+        "del": 0.04918032786885246,
+        "beta": 0.05740437158469946,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": 1.6495
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "SOX13",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.73,
+      "evidence": {
+        "amp": 0.30601092896174864,
+        "del": 0.04371584699453552,
+        "beta": 0.28364808743169395,
+        "det": 0.40756302521008403,
+        "pmean": 0.11955629248824882,
+        "res_atac": null,
+        "res_k27": 0.8074
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "AHR",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.771,
+      "evidence": {
+        "amp": 0.28415300546448086,
+        "del": 0.01092896174863388,
+        "beta": 0.024098907103825135,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": 1.9444
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "AGR2",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.777,
+      "evidence": {
+        "amp": 0.28415300546448086,
+        "del": 0.01092896174863388,
+        "beta": 0.5855792349726776,
+        "det": 1.0,
+        "pmean": -0.4886346509951539,
+        "res_atac": null,
+        "res_k27": 0.7205
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "ZNF331",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.917,
+      "evidence": {
+        "amp": 0.17486338797814208,
+        "del": 0.1092896174863388,
+        "beta": 0.40189726775956286,
+        "det": 0.15546218487394958,
+        "pmean": -0.11305311361357258,
+        "res_atac": null,
+        "res_k27": 3.3494
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "SF3B1",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.971,
+      "evidence": {
+        "amp": 0.13114754098360656,
+        "del": 0.0273224043715847,
+        "beta": 0.10588524590163936,
+        "det": 1.0,
+        "pmean": 0.0362862404177879,
+        "res_atac": null,
+        "res_k27": 1.7338
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "SMAD3",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.816,
+      "evidence": {
+        "amp": 0.09836065573770492,
+        "del": 0.18032786885245902,
+        "beta": 0.03892568306010929,
+        "det": 1.0,
+        "pmean": -0.11026339944750589,
+        "res_atac": null,
+        "res_k27": 2.2671
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "HOXA3",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.842,
+      "evidence": {
+        "amp": 0.29508196721311475,
+        "del": 0.01639344262295082,
+        "beta": 0.3633393442622952,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": 3.818
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "ZNF528",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.868,
+      "evidence": {
+        "amp": 0.17486338797814208,
+        "del": 0.1092896174863388,
+        "beta": null,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": 2.3715
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "FAM83A",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.675,
+      "evidence": {
+        "amp": 0.37158469945355194,
+        "del": 0.03825136612021858,
+        "beta": 0.5433715846994535,
+        "det": 0.5210084033613446,
+        "pmean": -0.013416251095354532,
+        "res_atac": null,
+        "res_k27": -0.2279
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "ZNF93",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.94,
+      "evidence": {
+        "amp": 0.09836065573770492,
+        "del": 0.13114754098360656,
+        "beta": 0.05502513661202185,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": 0.3643
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    },
+    {
+      "gene": "ZNF85",
+      "role": "unclassified",
+      "admissible_directions": [],
+      "collapse_percentile_descriptor_only": 0.922,
+      "evidence": {
+        "amp": 0.09836065573770492,
+        "del": 0.13114754098360656,
+        "beta": 0.07769617486338798,
+        "det": null,
+        "pmean": null,
+        "res_atac": null,
+        "res_k27": -0.2507
+      },
+      "status": "quarantine",
+      "reason": "no curated role; direction not established. A driver label alone does not imply that repression is the therapeutic direction"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "pdac-circuit.selective-null/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "n_genes": 419,
+  "n_selective_positive": 14,
+  "observed_full_lr_cv_auc": 0.651,
+  "null_permutations": 300,
+  "null_mean": 0.4892,
+  "null_std": 0.0959,
+  "null_p95": 0.6391,
+  "perm_p_one_sided": 0.03,
+  "significant_at_0.05": true,
+  "verdict": "REAL (underpowered): observed 0.651 exceeds the permutation null (mean 0.489, p95 0.639, p=0.030); a multi-omic model recovers PDAC-selective essentiality signal degree misses, though on only 14 positives so effect size is uncertain"
+}

@@ -1,0 +1,25 @@
+{
+  "artifacts": [
+    {
+      "bytes": null,
+      "dataClass": "POINTER",
+      "license": null,
+      "localPath": null,
+      "name": "NCG_cancerdrivers_annotation.tsv",
+      "note": "download failed: HTTPError: HTTP Error 404: Not Found",
+      "retrievedAt": null,
+      "sha256": null,
+      "status": "POINTER",
+      "url": "http://network-cancer-genes.org/download/ncg_7.1_cancerdrivers_annotation.tsv"
+    }
+  ],
+  "corpus": "ncg",
+  "generatedAt": "2026-06-20T16:52:42Z",
+  "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. POINTER = open but resolved at ingest / not statically pulled this run. GATED = behind an auth/DUC wall, recorded as a pointer and never bypassed. sha256 is present only when actually hashed and is never fabricated.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 1,
+    "real": 0
+  }
+}

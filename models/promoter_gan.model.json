@@ -1,0 +1,28 @@
+{
+  "arch": "wgan-gp",
+  "cert": "real",
+  "data_lineage": [
+    "fantom5-cage",
+    "hg38-ref"
+  ],
+  "metrics": {
+    "gc_gen_mean": 0.580888671875,
+    "gc_real_mean": 0.582634765625,
+    "js_gen_vs_real": 0.012279603277353592,
+    "js_random_vs_real": 0.050773002833673954,
+    "pred_strength_gen_max": 0.9997574795511167,
+    "pred_strength_gen_median": 0.9319647463456577,
+    "pred_strength_gen_p90": 0.9917509976409374,
+    "pred_strength_random_median": 0.8259364596423926,
+    "pred_strength_random_p90": 0.9714432171439911,
+    "realism_beats_random": true,
+    "strength_uplift": 0.10602828670326514
+  },
+  "model_key": "promoter_gan",
+  "module": "VII",
+  "schema": "pdac-circuit.model/1",
+  "seed": 20260620,
+  "weight_path": "C:\\Users\\murar\\pdac-circuit\\models\\promoter_gan.pt",
+  "weight_sha256": "9d46de738ce540f7a105836243f922c499fc1bacfa6a30a64f23e142710f4258",
+  "weights_absent": false
+}

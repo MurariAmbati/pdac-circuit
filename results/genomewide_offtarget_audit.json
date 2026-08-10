@@ -1,0 +1,277 @@
+{
+  "schema": "pdac-circuit.genomewide-offtarget-audit/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "assembly": "hg38 (local FASTA)",
+  "max_mismatch": 4,
+  "genome_bp_scanned": 3088269832,
+  "chromosomes": [
+    "chr1",
+    "chr2",
+    "chr3",
+    "chr4",
+    "chr5",
+    "chr6",
+    "chr7",
+    "chr8",
+    "chr9",
+    "chr10",
+    "chr11",
+    "chr12",
+    "chr13",
+    "chr14",
+    "chr15",
+    "chr16",
+    "chr17",
+    "chr18",
+    "chr19",
+    "chr20",
+    "chr21",
+    "chr22",
+    "chrX",
+    "chrY"
+  ],
+  "shipped_search_space_bp_approx": 40000,
+  "fraction_of_genome_searched_by_shipped_code": 1.2952e-05,
+  "scorer": "the repository's own mit_single_score / cfd_style_score, applied to real hits",
+  "design": "every NGG site within <=4 mismatches of each proposed guide, both strands, across the main hg38 assembly; compared against the shipped bounded search which only looks at the target loci +/-5kb",
+  "per_guide": [
+    {
+      "gene": "MYBL2",
+      "protospacer": "CGCTGGTGAGACGAGCCGGG",
+      "perfect_match_sites_including_on_target": 1,
+      "additional_perfect_matches_elsewhere": 0,
+      "off_target_sites_by_mismatch": {
+        "1": 0,
+        "2": 0,
+        "3": 3,
+        "4": 72
+      },
+      "total_off_target_sites_le_4mm": 75,
+      "shipped_report": "0 off-targets, CFD specificity 1.00 (search space: target loci +/-5kb)",
+      "worst_example_cfd_style": 0.3697,
+      "example_hits": [
+        {
+          "chrom": "chr1",
+          "pos": 2228216,
+          "strand": "+",
+          "seq23": "CGCCGCCGGGACGAGCCGGGCGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 16984977,
+          "strand": "+",
+          "seq23": "CGCTGGTGAGATGAGCTCAGAGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 2534868,
+          "strand": "-",
+          "seq23": "AGCTGGGGAGACAAGCTGGGTGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 3070738,
+          "strand": "-",
+          "seq23": "AGCTGTTGGGACGAGCCGGGCGG",
+          "mismatches": 3
+        },
+        {
+          "chrom": "chr1",
+          "pos": 187641117,
+          "strand": "+",
+          "seq23": "CCCTGGTGAGACAAGCCAGATGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 204997435,
+          "strand": "-",
+          "seq23": "CGCTGGGGAGGCGGGCCAGGAGG",
+          "mismatches": 4
+        }
+      ]
+    },
+    {
+      "gene": "SETDB1",
+      "protospacer": "ACCCCAGACTCACAACTCAG",
+      "perfect_match_sites_including_on_target": 1,
+      "additional_perfect_matches_elsewhere": 0,
+      "off_target_sites_by_mismatch": {
+        "1": 0,
+        "2": 1,
+        "3": 17,
+        "4": 188
+      },
+      "total_off_target_sites_le_4mm": 206,
+      "shipped_report": "0 off-targets, CFD specificity 1.00 (search space: target loci +/-5kb)",
+      "worst_example_cfd_style": 0.6734,
+      "example_hits": [
+        {
+          "chrom": "chr1",
+          "pos": 3505966,
+          "strand": "+",
+          "seq23": "ACCCCAGACCTACATCCCAGTGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 15453889,
+          "strand": "+",
+          "seq23": "ACCACAGACTCACTACACAGAGG",
+          "mismatches": 3
+        },
+        {
+          "chrom": "chr1",
+          "pos": 17882029,
+          "strand": "+",
+          "seq23": "TCTCCAGACTCACCAATCAGAGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 2178985,
+          "strand": "-",
+          "seq23": "GCCCCAGAGTCACACCCCAGTGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 17962275,
+          "strand": "-",
+          "seq23": "AAACCACCCTCACAACTCAGTGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 39077235,
+          "strand": "+",
+          "seq23": "ACCTCAGCCTCACAAAGCAGTGG",
+          "mismatches": 4
+        }
+      ]
+    },
+    {
+      "gene": "FOSL1",
+      "protospacer": "TCTGACTCACCCGCGCCGTG",
+      "perfect_match_sites_including_on_target": 1,
+      "additional_perfect_matches_elsewhere": 0,
+      "off_target_sites_by_mismatch": {
+        "1": 0,
+        "2": 0,
+        "3": 3,
+        "4": 32
+      },
+      "total_off_target_sites_le_4mm": 35,
+      "shipped_report": "0 off-targets, CFD specificity 1.00 (search space: target loci +/-5kb)",
+      "worst_example_cfd_style": 0.921,
+      "example_hits": [
+        {
+          "chrom": "chr1",
+          "pos": 7174801,
+          "strand": "-",
+          "seq23": "TCTGCCTCGCCTGGGCCGTGGGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr4",
+          "pos": 1600549,
+          "strand": "-",
+          "seq23": "TCTTGCTCACCCTGGCCGTGTGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr4",
+          "pos": 148445357,
+          "strand": "+",
+          "seq23": "TCTGCCCCACCCCCGCCGTGGGG",
+          "mismatches": 3
+        },
+        {
+          "chrom": "chr4",
+          "pos": 176716626,
+          "strand": "-",
+          "seq23": "TCTCATTCACCCTCACCGTGAGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr5",
+          "pos": 176855940,
+          "strand": "+",
+          "seq23": "TGTTCCTCAACCGCGCCGTGTGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr6",
+          "pos": 30654833,
+          "strand": "+",
+          "seq23": "TCCGAGTCAACCGTGCCGTGTGG",
+          "mismatches": 4
+        }
+      ]
+    },
+    {
+      "gene": "E2F1",
+      "protospacer": "GGAGATGATGACGATCTGCG",
+      "perfect_match_sites_including_on_target": 1,
+      "additional_perfect_matches_elsewhere": 0,
+      "off_target_sites_by_mismatch": {
+        "1": 0,
+        "2": 0,
+        "3": 6,
+        "4": 62
+      },
+      "total_off_target_sites_le_4mm": 68,
+      "shipped_report": "0 off-targets, CFD specificity 1.00 (search space: target loci +/-5kb)",
+      "worst_example_cfd_style": 0.1224,
+      "example_hits": [
+        {
+          "chrom": "chr1",
+          "pos": 18862100,
+          "strand": "-",
+          "seq23": "GGGGGTGATGAGGGTCTGCGGGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 68969523,
+          "strand": "-",
+          "seq23": "GAAGATGATGACAATCTTAGGGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr1",
+          "pos": 154869295,
+          "strand": "+",
+          "seq23": "GGAGGAGATGACGATCTCCGGGG",
+          "mismatches": 3
+        },
+        {
+          "chrom": "chr1",
+          "pos": 171641105,
+          "strand": "+",
+          "seq23": "GGAGATGATGATAATCGGGGAGG",
+          "mismatches": 4
+        },
+        {
+          "chrom": "chr2",
+          "pos": 29352036,
+          "strand": "+",
+          "seq23": "GGAGATGATGACCATCTTGGAGG",
+          "mismatches": 3
+        },
+        {
+          "chrom": "chr2",
+          "pos": 29929021,
+          "strand": "-",
+          "seq23": "GGAGTTGATGTTGAGCTGCGTGG",
+          "mismatches": 4
+        }
+      ]
+    }
+  ],
+  "runtime_s": 137.8
+}

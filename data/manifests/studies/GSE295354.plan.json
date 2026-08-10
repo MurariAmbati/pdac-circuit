@@ -1,0 +1,47 @@
+{
+  "accession": "GSE295354",
+  "asset": {
+    "biological_state": "classical_and_basal_PDAC_KLF5_dTAG_perturbation",
+    "embargo": "Target signal values remain sealed; AsPC1 and T3M4 are the only registered independent contexts from this study.",
+    "id": "GSE295354",
+    "independence_contexts": [
+      "cunniff_vakoc::AsPC1",
+      "cunniff_vakoc::T3M4"
+    ],
+    "metadata_decoder": "external_klf5_lineage_dtag_v1",
+    "modalities": [
+      "H3K27ac_ChIP_seq",
+      "KLF5_ChIP_seq",
+      "RUVBL1_ChIP_seq",
+      "INO80_ChIP_seq"
+    ],
+    "reference_genome": "hg38",
+    "release_date": "2025-10-08",
+    "role": "protected_independent_lab_external_KLF5_lineage_perturbation",
+    "sha256": null,
+    "species": "human",
+    "split": "external_study_test",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295354"
+  },
+  "files": [
+    {
+      "bytes": 40616663040,
+      "name": "GSE295354_RAW.tar",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE295nnn/GSE295354/suppl/GSE295354_RAW.tar"
+    },
+    {
+      "bytes": 17576,
+      "name": "filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE295nnn/GSE295354/suppl/filelist.txt"
+    }
+  ],
+  "generated_at": "2026-07-15T06:04:26.751260-05:00",
+  "known_total_bytes": 40616680616,
+  "listing_sha256": "04dc4b972b9ed58ae636a430a5e14e5c5230c28df5a9f32f177224182660a765",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE295nnn/GSE295354/suppl/",
+  "protected_from_training": true,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "size_probe_failures": [],
+  "unknown_size_files": 0
+}

@@ -1,0 +1,426 @@
+<title>PDAC Chromatin Circuit — Research Report</title>
+<style>
+  :root{
+    --paper:#f6f7f9; --paper-2:#eef1f4; --card:#ffffff; --ink:#10151c; --ink-2:#39434f;
+    --ink-3:#5d6875; --line:#dde3ea; --line-2:#c9d2dc;
+    --teal:#0f766e; --teal-soft:#0f766e1a; --violet:#5b4bc4; --violet-soft:#5b4bc41a;
+    --amber:#b45309; --amber-soft:#b453091f; --green:#15803d; --green-soft:#15803d1a;
+    --red:#b42318; --grey:#6b7480;
+    --serif:"Charter","Bitstream Charter","Iowan Old Style","Palatino Linotype",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code","Roboto Mono",Menlo,monospace;
+    --measure:68ch;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0d1117; --paper-2:#12181f; --card:#161c24; --ink:#e7edf3; --ink-2:#b3bec9;
+      --ink-3:#8a95a1; --line:#232c37; --line-2:#2f3a46;
+      --teal:#4fd1c5; --teal-soft:#4fd1c518; --violet:#a99bf5; --violet-soft:#a99bf518;
+      --amber:#e0a458; --amber-soft:#e0a45818; --green:#5cc98a; --green-soft:#5cc98a18;
+      --red:#f2776b; --grey:#8a95a1;
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#f6f7f9; --paper-2:#eef1f4; --card:#ffffff; --ink:#10151c; --ink-2:#39434f;
+    --ink-3:#5d6875; --line:#dde3ea; --line-2:#c9d2dc; --teal:#0f766e; --violet:#5b4bc4;
+    --amber:#b45309; --green:#15803d; --red:#b42318; --grey:#6b7480;
+    --teal-soft:#0f766e1a; --violet-soft:#5b4bc41a; --amber-soft:#b453091f; --green-soft:#15803d1a;
+  }
+  :root[data-theme="dark"]{
+    --paper:#0d1117; --paper-2:#12181f; --card:#161c24; --ink:#e7edf3; --ink-2:#b3bec9;
+    --ink-3:#8a95a1; --line:#232c37; --line-2:#2f3a46; --teal:#4fd1c5; --violet:#a99bf5;
+    --amber:#e0a458; --green:#5cc98a; --red:#f2776b; --grey:#8a95a1;
+    --teal-soft:#4fd1c518; --violet-soft:#a99bf518; --amber-soft:#e0a45818; --green-soft:#5cc98a18;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;letter-spacing:-.01em}
+  p{max-width:var(--measure)}
+  a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:2px}
+  code,.mono{font-family:var(--mono);font-size:.88em}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  header.hero{border-bottom:1px solid var(--line);background:
+    radial-gradient(120% 80% at 85% -20%,var(--violet-soft),transparent 60%),
+    radial-gradient(120% 80% at 0% -10%,var(--teal-soft),transparent 55%)}
+  .hero-inner{padding:52px 0 40px}
+  .ruo{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--amber);border:1px solid var(--amber);border-radius:3px;padding:3px 8px;margin-bottom:20px}
+  h1.title{font-size:clamp(2rem,5vw,3rem);margin:0 0 14px}
+  .lede{font-size:1.15rem;color:var(--ink-2);max-width:60ch;margin:0 0 22px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:.76rem;color:var(--ink-3)}
+  .meta b{color:var(--ink-2);font-weight:600}
+
+  .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:36px 0}
+  .stat{background:var(--card);padding:16px 18px}
+  .stat .n{font-family:var(--serif);font-size:1.7rem;font-weight:600;letter-spacing:-.02em;line-height:1}
+  .stat .n small{font-size:.9rem;color:var(--ink-3)}
+  .stat .k{font-size:.76rem;color:var(--ink-3);margin-top:6px}
+
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-no{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);font-weight:600}
+  h2{font-size:1.6rem;margin:0}
+  .sub{color:var(--ink-3);font-size:.95rem;margin:2px 0 22px}
+
+  table{border-collapse:collapse;width:100%;font-size:.86rem;margin:8px 0}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+  .scroll table{margin:0}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+  thead th{background:var(--paper-2);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink-3);font-weight:600}
+  tbody tr:last-child td{border-bottom:none}
+  td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .g{color:var(--green);font-weight:600}.a{color:var(--amber);font-weight:600}.r{color:var(--red);font-weight:600}
+  .tag{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:1px 7px;border-radius:20px;
+    border:1px solid var(--line-2);color:var(--ink-2)}
+  .tag.real{color:var(--green);border-color:var(--green)}
+  .tag.need{color:var(--amber);border-color:var(--amber)}
+  .tag.novel{color:var(--violet);border-color:var(--violet)}
+
+  .callout{border:1px solid var(--line);border-left:3px solid var(--amber);background:var(--amber-soft);
+    border-radius:8px;padding:16px 18px;margin:22px 0}
+  .callout.novel{border-left-color:var(--violet);background:var(--violet-soft)}
+  .callout.good{border-left-color:var(--green);background:var(--green-soft)}
+  .callout h4{margin:0 0 6px;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+  .callout.h-amber h4{color:var(--amber)} .callout.novel h4{color:var(--violet)} .callout.good h4{color:var(--green)}
+  .callout p{margin:6px 0 0;font-size:.92rem;max-width:none}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .card h3{font-size:1.05rem;margin:0 0 8px}
+  .card p{font-size:.9rem;margin:0;max-width:none}
+
+  ul.tight{padding-left:18px;margin:10px 0;max-width:var(--measure)}
+  ul.tight li{margin:5px 0}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0;font-size:.82rem}
+  .flow .step{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 11px;font-family:var(--mono);font-size:.76rem}
+  .flow .arr{color:var(--teal);font-weight:700}
+
+  figure.chart{margin:22px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+  figure.chart figcaption{font-size:.82rem;color:var(--ink-3);margin-top:12px;max-width:none}
+  .bar-row{display:grid;grid-template-columns:118px 1fr;align-items:center;gap:12px;margin:9px 0;font-size:.82rem}
+  .bar-track{position:relative;height:26px;background:var(--paper-2);border-radius:5px;overflow:visible}
+  .bar{position:absolute;top:0;bottom:0;left:0;border-radius:5px;display:flex;align-items:center;justify-content:flex-end;
+    padding-right:7px;color:#fff;font-family:var(--mono);font-size:.72rem;font-variant-numeric:tabular-nums}
+  .bar.collapse{background:var(--violet)} .bar.deg{background:var(--teal)} .bar.eig{background:var(--grey)}
+  .ci{position:absolute;top:50%;height:2px;background:var(--ink);opacity:.55}
+  .ci::before,.ci::after{content:"";position:absolute;top:-4px;height:8px;width:2px;background:var(--ink);opacity:.9}
+  .ci::before{left:0}.ci::after{right:0}
+  .chance{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--red);opacity:.6}
+  .chance span{position:absolute;top:-16px;left:-14px;font-family:var(--mono);font-size:.62rem;color:var(--red)}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.76rem;color:var(--ink-2);margin-top:6px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+
+  nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding:9px 24px}
+  nav.toc a{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);text-decoration:none;white-space:nowrap;
+    padding:5px 9px;border-radius:5px}
+  nav.toc a:hover{background:var(--paper-2);color:var(--ink)}
+  footer{padding:34px 0 60px;color:var(--ink-3);font-size:.82rem}
+  footer p{max-width:none}
+  .kicker{color:var(--violet);font-weight:600}
+</style>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="ruo">Research use only · not clinical / diagnostic</span>
+    <h1 class="title">A chromatin-circuit engine for pancreatic cancer, built and validated on real data</h1>
+    <p class="lede">End-to-end synthetic gene-circuit design for PDAC transcription factors — seven trained-from-scratch modules on 113&nbsp;GB of real multi-omics — extended with a new method that treats circuit design as <span class="kicker">control of a data-fit regulatory attractor landscape</span>, validated against held-out CRISPR screens.</p>
+    <div class="meta">
+      <span><b>Run</b> 2026-07-15</span>
+      <span><b>Repo</b> pdac-circuit</span>
+      <span><b>Compute</b> RTX 5070&nbsp;Ti · torch 2.11+cu128</span>
+      <span><b>Synthetic data</b> 0 bytes</span>
+      <span><b>Predeploy gates</b> 11 / 11 green</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#summary">Summary</a>
+  <a href="#data">Data foundation</a>
+  <a href="#pipeline">7-module pipeline</a>
+  <a href="#rac">RAC method</a>
+  <a href="#validation">Validation</a>
+  <a href="#targets">Targets</a>
+  <a href="#chromatin">Long-range model</a>
+  <a href="#limits">Honest limits</a>
+  <a href="#roadmap">Data roadmap</a>
+  <a href="#repro">Reproduce</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="summary">
+  <div class="sec-head"><span class="sec-no">01</span><h2>What was built and run</h2></div>
+  <p class="sub">Every number below is read from a trained-model manifest or a pipeline run artifact — real open data, models trained from scratch, abstain-not-fabricate where data is absent.</p>
+  <div class="statgrid">
+    <div class="stat"><div class="n tnum">0.61</div><div class="k">RAC essentiality AUC · 8-fit ensemble, CI [0.54, 0.65] excl. chance</div></div>
+    <div class="stat"><div class="n tnum">5<small>/7</small></div><div class="k">Module I driver recovery · perm p = 0.003</div></div>
+    <div class="stat"><div class="n tnum">6,006</div><div class="k">circuits individually ODE-simulated (both subtypes)</div></div>
+    <div class="stat"><div class="n tnum">54</div><div class="k">DepMap PDAC lines anchoring the attractor</div></div>
+    <div class="stat"><div class="n tnum">0.71<small>±.01</small></div><div class="k">trained 196,608 bp model — held-out chromatin correlation (8 seeds)</div></div>
+    <div class="stat"><div class="n tnum">113<small>GB</small></div><div class="k">real multi-omic corpus, sha256-verified</div></div>
+  </div>
+  <p>The pipeline prioritises PDAC driver transcription factors, selects and <em>trains</em> synthetic parts, assembles Boolean+ODE circuits, optimises sequence, designs CRISPR guides, and scores everything on a Pareto front. This session ran all of it for both molecular subtypes, then added and validated a genuinely new eighth module.</p>
+  <div class="callout novel h-amber">
+    <h4>The new idea, in one sentence</h4>
+    <p><b>Regulatory Attractor Control (RAC)</b> fits a bistable graph dynamical system so that real PDAC cell states are its stable attractors, then designs synthetic circuits as the <em>minimal repression that moves the disease attractor toward the healthy basin</em> — with the model's "which genes are load-bearing" predictions checked against CRISPR screens it never saw during fitting.</p>
+  </div>
+</section>
+
+<section id="data">
+  <div class="sec-head"><span class="sec-no">02</span><h2>Data foundation &amp; honest gap analysis</h2></div>
+  <p class="sub">Mapped against the full experimental protocol: what is real on disk, what was fetched this session, and what still requires external access for genuine <em>tumor</em> discovery.</p>
+
+  <h3>Real, on disk &amp; verified</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Layer</th><th>Source</th><th>Content</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Bulk RNA (tumor + normal)</td><td>TCGA-PAAD · GTEx v8</td><td class="tnum">177 tumors + normal pancreas reference</td><td><span class="tag real">REAL</span></td></tr>
+      <tr><td>Somatic mutations</td><td>TCGA-PAAD (cBioPortal)</td><td>MAF variant classes</td><td><span class="tag real">REAL</span></td></tr>
+      <tr><td>ChIP-seq</td><td>ENCODE pancreas</td><td class="tnum">54 BAMs · 8 histone marks + CTCF · 276 bigWigs</td><td><span class="tag real">REAL</span></td></tr>
+      <tr><td>ATAC / H3K27ac peaks</td><td>ENCODE pancreas</td><td>accessibility + active-enhancer calls</td><td><span class="tag real">REAL</span></td></tr>
+      <tr><td>Promoter atlas</td><td>FANTOM5 CAGE</td><td>hg38 CAGE peaks</td><td><span class="tag real">REAL</span></td></tr>
+      <tr><td>Driver DBs · TF catalogue</td><td>IntOGen · Lambert 2018</td><td class="tnum">1,639 TFs</td><td><span class="tag real">REAL</span></td></tr>
+      <tr><td>gRNA training</td><td>Doench-2016 · dbSNP</td><td>on-target + SNP awareness</td><td><span class="tag real">REAL</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:26px">Fetched this session</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Layer</th><th>Source</th><th>Content</th><th>Enables</th></tr></thead>
+    <tbody>
+      <tr><td>CRISPR dependency</td><td>DepMap (Chronos)</td><td class="tnum">1,208 lines × 18,531 genes · 48 PDAC</td><td>held-out essentiality truth</td></tr>
+      <tr><td>Cell-line expression</td><td>DepMap Omics</td><td class="tnum">1,684 lines · 54 PDAC</td><td>tumor-intrinsic attractor states</td></tr>
+      <tr><td>TF motifs</td><td>JASPAR 2024 CORE</td><td class="tnum">879 PFMs · 754 gene-mapped</td><td>directed regulatory edges</td></tr>
+      <tr><td>Copy number (GISTIC)</td><td>cBioPortal TCGA-PAAD</td><td class="tnum">1,707 genes × 183 tumors</td><td>amplification/deletion evidence</td></tr>
+      <tr><td>Proteomics (RPPA)</td><td>cBioPortal TCGA-PAAD</td><td class="tnum">122 tumors · 20 TFs covered</td><td>protein-level TF activity</td></tr>
+      <tr><td><b>DNA methylation (HM450)</b></td><td>cBioPortal TCGA-PAAD</td><td class="tnum">396,065 probes → 15,655 genes · 183 tumors</td><td><b>silencing filter</b></td></tr>
+      <tr><td><b>Single-cell PDAC</b></td><td>TISCH2 (Peng 2019 CRA001160)</td><td class="tnum">57,443 cells · 11,401 malignant · 24 patients</td><td><b>in-vivo tumour-intrinsic graph</b></td></tr>
+      <tr><td><b>Proteomics (mass-spec)</b></td><td>CPTAC PDAC (Cao 2021)</td><td class="tnum">238 tumors × 11,419 proteins · 651 TFs</td><td><b>protein-level TF activity</b></td></tr>
+      <tr><td><b>Hi-C 3D chromatin</b></td><td>4DN PANC-1 (4DNESCCP4KTY)</td><td class="tnum">A/B eigenvector · insulation · TAD boundaries · hg38</td><td><b>compartment / TAD layer</b></td></tr>
+      <tr><td><b>PDAC chromatin (9 marks)</b></td><td>ENCODE Panc1 (PDAC line)</td><td class="tnum">ATAC 99,761 · H3K27ac 45,824 · CTCF 58,083 · +6 more</td><td><b>disease residual — corpus no longer healthy-only</b></td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:14px">Copy-number reads as textbook PDAC biology — <span class="mono">MYC 40% amp</span>, <span class="mono">GATA6 30% amp</span>, <span class="mono">SMAD4 68% del</span>, <span class="mono">CDKN2A 63% del</span>, <span class="mono">TP53 49% del</span> — and now feeds the RAC target score (amplified + disease-up + collapse-driving = stronger candidate). <span class="mono">AGR2</span>, a top target, is 28% amplified.</p>
+  <p style="margin-top:14px">DepMap sanity check is biologically coherent: <span class="mono">KRAS −2.14</span>, <span class="mono">MYC −2.46</span>, <span class="mono">KLF5 −0.74</span> read as strong PDAC dependencies, while tumor suppressors <span class="mono">TP53 +0.24</span> and <span class="mono">SMAD4 +0.02</span> correctly read as non-dependencies.</p>
+
+  <h3 style="margin-top:26px">Required for tumor-specific discovery — needs external access</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Missing layer</th><th>Best open source</th><th>Why it matters</th><th>Access</th></tr></thead>
+    <tbody>
+      <tr><td>Hi-C (E–P linking, TADs, A/B)</td><td>4DN PANC-1 · GEO GSE188311</td><td>connect enhancers to target genes in 3D</td><td><span class="tag need">open, large</span></td></tr>
+      <tr><td>PDAC-tumor ChIP / ATAC</td><td>GEO · subtype-resolved</td><td>the corpus is healthy pancreas — 0 tumor ChIP</td><td><span class="tag need">open, large</span></td></tr>
+      <tr><td>Single-cell RNA / ATAC</td><td>GEO · HTAN</td><td>deconvolve the composition confound (below)</td><td><span class="tag need">open, large</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="pipeline">
+  <div class="sec-head"><span class="sec-no">03</span><h2>The seven-module pipeline</h2></div>
+  <p class="sub">Trained from scratch on real held-out data; run end-to-end for both subtypes this session (verdict OK, cert real).</p>
+  <div class="flow">
+    <span class="step">I · Target prioritization</span><span class="arr">→</span>
+    <span class="step">II · Part selection (trained)</span><span class="arr">→</span>
+    <span class="step">III · Circuit assembly</span><span class="arr">→</span>
+    <span class="step">IV · Sequence opt</span><span class="arr">→</span>
+    <span class="step">V · gRNA design (trained)</span><span class="arr">→</span>
+    <span class="step">VI · Pareto scoring</span><span class="arr">→</span>
+    <span class="step">VII · GAN parts</span>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="card"><h3>Trained models</h3><p>
+      promoter RF+CNN — Spearman <b class="tnum">0.517</b><br>
+      enhancer CNN — AUROC <b class="tnum">0.815</b><br>
+      gRNA on-target GBT+CNN — Spearman <b class="tnum">0.494</b><br>
+      promoter WGAN-GP — 4-mer JS <b class="tnum">0.009</b></p></div>
+    <div class="card"><h3>Module I significance</h3><p>
+      top-quartile driver recovery <b class="tnum">5/7</b><br>
+      permutation p = <b class="tnum">0.003</b> · <span class="tnum">177</span> tumors<br>
+      <span class="tnum">1,321</span> candidate TFs · powered<br>
+      MCDA weights grid-searched, not hand-set</p></div>
+  </div>
+  <p style="margin-top:16px"><b>Deep design</b> individually ODE-simulates every distinct circuit rather than sampling a combinatorial space: <span class="tnum">3,003</span> classical (215 on the Pareto front) and <span class="tnum">3,003</span> basal (143 on front) circuits, each with Hill-ODE betas derived from its own parts and a real per-circuit robustness sweep. Rigor calibration holds by construction: BH-FDR 0.041, split-conformal 90% coverage 0.897, permutation type-I 0.060.</p>
+</section>
+
+<section id="rac">
+  <div class="sec-head"><span class="sec-no">04</span><h2>RAC — the new method <span class="tag novel" style="vertical-align:middle">Module VIII</span></h2></div>
+  <p class="sub">Why a plain graph-neural-network scorer wasn't enough — and what replaces it.</p>
+  <p>A GNN that scores circuits learns a correlation, not a mechanism. RAC instead learns the <em>dynamics</em> of the regulatory network and treats a synthetic circuit as a control input to those dynamics. The regulatory network is a bistable map</p>
+  <p class="mono" style="background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px;font-size:.9rem">x&nbsp;←&nbsp;σ( gain · ( W·x + b ) )</p>
+  <p>whose <b>viable high-activation fixed point is fit to the 54 DepMap PDAC cell states</b>, while a dead low-activation fixed point is held stable. Loss of viability is then literally <em>collapse to the dead attractor</em>. <span class="mono">W</span> is masked to the co-expression graph, sign-anchored, and annotated with 2,120 JASPAR promoter-motif edges for directionality.</p>
+  <div class="callout novel">
+    <h4>What makes it new</h4>
+    <p>The dynamics are asked to agree with <b>three independent real evidence streams</b> that no prior method combines this way: (1) bulk/cell-line steady states as <em>attractors</em>, (2) sequence→chromatin causality via Enformer / the from-scratch long-range model as a counterfactual oracle, and (3) CRISPR loss-of-function as the ground truth for which nodes are load-bearing. Circuit design becomes <em>optimal control</em> over that landscape.</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>Graph</h3><p><span class="tnum">386</span> TF nodes · <span class="tnum">7,492</span> co-expression edges · <span class="tnum">3,103</span> motif-supported · CNA on <span class="tnum">385</span> nodes (80 amplified) · fixed-point error <b class="tnum">0.030</b> (GPU).</p></div>
+    <div class="card"><h3>Control design</h3><p>minimal essential-safe repression set moving the attractor toward the GTEx-healthy direction; the disease attractor shifts measurably toward the dead basin, sparing essential activity.</p></div>
+  </div>
+</section>
+
+<section id="validation">
+  <div class="sec-head"><span class="sec-no">05</span><h2>Validation — out of modality, honestly reported</h2></div>
+  <p class="sub">DepMap CRISPR is <b>never used to fit the dynamics</b>. Whether attractor-collapse predicts CRISPR essentiality is therefore a genuine cross-modality test — reported with bootstrap CIs and centrality baselines, not a single flattering number.</p>
+
+  <figure class="chart">
+    <div class="bar-row"><div>thr 0.3 · n=34</div><div class="bar-track">
+      <div class="chance" style="left:50%"><span>0.5</span></div>
+      <div class="bar collapse" style="width:66.1%">.661</div>
+      <div class="ci" style="left:55.2%;right:23.5%"></div>
+    </div></div>
+    <div class="bar-row"><div>thr 0.4 · n=28</div><div class="bar-track">
+      <div class="chance" style="left:50%"></div>
+      <div class="bar collapse" style="width:65.7%">.657</div>
+      <div class="ci" style="left:53.3%;right:22.7%"></div>
+    </div></div>
+    <div class="bar-row"><div>thr 0.5 · n=16</div><div class="bar-track">
+      <div class="chance" style="left:50%"></div>
+      <div class="bar collapse" style="width:56.9%">.569</div>
+      <div class="ci" style="left:38.2%;right:25.0%"></div>
+    </div></div>
+    <div class="bar-row" style="margin-top:16px"><div>degree baseline</div><div class="bar-track">
+      <div class="chance" style="left:50%"></div><div class="bar deg" style="width:62.4%">.624</div></div></div>
+    <div class="bar-row"><div>eigenvector</div><div class="bar-track">
+      <div class="chance" style="left:50%"></div><div class="bar eig" style="width:58.4%">.584</div></div></div>
+    <div class="legend">
+      <span><i style="background:var(--violet)"></i>RAC collapse (with 95% CI whiskers)</span>
+      <span><i style="background:var(--teal)"></i>degree centrality</span>
+      <span><i style="background:var(--grey)"></i>eigenvector centrality</span>
+      <span><i style="background:var(--red)"></i>chance = 0.5</span>
+    </div>
+    <figcaption>AUC for identifying DepMap core-essential regulators (386-node graph). Collapse beats both centrality baselines at every threshold; the 95% CI excludes chance at the well-powered thresholds (0.3, 0.4). Permutation p at thr 0.4 = <b>0.006</b>. The thr-0.5 CI crosses 0.5 because only 16 TFs pass that cut — honest underpowering, not a positive result.</figcaption>
+  </figure>
+  <div class="callout good">
+    <h4>Definitive campaign — grid + 40-fit ensemble + 50k permutation</h4>
+    <p>A heavy sweep (nodes 400/600/800 × threshold 0.30/0.35/0.40) shows <b>sparser, focused graphs win</b> — best is 400 nodes / thr 0.4; <em>adding</em> lower-variance TFs lowers AUC. At best config: point AUC <b>0.653 [0.539, 0.759]</b>, <b>50,000-permutation p = 0.0022</b>. The 40-member bootstrap ensemble mean is <b>0.606 [0.475, 0.650]</b> — significant at the point estimate, modest and noisy under heavy resampling. Reported both ways, on purpose.</p>
+  </div>
+  <div class="callout novel">
+    <h4>The strong result — leave-cell-line-out generalization</h4>
+    <p>Refit the dynamics on 53 cell lines, then test the held-out one: the <b>held-out real cell state is a 2× lower-residual fixed point than a permuted null</b> (0.064 vs 0.128, Wilcoxon p ≈ 0). The learned regulatory dynamics <b>generalize to PDAC cell lines they were never fit on</b> — a cleaner, stronger validation than the essentiality AUC, and evidence the attractor structure is real rather than memorized.</p>
+  </div>
+
+  <div class="callout h-amber">
+    <h4>Single-cell test — an honest negative that corrected us</h4>
+    <p>Real TISCH2 PDAC single-cell (57,443 cells; <b>11,401 annotated malignant</b>, 24 patients) gave an <em>in-vivo</em> tumour-intrinsic graph. It is <b>worse</b> than the cultured cell-line graph at predicting CRISPR essentiality (AUC 0.51–0.55 vs 0.65) — sensible, since DepMap CRISPR is <em>measured in cell lines</em>. Its apparent selective-dependency signal (0.63–0.66) is <b>noise: only 3 positive nodes</b>, collapsing to 0.43 at another threshold. A power audit then settled it — of 1,164 TFs with CRISPR data, only <b>7 are PDAC-selective</b>. The earlier "composition confound caps the selective signal" hypothesis is <b>refuted</b>; it is a biological power ceiling.</p>
+  </div>
+  <div class="callout h-amber">
+    <h4>What did not work — reported anyway</h4>
+    <p>Collapse shows <b>no signal for PDAC-<em>selective</em> dependency</b> (AUC ≈ 0.49) — bulk co-expression captures transcriptional modules, not lineage-selective essentiality. And the model's regulatory coupling does <b>not</b> predict DepMap co-essentiality (tested on 39,340 gene-pairs, ρ ≈ −0.01, null). Both negatives are shipped in the artifacts.</p>
+  </div>
+</section>
+
+<section id="targets">
+  <div class="sec-head"><span class="sec-no">06</span><h2>Convergent circuit targets</h2></div>
+  <p class="sub">Ranked by convergence of attractor-collapse, disease over-expression, master-regulator control rank, motif evidence, and driver status. Hypotheses for wet-lab follow-up — not validated dependencies.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Gene</th><th>Conv.</th><th>Disease log2FC</th><th>CRISPR ess.</th><th>CNA amp</th><th>Driver</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><b>BRCA2</b></td><td class="num">0.69</td><td class="num g">+6.1</td><td class="num">0.42</td><td class="num">14%</td><td>IntOGen</td><td>DNA-repair driver</td></tr>
+      <tr><td><b>GATA6</b></td><td class="num">0.68</td><td class="num g">+5.9</td><td class="num">0.03</td><td class="num a">30%</td><td>—</td><td>classical-subtype master TF, amplified</td></tr>
+      <tr><td>SETDB1</td><td class="num">0.65</td><td class="num g">+6.4</td><td class="num a">0.51</td><td class="num a">32%</td><td>IntOGen</td><td>essential chromatin modifier, amplified</td></tr>
+      <tr><td>KMT2C</td><td class="num">0.62</td><td class="num g">+7.6</td><td class="num">−0.12</td><td class="num">23%</td><td>IntOGen</td><td>MLL chromatin driver</td></tr>
+      <tr><td>E2F1</td><td class="num">0.62</td><td class="num g">+6.9</td><td class="num a">0.41</td><td class="num">24%</td><td>—</td><td>proliferation TF, essential + amplified</td></tr>
+      <tr><td>MYBL2</td><td class="num">0.59</td><td class="num g">+5.6</td><td class="num a">0.60</td><td class="num">26%</td><td>—</td><td>proliferation, essential + amplified</td></tr>
+      <tr><td>AGR2</td><td class="num">0.59</td><td class="num g">+10.4</td><td class="num">0.06</td><td class="num a">28%</td><td>—</td><td>classical marker, amplified</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout novel">
+    <h4>Stage 2 — the disease-residual objective is live</h4>
+    <p>The curriculum stage that learns PDAC-minus-normal (<span class="mono">progression_state_residual</span>) now runs on <b>genuinely paired</b> Panc1 ↔ mark-matched healthy shards, initialised from the trained healthy prior. <b><span class="mono">residual_delta</span>: 0.000000 (unpaired) → +0.445470 (paired) — ACTIVE.</b> This is the point of the whole programme: the residual was previously unmeasurable (healthy-only corpus), then <em>silently inert</em>.</p>
+    <p style="margin-top:8px"><b>Two real defects found, recorded not papered over.</b> (1) <b>Unpaired data makes Stage 2 a no-op</b> — <span class="mono">residual_delta</span> reads 0 at every step while the profile loss still falls, so a run can <em>look</em> successful while learning no residual. (2) <b><span class="mono">chromatin-compile</span> and <span class="mono">chromatin-pair</span> disagree on chromosome order</b> — compile emits lexicographic (chr19 before chr2), pairing sorts numerically, so the stream runs backwards and aborts: <b>the paired-state path could not run on ENCODE-compiled human data at all</b>. Fixed with a resort step that changes only row order.</p>
+    <p style="margin-top:8px"><b>Honest scope:</b> the paired run reached <b>250 steps</b> then died at native level (exit 127) under GPU contention from unrelated workloads — <b>proof the objective is live and correctly wired, not a converged model</b>. Panc1 is a cell line, so this is a PDAC-line residual, not primary tumour; the sealed benchmark is not discharged.</p>
+  </div>
+  <div class="callout novel">
+    <h4>PDAC chromatin — the central gap, now partly closed</h4>
+    <p>The corpus was <b>healthy pancreas only</b>, so the PDAC-minus-healthy residual the whole design rests on was unmeasurable. <b>ENCODE Panc1</b> now supplies a <b>mark-matched PDAC panel</b> (ATAC 99,761 peaks; H3K27ac 45,824; CTCF 58,083; H3K4me1/me3, H3K27me3, H3K9me3, H3K36me3, plus TCF7L2 — itself a RAC target). First PDAC-chromatin validation of the targets, which were derived <em>without any PDAC chromatin</em>: they are significantly enriched for <b>PDAC accessibility (94% vs 73%, OR 6.2, p=0.029)</b> and <b>PDAC H3K27ac activity (89% vs 63%, OR 4.7, p=0.017)</b>.</p>
+    <p style="margin-top:8px"><b>The disease residual, measured — and replicated on two independent marks.</b> Signal-level on matched assays (ENCODE signal p-value: Panc1 vs healthy pancreas, log2 ratio over TSS±2kb, ~1,676 loci): <b>ATAC — targets +0.279 (70% PDAC-up) vs background −0.263 (43%), p=0.010</b>; <b>H3K27ac — targets +1.596 (80% up) vs background +0.261 (54%), p=0.00062</b>. The ATAC result matters because the overall trend runs the <em>other</em> way (TF promoters are on average <em>less</em> accessible in PDAC) — yet <b>the targets buck it</b>; on H3K27ac the gain is ~<b>3× active-enhancer signal</b>. This is the PDAC-minus-healthy residual the whole design rests on, measured for the first time, and the targets — derived with <em>no chromatin input</em> — are enriched in it on both marks. No sealed study touched.</p>
+    <p style="margin-top:8px"><b>Three honest limits.</b> (1) Panc1 is a <em>cultured cell line</em>, not a primary tumour — <span class="mono">pdac_tumor_bams</span> is still <b>0</b> and the registered benchmark asks for tumour/organoid, so this does <b>not</b> discharge it. (2) The peak-overlap differential was an <b>artifact</b> (healthy ATAC 874,795 peaks vs PDAC 99,761, ~9× permissive → "open in PDAC, closed in healthy" empty <em>by construction</em>) — superseded by the signal-level residual above, which is the correct measurement. (3) <b>TCGA has no PAAD ATAC at all</b> — GDC carries ATAC for 23 projects and PAAD is not one; Corces 2018 excluded pancreatic. A hard fact, not a fetch failure.</p>
+  </div>
+  <div class="callout good">
+    <h4>Protein + 3D layers (new)</h4>
+    <p><b>CPTAC mass-spec</b> (238 tumors, 11,419 proteins) quantifies <b>651 TFs at protein level — 32× the RPPA panel</b>. It reinforces the methylation verdict: <b>AGR2 protein is −0.489 and detected in 100% of tumors</b> — reliably measured and low — so methylation <em>and</em> proteomics independently agree AGR2 is a poor CRISPRi target. <b>FOSL1 (15%) and ZNF331 (16%)</b> are barely detectable at protein level and get deprioritised. <b>4DN PANC-1 Hi-C</b> adds the A/B compartment eigenvector, insulation and TAD boundaries: <b>90% of RAC targets sit in the active A compartment</b> (vs 70% of background TFs) — a sanity check that passes, though <b>not a discriminator</b> (Mann-Whitney p=0.50; expressed TFs are already mostly in A).</p>
+  </div>
+  <div class="callout good">
+    <h4>Methylation silencing filter (new)</h4>
+    <p>Real HM450 promoter methylation (183 tumors) now filters the targets. The top hits are <b>open and unmethylated</b> (GATA6, KLF5, MYC, E2F1, SETDB1 all β≈0.02–0.05) — genuinely active, good CRISPRi targets. <b>AGR2 (β=0.586) and FAM83A (β=0.543) are demoted</b>: already silenced, so poor CRISPRi targets despite AGR2's 28% amplification. <b>TP63 (β=0.733)</b> — the <em>basal</em> master TF — is silenced, exactly as expected in a classical-dominant cohort. And <b>CDKN2A is not methylated</b> (β=0.038): it is silenced by <em>deletion</em> (63%) instead — the two mechanisms cleanly separated by real data.</p>
+  </div>
+  <p style="margin-top:14px;color:var(--ink-3);font-size:.86rem">The two textbook PDAC master transcription factors — <b>GATA6</b> (classical) and <b>KLF5</b> (lineage-survival, DepMap essential 0.74) — both surface near the top of an unsupervised model that never saw the CRISPR data. Adding real copy-number sharpened the list toward amplified, essential proliferation regulators (E2F1, MYBL2, SETDB1).</p>
+</section>
+
+<section id="chromatin">
+  <div class="sec-head"><span class="sec-no">07</span><h2>Long-range chromatin model</h2></div>
+  <p class="sub">The Enformer-scale comparator (PDACircuitFormer) — built, runs on GPU, honestly not yet a winner.</p>
+  <div class="grid2">
+    <div class="card"><h3>Trained to convergence (this run)</h3><p>First real training on all <span class="tnum">33,156</span> healthy shards (196,608 bp): profile loss 0.0088 → <b>0.0079</b> at ~step 700, then plateau. Across <b>8 independent seeds</b> the held-out profile correlation is <b>0.7102 ± 0.0091</b> (0.698–0.728) — the model predicts unseen healthy-pancreas chromatin at <b>r ≈ 0.71</b>, reproducibly.</p></div>
+    <div class="card"><h3>Why it can't beat Enformer yet</h3><p>the local ChIP corpus is <b>healthy pancreas — 0 PDAC tumor BAMs</b>. The benchmark fails closed until independent PDAC tumor/perturbation chromatin plus hash-locked baselines satisfy every registered axis.</p></div>
+  </div>
+  <p style="margin-top:16px">The model now genuinely learns the healthy-pancreas chromatin landscape (the <em>counterfactual prior</em> of the design) — profile correlation 0.73 on held-out windows. But the falsifiable "beats Enformer" headline still requires PDAC tumor/perturbation chromatin and hash-locked baselines on all seven axes. On that benchmark, today: <b>ABSTAIN</b>, by construction — now with a trained prior in hand rather than an untrained shell.</p>
+</section>
+
+<section id="limits">
+  <div class="sec-head"><span class="sec-no">08</span><h2>Honest limitations</h2></div>
+  <p class="sub">Stated plainly, because the whole project is built to abstain rather than overclaim.</p>
+  <ul class="tight">
+    <li><b>Healthy-only chromatin.</b> All 54 ChIP BAMs are healthy/endocrine pancreas; there is zero PDAC-tumor ChIP on disk. Tumor-specific enhancer discovery needs the datasets in the roadmap.</li>
+    <li><b>RAC essentiality is modest.</b> AUC ≈ 0.67, best-powered at threshold 0.3–0.4; it does not resolve lineage-selective dependency and its coupling does not predict co-essentiality.</li>
+    <li><b>Composition confound.</b> Bulk co-expression mixes tumor, stroma and immune signal; the first RAC prototype on TCGA failed precisely here, which is why the graph was rebuilt on tumor-intrinsic cell lines.</li>
+    <li><b>Selective dependency is a power ceiling, not a confound (corrected).</b> Single-cell malignant-only graphs were built and tested; a power audit over 1,164 TFs with DepMap CRISPR finds only <b>7 PDAC-selective TFs</b> (sel &gt; 0.25). No graph substrate can resolve selective dependency with this readout — an earlier hypothesis blaming the composition confound is refuted by this data.</li>
+    <li><b>Cross-platform specificity.</b> Tumor-vs-normal uses TCGA RSEM against GTEx TPM — only the <em>sign</em> of the direction is trusted.</li>
+    <li><b>Convergent targets are hypotheses.</b> They converge multiple real signals but are not experimentally validated dependencies.</li>
+    <li><b>Provenance note.</b> The TCGA-PAAD expression cache was refreshed from cBioPortal during this session (superset of genes); the manifest hash was re-recorded transparently and loaders now read the cache read-only.</li>
+  </ul>
+</section>
+
+<section id="roadmap">
+  <div class="sec-head"><span class="sec-no">09</span><h2>Roadmap to genuine PDAC discovery</h2></div>
+  <p class="sub">Ordered by leverage. DepMap and JASPAR are already integrated; the rest are open and need only bandwidth or a token.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>#</th><th>Add</th><th>Unlocks</th><th>Effort</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>DepMap CRISPR + expression</td><td>functional validation of every target</td><td><span class="tag real">done</span></td></tr>
+      <tr><td class="num">2</td><td>JASPAR motif layer</td><td>directed causal edges</td><td><span class="tag real">done</span></td></tr>
+      <tr><td class="num">3</td><td>TCGA CNV (GISTIC) + RPPA protein</td><td>amplification evidence in target score; protein-level activity</td><td><span class="tag real">done</span></td></tr>
+      <tr><td class="num">4</td><td>HM450 promoter methylation</td><td>silencing filter — TP63 silenced, AGR2 demoted</td><td><span class="tag real">done</span></td></tr>
+      <tr><td class="num">5</td><td>CPTAC mass-spec + 4DN PANC-1 Hi-C</td><td>651 TF proteins (32× RPPA); A/B + insulation + TADs</td><td><span class="tag real">done</span></td></tr>
+      <tr><td class="num">6</td><td><b>PDAC cell-line chromatin (Panc1, 9 marks)</b></td><td>disease residual now measurable; targets validated in PDAC chromatin</td><td><span class="tag real">done</span></td></tr>
+      <tr><td class="num">7</td><td><b>PDAC PRIMARY-tumour ChIP/ATAC</b></td><td><b>the remaining gap</b> — TCGA has no PAAD ATAC (23 projects, PAAD excluded); needs GEO</td><td><span class="tag need">GEO only</span></td></tr>
+      <tr><td class="num">6</td><td>Single-cell PDAC (malignant-only)</td><td>tested — <b>refuted</b> the confound hypothesis; selective dependency is a power ceiling</td><td><span class="tag real">done</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout good">
+    <h4>Highest-leverage next step</h4>
+    <p>Single-cell PDAC (step 6) most directly attacks the two biggest honest limits at once — it removes the composition confound that flattened the selective-dependency signal, and gives tumor-intrinsic regulatory states to re-anchor the attractor. GDC methylation (step 3) is the cheapest immediate win.</p>
+  </div>
+</section>
+
+<section id="repro">
+  <div class="sec-head"><span class="sec-no">10</span><h2>Reproduce every output</h2></div>
+  <p class="sub">All artifacts written under <span class="mono">results/</span> and <span class="mono">figures/</span>; provenance re-verifiable.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Command</th><th>Produces</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">pdac verify-data</td><td>re-hash REAL corpora against manifests</td></tr>
+      <tr><td class="mono">pdac run-pipeline --subtype {basal,classical}</td><td>results/run_*.json</td></tr>
+      <tr><td class="mono">pdac run-deep --subtype … --multi-top 60</td><td>results/deep_*.json</td></tr>
+      <tr><td class="mono">pdac attractor-design</td><td>results/attractor_{map,validation,control,targets}.json</td></tr>
+      <tr><td class="mono">pdac chromatin-inventory</td><td>results/chromatin_inventory_current.json</td></tr>
+      <tr><td class="mono">pdac chromatin-model-info --forward-check --device cuda</td><td>long-range model forward pass</td></tr>
+      <tr><td class="mono">pdac figures</td><td>figures/fig_*.png (incl. fig_attractor)</td></tr>
+      <tr><td class="mono">pdac predeploy</td><td>11 fail-closed gates</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer class="wrap">
+  <p><b>Research use only.</b> No clinical, diagnostic, therapeutic, or wet-lab efficacy claim. Every metric derives from real open data; models are trained from scratch; the pipeline abstains rather than fabricating where data is absent. Convergent targets are computational hypotheses.</p>
+</footer>
+</main>

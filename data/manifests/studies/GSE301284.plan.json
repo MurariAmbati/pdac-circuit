@@ -1,0 +1,45 @@
+{
+  "accession": "GSE301284",
+  "asset": {
+    "biological_state": "L36pl_PDAC_KLF5_dTAG_time_course_and_static_PDAC_lines",
+    "embargo": "The L36pl assay is one biological context jointly with GSE301272, never a second independent group. Target signal values may open only after final model freeze.",
+    "id": "GSE301284",
+    "independence_context": "ekstrom_johnsen::L36pl_clone2",
+    "metadata_decoder": "external_klf5_dtag_timecourse_v1",
+    "modalities": [
+      "H3K27ac_ChIP_seq",
+      "H3K4me3_ChIP_seq",
+      "KLF5_ChIP_seq",
+      "CTCF_ChIP_seq"
+    ],
+    "reference_genome": "hg38",
+    "release_date": "2025-07-01",
+    "reported_profiles": 46,
+    "role": "protected_external_KLF5_active_chromatin_perturbation",
+    "sha256": null,
+    "species": "human",
+    "split": "external_study_test",
+    "status": "POINTER",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301284"
+  },
+  "files": [
+    {
+      "bytes": 4367646720,
+      "name": "GSE301284_RAW.tar",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE301nnn/GSE301284/suppl/GSE301284_RAW.tar"
+    },
+    {
+      "bytes": 9522,
+      "name": "filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE301nnn/GSE301284/suppl/filelist.txt"
+    }
+  ],
+  "generated_at": "2026-07-15T06:04:23.662853-05:00",
+  "known_total_bytes": 4367656242,
+  "listing_sha256": "e25def19a901a659874ebd679ac94847e7bc5a46de14347e4da04ab3f30e5652",
+  "listing_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE301nnn/GSE301284/suppl/",
+  "protected_from_training": true,
+  "schema": "pdac-circuit.geo-download-plan/1",
+  "size_probe_failures": [],
+  "unknown_size_files": 0
+}

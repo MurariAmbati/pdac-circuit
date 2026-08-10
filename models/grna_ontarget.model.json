@@ -1,0 +1,26 @@
+{
+ "arch": "gbt+cnn",
+ "cert": "real",
+ "data_lineage": [
+  "doench-2016",
+  "kim-2019-ontarget"
+ ],
+ "metrics": {
+  "conformal_radius": 0.4548991918563843,
+  "perm_p": 0.000999000999000999,
+  "spearman_cnn": 0.6167,
+  "spearman_gbm": 0.6504,
+  "spearman_ensemble": 0.6571,
+  "ensemble_weight_cnn": 0.4,
+  "ensemble_weight_gbm": 0.6,
+  "note": "CNN + GBM both retrained on Doench+Kim real HT (18142 guides). Held-out Doench-GENE Spearman (CCDC101/CD15/CD45, 688): CNN 0.39->0.62, GBM 0.65, ensemble 0.648->0.657. Weight 0.40/0.60 selected on held-out Doench val genes (no test peeking). results/grna_cnn_kim_retrain.json",
+  "training_data": "Doench-2016 (5310) + Kim-2019 (12832) = 18142"
+ },
+ "model_key": "grna_ontarget",
+ "module": "V",
+ "schema": "pdac-circuit.model/1",
+ "seed": 20260620,
+ "weight_path": "C:\\Users\\murar\\pdac-circuit\\models\\grna_ontarget.pt",
+ "weight_sha256": "7c5da6105bb40077e2793fa409719d65fd7cf8cd7820300d69153bb8fb97479e",
+ "weights_absent": false
+}

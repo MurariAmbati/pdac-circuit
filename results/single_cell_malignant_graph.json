@@ -1,0 +1,57 @@
+{
+  "schema": "pdac-circuit.single-cell-malignant/1",
+  "data_class": "REAL",
+  "provenance": {
+    "dataset": "PAAD_CRA001160",
+    "n_cells_total": 57443,
+    "n_malignant_cells": 11401,
+    "n_patients_with_malignant": 24,
+    "min_malignant_cells_per_patient": 30,
+    "celltype_counts": {
+      "Others": 18108,
+      "Stromal cells": 16280,
+      "Immune cells": 11654,
+      "Malignant cells": 11401
+    }
+  },
+  "n_nodes": 300,
+  "comparisons": [
+    {
+      "coexpr_threshold": 0.35,
+      "n_edges": 15028,
+      "fixed_point_error": 0.00524,
+      "auc_collapse_abs_thr0.4": 0.5522,
+      "auc_degree_abs_thr0.4": 0.4334,
+      "n_positive_abs": 28,
+      "auc_collapse_selective": 0.6304,
+      "n_positive_selective": 3
+    },
+    {
+      "coexpr_threshold": 0.4,
+      "n_edges": 10004,
+      "fixed_point_error": 0.00249,
+      "auc_collapse_abs_thr0.4": 0.5116,
+      "auc_degree_abs_thr0.4": 0.4335,
+      "n_positive_abs": 28,
+      "auc_collapse_selective": 0.6553,
+      "n_positive_selective": 3
+    },
+    {
+      "coexpr_threshold": 0.45,
+      "n_edges": 6332,
+      "fixed_point_error": 0.00562,
+      "auc_collapse_abs_thr0.4": 0.5366,
+      "auc_degree_abs_thr0.4": 0.4278,
+      "n_positive_abs": 28,
+      "auc_collapse_selective": 0.4263,
+      "n_positive_selective": 3
+    }
+  ],
+  "elapsed_seconds": 65.6,
+  "honest_interpretation": {
+    "absolute_essentiality": "in-vivo malignant graph AUC 0.51-0.55 vs cultured cell-line graph 0.65-0.66 -> the cell-line substrate matches the cell-line-measured CRISPR readout better; the in-vivo tumour graph is WORSE for this task",
+    "selective_dependency": "NOT INTERPRETABLE: only 3 nodes pass sel>0.25, so the apparent AUC 0.63-0.66 is noise (collapses to 0.43 at thr 0.45). No claim made.",
+    "correction": "REFUTES the earlier hypothesis that the composition confound capped the selective-dependency signal. The real limit is POWER: PDAC-selectively-essential TFs are near-nonexistent in DepMap, so no graph substrate can resolve them.",
+    "verdict": "honest negative"
+  }
+}

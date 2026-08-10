@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "bytes": 51006804,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\gencode-v46\\gencode.v46.annotation.gtf.gz",
+      "name": "gencode.v46.annotation.gtf.gz",
+      "retrievedAt": "2026-06-20T05:40:10Z",
+      "sha256": "82b0e52bc4956486528152e3850660b3c41767ab103d87949e41d38f92ef8b38",
+      "status": "REAL",
+      "url": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/gencode.v46.annotation.gtf.gz"
+    }
+  ],
+  "corpus": "gencode-v46",
+  "generatedAt": "2026-06-20T05:40:10Z",
+  "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. POINTER = open but resolved at ingest / not statically pulled this run. GATED = behind an auth/DUC wall, recorded as a pointer and never bypassed. sha256 is present only when actually hashed and is never fabricated.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 1
+  }
+}

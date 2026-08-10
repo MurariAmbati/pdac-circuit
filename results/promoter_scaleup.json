@@ -1,0 +1,23 @@
+{
+  "schema": "pdac-circuit.promoter-scaleup/1",
+  "data_class": "REAL",
+  "eval": "fixed held-out test = ALL peaks on ['chr8', 'chr9'] (16940 peaks); apples-to-apples for both models",
+  "n_total_peaks": 209374,
+  "n_train": 181428,
+  "n_val": 11006,
+  "n_test": 16940,
+  "shipped_cap": 60000,
+  "baseline_shipped_cnn": 0.49879501415879746,
+  "baseline_shipped_rf": 0.5019791139601334,
+  "baseline_shipped_ensemble": 0.5199423710593025,
+  "scaleup_cnn": 0.5246969177564113,
+  "scaleup_rf": 0.5080573481022079,
+  "scaleup_ensemble_w_cnn": 0.86,
+  "scaleup_ensemble": 0.5274865419243712,
+  "scaleup_ensemble_0.45_0.55": 0.5269093994561671,
+  "delta_ensemble": 0.0075441708650686445,
+  "deployed": true,
+  "best_val_spearman": 0.45686031609238076,
+  "epochs_run": 7,
+  "deploy_w_cnn": 0.86
+}

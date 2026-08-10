@@ -1,0 +1,95 @@
+{
+  "n_nodes_with_crispr": 384,
+  "primary_threshold": 0.4,
+  "primary": {
+    "essential_threshold": 0.4,
+    "n_positive": 28,
+    "auc_collapse": 0.6574,
+    "auc_collapse_ci95": [
+      0.5334,
+      0.7726
+    ],
+    "auc_degree": 0.624,
+    "auc_eigencentrality": 0.5835,
+    "ci_excludes_chance": true
+  },
+  "permutation_p_primary": 0.00633,
+  "threshold_sweep": [
+    {
+      "essential_threshold": 0.3,
+      "n_positive": 34,
+      "auc_collapse": 0.6608,
+      "auc_collapse_ci95": [
+        0.5517,
+        0.7651
+      ],
+      "auc_degree": 0.6208,
+      "auc_eigencentrality": 0.5892,
+      "ci_excludes_chance": true
+    },
+    {
+      "essential_threshold": 0.4,
+      "n_positive": 28,
+      "auc_collapse": 0.6574,
+      "auc_collapse_ci95": [
+        0.5334,
+        0.7726
+      ],
+      "auc_degree": 0.624,
+      "auc_eigencentrality": 0.5835,
+      "ci_excludes_chance": true
+    },
+    {
+      "essential_threshold": 0.5,
+      "n_positive": 16,
+      "auc_collapse": 0.5691,
+      "auc_collapse_ci95": [
+        0.3815,
+        0.7502
+      ],
+      "auc_degree": 0.533,
+      "auc_eigencentrality": 0.4828,
+      "ci_excludes_chance": false
+    },
+    {
+      "essential_threshold": 0.6,
+      "n_positive": 9,
+      "auc_collapse": 0.5067,
+      "auc_collapse_ci95": [
+        0.2777,
+        0.7368
+      ],
+      "auc_degree": 0.4855,
+      "auc_eigencentrality": 0.4717,
+      "ci_excludes_chance": false
+    }
+  ],
+  "spearman_collapse_abs_essential": [
+    0.0803,
+    0.11622
+  ],
+  "spearman_collapse_selective_dep": [
+    0.0129,
+    0.8011
+  ],
+  "selective_dependency_signal": "none (co-expression captures modules, not lineage-selective dependency)",
+  "interpretation": "attractor-collapse identifies core-essential regulators above degree/eigenvector centrality (out-of-modality: DepMap CRISPR never used in the fit); signal is modest and best-powered at essential-threshold 0.3-0.4",
+  "ensemble": {
+    "members": 8,
+    "auc_ensemble_thr0.3_mean_ci": [
+      0.6124,
+      [
+        0.5221,
+        0.6641
+      ]
+    ],
+    "auc_ensemble_thr0.4_mean_ci": [
+      0.608,
+      [
+        0.5388,
+        0.65
+      ]
+    ],
+    "auc_ensemble_thr0.4_worst_member": 0.5321
+  }
+}

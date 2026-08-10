@@ -4,7 +4,10 @@ import json
 import re
 from pathlib import Path
 
-SRC = Path("C:/Users/murar/pdac-circuit")
+import build_circuits
+
+_LOCAL = Path(__file__).resolve().parents[1]
+SRC = _LOCAL if (_LOCAL / "results").is_dir() else Path("C:/Users/murar/pdac-circuit")
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ROOT / "_pages"
 
@@ -356,6 +359,7 @@ def main():
                "than removed.")
     evaluation_page()
     figures_page()
+    build_circuits.main()
     print("  evaluation page + 2 index pages")
 
 

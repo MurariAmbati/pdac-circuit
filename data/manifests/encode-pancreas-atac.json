@@ -1,0 +1,143 @@
+{
+  "artifacts": [
+    {
+      "accession": "ENCFF029YUG",
+      "bytes": 7048561,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF029YUG.bed.gz",
+      "name": "ENCFF029YUG.bed.gz",
+      "output_type": "pseudoreplicated peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "122238aafade6433211f2208594b628b733611270c967a720cb3684949adfcbb",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF029YUG/@@download/ENCFF029YUG.bed.gz"
+    },
+    {
+      "accession": "ENCFF176EOV",
+      "bytes": 3369601,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF176EOV.bed.gz",
+      "name": "ENCFF176EOV.bed.gz",
+      "output_type": "IDR thresholded peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "1bce2105cd79b6cbcba654077c616270d12dc4d8c2d1857c1ffa37ad88f26df1",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF176EOV/@@download/ENCFF176EOV.bed.gz"
+    },
+    {
+      "accession": "ENCFF184TLY",
+      "bytes": 4126880,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF184TLY.bed.gz",
+      "name": "ENCFF184TLY.bed.gz",
+      "output_type": "IDR thresholded peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "df403f20f63f412dd1de528ae7b30a3753a4d89202b626c53c3c147b44c48889",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF184TLY/@@download/ENCFF184TLY.bed.gz"
+    },
+    {
+      "accession": "ENCFF201EYO",
+      "bytes": 3853011,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF201EYO.bed.gz",
+      "name": "ENCFF201EYO.bed.gz",
+      "output_type": "IDR thresholded peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "8457cfbcd434826da846e4a3d5367462f224133a69a3bd65ca38c4ce45511ae9",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF201EYO/@@download/ENCFF201EYO.bed.gz"
+    },
+    {
+      "accession": "ENCFF305BGH",
+      "bytes": 3920481,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF305BGH.bed.gz",
+      "name": "ENCFF305BGH.bed.gz",
+      "output_type": "pseudoreplicated peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "11fdb6796e812ce13400804b0b330bfd5c827502c7af2eb0b700a71b69222f07",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF305BGH/@@download/ENCFF305BGH.bed.gz"
+    },
+    {
+      "accession": "ENCFF360KWB",
+      "bytes": 2473391,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF360KWB.bed.gz",
+      "name": "ENCFF360KWB.bed.gz",
+      "output_type": "IDR thresholded peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "a17e97d7da4c7d7712c3eb748e41b83ac3442deada06a1a86ed98a5b2594dafb",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF360KWB/@@download/ENCFF360KWB.bed.gz"
+    },
+    {
+      "accession": "ENCFF480ITE",
+      "bytes": 6528845,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF480ITE.bed.gz",
+      "name": "ENCFF480ITE.bed.gz",
+      "output_type": "pseudoreplicated peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "f769cb1f26faf9ef0b9e430c61cbca68a002387672323abe0302a856df4efade",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF480ITE/@@download/ENCFF480ITE.bed.gz"
+    },
+    {
+      "accession": "ENCFF678PAI",
+      "bytes": 6520599,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF678PAI.bed.gz",
+      "name": "ENCFF678PAI.bed.gz",
+      "output_type": "pseudoreplicated peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "472fc3c867d9aa8620f37e284c9bad81f050129f4ca56e75be7d2f32b3fe193c",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF678PAI/@@download/ENCFF678PAI.bed.gz"
+    },
+    {
+      "accession": "ENCFF707EUL",
+      "bytes": 5043627,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF707EUL.bed.gz",
+      "name": "ENCFF707EUL.bed.gz",
+      "output_type": "pseudoreplicated peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "03783b8a94c175015d5044fd9000b664d2b0aaacdb966bb5586688faf573b629",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF707EUL/@@download/ENCFF707EUL.bed.gz"
+    },
+    {
+      "accession": "ENCFF981WQJ",
+      "bytes": 4521613,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\encode-pancreas-atac\\ENCFF981WQJ.bed.gz",
+      "name": "ENCFF981WQJ.bed.gz",
+      "output_type": "IDR thresholded peaks",
+      "retrievedAt": "2026-08-10T03:30:32Z",
+      "sha256": "d08716fcd9110b1ed8872ce773f582f120ebd3f274288cd740f7f4221cad249c",
+      "status": "REAL",
+      "url": "https://www.encodeproject.org/files/ENCFF981WQJ/@@download/ENCFF981WQJ.bed.gz"
+    }
+  ],
+  "corpus": "encode-pancreas-atac",
+  "generatedAt": "2026-08-10T03:30:32Z",
+  "note": "All released GRCh38 narrowPeak files for this assay in pancreas. Previously only the first four were retrieved.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 10
+  }
+}

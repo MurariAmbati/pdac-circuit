@@ -1,0 +1,87 @@
+{
+  "schema": "pdac-circuit.peripherality/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "protocol": "identical to Phase 5 (nested CV, 5 seeds, StratifiedKFold-5, in-fold standardisation)",
+  "n_genes": 419,
+  "centralities_averaged": [
+    "pagerank",
+    "out_degree",
+    "hits_hub",
+    "coexpr_degree",
+    "eigenvector"
+  ],
+  "proxy_check": {
+    "spearman_peripherality_vs_expr_mean_raw": 0.0134,
+    "p": 0.7840886115415465
+  },
+  "primary_cut_0.15": {
+    "n_positive": 14,
+    "auc_peripherality": [
+      0.3955,
+      0.0283
+    ],
+    "auc_expr_only": [
+      0.7768,
+      0.0073
+    ],
+    "auc_expr_plus_peripherality": [
+      0.751,
+      0.0211
+    ],
+    "increment_over_expression": -0.0258,
+    "partial_spearman_given_expr": [
+      -0.0811,
+      0.0974
+    ]
+  },
+  "threshold_sweep": [
+    {
+      "cut": 0.1,
+      "n_positive": 20,
+      "observed_auc": 0.3834,
+      "null_mean": 0.4798,
+      "null_p95": 0.5933,
+      "perm_p": 0.8875,
+      "obs_minus_null": -0.0964
+    },
+    {
+      "cut": 0.125,
+      "n_positive": 16,
+      "observed_auc": 0.4076,
+      "null_mean": 0.467,
+      "null_p95": 0.6007,
+      "perm_p": 0.685,
+      "obs_minus_null": -0.0594
+    },
+    {
+      "cut": 0.15,
+      "n_positive": 14,
+      "observed_auc": 0.3955,
+      "null_mean": 0.4723,
+      "null_p95": 0.6138,
+      "perm_p": 0.745,
+      "obs_minus_null": -0.0768
+    },
+    {
+      "cut": 0.175,
+      "n_positive": 9,
+      "observed_auc": 0.2726,
+      "null_mean": 0.4583,
+      "null_p95": 0.6524,
+      "perm_p": 0.945,
+      "obs_minus_null": -0.1858
+    },
+    {
+      "cut": 0.2,
+      "n_positive": 6,
+      "observed_auc": 0.2763,
+      "null_mean": 0.4343,
+      "null_p95": 0.671,
+      "perm_p": 0.8625,
+      "obs_minus_null": -0.158
+    }
+  ],
+  "effect_stable_across_cuts": false,
+  "verdict": "ARTIFACT: observed AUC bounces across label cuts (the \u00a715b signature)"
+}

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PDAC Chromatin-Circuit — computational results</title>
+<meta name="description" content="A computational PDAC synthetic gene-circuit prototype and auditing framework. Real-data results, honest negatives, and retractions.">
+<style>
+:root{--bg:#fbfbfd;--fg:#16181d;--mut:#5a6272;--line:#e3e6ec;--card:#fff;--acc:#1f6feb;--good:#127a3d;--bad:#b3261e;--warn:#8a5a00;--warnbg:#fff8e6;--code:#f3f5f9}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--fg:#e6edf3;--mut:#9aa4b2;--line:#242b36;--card:#151b24;--acc:#589bff;--good:#3fb950;--bad:#f85149;--warn:#d9a441;--warnbg:#1e1806;--code:#111720}}
+:root[data-theme=dark]{--bg:#0d1117;--fg:#e6edf3;--mut:#9aa4b2;--line:#242b36;--card:#151b24;--acc:#589bff;--good:#3fb950;--bad:#f85149;--warn:#d9a441;--warnbg:#1e1806;--code:#111720}
+:root[data-theme=light]{--bg:#fbfbfd;--fg:#16181d;--mut:#5a6272;--line:#e3e6ec;--card:#fff;--acc:#1f6feb;--good:#127a3d;--bad:#b3261e;--warn:#8a5a00;--warnbg:#fff8e6;--code:#f3f5f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px 96px}
+header{padding:26px 0 30px;border-bottom:1px solid var(--line)}
+h1{font-size:2.35rem;line-height:1.15;margin:0 0 10px;letter-spacing:-.022em}
+.sub{color:var(--mut);font-size:1.09rem;max-width:74ch;margin:0}
+.ruo{display:inline-block;margin:20px 0 0;padding:5px 11px;border:1px solid var(--warn);color:var(--warn);background:var(--warnbg);border-radius:6px;font-size:.76rem;font-weight:650;letter-spacing:.05em;text-transform:uppercase}
+h2{font-size:1.35rem;margin:52px 0 6px;letter-spacing:-.015em;scroll-margin-top:20px}
+h3{font-size:1.02rem;margin:30px 0 6px}
+.lede{color:var(--mut);margin:0 0 18px;max-width:76ch}
+p{max-width:76ch}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.9rem}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.71rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);font-weight:650}
+tbody tr:hover{background:var(--code)}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.87em}
+.before{color:var(--mut)}
+.after{color:var(--good);font-weight:650}
+.up{color:var(--good)}
+.dn{color:var(--bad)}
+.src{color:var(--mut);font-size:.83em}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:22px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px 17px}
+.card .k{font-size:1.72rem;font-weight:680;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.card .l{color:var(--mut);font-size:.79rem;margin-top:3px;line-height:1.45}
+.note{border-left:3px solid var(--acc);background:var(--card);padding:13px 17px;border-radius:0 9px 9px 0;margin:20px 0}
+.note.bad{border-left-color:var(--bad)}
+.note.warn{border-left-color:var(--warn)}
+.note b{font-weight:670}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:20px 0}
+.chart{width:100%;height:auto;background:var(--card);border:1px solid var(--line);border-radius:11px}
+.gl{stroke:var(--line);stroke-width:1}
+.ln{fill:none;stroke:var(--acc);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.pt{fill:var(--acc)}
+.ax{fill:var(--mut);font-size:10px;font-family:ui-monospace,monospace}
+.cap{color:var(--mut);font-size:.82rem;margin:-8px 0 0}
+code{background:var(--code);padding:1.5px 5px;border-radius:4px;font-size:.87em;font-family:ui-monospace,monospace}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+footer{margin-top:62px;padding-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:.85rem}
+ul{max-width:76ch}
+li{margin:5px 0}
+.bar{display:flex;justify-content:flex-end;padding-top:16px}
+.toggle{background:var(--card);border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:6px 11px;font-size:.78rem;cursor:pointer;font-family:inherit}
+.toggle:hover{color:var(--fg);border-color:var(--mut)}
+@media(max-width:640px){h1{font-size:1.8rem}header{padding:14px 0 24px}.wrap{padding:0 16px 64px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bar"><button class="toggle" id="tg" type="button">theme</button></div>
+
+<header>
+<h1>PDAC Chromatin-Circuit</h1>
+<p class="sub">A computational prototype and auditing framework for designing synthetic gene circuits against
+pancreatic-ductal-adenocarcinoma transcription factors, built entirely on real public data. This page reports what
+survived validation and what did not.</p>
+<div class="ruo">Research use only — not for clinical or diagnostic use</div>
+</header>
+
+<div class="note bad">
+<b>Read this first.</b> This is <b>not</b> a validated therapeutic platform. It has produced no wet-lab result, no
+cloning-ready construct, and no safe final guide RNA. One biological finding survived adversarial validation
+(H3K27ac, below). The project's original headline claim was <b>retracted</b> after a head-to-head test it had never
+been given. The end-to-end circuit pipeline currently <b>abstains</b> rather than emit designs built on numbers it
+cannot stand behind.
+</div>
+
+<h2 id="models">Trained models</h2>
+<p class="lede">Four learned sequence models, each trained from scratch on real public data with a
+leakage-controlled held-out split. Every "current" figure below is read directly from the deployed model manifest
+at build time, so this page cannot drift from the shipped weights.</p>
+<div class="scroll">
+<table>
+<thead><tr><th>Model</th><th>Module</th><th>Architecture</th><th>Metric</th><th class="num">Before</th><th class="num">Current</th><th>Real training data</th></tr></thead>
+<tbody><tr><td><b>gRNA on-target</b></td><td>V</td><td class='mono'>GBT + CNN</td><td>Spearman</td><td class='num before'>0.4938</td><td class='num after'>0.6571</td><td class='src'>Doench-2016 + Kim-2019, 18,142 real HT guides</td></tr><tr><td><b>Promoter strength</b></td><td>II</td><td class='mono'>GBT + CNN</td><td>Spearman</td><td class='num before'>0.5199</td><td class='num after'>0.5275</td><td class='src'>FANTOM5 CAGE, 209,374 real peaks</td></tr><tr><td><b>Enhancer activity</b></td><td>II</td><td class='mono'>multitask CNN</td><td>AUROC</td><td class='num before'>0.8087</td><td class='num after'>0.8147</td><td class='src'>ENCODE pancreas ATAC ∩ H3K27ac</td></tr><tr><td><b>Promoter generator</b></td><td>VII</td><td class='mono'>WGAN-GP</td><td>4-mer JS</td><td class='num before'>0.0088</td><td class='num after'>0.0123</td><td class='src'>FANTOM5 top-quartile, 52,342 real promoters</td></tr></tbody>
+</table>
+</div>
+<p class="cap">gRNA and promoter/enhancer report Spearman and AUROC (higher is better). The generator reports
+4-mer Jensen–Shannon divergence against real promoters (<b>lower</b> is better); random DNA scores
+0.0508 on the same reference.</p>
+
+<h2 id="scaling">The data-scaling programme</h2>
+<p class="lede">Every shipped model turned out to be limited by an arbitrary cap on how much of its own real data it
+was allowed to see, not by its features or architecture. Removing those caps is the bulk of the current results.
+Each comparison is apples-to-apples: the previous model is re-scored on the identical held-out set, and ensemble
+weights are chosen on a validation split that never touches test.</p>
+
+<div class="cards">
+<div class="card"><div class="k">15,497</div><div class="l">gRNA training guides, up from 5,310 across only 17 genes</div></div>
+<div class="card"><div class="k">181,428</div><div class="l">promoter training peaks, up from a 60,000 cap</div></div>
+<div class="card"><div class="k">135,402</div><div class="l">enhancer training rows, up from a 20,000-active cap</div></div>
+<div class="card"><div class="k">52,342</div><div class="l">real promoters for the generator, up from a 12,000 cap</div></div>
+</div>
+
+<h3>gRNA on-target: adding a second real dataset</h3>
+<p>The model was feature-saturated but data-starved. Adding <b>Kim et al. 2019</b> (12,832
+high-throughput SpCas9 guides) lifted held-out Spearman from 0.4938 to
+<b>0.6571</b> on the same 688 held-out-gene guides. The decisive
+check came <em>before</em> merging: training on Doench's 17 genes and testing on Kim scored
+0.5918 — higher than the within-Doench held-out — showing the model had
+learned transferable guide biology rather than memorising 17 genes. The CNN carries the gain, going from
+0.3915 to <b>0.6167</b>: it had been a near-random
+component down-weighted to survive, and is now a genuine contributor.</p>
+
+<h3>Promoter and enhancer: scaling curves</h3>
+<div class="charts">
+<div><svg viewBox="0 0 560 230" role="img" aria-label="Promoter Spearman versus training-set size" class="chart"><line class="gl" x1="54" y1="196.0" x2="544" y2="196.0"/><text class="ax" x="46" y="200.0" text-anchor="end">0.48</text><line class="gl" x1="54" y1="151.0" x2="544" y2="151.0"/><text class="ax" x="46" y="155.0" text-anchor="end">0.50</text><line class="gl" x1="54" y1="106.0" x2="544" y2="106.0"/><text class="ax" x="46" y="110.0" text-anchor="end">0.52</text><line class="gl" x1="54" y1="61.0" x2="544" y2="61.0"/><text class="ax" x="46" y="65.0" text-anchor="end">0.53</text><line class="gl" x1="54" y1="16.0" x2="544" y2="16.0"/><text class="ax" x="46" y="20.0" text-anchor="end">0.55</text><path class="ln" d="M54.0 149.1 L82.6 141.2 L139.8 112.5 L254.1 94.9 L368.4 63.5 L544.0 61.0"/><circle class="pt" cx="54.0" cy="149.1" r="4"><title>n=10,000 → 0.4982</title></circle><circle class="pt" cx="82.6" cy="141.2" r="4"><title>n=20,000 → 0.5013</title></circle><circle class="pt" cx="139.8" cy="112.5" r="4"><title>n=40,000 → 0.5125</title></circle><circle class="pt" cx="254.1" cy="94.9" r="4"><title>n=80,000 → 0.5193</title></circle><circle class="pt" cx="368.4" cy="63.5" r="4"><title>n=120,000 → 0.5315</title></circle><circle class="pt" cx="544.0" cy="61.0" r="4"><title>n=181,428 → 0.5325</title></circle><text class="ax" x="54.0" y="220" text-anchor="middle">10k</text><text class="ax" x="82.6" y="220" text-anchor="middle">20k</text><text class="ax" x="139.8" y="220" text-anchor="middle">40k</text><text class="ax" x="254.1" y="220" text-anchor="middle">80k</text><text class="ax" x="368.4" y="220" text-anchor="middle">120k</text><text class="ax" x="544.0" y="220" text-anchor="middle">181k</text></svg><p class="cap">Promoter ensemble Spearman versus training peaks, fixed chr8/chr9 test
+(16,940 peaks).</p></div>
+<div><svg viewBox="0 0 560 230" role="img" aria-label="Enhancer AUROC versus training-set size" class="chart"><line class="gl" x1="54" y1="196.0" x2="544" y2="196.0"/><text class="ax" x="46" y="200.0" text-anchor="end">0.79</text><line class="gl" x1="54" y1="151.0" x2="544" y2="151.0"/><text class="ax" x="46" y="155.0" text-anchor="end">0.80</text><line class="gl" x1="54" y1="106.0" x2="544" y2="106.0"/><text class="ax" x="46" y="110.0" text-anchor="end">0.81</text><line class="gl" x1="54" y1="61.0" x2="544" y2="61.0"/><text class="ax" x="46" y="65.0" text-anchor="end">0.82</text><line class="gl" x1="54" y1="16.0" x2="544" y2="16.0"/><text class="ax" x="46" y="20.0" text-anchor="end">0.83</text><path class="ln" d="M54.0 129.0 L138.9 134.5 L308.8 124.6 L544.0 96.4"/><circle class="pt" cx="54.0" cy="129.0" r="4"><title>n=20,000 → 0.8049</title></circle><circle class="pt" cx="138.9" cy="134.5" r="4"><title>n=40,000 → 0.8037</title></circle><circle class="pt" cx="308.8" cy="124.6" r="4"><title>n=80,000 → 0.8059</title></circle><circle class="pt" cx="544.0" cy="96.4" r="4"><title>n=135,402 → 0.8121</title></circle><text class="ax" x="54.0" y="220" text-anchor="middle">20k</text><text class="ax" x="138.9" y="220" text-anchor="middle">40k</text><text class="ax" x="308.8" y="220" text-anchor="middle">80k</text><text class="ax" x="544.0" y="220" text-anchor="middle">135k</text></svg><p class="cap">Enhancer AUROC versus training rows, fixed chr8/chr9 test
+(13,425 rows).</p></div>
+</div>
+<p>The promoter curve rises monotonically across an 18-fold increase in real data and then flattens, which is what
+data-limited-then-saturating looks like; the enhancer curve is flatter throughout, consistent with a model already
+close to its ceiling. Both gains are real but modest, and reporting them as such is the point.</p>
+
+<h2 id="surviving">The one surviving biological result</h2>
+<p class="lede">H3K27ac enrichment at the promoters of prioritised target transcription factors, PDAC versus healthy
+pancreas, measured on ENCODE fold-change-over-control tracks.</p>
+<div class="cards">
+<div class="card"><div class="k up">+0.919</div><div class="l">mean log2 residual across 20 targets</div></div>
+<div class="card"><div class="k">-0.091</div><div class="l">mean across 1,655 background loci</div></div>
+<div class="card"><div class="k">0.0022</div><div class="l">Mann–Whitney p, one-sided</div></div>
+<div class="card"><div class="k">70%</div><div class="l">of targets up, versus 46% of background</div></div>
+</div>
+<div class="scroll">
+<table>
+<thead><tr><th>Target</th><th class="num">PDAC fold-change</th><th class="num">Healthy fold-change</th><th class="num">log2 residual</th></tr></thead>
+<tbody><tr><td class='mono'>HOXA3</td><td class='num'>5.77</td><td class='num'>0.00</td><td class='num up'>+5.876</td></tr><tr><td class='mono'>FOSL1</td><td class='num'>20.04</td><td class='num'>2.85</td><td class='num up'>+2.772</td></tr><tr><td class='mono'>MYBL2</td><td class='num'>5.55</td><td class='num'>1.14</td><td class='num up'>+2.191</td></tr><tr><td class='mono'>SMAD3</td><td class='num'>17.50</td><td class='num'>3.95</td><td class='num up'>+2.120</td></tr><tr><td class='mono'>ZNF528</td><td class='num'>6.56</td><td class='num'>1.58</td><td class='num up'>+1.984</td></tr><tr><td class='mono'>E2F1</td><td class='num'>5.96</td><td class='num'>1.65</td><td class='num up'>+1.791</td></tr><tr><td class='mono'>AHR</td><td class='num'>2.28</td><td class='num'>0.90</td><td class='num up'>+1.252</td></tr><tr><td class='mono'>ZNF331</td><td class='num'>10.03</td><td class='num'>4.29</td><td class='num up'>+1.205</td></tr></tbody>
+</table>
+</div>
+<p class="cap">Eight strongest of 20 targets. Verdict recorded in the result file:
+<b>SURVIVES the primary contrast and all matched controls</b>.</p>
+<div class="note warn">
+<b>Limits of this result, stated plainly.</b> It rests on a <b>single PDAC cell line</b> (PANC-1) against one healthy
+fold-change track per mark, where the earlier run averaged up to six. The healthy reference is therefore noisier.
+The effect is roughly 1.5–1.8 fold and <b>ATAC accessibility does not replicate it</b>. It is a hypothesis worth
+testing in primary tumours, not an established fact.
+</div>
+
+<h2 id="retracted">Retracted and negative results</h2>
+<p class="lede">These are reported with the same prominence as the positive ones. Most of this project's honest value
+is here.</p>
+
+<h3>Retracted: regulatory-attractor control predicts essentiality</h3>
+<p>The original claim was that a bistable attractor model's collapse score predicts held-out CRISPR essentiality and
+beats network centrality. Forced into a head-to-head test it had never been given, it did not survive.</p>
+<div class="scroll">
+<table>
+<thead><tr><th>Predictor</th><th class="num">AUC</th><th class="num">PR-AUC</th></tr></thead>
+<tbody>
+<tr><td>Attractor collapse</td><td class="num">0.5471</td><td class="num">0.0979</td></tr>
+<tr><td><b>Network degree</b></td><td class="num after">0.6290</td><td class="num after">0.1311</td></tr>
+<tr><td>Eigenvector centrality</td><td class="num">0.5843</td><td class="num">—</td></tr>
+</tbody>
+</table>
+</div>
+<p>Δ AUC versus degree is <b>-0.0819</b>, 95% CI
+[-0.1989, 0.0289],
+p = 0.147. Controlling for degree, expression and variance, the partial Spearman is
+0.0284
+(p = 0.563), and adding
+collapse to a covariates-only model moves cross-validated AUC from
+0.6534 to
+0.6524 — that is, nothing. On
+419 genes with 31 positives, <b>collapse adds no information beyond network
+degree.</b> The earlier figure came from selecting on the same labels used to report it. The bistable formulation
+stands only as intervention semantics, not as a predictor.</p>
+
+<h3>Negative: adding PDAC chromatin to the enhancer model</h3>
+<p>A pancreas-only enhancer model already predicts PANC-1 PDAC enhancers at AUROC
+<b>0.8349</b>, above its own pancreas test
+(0.8150), and the reverse direction holds at
+0.7899. The grammar is genuinely shared. Merging PANC-1 into training
+therefore did not help the benchmark (0.8096,
+-0.0054) and was <b>not deployed</b>.</p>
+
+<h3>Negative: un-capping the generator did not improve realism</h3>
+<p>Removing the generator's data cap did not lower 4-mer divergence
+(0.0088 → 0.0123); that axis was already near its floor.
+It did strengthen the selectable tail the pipeline actually consumes
+(0.9369 → <b>0.9918</b> 90th-percentile predicted strength), which is why the
+un-capped generator is deployed. Both versions clear the pre-registered certification.</p>
+
+<h3>The pipeline abstains</h3>
+<p>After the off-target search was repaired to cover the genome rather than a locus neighbourhood, no candidate guide
+clears genome-wide specificity. The end-to-end run therefore returns
+<b>ABSTAIN</b> with certification
+<code>certified-negative</code> and emits zero circuits. That is the correct
+outcome: absence of a search is not evidence of specificity.</p>
+
+<h2 id="repro">Reproducibility</h2>
+<ul>
+<li><b>Real data only.</b> Every corpus is recorded in <code>data/manifests/</code> with source URL, byte count and
+sha256. Raw bytes stay out of git; the hashes are the provenance.</li>
+<li><b>Frozen predeploy fixtures.</b> Each deployed model ships a frozen set of real test rows and their CPU
+predictions; reloading the checkpoint must reproduce them to 1e-4 or the model fails its gate.</li>
+<li><b>Leakage-controlled splits.</b> Gene-grouped for gRNA; chromosome-held-out (test chr8/chr9, validation chr7)
+for promoter and enhancer. Ensemble weights are selected on validation, never on test.</li>
+<li><b>Pre-registration.</b> Thresholds and margins live in the registry before training, so a result either clears a
+pre-committed bar or is reported as not clearing it.</li>
+</ul>
+
+<h2 id="reading">Full write-ups</h2>
+<ul>
+<li><a href="https://github.com/MurariAmbati/pdac-chromatin-circuit/blob/master/docs/ADDENDUM_DATA_SCALING.md">Data-scaling programme</a> — the four models, scaling curves, cross-domain transfer</li>
+<li><a href="https://github.com/MurariAmbati/pdac-chromatin-circuit/blob/master/RESULTS.md">RESULTS.md</a> — the complete result ledger</li>
+<li><a href="https://github.com/MurariAmbati/pdac-chromatin-circuit/blob/master/COMPENDIUM.md">COMPENDIUM.md</a> — methods and full compilation</li>
+<li><a href="https://github.com/MurariAmbati/pdac-chromatin-circuit/blob/master/AUDIT_RESPONSE.md">AUDIT_RESPONSE.md</a> — disposition of every external-audit finding</li>
+<li><a href="https://github.com/MurariAmbati/pdac-chromatin-circuit/blob/master/docs/ADDENDUM_CHROMATIN.md">Chromatin addendum</a> — the H3K27ac result and its controls</li>
+</ul>
+
+<footer>
+<p>Research use only. Generated from the repository's result files by <code>scripts/build_site.py</code>, so the
+figures on this page are the figures in the data. Source:
+<a href="https://github.com/MurariAmbati/pdac-chromatin-circuit">MurariAmbati/pdac-chromatin-circuit</a>.</p>
+</footer>
+
+</div>
+<script>(function(){var r=document.documentElement,b=document.getElementById('tg');function s(t){r.setAttribute('data-theme',t);try{localStorage.setItem('th',t)}catch(e){}}try{var v=localStorage.getItem('th');if(v)s(v)}catch(e){}b.addEventListener('click',function(){var d=r.getAttribute('data-theme');if(!d)d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';s(d==='dark'?'light':'dark')})})();</script>
+</body>
+</html>

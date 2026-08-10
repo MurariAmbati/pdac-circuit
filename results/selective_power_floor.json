@@ -1,0 +1,211 @@
+{
+  "schema": "pdac-circuit.selective-power-floor/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "design": {
+    "n_total": 419,
+    "n_positive_actual": 14,
+    "n_features_corrected": 17,
+    "test": "Mann-Whitney rank comparison (matches the model-free univariate screen)"
+  },
+  "power_grid": [
+    {
+      "n_positive": 14,
+      "cells": [
+        {
+          "true_auc": 0.6,
+          "power_nominal_a05": 0.36,
+          "power_BH_17tests": 0.07
+        },
+        {
+          "true_auc": 0.65,
+          "power_nominal_a05": 0.611,
+          "power_BH_17tests": 0.191
+        },
+        {
+          "true_auc": 0.7,
+          "power_nominal_a05": 0.834,
+          "power_BH_17tests": 0.414
+        },
+        {
+          "true_auc": 0.75,
+          "power_nominal_a05": 0.959,
+          "power_BH_17tests": 0.698
+        },
+        {
+          "true_auc": 0.8,
+          "power_nominal_a05": 0.994,
+          "power_BH_17tests": 0.912
+        }
+      ]
+    },
+    {
+      "n_positive": 20,
+      "cells": [
+        {
+          "true_auc": 0.6,
+          "power_nominal_a05": 0.45,
+          "power_BH_17tests": 0.103
+        },
+        {
+          "true_auc": 0.65,
+          "power_nominal_a05": 0.743,
+          "power_BH_17tests": 0.31
+        },
+        {
+          "true_auc": 0.7,
+          "power_nominal_a05": 0.929,
+          "power_BH_17tests": 0.624
+        },
+        {
+          "true_auc": 0.75,
+          "power_nominal_a05": 0.99,
+          "power_BH_17tests": 0.888
+        },
+        {
+          "true_auc": 0.8,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 0.985
+        }
+      ]
+    },
+    {
+      "n_positive": 30,
+      "cells": [
+        {
+          "true_auc": 0.6,
+          "power_nominal_a05": 0.573,
+          "power_BH_17tests": 0.167
+        },
+        {
+          "true_auc": 0.65,
+          "power_nominal_a05": 0.876,
+          "power_BH_17tests": 0.493
+        },
+        {
+          "true_auc": 0.7,
+          "power_nominal_a05": 0.982,
+          "power_BH_17tests": 0.839
+        },
+        {
+          "true_auc": 0.75,
+          "power_nominal_a05": 0.999,
+          "power_BH_17tests": 0.98
+        },
+        {
+          "true_auc": 0.8,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 1.0
+        }
+      ]
+    },
+    {
+      "n_positive": 50,
+      "cells": [
+        {
+          "true_auc": 0.6,
+          "power_nominal_a05": 0.747,
+          "power_BH_17tests": 0.317
+        },
+        {
+          "true_auc": 0.65,
+          "power_nominal_a05": 0.972,
+          "power_BH_17tests": 0.769
+        },
+        {
+          "true_auc": 0.7,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 0.979
+        },
+        {
+          "true_auc": 0.75,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 1.0
+        },
+        {
+          "true_auc": 0.8,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 1.0
+        }
+      ]
+    },
+    {
+      "n_positive": 100,
+      "cells": [
+        {
+          "true_auc": 0.6,
+          "power_nominal_a05": 0.921,
+          "power_BH_17tests": 0.606
+        },
+        {
+          "true_auc": 0.65,
+          "power_nominal_a05": 0.998,
+          "power_BH_17tests": 0.968
+        },
+        {
+          "true_auc": 0.7,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 1.0
+        },
+        {
+          "true_auc": 0.75,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 1.0
+        },
+        {
+          "true_auc": 0.8,
+          "power_nominal_a05": 1.0,
+          "power_BH_17tests": 1.0
+        }
+      ]
+    }
+  ],
+  "minimum_detectable_effect": {
+    "14": {
+      "min_detectable_auc_BH80": 0.771,
+      "min_detectable_auc_nominal80": 0.691
+    },
+    "20": {
+      "min_detectable_auc_BH80": 0.735,
+      "min_detectable_auc_nominal80": 0.665
+    },
+    "30": {
+      "min_detectable_auc_BH80": 0.692,
+      "min_detectable_auc_nominal80": 0.634
+    },
+    "50": {
+      "min_detectable_auc_BH80": 0.655,
+      "min_detectable_auc_nominal80": 0.608
+    },
+    "100": {
+      "min_detectable_auc_BH80": 0.618,
+      "min_detectable_auc_nominal80": 0.581
+    }
+  },
+  "positives_required_for_observed_effects": {
+    "expr_mean_raw": {
+      "observed_rank_auc": 0.7944,
+      "positives_needed_BH80": 14,
+      "positives_needed_nominal80": 10
+    },
+    "expr_pdac_minus_other_DIFF": {
+      "observed_rank_auc": 0.6111,
+      "positives_needed_BH80": 120,
+      "positives_needed_nominal80": 60
+    },
+    "best_centrality(eigenvector)": {
+      "observed_rank_auc": 0.5628,
+      "positives_needed_BH80": null,
+      "positives_needed_nominal80": null
+    },
+    "coexpr_degree": {
+      "observed_rank_auc": 0.5271,
+      "positives_needed_BH80": null,
+      "positives_needed_nominal80": null
+    }
+  },
+  "interpretation": {
+    "min_detectable_auc_at_actual_design_BH80": 0.771,
+    "reading": "At the actual design (14 positives, 17 features, BH), only effects of rank-AUC >= 0.77 were detectable at 80% power. Effects weaker than that could not have been seen regardless of whether they exist, so Phase 6b's 'nothing survives BH' bounds the effect size rather than proving absence."
+  }
+}

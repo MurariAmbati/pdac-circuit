@@ -1,0 +1,19 @@
+{
+  "status": "SUPERSEDED",
+  "superseded_reason": "Superseded by the un-capped generator: this file records the 12,000-promoter-capped GAN. The deployed generator trains on all 52,342 top-quartile real promoters (4-mer JS 0.0123, p90 0.9918).",
+  "superseded_at": "2026-07-21 data-scaling programme",
+  "see": "models/promoter_gan.model.json, results/promoter_gan_scaleup.json, docs/ADDENDUM_DATA_SCALING.md",
+  "model": "promoter_gan",
+  "cert": "real",
+  "js_gen_vs_real": 0.008844393084932765,
+  "js_random_vs_real": 0.050773002833673954,
+  "realism_beats_random": true,
+  "gc_gen_mean": 0.5773209635416666,
+  "gc_real_mean": 0.582634765625,
+  "pred_strength_gen_median": 0.789103758185624,
+  "pred_strength_random_median": 0.7601156069364162,
+  "strength_uplift": 0.028988151249207728,
+  "pred_strength_gen_p90": 0.914343325715822,
+  "pred_strength_random_p90": 0.9061951491175849,
+  "pred_strength_gen_max": 0.9928369788566052
+}

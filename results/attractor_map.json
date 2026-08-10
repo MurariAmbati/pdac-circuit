@@ -1,0 +1,209 @@
+{
+  "schema": "rac.map.v1",
+  "data_class": "REAL",
+  "provenance": {
+    "expr_source": "C:\\Users\\murar\\aurora-research\\discoveries\\data\\OmicsExpression.csv",
+    "n_all_lines": 1684,
+    "n_pdac_lines": 54,
+    "n_nodes": 386,
+    "n_edges": 7492,
+    "coexpr_threshold": 0.35,
+    "n_motif_supported_edges": 3103,
+    "n_promoter_accessible": 363,
+    "n_promoter_active_h3k27ac": 297,
+    "tcga_covered": 384,
+    "gtex_covered": 386,
+    "cna_covered": 385,
+    "cna_samples": 183,
+    "n_amplified_nodes": 80,
+    "data_class": "REAL"
+  },
+  "fit": {
+    "fixed_point_error": 0.030489,
+    "dead_activation": 0.1306,
+    "gain": 4.0,
+    "epochs": 2400,
+    "device": "cuda"
+  },
+  "top_collapse_nodes": [
+    {
+      "gene": "E2F1",
+      "collapse": 18.375,
+      "collapse_std": 11.431,
+      "abs_essential": 0.408,
+      "cna_amp_freq": 0.235
+    },
+    {
+      "gene": "ARID1B",
+      "collapse": 17.888,
+      "collapse_std": 10.274,
+      "abs_essential": 0.103,
+      "cna_amp_freq": 0.022
+    },
+    {
+      "gene": "RBM10",
+      "collapse": 17.842,
+      "collapse_std": 7.572,
+      "abs_essential": 0.458,
+      "cna_amp_freq": 0.049
+    },
+    {
+      "gene": "SETD2",
+      "collapse": 17.115,
+      "collapse_std": 8.217,
+      "abs_essential": 0.505,
+      "cna_amp_freq": 0.027
+    },
+    {
+      "gene": "ZNF347",
+      "collapse": 16.316,
+      "collapse_std": 11.336,
+      "abs_essential": -0.106,
+      "cna_amp_freq": 0.175
+    },
+    {
+      "gene": "ZNF91",
+      "collapse": 16.077,
+      "collapse_std": 8.094,
+      "abs_essential": 0.151,
+      "cna_amp_freq": 0.093
+    },
+    {
+      "gene": "ATM",
+      "collapse": 15.865,
+      "collapse_std": 6.392,
+      "abs_essential": -0.01,
+      "cna_amp_freq": 0.098
+    },
+    {
+      "gene": "ZNF429",
+      "collapse": 14.861,
+      "collapse_std": 11.743,
+      "abs_essential": -0.024,
+      "cna_amp_freq": 0.098
+    },
+    {
+      "gene": "BCOR",
+      "collapse": 14.448,
+      "collapse_std": 5.71,
+      "abs_essential": -0.118,
+      "cna_amp_freq": 0.044
+    },
+    {
+      "gene": "ZNF770",
+      "collapse": 14.442,
+      "collapse_std": 5.665,
+      "abs_essential": -0.048,
+      "cna_amp_freq": 0.06
+    },
+    {
+      "gene": "ZNF260",
+      "collapse": 14.353,
+      "collapse_std": 5.53,
+      "abs_essential": -0.06,
+      "cna_amp_freq": 0.224
+    },
+    {
+      "gene": "SF3B1",
+      "collapse": 14.114,
+      "collapse_std": 7.144,
+      "abs_essential": 1.328,
+      "cna_amp_freq": 0.131
+    },
+    {
+      "gene": "FOXM1",
+      "collapse": 13.933,
+      "collapse_std": 6.795,
+      "abs_essential": 0.307,
+      "cna_amp_freq": 0.197
+    },
+    {
+      "gene": "ZNF329",
+      "collapse": 13.927,
+      "collapse_std": 7.916,
+      "abs_essential": 0.081,
+      "cna_amp_freq": 0.197
+    },
+    {
+      "gene": "SETDB1",
+      "collapse": 13.841,
+      "collapse_std": 4.694,
+      "abs_essential": 0.514,
+      "cna_amp_freq": 0.322
+    },
+    {
+      "gene": "DNMT1",
+      "collapse": 13.741,
+      "collapse_std": 5.14,
+      "abs_essential": 0.599,
+      "cna_amp_freq": 0.082
+    },
+    {
+      "gene": "ZNF253",
+      "collapse": 13.722,
+      "collapse_std": 6.768,
+      "abs_essential": 0.08,
+      "cna_amp_freq": 0.098
+    },
+    {
+      "gene": "ZNF790",
+      "collapse": 13.679,
+      "collapse_std": 7.62,
+      "abs_essential": -0.029,
+      "cna_amp_freq": 0.224
+    },
+    {
+      "gene": "EPAS1",
+      "collapse": 13.669,
+      "collapse_std": 7.885,
+      "abs_essential": -0.038,
+      "cna_amp_freq": 0.082
+    },
+    {
+      "gene": "ARID1A",
+      "collapse": 13.563,
+      "collapse_std": 6.88,
+      "abs_essential": 0.179,
+      "cna_amp_freq": 0.027
+    },
+    {
+      "gene": "KMT2C",
+      "collapse": 13.51,
+      "collapse_std": 8.362,
+      "abs_essential": -0.115,
+      "cna_amp_freq": 0.23
+    },
+    {
+      "gene": "SMARCA4",
+      "collapse": 13.483,
+      "collapse_std": 6.028,
+      "abs_essential": 0.36,
+      "cna_amp_freq": 0.082
+    },
+    {
+      "gene": "KDM5C",
+      "collapse": 13.441,
+      "collapse_std": 6.588,
+      "abs_essential": 0.174,
+      "cna_amp_freq": 0.038
+    },
+    {
+      "gene": "ZNF93",
+      "collapse": 13.42,
+      "collapse_std": 12.697,
+      "abs_essential": 0.104,
+      "cna_amp_freq": 0.098
+    },
+    {
+      "gene": "KMT2A",
+      "collapse": 13.408,
+      "collapse_std": 7.448,
+      "abs_essential": 0.198,
+      "cna_amp_freq": 0.098
+    }
+  ],
+  "healthy_direction": {
+    "n_repress": 383,
+    "n_activate": 3
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "schema": "pdac-circuit.subtype-resolved/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "method": "Moffitt basal/classical signature (25+25 genes), mean z-scored expression across DepMap PDAC lines. A line is called only if it is above the panel mean on the winning programme and the two scores differ by > 0.20; otherwise it is held out as intermediate/ambiguous rather than forced by argmax. Per-gene differential Chronos by Mann-Whitney, Benjamini-Hochberg across the 8 genes tested. Dynamics are not refit; attractor-collapse carries no weight (claim retracted).",
+  "line_split": {
+    "n_basal": 22,
+    "n_classical": 13,
+    "n_held_out": {
+      "intermediate": 14,
+      "ambiguous": 5
+    },
+    "margin": 0.2
+  },
+  "panc1_substrate_check": {
+    "found": true,
+    "depmap_id": "ACH-000164",
+    "basal_score": -0.3436,
+    "classical_score": -0.1691,
+    "argmax_would_say": "classical",
+    "assignment": "intermediate",
+    "note": "PANC-1 sits BELOW the panel mean on both programmes, so an argmax call would invent a subtype it does not express. Held out as intermediate. This is consistent with the reviewer's quasimesenchymal description, and it means PANC-1 is not a faithful substrate for either a basal or a classical target set."
+  },
+  "margin_sensitivity": [
+    {
+      "margin": 0.0,
+      "n_basal": 26,
+      "n_classical": 14,
+      "SETDB1": 0.7979,
+      "MYBL2": 1.0,
+      "E2F1": 0.6206,
+      "FOSL1": 0.3306
+    },
+    {
+      "margin": 0.1,
+      "n_basal": 26,
+      "n_classical": 13,
+      "SETDB1": 0.7979,
+      "MYBL2": 1.0,
+      "E2F1": 0.6206,
+      "FOSL1": 0.3306
+    },
+    {
+      "margin": 0.2,
+      "n_basal": 22,
+      "n_classical": 13,
+      "SETDB1": 0.6742,
+      "MYBL2": 0.984,
+      "E2F1": 0.857,
+      "FOSL1": 0.3267
+    },
+    {
+      "margin": 0.3,
+      "n_basal": 21,
+      "n_classical": 12,
+      "SETDB1": 0.7398,
+      "MYBL2": 0.7398,
+      "E2F1": 0.8421,
+      "FOSL1": 0.674
+    },
+    {
+      "margin": 0.4,
+      "n_basal": 21,
+      "n_classical": 11,
+      "SETDB1": 0.925,
+      "MYBL2": 0.8141,
+      "E2F1": 0.925,
+      "FOSL1": 0.5409
+    }
+  ],
+  "per_gene": [
+    {
+      "gene": "GATA6",
+      "in_gated_candidates": false,
+      "chronos_basal_mean": 0.0119,
+      "n_basal": 18,
+      "chronos_classical_mean": -0.1961,
+      "n_classical": 13,
+      "basal_minus_classical": 0.208,
+      "mannwhitney_p": 0.01919,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.15352,
+      "subtype_differential": false
+    },
+    {
+      "gene": "BRCA2",
+      "in_gated_candidates": false,
+      "chronos_basal_mean": -0.4444,
+      "n_basal": 18,
+      "chronos_classical_mean": -0.3475,
+      "n_classical": 13,
+      "basal_minus_classical": -0.0969,
+      "mannwhitney_p": 0.09665,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.3866,
+      "subtype_differential": false
+    },
+    {
+      "gene": "FOSL1",
+      "in_gated_candidates": true,
+      "chronos_basal_mean": -0.6394,
+      "n_basal": 18,
+      "chronos_classical_mean": -0.4806,
+      "n_classical": 13,
+      "basal_minus_classical": -0.1588,
+      "mannwhitney_p": 0.3267,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.8712,
+      "subtype_differential": false
+    },
+    {
+      "gene": "SETDB1",
+      "in_gated_candidates": true,
+      "chronos_basal_mean": -0.5229,
+      "n_basal": 18,
+      "chronos_classical_mean": -0.4692,
+      "n_classical": 13,
+      "basal_minus_classical": -0.0537,
+      "mannwhitney_p": 0.67424,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.98403,
+      "subtype_differential": false
+    },
+    {
+      "gene": "KMT2C",
+      "in_gated_candidates": false,
+      "chronos_basal_mean": 0.1492,
+      "n_basal": 18,
+      "chronos_classical_mean": 0.1083,
+      "n_classical": 13,
+      "basal_minus_classical": 0.0409,
+      "mannwhitney_p": 0.7947,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.98403,
+      "subtype_differential": false
+    },
+    {
+      "gene": "E2F1",
+      "in_gated_candidates": true,
+      "chronos_basal_mean": -0.4921,
+      "n_basal": 18,
+      "chronos_classical_mean": -0.4924,
+      "n_classical": 13,
+      "basal_minus_classical": 0.0003,
+      "mannwhitney_p": 0.85704,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.98403,
+      "subtype_differential": false
+    },
+    {
+      "gene": "ATM",
+      "in_gated_candidates": false,
+      "chronos_basal_mean": 0.0198,
+      "n_basal": 18,
+      "chronos_classical_mean": 0.0165,
+      "n_classical": 13,
+      "basal_minus_classical": 0.0033,
+      "mannwhitney_p": 0.92028,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.98403,
+      "subtype_differential": false
+    },
+    {
+      "gene": "MYBL2",
+      "in_gated_candidates": true,
+      "chronos_basal_mean": -0.7237,
+      "n_basal": 18,
+      "chronos_classical_mean": -0.6828,
+      "n_classical": 13,
+      "basal_minus_classical": -0.0409,
+      "mannwhitney_p": 0.98403,
+      "more_essential_in": "neither (n.s. after BH)",
+      "bh_q": 0.98403,
+      "subtype_differential": false
+    }
+  ]
+}

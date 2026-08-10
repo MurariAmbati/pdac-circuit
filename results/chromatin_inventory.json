@@ -1,0 +1,211 @@
+{
+  "bam_biosamples": {
+    "endocrine pancreas": 35,
+    "pancreas": 19
+  },
+  "bam_targets": {
+    "CTCF": 8,
+    "H3K27ac": 7,
+    "H3K27me3": 8,
+    "H3K36me3": 8,
+    "H3K4me1": 6,
+    "H3K4me3": 6,
+    "H3K9ac": 3,
+    "H3K9me3": 8
+  },
+  "corpora": [
+    {
+      "artifacts": 330,
+      "bytes": 101849006088,
+      "corpus": "encode-bulk",
+      "gated": 0,
+      "gb": 94.854,
+      "manifest": "encode-bulk.heavy.json",
+      "pointer": 0,
+      "real": 330
+    },
+    {
+      "artifacts": 1,
+      "bytes": 1592589437,
+      "corpus": "dbsnp-common",
+      "gated": 0,
+      "gb": 1.483,
+      "manifest": "dbsnp-common.heavy.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 983659424,
+      "corpus": "hg38-ref",
+      "gated": 0,
+      "gb": 0.916,
+      "manifest": "hg38-ref.heavy.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 837601892,
+      "corpus": "fantom5-cage",
+      "gated": 0,
+      "gb": 0.78,
+      "manifest": "fantom5-cage.heavy.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 440646050,
+      "corpus": "depmap-crispr",
+      "gated": 0,
+      "gb": 0.41,
+      "manifest": "depmap-crispr.heavy.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 51006804,
+      "corpus": "gencode-v46",
+      "gated": 0,
+      "gb": 0.048,
+      "manifest": "gencode-v46.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 4,
+      "bytes": 21029335,
+      "corpus": "encode-pancreas-atac",
+      "gated": 0,
+      "gb": 0.02,
+      "manifest": "encode-pancreas-atac.json",
+      "pointer": 0,
+      "real": 4
+    },
+    {
+      "artifacts": 1,
+      "bytes": 6952331,
+      "corpus": "gtex-pancreas",
+      "gated": 0,
+      "gb": 0.006,
+      "manifest": "gtex-pancreas.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 5500816,
+      "corpus": "fantom5-cage",
+      "gated": 0,
+      "gb": 0.005,
+      "manifest": "fantom5-cage.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 4,
+      "bytes": 4911548,
+      "corpus": "encode-pancreas-h3k27ac",
+      "gated": 0,
+      "gb": 0.005,
+      "manifest": "encode-pancreas-h3k27ac.json",
+      "pointer": 0,
+      "real": 4
+    },
+    {
+      "artifacts": 2,
+      "bytes": 3148460,
+      "corpus": "tcga-paad",
+      "gated": 0,
+      "gb": 0.003,
+      "manifest": "tcga-paad.json",
+      "pointer": 0,
+      "real": 2
+    },
+    {
+      "artifacts": 1,
+      "bytes": 2107299,
+      "corpus": "lambert-tf",
+      "gated": 0,
+      "gb": 0.002,
+      "manifest": "lambert-tf.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 964758,
+      "corpus": "intogen-pdac",
+      "gated": 0,
+      "gb": 0.001,
+      "manifest": "intogen-pdac.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 510632,
+      "corpus": "doench-2016",
+      "gated": 0,
+      "gb": 0.0,
+      "manifest": "doench-2016.json",
+      "pointer": 0,
+      "real": 1
+    },
+    {
+      "artifacts": 1,
+      "bytes": 0,
+      "corpus": "ncg",
+      "gated": 0,
+      "gb": 0.0,
+      "manifest": "ncg.json",
+      "pointer": 1,
+      "real": 0
+    }
+  ],
+  "critical_gap": "The large ENCODE corpus is healthy/endocrine pancreas. Treat it as a healthy counterfactual; no PDAC-specific superiority claim is admissible until independent tumor/organoid chromatin studies are compiled and held out by donor/study.",
+  "encode_bulk_assays": {
+    "ATAC-seq": {
+      "files": 16,
+      "gb": 9.103
+    },
+    "DNase-seq": {
+      "files": 39,
+      "gb": 18.458
+    },
+    "Histone ChIP-seq": {
+      "files": 155,
+      "gb": 49.701
+    },
+    "RAMPAGE": {
+      "files": 8,
+      "gb": 0.073
+    },
+    "TF ChIP-seq": {
+      "files": 20,
+      "gb": 4.794
+    },
+    "WGBS": {
+      "files": 4,
+      "gb": 1.341
+    },
+    "polyA plus RNA-seq": {
+      "files": 48,
+      "gb": 8.041
+    },
+    "total RNA-seq": {
+      "files": 40,
+      "gb": 3.344
+    }
+  },
+  "healthy_pancreas_bams": 54,
+  "manifest_artifacts": 351,
+  "manifest_bytes": 105799634874,
+  "pdac_tumor_bams": 0,
+  "raw_bytes": 108641748183,
+  "raw_gb": 101.181,
+  "root": "C:\\Users\\murar\\pdac-circuit",
+  "schema": "pdac-circuit.chromatin-inventory/1"
+}

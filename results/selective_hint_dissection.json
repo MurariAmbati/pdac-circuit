@@ -1,0 +1,255 @@
+{
+  "schema": "pdac-circuit.selective-hint-dissection/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "config": {
+    "nodes": 400,
+    "tau": 0.4,
+    "seed": 20260620,
+    "primary_selective_cut": 0.15,
+    "caliper": 8.3
+  },
+  "primary_matched_auc": 0.636,
+  "threshold_sensitivity": [
+    {
+      "cut": 0.1,
+      "n_positive": 20,
+      "matched_auc": 0.6046,
+      "perm_p": 0.076,
+      "n_matched_pairs": 3160,
+      "unconditioned_auc": 0.6276
+    },
+    {
+      "cut": 0.125,
+      "n_positive": 16,
+      "matched_auc": 0.5733,
+      "perm_p": 0.179,
+      "n_matched_pairs": 2667,
+      "unconditioned_auc": 0.5769
+    },
+    {
+      "cut": 0.15,
+      "n_positive": 14,
+      "matched_auc": 0.636,
+      "perm_p": 0.059,
+      "n_matched_pairs": 2338,
+      "unconditioned_auc": 0.6072
+    },
+    {
+      "cut": 0.175,
+      "n_positive": 9,
+      "matched_auc": 0.5366,
+      "perm_p": 0.3715,
+      "n_matched_pairs": 1569,
+      "unconditioned_auc": 0.4696
+    },
+    {
+      "cut": 0.2,
+      "n_positive": 6,
+      "matched_auc": 0.4706,
+      "perm_p": 0.583,
+      "n_matched_pairs": 987,
+      "unconditioned_auc": 0.5034
+    }
+  ],
+  "positives_named": [
+    {
+      "gene": "ZNF85",
+      "selective_essentiality": 0.1536,
+      "absolute_essentiality": 0.0674,
+      "collapse_percentile": 0.964,
+      "degree_percentile": 0.859,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "KLF5",
+      "selective_essentiality": 0.3562,
+      "absolute_essentiality": 0.7432,
+      "collapse_percentile": 0.883,
+      "degree_percentile": 0.999,
+      "curated_pdac_selective": true,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "SOX9",
+      "selective_essentiality": 0.1542,
+      "absolute_essentiality": 0.4711,
+      "collapse_percentile": 0.825,
+      "degree_percentile": 0.658,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "RXRA",
+      "selective_essentiality": 0.17,
+      "absolute_essentiality": 0.3081,
+      "collapse_percentile": 0.818,
+      "degree_percentile": 0.551,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "SLC2A1",
+      "selective_essentiality": 0.162,
+      "absolute_essentiality": 0.6422,
+      "collapse_percentile": 0.809,
+      "degree_percentile": 0.644,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "TCF7L2",
+      "selective_essentiality": 0.1557,
+      "absolute_essentiality": 0.2531,
+      "collapse_percentile": 0.806,
+      "degree_percentile": 0.675,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "JUNB",
+      "selective_essentiality": 0.1994,
+      "absolute_essentiality": 0.48,
+      "collapse_percentile": 0.718,
+      "degree_percentile": 0.48,
+      "curated_pdac_selective": false,
+      "informative_quadrant": true
+    },
+    {
+      "gene": "FOSL1",
+      "selective_essentiality": 0.2198,
+      "absolute_essentiality": 0.5722,
+      "collapse_percentile": 0.634,
+      "degree_percentile": 0.97,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "SREBF1",
+      "selective_essentiality": 0.2025,
+      "absolute_essentiality": 0.5962,
+      "collapse_percentile": 0.475,
+      "degree_percentile": 0.103,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "MYC",
+      "selective_essentiality": 0.4946,
+      "absolute_essentiality": 2.462,
+      "collapse_percentile": 0.475,
+      "degree_percentile": 0.103,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "TP53",
+      "selective_essentiality": 0.1959,
+      "absolute_essentiality": -0.2361,
+      "collapse_percentile": 0.475,
+      "degree_percentile": 0.103,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "ZNF595",
+      "selective_essentiality": 0.2724,
+      "absolute_essentiality": 0.25,
+      "collapse_percentile": 0.475,
+      "degree_percentile": 0.103,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "KRAS",
+      "selective_essentiality": 1.4744,
+      "absolute_essentiality": 2.1408,
+      "collapse_percentile": 0.079,
+      "degree_percentile": 0.322,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    },
+    {
+      "gene": "MARK2",
+      "selective_essentiality": 0.1875,
+      "absolute_essentiality": 0.4769,
+      "collapse_percentile": 0.019,
+      "degree_percentile": 0.799,
+      "curated_pdac_selective": false,
+      "informative_quadrant": false
+    }
+  ],
+  "leave_one_positive_out": {
+    "base_matched_auc": 0.636,
+    "range_without_each": [
+      0.5981,
+      0.7011
+    ],
+    "per_gene": [
+      {
+        "dropped": "SREBF1",
+        "matched_auc_without": 0.6376
+      },
+      {
+        "dropped": "MARK2",
+        "matched_auc_without": 0.6566
+      },
+      {
+        "dropped": "KLF5",
+        "matched_auc_without": 0.6355
+      },
+      {
+        "dropped": "ZNF85",
+        "matched_auc_without": 0.6279
+      },
+      {
+        "dropped": "SLC2A1",
+        "matched_auc_without": 0.6267
+      },
+      {
+        "dropped": "SOX9",
+        "matched_auc_without": 0.6266
+      },
+      {
+        "dropped": "KRAS",
+        "matched_auc_without": 0.7011
+      },
+      {
+        "dropped": "MYC",
+        "matched_auc_without": 0.6376
+      },
+      {
+        "dropped": "TP53",
+        "matched_auc_without": 0.6376
+      },
+      {
+        "dropped": "TCF7L2",
+        "matched_auc_without": 0.6303
+      },
+      {
+        "dropped": "JUNB",
+        "matched_auc_without": 0.6081
+      },
+      {
+        "dropped": "FOSL1",
+        "matched_auc_without": 0.6413
+      },
+      {
+        "dropped": "RXRA",
+        "matched_auc_without": 0.5981
+      },
+      {
+        "dropped": "ZNF595",
+        "matched_auc_without": 0.6376
+      }
+    ]
+  },
+  "degree_independent_standing": {
+    "n_positives": 14,
+    "n_in_informative_quadrant": 1,
+    "n_curated_pdac_selective": 1,
+    "note": "informative quadrant = high collapse (>=50th pct) AND low/mid degree (<50th pct); only these can produce a degree-independent conditional signal"
+  },
+  "verdict": "LIKELY ARTIFACT: does not survive its own robustness checks | threshold-sensitive; significant at 0/5 cuts; not driven by one gene; 1/14 in informative quadrant; 1/14 curated PDAC-selective"
+}

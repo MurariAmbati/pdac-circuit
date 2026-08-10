@@ -1,0 +1,17 @@
+{
+  "schema": "pdac-circuit.enhancer-panc1-augment/1",
+  "data_class": "REAL",
+  "eval": "fixed held-out test = pancreas rows on chr8/chr9 (apples-to-apples with shipped 0.815); PANC-1 test-chrom rows held out too",
+  "n_pancreas_rows": 39174,
+  "n_panc1_rows": 39258,
+  "shipped_auroc": 0.815,
+  "pancreas_only_pancreas_test": 0.8150112166059138,
+  "pancreas_only_panc1_test_xdomain": 0.834896584276935,
+  "merged_pancreas_test": 0.8096261783662716,
+  "merged_panc1_test": 0.8306360770354125,
+  "merged_merged_test": 0.8130536298965866,
+  "delta_pancreas_test": -0.005385038239642204,
+  "deployed": false,
+  "pancreas_only_epochs": 7,
+  "merged_epochs": 7
+}

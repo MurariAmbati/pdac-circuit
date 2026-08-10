@@ -1,0 +1,117 @@
+{
+  "schema": "pdac-circuit.substrate-signal/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "endpoint": "DepMap absolute essentiality (Chronos abs > 0.4)",
+  "n_genes": 419,
+  "n_positive": 31,
+  "edge_threshold": 0.9,
+  "coexpr_degree_auc": 0.629,
+  "gate_criterion": "matched AUC > 0.55 AND perm p < 0.05 AND partial p < 0.05 vs co-expr degree",
+  "properties_passing_gate": [],
+  "decision": "STOP \u2014 no directed GRN property beats undirected co-expression degree after controlling for it; the directed substrate also does not encode essentiality beyond degree, strengthening the \u00a718 structural conclusion",
+  "per_property": [
+    {
+      "property": "coexpr_degree_BASELINE",
+      "raw_auc": 0.629
+    },
+    {
+      "property": "out_strength",
+      "raw_auc": 0.3926,
+      "degree_matched": {
+        "matched_auc": 0.3868,
+        "n_pairs": 4200,
+        "perm_p": 0.979
+      },
+      "partial_spearman_given_coexpr_degree": {
+        "rho": 0.0462,
+        "p": 0.3457
+      },
+      "beats_degree": false
+    },
+    {
+      "property": "out_degree@0.9",
+      "raw_auc": 0.4302,
+      "degree_matched": {
+        "matched_auc": 0.4321,
+        "n_pairs": 4200,
+        "perm_p": 0.897
+      },
+      "partial_spearman_given_coexpr_degree": {
+        "rho": 0.0524,
+        "p": 0.2849
+      },
+      "beats_degree": false
+    },
+    {
+      "property": "in_strength",
+      "raw_auc": 0.4701,
+      "degree_matched": {
+        "matched_auc": 0.48,
+        "n_pairs": 4200,
+        "perm_p": 0.636
+      },
+      "partial_spearman_given_coexpr_degree": {
+        "rho": -0.0312,
+        "p": 0.5243
+      },
+      "beats_degree": false
+    },
+    {
+      "property": "in_degree@0.9",
+      "raw_auc": 0.5058,
+      "degree_matched": {
+        "matched_auc": 0.5036,
+        "n_pairs": 4200,
+        "perm_p": 0.48
+      },
+      "partial_spearman_given_coexpr_degree": {
+        "rho": -0.031,
+        "p": 0.5262
+      },
+      "beats_degree": false
+    },
+    {
+      "property": "directed_pagerank",
+      "raw_auc": 0.4797,
+      "degree_matched": {
+        "matched_auc": 0.444,
+        "n_pairs": 4200,
+        "perm_p": 0.8485
+      },
+      "partial_spearman_given_coexpr_degree": {
+        "rho": 0.0085,
+        "p": 0.863
+      },
+      "beats_degree": false
+    },
+    {
+      "property": "hits_hub",
+      "raw_auc": 0.4289,
+      "degree_matched": {
+        "matched_auc": 0.4312,
+        "n_pairs": 4200,
+        "perm_p": 0.8935
+      },
+      "partial_spearman_given_coexpr_degree": {
+        "rho": 0.0527,
+        "p": 0.2818
+      },
+      "beats_degree": false
+    },
+    {
+      "property": "hits_authority",
+      "raw_auc": 0.5413,
+      "degree_matched": {
+        "matched_auc": 0.535,
+        "n_pairs": 4200,
+        "perm_p": 0.2765
+      },
+      "partial_spearman_given_coexpr_degree": {
+        "rho": -0.0161,
+        "p": 0.7426
+      },
+      "beats_degree": false
+    }
+  ]
+}

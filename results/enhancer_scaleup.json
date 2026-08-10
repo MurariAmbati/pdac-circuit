@@ -1,0 +1,16 @@
+{
+  "schema": "pdac-circuit.enhancer-scaleup/1",
+  "data_class": "REAL",
+  "eval": "fixed held-out test = ALL rows on ['chr8', 'chr9'] (13425); apples-to-apples",
+  "max_active": 80000,
+  "shipped_cap": 20000,
+  "n_total_rows": 156710,
+  "n_train": 135402,
+  "n_test": 13425,
+  "baseline_shipped_auroc": 0.8087479166748069,
+  "scaleup_auroc": 0.8147203486701352,
+  "scaleup_signal_spearman": 0.580666750644263,
+  "delta_auroc": 0.0059724319953282645,
+  "deployed": true,
+  "epochs_run": 7
+}

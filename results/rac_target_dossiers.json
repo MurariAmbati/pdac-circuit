@@ -1,0 +1,599 @@
+{
+  "schema": "pdac-circuit.rac-dossiers/1",
+  "data_class": "REAL",
+  "subtype_axis": "classical",
+  "sealed_studies_touched": false,
+  "n_targets": 12,
+  "layers_used": [
+    "RAC attractor",
+    "TCGA/GTEx expression",
+    "DepMap CRISPR (abs + selective)",
+    "TCGA GISTIC copy number",
+    "TCGA HM450 promoter methylation",
+    "CPTAC mass-spec proteome",
+    "ENCODE PDAC-vs-healthy ATAC residual",
+    "ENCODE PDAC-vs-healthy H3K27ac residual",
+    "ENCODE ATAC/H3K27ac peaks",
+    "4DN PANC-1 Hi-C compartments/insulation",
+    "JASPAR motif graph",
+    "Modules II-VI circuit design"
+  ],
+  "dossiers": [
+    {
+      "gene": "BRCA2",
+      "verdict": "prioritise",
+      "rationale": "DepMap-essential (0.42); strongly disease-up; PDAC-gained chromatin on one mark; IntOGen driver",
+      "rac": {
+        "convergence_score": 0.6937,
+        "collapse_percentile": 0.87,
+        "master_regulator_rank": 5,
+        "motif_regulated_disease_genes": 0,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": true
+      },
+      "is_it_real": {
+        "disease_log2fc": 6.052,
+        "depmap_essentiality": 0.415,
+        "depmap_pdac_selectivity": -0.107,
+        "cna_amplification_freq": 0.142,
+        "cna_deletion_freq": 0.12,
+        "promoter_methylation_beta": null,
+        "protein_mean": 0.029,
+        "protein_detection_rate": 0.382
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 1.2608,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.1173,
+        "hic_insulation_score": 0.0193,
+        "dist_to_tad_boundary_bp": 90086
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "GATA6",
+      "verdict": "consider",
+      "rationale": "strongly disease-up",
+      "rac": {
+        "convergence_score": 0.6793,
+        "collapse_percentile": 0.899,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 31,
+        "healthy_action": "repress",
+        "subtype": "classical",
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 5.916,
+        "depmap_essentiality": 0.031,
+        "depmap_pdac_selectivity": 0.062,
+        "cna_amplification_freq": 0.295,
+        "cna_deletion_freq": 0.224,
+        "promoter_methylation_beta": null,
+        "protein_mean": 0.057,
+        "protein_detection_rate": 0.668
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": -4.0162,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.3836,
+        "hic_insulation_score": 0.2772,
+        "dist_to_tad_boundary_bp": 14589
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "ZNF790",
+      "verdict": "consider",
+      "rationale": "strongly disease-up; PDAC-gained chromatin on one mark",
+      "rac": {
+        "convergence_score": 0.6639,
+        "collapse_percentile": 0.956,
+        "master_regulator_rank": 4,
+        "motif_regulated_disease_genes": 0,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 5.716,
+        "depmap_essentiality": -0.029,
+        "depmap_pdac_selectivity": -0.04,
+        "cna_amplification_freq": 0.224,
+        "cna_deletion_freq": 0.049,
+        "promoter_methylation_beta": null,
+        "protein_mean": null,
+        "protein_detection_rate": null
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 1.6495,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.3463,
+        "hic_insulation_score": -0.4266,
+        "dist_to_tad_boundary_bp": 84213
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "SETDB1",
+      "verdict": "prioritise",
+      "rationale": "DepMap-essential (0.51); strongly disease-up; PDAC-gained chromatin on one mark; IntOGen driver",
+      "rac": {
+        "convergence_score": 0.6499,
+        "collapse_percentile": 0.964,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 0,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": true
+      },
+      "is_it_real": {
+        "disease_log2fc": 6.426,
+        "depmap_essentiality": 0.514,
+        "depmap_pdac_selectivity": -0.013,
+        "cna_amplification_freq": 0.322,
+        "cna_deletion_freq": 0.033,
+        "promoter_methylation_beta": null,
+        "protein_mean": 0.065,
+        "protein_detection_rate": 1.0
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 3.202,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 1.498,
+        "hic_insulation_score": 0.9553,
+        "dist_to_tad_boundary_bp": 78737
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "KMT2C",
+      "verdict": "consider",
+      "rationale": "strongly disease-up; IntOGen driver",
+      "rac": {
+        "convergence_score": 0.6174,
+        "collapse_percentile": 0.948,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 0,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": true
+      },
+      "is_it_real": {
+        "disease_log2fc": 7.561,
+        "depmap_essentiality": -0.115,
+        "depmap_pdac_selectivity": -0.107,
+        "cna_amplification_freq": 0.23,
+        "cna_deletion_freq": 0.082,
+        "promoter_methylation_beta": null,
+        "protein_mean": -0.11,
+        "protein_detection_rate": 0.958
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": -1.0422,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.325,
+        "hic_insulation_score": null,
+        "dist_to_tad_boundary_bp": 121644
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "E2F1",
+      "verdict": "prioritise",
+      "rationale": "DepMap-essential (0.41); strongly disease-up; PDAC-gained chromatin on one mark",
+      "rac": {
+        "convergence_score": 0.6172,
+        "collapse_percentile": 1.0,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 27,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 6.854,
+        "depmap_essentiality": 0.408,
+        "depmap_pdac_selectivity": 0.12,
+        "cna_amplification_freq": 0.235,
+        "cna_deletion_freq": 0.027,
+        "promoter_methylation_beta": null,
+        "protein_mean": null,
+        "protein_detection_rate": null
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 2.7619,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": false,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.8255,
+        "hic_insulation_score": null,
+        "dist_to_tad_boundary_bp": 58615
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "SOX13",
+      "verdict": "consider",
+      "rationale": "strongly disease-up; PDAC-gained chromatin on one mark",
+      "rac": {
+        "convergence_score": 0.5964,
+        "collapse_percentile": 0.73,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 45,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 6.879,
+        "depmap_essentiality": -0.179,
+        "depmap_pdac_selectivity": -0.068,
+        "cna_amplification_freq": 0.306,
+        "cna_deletion_freq": 0.044,
+        "promoter_methylation_beta": null,
+        "protein_mean": 0.12,
+        "protein_detection_rate": 0.408
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 0.8074,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 1.1654,
+        "hic_insulation_score": 0.7628,
+        "dist_to_tad_boundary_bp": 38115
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "AHR",
+      "verdict": "consider",
+      "rationale": "strongly disease-up; PDAC-gained chromatin on one mark",
+      "rac": {
+        "convergence_score": 0.5951,
+        "collapse_percentile": 0.771,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 41,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 9.575,
+        "depmap_essentiality": -0.02,
+        "depmap_pdac_selectivity": 0.006,
+        "cna_amplification_freq": 0.284,
+        "cna_deletion_freq": 0.011,
+        "promoter_methylation_beta": null,
+        "protein_mean": null,
+        "protein_detection_rate": null
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 1.9444,
+        "promoter_accessible_atac": false,
+        "promoter_active_h3k27ac": false,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.3571,
+        "hic_insulation_score": 0.0819,
+        "dist_to_tad_boundary_bp": 78641
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "MYBL2",
+      "verdict": "prioritise",
+      "rationale": "DepMap-essential (0.60); strongly disease-up; PDAC-gained chromatin on one mark",
+      "rac": {
+        "convergence_score": 0.5921,
+        "collapse_percentile": 0.919,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 20,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 5.597,
+        "depmap_essentiality": 0.602,
+        "depmap_pdac_selectivity": 0.057,
+        "cna_amplification_freq": 0.257,
+        "cna_deletion_freq": 0.022,
+        "promoter_methylation_beta": null,
+        "protein_mean": null,
+        "protein_detection_rate": null
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 3.0451,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": false,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.1955,
+        "hic_insulation_score": null,
+        "dist_to_tad_boundary_bp": 232019
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "AGR2",
+      "verdict": "deprioritise",
+      "rationale": "strongly disease-up; promoter hypermethylated (beta 0.59) -> already silenced; low protein abundance (-0.49); PDAC-gained chromatin on one mark",
+      "rac": {
+        "convergence_score": 0.5912,
+        "collapse_percentile": 0.777,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 0,
+        "healthy_action": "repress",
+        "subtype": "classical",
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 10.408,
+        "depmap_essentiality": 0.063,
+        "depmap_pdac_selectivity": 0.066,
+        "cna_amplification_freq": 0.284,
+        "cna_deletion_freq": 0.011,
+        "promoter_methylation_beta": null,
+        "protein_mean": -0.489,
+        "protein_detection_rate": 1.0
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 0.7205,
+        "promoter_accessible_atac": false,
+        "promoter_active_h3k27ac": false,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.1171,
+        "hic_insulation_score": 0.2905,
+        "dist_to_tad_boundary_bp": 161567
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "ZNF331",
+      "verdict": "consider",
+      "rationale": "strongly disease-up; protein barely detected (16%); PDAC-gained chromatin on one mark",
+      "rac": {
+        "convergence_score": 0.5844,
+        "collapse_percentile": 0.917,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 36,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": false
+      },
+      "is_it_real": {
+        "disease_log2fc": 6.517,
+        "depmap_essentiality": -0.225,
+        "depmap_pdac_selectivity": 0.009,
+        "cna_amplification_freq": 0.175,
+        "cna_deletion_freq": 0.109,
+        "promoter_methylation_beta": null,
+        "protein_mean": -0.113,
+        "protein_detection_rate": 0.155
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 3.3494,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.1743,
+        "hic_insulation_score": -0.0799,
+        "dist_to_tad_boundary_bp": 25473
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    },
+    {
+      "gene": "SF3B1",
+      "verdict": "prioritise",
+      "rationale": "DepMap-essential (1.33); strongly disease-up; PDAC-gained chromatin on one mark; IntOGen driver",
+      "rac": {
+        "convergence_score": 0.5843,
+        "collapse_percentile": 0.971,
+        "master_regulator_rank": 0,
+        "motif_regulated_disease_genes": 0,
+        "healthy_action": "repress",
+        "subtype": null,
+        "intogen_driver": true
+      },
+      "is_it_real": {
+        "disease_log2fc": 6.604,
+        "depmap_essentiality": 1.328,
+        "depmap_pdac_selectivity": -0.14,
+        "cna_amplification_freq": 0.131,
+        "cna_deletion_freq": 0.027,
+        "promoter_methylation_beta": null,
+        "protein_mean": 0.036,
+        "protein_detection_rate": 1.0
+      },
+      "is_it_active": {
+        "atac_disease_residual_log2": null,
+        "h3k27ac_disease_residual_log2": 1.7338,
+        "promoter_accessible_atac": true,
+        "promoter_active_h3k27ac": true,
+        "hic_compartment": "A",
+        "hic_compartment_eigenvector": 0.1014,
+        "hic_insulation_score": 0.4634,
+        "dist_to_tad_boundary_bp": 70079
+      },
+      "can_i_build_it": {
+        "crispri_guide": null,
+        "guide_on_target": null,
+        "off_target_risk": null,
+        "promoter_source": null,
+        "promoter_strength": null,
+        "enhancer_activity": null,
+        "simulated_tf_knockdown": null,
+        "ode_stable": null,
+        "efficacy": null,
+        "specificity": null,
+        "robustness": null,
+        "safety": null
+      }
+    }
+  ]
+}

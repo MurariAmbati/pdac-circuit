@@ -1,0 +1,15 @@
+{
+  "status": "SUPERSEDED",
+  "superseded_reason": "Superseded by the full-FANTOM5 retrain: this file records the 60,000-peak-capped model (ensemble 0.5173). The deployed model trains on all 181,428 train-chromosome peaks and scores 0.5275 on the fixed chr8/chr9 test.",
+  "superseded_at": "2026-07-21 data-scaling programme",
+  "see": "models/promoter.model.json, results/promoter_scaleup.json, docs/ADDENDUM_DATA_SCALING.md",
+  "model": "promoter",
+  "cert": "real",
+  "n_train": 52073,
+  "n_test": 4820,
+  "spearman_ensemble": 0.5172781825116078,
+  "spearman_cnn": 0.49315885507033813,
+  "spearman_rf": 0.5065433110943116,
+  "perm_p": 0.000999000999000999,
+  "conformal_radius": 1.2190157175064087
+}

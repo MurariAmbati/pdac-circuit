@@ -1,0 +1,259 @@
+{
+  "schema": "pdac-circuit.h3k27ac-window-loci/1",
+  "data_class": "REAL",
+  "sealed_studies_touched": false,
+  "mark": "H3K27ac",
+  "published_window_bp": 2000,
+  "why": "\u00a726 varied caliper, gene membership and null model but never the measurement window itself, which was inherited and unjustified. A result living at one arbitrary threshold is the \u00a715b artifact signature.",
+  "window_sweep": [
+    {
+      "window_bp": 500,
+      "n_loci": 1675,
+      "n_targets": 20,
+      "target_mean_log2": 1.0356,
+      "background_mean_log2": 0.2305,
+      "target_fold_change": 2.05,
+      "mwu_p": 0.032297,
+      "set_perm_p": 0.0404,
+      "significant_both": true
+    },
+    {
+      "window_bp": 1000,
+      "n_loci": 1675,
+      "n_targets": 20,
+      "target_mean_log2": 0.7874,
+      "background_mean_log2": 0.1076,
+      "target_fold_change": 1.726,
+      "mwu_p": 0.017798,
+      "set_perm_p": 0.0412,
+      "significant_both": true
+    },
+    {
+      "window_bp": 2000,
+      "n_loci": 1675,
+      "n_targets": 20,
+      "target_mean_log2": 0.9194,
+      "background_mean_log2": -0.0914,
+      "target_fold_change": 1.891,
+      "mwu_p": 0.002239,
+      "set_perm_p": 0.0022,
+      "significant_both": true
+    },
+    {
+      "window_bp": 5000,
+      "n_loci": 1675,
+      "n_targets": 20,
+      "target_mean_log2": 0.4493,
+      "background_mean_log2": -0.3158,
+      "target_fold_change": 1.365,
+      "mwu_p": 0.004647,
+      "set_perm_p": 0.0056,
+      "significant_both": true
+    },
+    {
+      "window_bp": 10000,
+      "n_loci": 1675,
+      "n_targets": 20,
+      "target_mean_log2": 0.2312,
+      "background_mean_log2": -0.4221,
+      "target_fold_change": 1.174,
+      "mwu_p": 0.006981,
+      "set_perm_p": 0.0093,
+      "significant_both": true
+    },
+    {
+      "window_bp": 25000,
+      "n_loci": 1675,
+      "n_targets": 20,
+      "target_mean_log2": 0.0164,
+      "background_mean_log2": -0.533,
+      "target_fold_change": 1.011,
+      "mwu_p": 0.007408,
+      "set_perm_p": 0.015,
+      "significant_both": true
+    }
+  ],
+  "verdict": "ROBUST TO WINDOW: significant at 6/6 widths (500bp-25kb); shape is promoter-local (strongest at small windows, dilutes as the window widens)",
+  "per_locus_at_published_window": {
+    "HOXA3": {
+      "chrom": "chr7",
+      "tss": 27152583,
+      "window": "chr7:27,150,583-27,154,583",
+      "pdac_foldchange_mean": 5.7717,
+      "healthy_foldchange_mean": 0.0,
+      "log2_residual": 5.8757,
+      "linear_ratio_pdac_over_healthy": 58.717
+    },
+    "FOSL1": {
+      "chrom": "chr11",
+      "tss": 65900573,
+      "window": "chr11:65,898,573-65,902,573",
+      "pdac_foldchange_mean": 20.0437,
+      "healthy_foldchange_mean": 2.8492,
+      "log2_residual": 2.7719,
+      "linear_ratio_pdac_over_healthy": 6.83
+    },
+    "MYBL2": {
+      "chrom": "chr20",
+      "tss": 43667019,
+      "window": "chr20:43,665,019-43,669,019",
+      "pdac_foldchange_mean": 5.5503,
+      "healthy_foldchange_mean": 1.1371,
+      "log2_residual": 2.1913,
+      "linear_ratio_pdac_over_healthy": 4.567
+    },
+    "SMAD3": {
+      "chrom": "chr15",
+      "tss": 67063763,
+      "window": "chr15:67,061,763-67,065,763",
+      "pdac_foldchange_mean": 17.5014,
+      "healthy_foldchange_mean": 3.9478,
+      "log2_residual": 2.1205,
+      "linear_ratio_pdac_over_healthy": 4.348
+    },
+    "ZNF528": {
+      "chrom": "chr19",
+      "tss": 52397849,
+      "window": "chr19:52,395,849-52,399,849",
+      "pdac_foldchange_mean": 6.5566,
+      "healthy_foldchange_mean": 1.5833,
+      "log2_residual": 1.9835,
+      "linear_ratio_pdac_over_healthy": 3.954
+    },
+    "E2F1": {
+      "chrom": "chr20",
+      "tss": 33686385,
+      "window": "chr20:33,684,385-33,688,385",
+      "pdac_foldchange_mean": 5.9581,
+      "healthy_foldchange_mean": 1.6509,
+      "log2_residual": 1.7907,
+      "linear_ratio_pdac_over_healthy": 3.46
+    },
+    "AHR": {
+      "chrom": "chr7",
+      "tss": 16916359,
+      "window": "chr7:16,914,359-16,918,359",
+      "pdac_foldchange_mean": 2.2771,
+      "healthy_foldchange_mean": 0.8981,
+      "log2_residual": 1.2519,
+      "linear_ratio_pdac_over_healthy": 2.382
+    },
+    "ZNF331": {
+      "chrom": "chr19",
+      "tss": 53519527,
+      "window": "chr19:53,517,527-53,521,527",
+      "pdac_foldchange_mean": 10.0327,
+      "healthy_foldchange_mean": 4.295,
+      "log2_residual": 1.2051,
+      "linear_ratio_pdac_over_healthy": 2.305
+    },
+    "SETDB1": {
+      "chrom": "chr1",
+      "tss": 150926263,
+      "window": "chr1:150,924,263-150,928,263",
+      "pdac_foldchange_mean": 13.9971,
+      "healthy_foldchange_mean": 7.0415,
+      "log2_residual": 0.9811,
+      "linear_ratio_pdac_over_healthy": 1.974
+    },
+    "AGR2": {
+      "chrom": "chr7",
+      "tss": 16833433,
+      "window": "chr7:16,831,433-16,835,433",
+      "pdac_foldchange_mean": 1.5283,
+      "healthy_foldchange_mean": 0.7571,
+      "log2_residual": 0.9259,
+      "linear_ratio_pdac_over_healthy": 1.9
+    },
+    "ZNF790": {
+      "chrom": "chr19",
+      "tss": 36850787,
+      "window": "chr19:36,848,787-36,852,787",
+      "pdac_foldchange_mean": 6.938,
+      "healthy_foldchange_mean": 4.0034,
+      "log2_residual": 0.7783,
+      "linear_ratio_pdac_over_healthy": 1.715
+    },
+    "ATM": {
+      "chrom": "chr11",
+      "tss": 108222804,
+      "window": "chr11:108,220,804-108,224,804",
+      "pdac_foldchange_mean": 16.8651,
+      "healthy_foldchange_mean": 10.737,
+      "log2_residual": 0.6466,
+      "linear_ratio_pdac_over_healthy": 1.565
+    },
+    "SF3B1": {
+      "chrom": "chr2",
+      "tss": 197435079,
+      "window": "chr2:197,433,079-197,437,079",
+      "pdac_foldchange_mean": 19.6016,
+      "healthy_foldchange_mean": 16.8238,
+      "log2_residual": 0.2193,
+      "linear_ratio_pdac_over_healthy": 1.164
+    },
+    "ZNF93": {
+      "chrom": "chr19",
+      "tss": 19900913,
+      "window": "chr19:19,898,913-19,902,913",
+      "pdac_foldchange_mean": 7.5871,
+      "healthy_foldchange_mean": 7.2157,
+      "log2_residual": 0.0714,
+      "linear_ratio_pdac_over_healthy": 1.051
+    },
+    "BRCA2": {
+      "chrom": "chr13",
+      "tss": 32315086,
+      "window": "chr13:32,313,086-32,317,086",
+      "pdac_foldchange_mean": 11.6734,
+      "healthy_foldchange_mean": 13.0712,
+      "log2_residual": -0.1618,
+      "linear_ratio_pdac_over_healthy": 0.894
+    },
+    "SOX13": {
+      "chrom": "chr1",
+      "tss": 204073115,
+      "window": "chr1:204,071,115-204,075,115",
+      "pdac_foldchange_mean": 7.4701,
+      "healthy_foldchange_mean": 8.8124,
+      "log2_residual": -0.2355,
+      "linear_ratio_pdac_over_healthy": 0.849
+    },
+    "KMT2C": {
+      "chrom": "chr7",
+      "tss": 152436644,
+      "window": "chr7:152,434,644-152,438,644",
+      "pdac_foldchange_mean": 6.6029,
+      "healthy_foldchange_mean": 9.5316,
+      "log2_residual": -0.523,
+      "linear_ratio_pdac_over_healthy": 0.696
+    },
+    "FAM83A": {
+      "chrom": "chr8",
+      "tss": 123178960,
+      "window": "chr8:123,176,960-123,180,960",
+      "pdac_foldchange_mean": 1.1651,
+      "healthy_foldchange_mean": 1.7633,
+      "log2_residual": -0.5586,
+      "linear_ratio_pdac_over_healthy": 0.679
+    },
+    "ZNF85": {
+      "chrom": "chr19",
+      "tss": 20923222,
+      "window": "chr19:20,921,222-20,925,222",
+      "pdac_foldchange_mean": 4.484,
+      "healthy_foldchange_mean": 7.4076,
+      "log2_residual": -0.7118,
+      "linear_ratio_pdac_over_healthy": 0.611
+    },
+    "GATA6": {
+      "chrom": "chr18",
+      "tss": 22169589,
+      "window": "chr18:22,167,589-22,171,589",
+      "pdac_foldchange_mean": 1.4081,
+      "healthy_foldchange_mean": 7.0024,
+      "log2_residual": -2.2356,
+      "linear_ratio_pdac_over_healthy": 0.212
+    }
+  }
+}

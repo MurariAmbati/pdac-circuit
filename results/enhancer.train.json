@@ -1,0 +1,13 @@
+{
+  "status": "SUPERSEDED",
+  "superseded_reason": "Superseded by the un-capped pancreas retrain: this file records the 20,000-active-capped model. The deployed model trains on 135,402 rows (80,000 actives) and scores AUROC 0.8147 on the fixed chr8/chr9 test.",
+  "superseded_at": "2026-07-21 data-scaling programme",
+  "see": "models/enhancer.model.json, results/enhancer_scaleup.json, docs/ADDENDUM_DATA_SCALING.md",
+  "model": "enhancer",
+  "cert": "real",
+  "n_train": 33880,
+  "n_test": 3354,
+  "auroc": 0.8150112166059138,
+  "signal_spearman": 0.5516482830147923,
+  "perm_p": 0.000999000999000999
+}

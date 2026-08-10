@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "bytes": 510632,
+      "dataClass": "REAL",
+      "license": null,
+      "localPath": "data\\raw\\doench-2016\\Doench2016_ontarget.csv",
+      "name": "Doench2016_ontarget.csv",
+      "retrievedAt": "2026-06-20T05:40:20Z",
+      "sha256": "97a4fda9481985d5e4ea6b18bb52e17b1c953913fbb901f56a134ec3c31f2972",
+      "status": "REAL",
+      "url": "https://raw.githubusercontent.com/MicrosoftResearch/Azimuth/master/azimuth/data/FC_plus_RES_withPredictions.csv"
+    }
+  ],
+  "corpus": "doench-2016",
+  "generatedAt": "2026-06-20T05:40:20Z",
+  "note": "REAL = downloaded + sha256-hashed with url/license/retrievedAt. POINTER = open but resolved at ingest / not statically pulled this run. GATED = behind an auth/DUC wall, recorded as a pointer and never bypassed. sha256 is present only when actually hashed and is never fabricated.",
+  "schema": "pdac-circuit.provenance/1",
+  "summary": {
+    "gated": 0,
+    "pointer": 0,
+    "real": 1
+  }
+}
