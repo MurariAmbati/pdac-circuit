@@ -1,9 +1,9 @@
 {
   "schema": "pdac-circuit.pipeline-sync/1",
   "source_repo": "https://github.com/MurariAmbati/pdac-chromatin-circuit",
-  "source_commit": "3fd16cb547bab3675c51939237b734acfa9702b5",
-  "source_subject": "Move unsealed config files into configs/",
-  "synced_at": "2026-08-10T17:14:28Z",
+  "source_commit": "df5bb06a5d15068de045821859d1d6d35638b03b",
+  "source_subject": "Bring the reports into the same prose register as the addenda",
+  "synced_at": "2026-08-10T17:32:58Z",
   "files": 358,
   "note": "Mirrored from the pipeline repository by scripts/sync_from_pipeline.py. The pipeline repository is authoritative; rerun the script to refresh. Raw data and trained weights are excluded, as in the source."
 }

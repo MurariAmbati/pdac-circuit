@@ -66,34 +66,34 @@ different target transformation.
 
 ## 4. Scientific hypotheses
 
-### H1 — disease residual compressibility
+### H1, disease residual compressibility
 
 PDAC chromatin is not an unrelated regulatory system. A large fraction should be expressible as
 a healthy pancreas sequence prior plus a lower-dimensional disease residual. This predicts that
 explicit residual learning will improve donor transfer and require fewer parameters than
 learning every PDAC track independently.
 
-### H2 — subtype topology is a state graph, not two unrelated labels
+### H2, subtype topology is a state graph, not two unrelated labels
 
 Classical and basal-like PDAC share a malignant backbone but diverge along lineage programmes
 including GATA6/HNF4A and TP63/AP-1/TEAD-associated regulation. Encoding healthy, PanIN,
 primary, metastatic, classical, basal-like, treated, and resistant states in a graph should
 improve data efficiency while allowing the classical/basal branch to remain distinct.
 
-### H3 — perturbations act on the disease residual
+### H3, perturbations act on the disease residual
 
 KRAS/MAPK, GATA6, HNF4A, TP63, AP-1, TEAD/YAP, SMAD/TGFβ, MYC, TET, KDM6A, ARID1A/SWI-SNF,
 BRD4, KLF5, and ELF3 perturbations should change only a structured subset of the PDAC residual. Predicting
 the sign and genomic distribution of those changes is more mechanistically informative than
 predicting absolute signal alone.
 
-### H4 — the healthy counterfactual improves safety reasoning
+### H4, the healthy counterfactual improves safety reasoning
 
 The 95 GiB normal-pancreas atlas provides a direct penalty against interventions predicted to
 collapse regulatory programmes already active in healthy pancreas. This is a research safety
 margin, not a toxicity prediction.
 
-### H5 — specialized linear-memory context can beat generic quadratic attention in-domain
+### H5. Specialized linear-memory context can beat generic quadratic attention in-domain
 
 At 128 bp resolution, PDACircuitFormer alternates dilated gated convolutions with landmark
 cross-attention. Its global cost is O(NM), where N is the number of genomic bins and M is a small
@@ -104,12 +104,12 @@ that PDAC-state conditioning and a specialized peak-aware inductive bias can win
 with substantially less memory. This remains an unproven architectural hypothesis until the
 registered controls and independent tests are complete.
 
-### H6 — species-calibrated baseline, species-invariant disease circuit
+### H6. Species-calibrated baseline, species-invariant disease circuit
 
 The progression studies contain native mouse data, while the decisive external benchmark is
 human; GSE99311 contains 124 mouse and 12 human metadata samples, but its 60 usable continuous
 profiles are all mm9. The only two nominally human continuous profiles have exact hg18 chromosome
-sizes despite depositor hg19 labels and are excluded rather than relabeled. The frozen adaptation
+sizes despite depositor hg19 labels and are excluded and not relabeled. The frozen adaptation
 contract adds GSE149103 and the GSE272459/GSE272461/GSE272462/GSE272586 training planes, while
 GSE272463 is patient-study validation only. GSE124229/GSE124230 remain sealed patient tests, while
 GSE301272/GSE301284/GSE295354 are sealed external KLF5 perturbation tests. The model gives
@@ -118,7 +118,7 @@ causal PDAC circuit coefficients when only the species label is counterfactually
 profiles are always paired with their depositor-declared assembly sequence (mm9 here), and human
 profiles with hg19 here; later mm10/hg38 studies retain their own native builds.
 
-### H7 — counterfactual algebra should be an inductive bias, not a learned convention
+### H7. Counterfactual algebra should be an inductive bias, not a learned convention
 
 The intervention branch is constrained to return exactly zero for a zero perturbation vector and
 to reverse sign under a signed intervention flip. State and intervention residuals remain
@@ -127,7 +127,7 @@ the network can fit a perturbation while violating the intended counterfactual m
 matched direct CNN controls receive the same conditioning and nearly identical parameter count,
 so any gain must survive a test against capacity without this circuit factorization.
 
-### H8 — evidence topology matters as much as model topology
+### H8, evidence topology matters as much as model topology
 
 Internal unseen-locus transfer, an external KLF5 degradation program, and untouched human patient
 profiles answer different questions and are never pooled into one inflated sample count.
@@ -183,7 +183,7 @@ This is deliberately stronger than a generic condition embedding. Healthy masks 
 branch exactly; zero perturbations delete the intervention branch exactly; sign reversal is an
 exact algebraic symmetry; and each non-baseline term has a matched biological contrast that can
 falsify it. The intended novelty is the conjunction of those invariances with long-range,
-peak-aware routing and a protected PDAC perturbation test—not parameter count alone.
+peak-aware routing and a protected PDAC perturbation test, not parameter count alone.
 
 For healthy-pancreas examples, the disease mask sets `r_state = 0` exactly. A zero perturbation
 vector sets `r_int = 0` and `c_int = 0` exactly, despite neural-head biases. Reversing every
@@ -293,7 +293,7 @@ The state graph is evaluated counterfactually at every locus by replacing only t
 progression indicators (normal, PanIN, primary, metastatic), so it remains active at micro-batch
 size one. A second-difference penalty smooths implausible trajectory kinks without requiring all
 adjacent transitions to be small. The species loss flips only the human/mouse indicators and
-requires the circuit coefficients—not the calibrated baseline—to remain invariant.
+requires the circuit coefficients, not the calibrated baseline, to remain invariant.
 
 The profile loss is evaluated at 128, 256, 512, and 1,024 bp scales. This prevents the model
 from winning only by smoothing or only by fitting sharp peaks. The exact weights are defaults,
@@ -310,7 +310,7 @@ responses when supported by paired data.
 
 ## 7. Data planes
 
-### Plane A — existing 101 GiB local corpus
+### Plane A, existing 101 GiB local corpus
 
 | corpus | size | role |
 |---|---:|---|
@@ -332,44 +332,44 @@ The complete compiled healthy prior has 2,118,031 source- and shard-hash-verifie
 33,156 shards. Its materialized audit is GREEN: 1,685,689 train, 236,288 validation, and 196,054
 locus-test examples with zero interval or group leakage.
 
-### Plane B — open PDAC chromatin and expression programme
+### Plane B, open PDAC chromatin and expression programme
 
 The complete pointer registry is `pdac_chromatin_assets.json`. Priority order:
 
-1. **GSE99275 + GSE99311** — progression/metastasis organoid ATAC, H3K27ac, RNA, and exact
+1. **GSE99275 + GSE99311**, progression/metastasis organoid ATAC, H3K27ac, RNA, and exact
    vector-family intervention pairs; use for the early curriculum and hold out entire lines.
-2. **GSE149103** — 36 eligible hg19 accessibility, histone, and CTCF profiles spanning HPNE,
+2. **GSE149103**, 36 eligible hg19 accessibility, histone, and CTCF profiles spanning HPNE,
    primary PANC1, and metastatic Capan1 cell lines; use only as globally grouped cell-line
    training, never as an independent patient cohort.
-3. **GSE272459/GSE272461/GSE272462/GSE272586** — 16 engineered human-organoid ATAC profiles,
+3. **GSE272459/GSE272461/GSE272462/GSE272586**, 16 engineered human-organoid ATAC profiles,
    nine AP-1/histone CUT&RUN profiles, eight methylation profiles, and four non-input early-lineage
    occupancy profiles. These provide driver, ERK/AP-1, lineage-loss, and cross-layer training.
-4. **GSE272463** — 14 primary patient-PDAC ATAC profiles; every window is forced to `validation`,
+4. **GSE272463**, 14 primary patient-PDAC ATAC profiles; every window is forced to `validation`,
    survival fields are redacted from derived metadata, and the study never enters gradient updates.
-5. **GSE64557 + GSE272460** — registered KLF5/ELF3 peak and ERK/AP-1 RNA auxiliary studies,
+5. **GSE64557 + GSE272460**, registered KLF5/ELF3 peak and ERK/AP-1 RNA auxiliary studies,
    excluded from profile training until their BED/RNA transforms are frozen.
-6. **GSE195623** — patient-derived PDAC organoid accessibility with drug sensitivity; use as a
+6. **GSE195623**, patient-derived PDAC organoid accessibility with drug sensitivity; use as a
    state/drug holdout.
-7. **GSE124229 + GSE124230** — 54 primary EpCAM-positive treatment-naive PDAC specimens with
+7. **GSE124229 + GSE124230**, 54 primary EpCAM-positive treatment-naive PDAC specimens with
    accessibility and matched expression; keep the whole study untouched for the principal
    human external test.
-8. **GSE243528** — methylation/chromatin cross-layer test.
-9. **GSE301272 + GSE301284** — L36pl KLF5-dTAG ATAC/H3K27ac time course. The two assays are
+8. **GSE243528**, methylation/chromatin cross-layer test.
+9. **GSE301272 + GSE301284**, L36pl KLF5-dTAG ATAC/H3K27ac time course. The two assays are
    nested inside one biological context and are never counted as two independent groups.
-10. **GSE295354** — an independent-lab KLF5 lineage programme contributing exactly AsPC1 and
+10. **GSE295354**, an independent-lab KLF5 lineage programme contributing exactly AsPC1 and
     T3M4 contexts. Together, the three target-sealed archives are 43.474 GiB.
-11. **GSE138452 + GSE47535** — HNF4A and GATA6 lineage-mechanism tests. **GSE146486 is explicitly
+11. **GSE138452 + GSE47535**, HNF4A and GATA6 lineage-mechanism tests. **GSE146486 is explicitly
     excluded from every PDAC claim** because it is hESC pancreatic-endocrine differentiation with
     TET knockout, not pancreatic ductal adenocarcinoma.
-12. **GSE202051** — independent single-nucleus/spatial expression state descriptors.
-13. **Open pancreatic organoid WGS/WXS/RNA on AWS/GDC** — genotype-expression and variant tests.
+12. **GSE202051**, independent single-nucleus/spatial expression state descriptors.
+13. **Open pancreatic organoid WGS/WXS/RNA on AWS/GDC**, genotype-expression and variant tests.
 
-### Plane C — gated assets
+### Plane C, gated assets
 
 HUM0257.v2 and HRA010277 are recorded as gated. Their ATAC/ChIP/Hi-C/RNA data are valuable for
 3D and cross-study validation, but the pipeline must not bypass authorization or invent hashes.
 
-### Plane D — missing decisive evidence
+### Plane D, missing decisive evidence
 
 The strongest future test would be paired sequence, chromatin, and transcriptome before/after a
 regulatory perturbation in PDAC organoids, with multiple donors and a normal-ductal comparator.
@@ -378,7 +378,7 @@ than simulate it.
 
 ### Frozen claim-surface topology
 
-`configs/chromatin-claim-surfaces.json` is now a hash-bound execution contract rather than a prose
+`configs/chromatin-claim-surfaces.json` is now a hash-bound execution contract, not a prose
 wish list:
 
 | required axis | biological source | independent unit | key leakage barrier |
@@ -453,7 +453,7 @@ Downloaded RAW tar files are handled by `chromatin-inspect-geo-archive` and
 `chromatin-extract-geo-archive`. Both reject traversal paths, links, devices, and unexpected member
 types; extraction is atomic, size-capped, and SHA-256 manifested. The inventory recognizes assay
 and sample-label tokens but leaves every biological state unresolved until registered sample
-metadata is reviewed—tokens such as N/P/T/M are never guessed into normal/primary/metastatic labels.
+metadata is reviewed, tokens such as N/P/T/M are never guessed into normal/primary/metastatic labels.
 
 `chromatin-geo-metadata` caches and hashes the authoritative family SOFT record and routes each
 accession through an explicit reviewed decoder. Biological state and driver/treatment direction
@@ -503,12 +503,12 @@ The split is nested because chromosome-only performance is not enough:
 | temporal test | released after 2026-06-20 | post-registration evidence |
 
 Adjacent or overlapping windows cannot cross the chromosome split. Sample groups are donor or
-biological replicate—not individual windows or technical replicates. Hyperparameter tuning may
+biological replicate, not individual windows or technical replicates. Hyperparameter tuning may
 never use state, joint, external, or temporal test outcomes.
 
 ## 10. Enformer and Borzoi comparison modes
 
-### Mode A — frozen zero-shot profile
+### Mode A, frozen zero-shot profile
 
 Map each assay to a preregistered, biologically defensible Enformer/Borzoi output. Freeze the
 mapping before examining PDAC labels. This tests immediately available models but can be limited
@@ -523,7 +523,7 @@ the 1,643-channel Enformer tensor and retains both indices in provenance.
 `configs/enformer_target_policy.json` implements that freeze from target descriptions alone. It averages
 all matching pancreas targets for accessibility, five registered histone marks, CTCF, or adult
 pancreas CAGE; it never selects the best-performing head. Bulk RNA and WGBS are explicitly
-unsupported for zero-shot Enformer rather than being mapped to another modality. The resolver
+unsupported for zero-shot Enformer instead of being mapped to another modality. The resolver
 writes the target-table hash, policy hash, exact indices, accessions, and descriptions.
 
 `configs/enformer_mouse_target_policy.json` freezes all 107 official mouse H3K27ac outputs by description
@@ -548,7 +548,7 @@ because rank correlation with a constant zero vector is mathematically undefined
 
 The official TensorFlow-Hub exporter is isolated in `baseline_runners/enformer_export.py` with a
 Python 3.10/TensorFlow 2.15 environment, because the main training environment is Python 3.12 and
-PyTorch. It reads only preregistered coordinates and sequence—never truth labels—averages the
+PyTorch. It reads only preregistered coordinates and sequence, never truth labels, averages the
 frozen target indices, hashes the dedicated model cache, and writes raw predictions. The exact
 official handle is frozen in `baseline_assets/enformer-model.json`; the runner has no model-URL
 override and refuses inference until `fetch_enformer_assets.py` has materialized the dedicated
@@ -562,7 +562,7 @@ The official Borzoi path is likewise isolated in `baseline_runners/borzoi_export
 `environments/borzoi-baseline.yml`. Its resumable asset materializer downloads sequentially and
 freezes each SHA-256; model weights are never loaded together.
 
-### Mode B — grouped condition-aware Enformer adapter
+### Mode B, grouped condition-aware Enformer adapter
 
 The required strong diagnostic comparator is an identity-initialized 24,769-parameter dilated
 profile adapter. Assembly-specific human and mouse checkpoints use the same architecture but
@@ -573,13 +573,13 @@ registered treatment condition and a provenance-recorded exact-zero perturbation
 subtracts reference from treatment before truth is joined. This tests whether a cheap
 condition-aware calibration of Enformer explains the apparent gain.
 
-### Mode C — representation-controlled adapter
+### Mode C, representation-controlled adapter
 
 Freeze each sequence encoder and give Enformer, Borzoi, and PDACircuitFormer an adapter with the
 same parameter budget and PDAC training data. This asks whether the learned sequence
 representation is better, separate from output-head availability.
 
-### Mode D — from-scratch matched-data ablation
+### Mode D, from-scratch matched-data ablation
 
 Train the registered direct conditional CNN at both 2 kb and 196 kb, plus PDACircuitFormer, on
 identical tracks and splits. Both direct CNNs contain exactly 2,259,947 learned parameters; the
@@ -589,7 +589,7 @@ The 196 kb direct CNN has no landmark attention or causal residual branches and 
 of the 2,248,306-parameter local PDACircuitFormer. The legacy enhancer classifier remains a
 secondary classification result, not a substitute for this profile-matched control. Its 16-tile
 microbatch and 384-step accumulation cover 6,144 local tiles, or exactly 98,304 target bins per
-optimizer step—the same bin mass as 64 accumulated 1,536-bin long windows. Together
+optimizer step, the same bin mass as 64 accumulated 1,536-bin long windows. Together
 these runs identify gains from context, global mixing, residualization, and capacity.
 
 No baseline prediction enters candidate training as a pseudo-label. Distillation would be a
@@ -685,7 +685,7 @@ The executable promotion, multi-seed, hardware-safety, and ablation policy is fr
 `configs/chromatin-campaign.json`. It defines three seeds, four hardware profiles, five curriculum
 stages, and ten required ablations; test surfaces are never capacity-selection inputs.
 
-### Stage 0 — freeze evidence and splits
+### Stage 0, freeze evidence and splits
 
 - Hash registry, asset registry, track descriptors, and split policy.
 - Bind `configs/chromatin-human-cohort.json` before any human adaptation run: six studies are
@@ -698,7 +698,7 @@ stages, and ten required ablations; test surfaces are never capacity-selection i
 - Audit donor/replicate identity and study overlap.
 - Generate candidate and baseline track-mapping manifests before labels are inspected.
 
-### Stage 1 — healthy multi-assay prior
+### Stage 1, healthy multi-assay prior
 
 - Train `b(x,a)` on the existing healthy pancreas ATAC/DNase/ChIP/RNA/RAMPAGE/WGBS tracks.
 - Balance assays and biological replicates, not file count.
@@ -707,7 +707,7 @@ stages, and ten required ablations; test surfaces are never capacity-selection i
 - The complete healthy prior contains 148 canonical tracks, 2,118,031 examples, and 33,156
   verified shards. Its materialized split audit has zero group or interval leakage.
 
-### Stage 2 — PDAC progression residual
+### Stage 2, PDAC progression residual
 
 - Add GSE99275/GSE99311 and related open organoid data.
 - Initialize `r_state=0`; learn the progression residual from absolute state profiles and the
@@ -717,7 +717,7 @@ stages, and ten required ablations; test surfaces are never capacity-selection i
 - Test whether circuit factors order normal → PanIN → primary → metastatic states without using outcome
   labels in the encoder.
 
-### Stage 3 — signed intervention residual
+### Stage 3, signed intervention residual
 
 - Freeze the healthy and state branches except the uncertainty head.
 - Fit `r_int` only on exact registered control/intervention pairs; unperturbed intervention
@@ -727,7 +727,7 @@ stages, and ten required ablations; test surfaces are never capacity-selection i
 - Test GSE99311 direction on unseen loci and label it honestly as within-study transfer. Unseen
   experiment direction is a separate post-freeze external axis.
 
-### Stage 4 — human PDAC state adaptation
+### Stage 4, human PDAC state adaptation
 
 - Jointly adapt on the exact profile collections GSE99311, GSE149103, GSE272459, GSE272461,
   GSE272462, and GSE272586; every source must have a completion marker and the trainer hashes the
@@ -749,18 +749,18 @@ stages, and ten required ablations; test surfaces are never capacity-selection i
   uncertainty, paired-delta, progression-graph, and domain-invariance validation terms are retained
   in diagnostics but cannot select weights.
 - Train continuous state descriptors and classical/basal contrast.
-- Down-weight uncertain purity and mixed-compartment labels rather than pretending they are
+- Down-weight uncertain purity and mixed-compartment labels, not pretending they are
   exact.
 - Link regulatory influence to DepMap PDAC-line dependency as a validation endpoint, not a
   training shortcut.
 
-### Stage 5 — freeze
+### Stage 5, freeze
 
 - Freeze architecture, weights, preprocessing, condition vectors, baseline track mapping, and
   conformal calibration set.
 - Export candidate and baseline prediction bundles with provenance manifests.
 
-### Stage 6 — one-shot external evaluation
+### Stage 6, one-shot external evaluation
 
 - Release and download the untouched GSE124229/GSE124230 patient studies and the target-sealed
   GSE301272/GSE301284/GSE295354 perturbation studies only after all three final checkpoints exist.
@@ -925,8 +925,7 @@ target access during selection.
 
 Build the bounded healthy prior and freeze the four hardware/three-seed run DAGs without
 starting a GPU job. The frozen healthy-selection policy first resolves all 276 local ENCODE
-bigWigs, then selects only canonical signal semantics for the 12-channel assay vector: p-value
-rather than fold-change ChIP/ATAC, unique-read rather than all-read RNA/RAMPAGE, explicit
+bigWigs, then selects only canonical signal semantics for the 12-channel assay vector: p-value and not fold-change ChIP/ATAC, unique-read, not all-read RNA/RAMPAGE, explicit
 RAMPAGE strand, the five registered histone marks, and no coverage-only WGBS target. Released
 canonical tracks carrying ENCODE audit errors remain identifiable through the replicate-quality
 condition and are separately removable for the required quality sensitivity analysis.
@@ -1252,7 +1251,7 @@ cannot predict intervention direction. Those outputs narrow the scientific claim
 The novelty is the conjunction, not any isolated neural-network component:
 
 1. disease residualization against a deep healthy-pancreas multi-assay counterfactual;
-2. continuous PDAC state and perturbation conditioning rather than one head per track;
+2. continuous PDAC state and perturbation conditioning instead of one head per track;
 3. a lineage/progression state graph coupled to long-range sequence profiles;
 4. a circuit bottleneck validated by perturbation direction, not named post hoc;
 5. a normal-tissue regulatory margin integrated into target prioritization;
@@ -1267,19 +1266,19 @@ interpretation becomes supportable as a research hypothesis.
 
 ## 18. Primary sources informing the design
 
-- [Enformer: effective gene expression prediction from sequence by integrating long-range interactions](https://www.nature.com/articles/s41592-021-01252-x) — 196,608 bp inputs, 128 bp bins, and the required headline baseline.
-- [Borzoi: predicting RNA-seq coverage from DNA sequence](https://www.nature.com/articles/s41588-024-02053-6) — 524 kb context, 32 bp profiles, joint regulatory/RNA modeling, and the modern secondary baseline.
-- [scooby: multimodal genomic profiles from sequence at single-cell resolution](https://www.nature.com/articles/s41592-025-02854-5) — evidence that continuous cell-state decoding and parameter-efficient state adaptation are useful, while also documenting limits outside the training domain.
-- [DNALONGBENCH](https://www.nature.com/articles/s41467-025-65077-4) — motivates multiple long-range task types and warns that performance varies sharply across tasks.
-- [Enhancer reprogramming promotes pancreatic cancer metastasis](https://pmc.ncbi.nlm.nih.gov/articles/PMC5726277/) and [GSE99275](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99275) — progression/metastasis organoid chromatin data.
-- [Primary human PDAC ATAC study](https://pmc.ncbi.nlm.nih.gov/articles/PMC8144607/) and [GSE124229](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124229) — the 54-patient external accessibility test.
-- [Engineered human pancreatic organoids and patient PDAC chromatin](https://pmc.ncbi.nlm.nih.gov/articles/PMC13196429/) and its registered [ATAC progression](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272459), [RNA perturbation](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272460), [factor occupancy](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272461), [methyl-capture](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272462), [patient validation](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272463), and [early-progenitor occupancy](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272586) studies — a public, pre-cutoff human progression and intervention family.
-- [GSE149103](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE149103) — matched normal, primary, and metastatic human pancreatic cell-line ATAC, histone, CTCF, RNA, and Hi-C data; only the registered continuous profile assays enter training.
-- [GSE64557](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE64557) — KLF5/ELF3 perturbation ChIP data retained as auxiliary evidence until a BED-to-profile rasterizer is frozen.
-- [GSE301272](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301272) and [GSE301284](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301284) — L36pl KLF5-dTAG ATAC and active-chromatin time courses used as one external context.
-- [KLF5 lineage coactivation study](https://www.nature.com/articles/s41467-025-66007-0) and [GSE295354](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295354) — independent-lab AsPC1/T3M4 KLF5 chromatin perturbation contexts.
-- [GSE195623](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE195623) — PDAC organoid chromatin accessibility and drug sensitivity.
-- [GSE202051](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE202051) — 43-specimen single-nucleus/spatial PDAC state atlas.
+- [Enformer: effective gene expression prediction from sequence by integrating long-range interactions](https://www.nature.com/articles/s41592-021-01252-x), 196,608 bp inputs, 128 bp bins, and the required headline baseline.
+- [Borzoi: predicting RNA-seq coverage from DNA sequence](https://www.nature.com/articles/s41588-024-02053-6), 524 kb context, 32 bp profiles, joint regulatory/RNA modeling, and the modern secondary baseline.
+- [scooby: multimodal genomic profiles from sequence at single-cell resolution](https://www.nature.com/articles/s41592-025-02854-5). Evidence that continuous cell-state decoding and parameter-efficient state adaptation are useful, while also documenting limits outside the training domain.
+- [DNALONGBENCH](https://www.nature.com/articles/s41467-025-65077-4). Motivates multiple long-range task types and warns that performance varies sharply across tasks.
+- [Enhancer reprogramming promotes pancreatic cancer metastasis](https://pmc.ncbi.nlm.nih.gov/articles/PMC5726277/) and [GSE99275](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99275), progression/metastasis organoid chromatin data.
+- [Primary human PDAC ATAC study](https://pmc.ncbi.nlm.nih.gov/articles/PMC8144607/) and [GSE124229](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124229), the 54-patient external accessibility test.
+- [Engineered human pancreatic organoids and patient PDAC chromatin](https://pmc.ncbi.nlm.nih.gov/articles/PMC13196429/) and its registered [ATAC progression](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272459), [RNA perturbation](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272460), [factor occupancy](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272461), [methyl-capture](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272462), [patient validation](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272463), and [early-progenitor occupancy](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272586) studies. A public, pre-cutoff human progression and intervention family.
+- [GSE149103](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE149103). Matched normal, primary, and metastatic human pancreatic cell-line ATAC, histone, CTCF, RNA, and Hi-C data; only the registered continuous profile assays enter training.
+- [GSE64557](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE64557). KLF5/ELF3 perturbation ChIP data retained as auxiliary evidence until a BED-to-profile rasterizer is frozen.
+- [GSE301272](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301272) and [GSE301284](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301284). L36pl KLF5-dTAG ATAC and active-chromatin time courses used as one external context.
+- [KLF5 lineage coactivation study](https://www.nature.com/articles/s41467-025-66007-0) and [GSE295354](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295354). Independent-lab AsPC1/T3M4 KLF5 chromatin perturbation contexts.
+- [GSE195623](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE195623), PDAC organoid chromatin accessibility and drug sensitivity.
+- [GSE202051](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE202051), 43-specimen single-nucleus/spatial PDAC state atlas.
 
 ## 19. Immediate execution queue
 

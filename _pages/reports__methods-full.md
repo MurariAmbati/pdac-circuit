@@ -15,13 +15,13 @@ order: 3
 > **[docs/ADDENDUM_RAC_V2.md]({{ '/addenda/rac-v2/' | relative_url }})**,
 > **[docs/ADDENDUM_CHROMATIN.md]({{ '/addenda/chromatin/' | relative_url }})**. In particular:
 >
-> - **attractor-collapse predicts essentiality — RETRACTED** (no gain over degree; §1/§15/§15b)
-> - **the bistable attractor framing — RETIRED** (the system is not bistable at any gain; §17/§18)
-> - **the two-mark chromatin replication — SUPERSEDED**: recomputed on fold-change tracks, H3K27ac
+> - **attractor-collapse predicts essentiality, RETRACTED** (no gain over degree; §1/§15/§15b)
+> - **the bistable attractor framing, RETIRED** (the system is not bistable at any gain; §17/§18)
+> - **the two-mark chromatin replication, SUPERSEDED**: recomputed on fold-change tracks, H3K27ac
 >   holds but **ATAC does not replicate** (§25)
-> - **off_target_risk = 0.00 — RETRACTED and resolved**: all four guides fail the specificity gate
+> - **off_target_risk = 0.00. RETRACTED and resolved**: all four guides fail the specificity gate
 >   under the exact Doench-2016 matrix (§24)
-> - **leave-cell-line-out — DEMOTED** to an internal diagnostic (leaked whole-panel statistics)
+> - **leave-cell-line-out. DEMOTED** to an internal diagnostic (leaked whole-panel statistics)
 >
 > Read the README status table or REVIEW_RESPONSE.md for the current position on any claim below.
 
@@ -31,21 +31,21 @@ found in the pipeline. Summary of outcomes: [FINDINGS.md]({{ '/reports/findings/
 [RESULTS.md]({{ '/reports/results-ledger/' | relative_url }}).
 
 Nothing here is synthetic. Where evidence was absent, the analysis abstained and the absence is
-recorded rather than filled.
+recorded, not filled.
 
 ---
 
 ## Table of contents
 
 1. [Principles and constraints](#1-principles-and-constraints)
-2. [Data acquisition — every source](#2-data-acquisition--every-source)
+2. [Data acquisition, every source](#2-data-acquisition--every-source)
 3. [Modules I–VII](#3-modules-iviii)
-4. [Module VIII — Regulatory Attractor Control](#4-module-viii--regulatory-attractor-control-rac)
-5. [Development history — three prototypes, two killed](#5-development-history--three-prototypes-two-killed)
+4. [Module VIII. Regulatory Attractor Control](#4-module-viii--regulatory-attractor-control-rac)
+5. [Development history. Three prototypes, two killed](#5-development-history--three-prototypes-two-killed)
 6. [Validation design](#6-validation-design)
 7. [Long-range chromatin model](#7-long-range-chromatin-model)
 8. [The PDAC-minus-healthy disease residual](#8-the-pdac-minus-healthy-disease-residual)
-9. [Stage 2 — progression state residual](#9-stage-2--progression-state-residual)
+9. [Stage 2. Progression state residual](#9-stage-2--progression-state-residual)
 10. [Auxiliary evidence layers](#10-auxiliary-evidence-layers)
 11. [Every negative result](#11-every-negative-result)
 12. [Every defect found](#12-every-defect-found)
@@ -71,10 +71,10 @@ materially slowed and in two cases killed long runs; this is noted where it affe
 
 ---
 
-## 2. Data acquisition — every source
+## 2. Data acquisition, every source
 
 All corpora are sha256-verified; **14 manifests honest** under `pdac verify-data`. Raw bytes are
-never published — only manifests and TrackSpecs.
+never published, only manifests and TrackSpecs.
 
 ### 2.1 Pre-existing on disk
 
@@ -82,7 +82,7 @@ never published — only manifests and TrackSpecs.
 |---|---|
 | `tcga-paad` | RSEM expression (177 tumours), somatic mutations (cBioPortal) |
 | `gtex-pancreas` | GTEx v8 median TPM |
-| `encode-bulk` (95 GB) | 54 healthy-pancreas ChIP BAMs — CTCF ×8, H3K27me3 ×8, H3K36me3 ×8, H3K9me3 ×8, H3K27ac ×7, H3K4me3 ×6, H3K4me1 ×6, H3K9ac ×3 — plus 276 bigWigs |
+| `encode-bulk` (95 GB) | 54 healthy-pancreas ChIP BAMs, CTCF ×8, H3K27me3 ×8, H3K36me3 ×8, H3K9me3 ×8, H3K27ac ×7, H3K4me3 ×6, H3K4me1 ×6, H3K9ac ×3, plus 276 bigWigs |
 | `encode-pancreas-atac` / `-h3k27ac` | narrowPeak calls |
 | `fantom5-cage`, `gencode-v46`, `lambert-tf` (1,639 TFs), `intogen-pdac`, `doench-2016`, `dbsnp-common`, `hg38/hg19/mm10/mm9` | — |
 
@@ -107,15 +107,14 @@ never published — only manifests and TrackSpecs.
   `data.fetch._download` (UA `pdac-circuit-fetch/0.1`) works.
 - **ENCODE biosample term is `Panc1`, not `PANC-1`** (the latter 404s).
 - `signal.metadata._encode_obj` appends `?format=json`, so it 404s on any `/search/?…` URL that
-  already carries a query string — search URLs must be built directly.
+  already carries a query string, search URLs must be built directly.
 - **4DN `@@download` hrefs return HTTP 403.** The open S3 path is in the `open_data_url` field of
   `/files-processed/{acc}/?format=json`.
 - **cBioPortal generic-assay endpoints**: the working paths are `/generic-assay-meta/{profileId}`
-  and `/generic_assay_data/{profileId}/fetch`. Earlier guesses (`/generic-assay-data/…`) 404 —
-  this was originally misdiagnosed as "methylation unavailable, use GDC"; it was a wrong path.
+  and `/generic_assay_data/{profileId}/fetch`. Earlier guesses (`/generic-assay-data/…`) 404, this was originally misdiagnosed as "methylation unavailable, use GDC"; it was a wrong path.
 - **pyBigWig does not build on Windows**; `pybigtools` works and the project's `_open_bigwig`
   already supports both backends.
-- **Healthy histone bigWigs carry no mark in the manifest note** — targets must be resolved via
+- **Healthy histone bigWigs carry no mark in the manifest note**, targets must be resolved via
   `signal.metadata._encode_file` (cached to `data/raw/encode-bulk/histone_signal_target_map.json`;
   yields H3K4me3 ×11, H3K27ac ×10, and 8 each of H3K27me3/H3K4me1/H3K36me3/H3K9me3, H3K9ac ×2).
 
@@ -145,7 +144,7 @@ significance from a permutation null on the mean rank of controls (B = 2,000).
 Result: **top-quartile driver recovery 5/7, permutation p = 0.003**, 177 tumours, 1,321 candidate
 TFs, `powered: true`.
 
-**Deep design.** Every distinct circuit is *individually* ODE-simulated rather than sampled from a
+**Deep design.** Every distinct circuit is *individually* ODE-simulated and not sampled from a
 combinatorial space. Each circuit's Hill-ODE betas derive from its own parts (TF expression →
 `beta_TF`; promoter strength × enhancer activity → `beta_synprom`; guide efficiency → `beta_rep`);
 robustness is a real per-circuit parameter sweep and knockdown a real steady-state readout.
@@ -157,7 +156,7 @@ coverage 0.897; permutation type-I 0.060; certified-negative lattice consistent.
 
 ---
 
-## 4. Module VIII — Regulatory Attractor Control (RAC)
+## 4. Module VIII, Regulatory Attractor Control (RAC)
 
 ### 4.1 Motivation
 
@@ -180,7 +179,7 @@ Fixed points satisfy `x* = σ(gain·(W x* + b))`. Strong positive feedback makes
 
 **This bistability is the whole point.** Cell death is collapse to the null attractor, so
 *essentiality becomes a dynamical property*: a node is essential if clamping it down collapses the
-viable state. A globally contractive system (unique fixed point) cannot express this — an earlier
+viable state. A globally contractive system (unique fixed point) cannot express this, an earlier
 formulation had exactly that flaw (§5).
 
 **Fitting objective**
@@ -196,18 +195,18 @@ Adam, lr 0.03, 1,800–2,400 epochs.
 
 ### 4.3 Graph construction (`attractor/graph.py`)
 
-- **Nodes** — expressed TFs (Lambert catalogue) ∪ subtype-signature ∪ IntOGen drivers ∪ controls,
+- **Nodes**, expressed TFs (Lambert catalogue) ∪ subtype-signature ∪ IntOGen drivers ∪ controls,
   filtered to >50 % of PDAC lines expressed, ranked by variance across the PDAC panel.
-- **Edges** — **pan-cancer** co-expression across all 1,684 DepMap lines (robust estimation),
+- **Edges**, **pan-cancer** co-expression across all 1,684 DepMap lines (robust estimation),
   thresholded at |r| > τ, then instantiated on the 54-line PDAC state. Decoupling *graph
   estimation* (needs many samples) from *state* (must be PDAC) is deliberate.
-- **Motif refinement** — JASPAR PWMs (log-odds, 0.8 pseudocount, uniform background) scanned
+- **Motif refinement**, JASPAR PWMs (log-odds, 0.8 pseudocount, uniform background) scanned
   against each target's hg38 promoter (TSS −2,000/+500) on both strands via a vectorised
   sliding-window einsum; score normalised by the per-position bit-max. Provides **directionality**.
-- **Chromatin context** — ENCODE pancreas ATAC/H3K27ac overlap at TSS ± 2 kb.
-- **Copy number** — TCGA GISTIC amplification frequency and mean per node.
-- **Methylation** — HM450 promoter beta per node (silencing filter).
-- **Healthy direction** — sign of GTEx-normal minus TCGA-tumour log2FC: the direction each TF must
+- **Chromatin context**, ENCODE pancreas ATAC/H3K27ac overlap at TSS ± 2 kb.
+- **Copy number**, TCGA GISTIC amplification frequency and mean per node.
+- **Methylation**, HM450 promoter beta per node (silencing filter).
+- **Healthy direction**, sign of GTEx-normal minus TCGA-tumour log2FC: the direction each TF must
   move to become less PDAC-like. Only the *sign* is used, since the comparison is cross-platform.
 
 ### 4.4 Collapse essentiality
@@ -237,36 +236,35 @@ direction and target scoring while **co-expression alone drives the dynamics**
 
 ---
 
-## 5. Development history — three prototypes, two killed
+## 5. Development history, three prototypes, two killed
 
 Recorded because the failures shaped the method.
 
-### Prototype 1 — contractive dynamics on TCGA bulk → **killed**
+### Prototype 1, contractive dynamics on TCGA bulk → **killed**
 
 Signed graph map `dx/dt = −x + tanh(Wx + b)` fit to TCGA basal/classical centroids, spectral norm
 penalised toward contraction; "load-bearing" defined as network reconfiguration magnitude under
 knockdown.
 
-**Result: null.** Collapse-vs-essentiality ρ = **−0.097** (p = 0.12) — *worse* than a degree
-baseline (−0.109) and the wrong sign. Top "load-bearing" nodes were STAT4, ZNF831, MAFB, IKZF1 —
-**immune** TFs with ~zero essentiality.
+**Result: null.** Collapse-vs-essentiality ρ = **−0.097** (p = 0.12), *worse* than a degree
+baseline (−0.109) and the wrong sign. Top "load-bearing" nodes were STAT4, ZNF831, MAFB, IKZF1, **immune** TFs with ~zero essentiality.
 
 **Two diagnoses, both load-bearing for the final design:**
-1. **Composition confound** — bulk co-expression across tumours is driven by immune/stromal
+1. **Composition confound**, bulk co-expression across tumours is driven by immune/stromal
    infiltration, so the graph was partly a *composition* graph. DepMap cell lines are pure tumour
    cells; the substrate was changed to cell lines.
-2. **Wrong essentiality semantics** — "removal changes the transcriptome a lot" ≠ "cell dies".
+2. **Wrong essentiality semantics**, "removal changes the transcriptome a lot" ≠ "cell dies".
    Essentiality was redefined as **collapse to the dead attractor**, which required abandoning
    global contraction in favour of bistability.
 
-### Prototype 2 — bistable dynamics on DepMap PDAC lines → **kept, sign correct**
+### Prototype 2. Bistable dynamics on DepMap PDAC lines → **kept, sign correct**
 
 ρ = **+0.111** (p = 0.059), degree baseline null (−0.013). Directionally right, borderline.
 Top collapse nodes became biologically sensible (FOXM1, TEAD4, CEBPB, KMT2D).
 
-### Prototype 3 — pan-cancer graph + PDAC attractor → **adopted**
+### Prototype 3, pan-cancer graph + PDAC attractor → **adopted**
 
-Graph estimated across all 1,684 lines, state on the 54 PDAC lines. AUC 0.654 vs degree 0.560. **[RETRACTED — §1/§15: the head-to-head test gives dAUC -0.082 and partial rho 0.028 (p=0.56); collapse adds nothing beyond degree.]**
+Graph estimated across all 1,684 lines, state on the 54 PDAC lines. AUC 0.654 vs degree 0.560. **[RETRACTED, §1/§15: the head-to-head test gives dAUC -0.082 and partial rho 0.028 (p=0.56); collapse adds nothing beyond degree.]**
 A threshold sweep then showed the signal is robust where powered (§6.2). This is the shipped
 design.
 
@@ -293,7 +291,7 @@ filter in control design.
 - **Leave-cell-line-out CV**: 54 refits.
 - Incremental JSON writes so partial progress survives interruption.
 
-**Grid finding — sparser, focused graphs win.** Best = 400 nodes / τ = 0.4 (→ 422 nodes,
+**Grid finding. Sparser, focused graphs win.** Best = 400 nodes / τ = 0.4 (→ 422 nodes,
 5,050 edges). *Adding* lower-variance TFs **lowers** AUC to 0.51–0.56: the collapse signal dilutes.
 
 **Definitive result**
@@ -321,7 +319,7 @@ are reported.
 Collapse beats both centrality baselines at **every** threshold. The wide CI at 0.5–0.6 is
 underpowering (few positives), not a contrary result.
 
-### 6.3 Leave-cell-line-out — the strongest evidence
+### 6.3 Leave-cell-line-out, the strongest evidence
 
 Refit on 53 lines; test whether the held-out **real** state is a lower-residual fixed point than a
 permuted null of the same state.
@@ -332,8 +330,8 @@ permuted null of the same state.
 | permuted null | 0.128 |
 | Wilcoxon (held-out lower) | **p ≈ 0** |
 
-The dynamics **generalise to PDAC cell lines they were never fit on** — evidence the attractor
-structure is real rather than memorised. This, not the essentiality AUC, is the result that
+The dynamics **generalise to PDAC cell lines they were never fit on**, evidence the attractor
+structure is real, not memorised. This, not the essentiality AUC, is the result that
 licenses the method.
 
 ---
@@ -348,7 +346,7 @@ long-range mixing, continuous assay/state/perturbation conditioning (12/18/22 co
 factorised state/intervention circuit bottleneck (32 circuit factors), and profile + uncertainty
 heads. Verified forward pass: output `[1, 1536]`, finite, peak 0.03 GB CUDA.
 
-### 7.2 Stage 1 — healthy prior (first real training)
+### 7.2 Stage 1, healthy prior (first real training)
 
 Trained from scratch on **all 33,156 compiled healthy-pancreas shards**, bf16 autocast, resumable,
 checkpointing.
@@ -358,7 +356,7 @@ checkpointing.
 | held-out profile loss | 0.0088 → **0.0079** (~step 700, then plateau) |
 | held-out profile **correlation** | **0.726** (single run) |
 
-**Throughput note.** The trainer is **silent on stdout** — progress is only visible via the
+**Throughput note.** The trainer is **silent on stdout**, progress is only visible via the
 checkpoint directory (`scripts/extract_train_curve.py` reconstructs the curve from `step-*.pt`).
 `gradient_accumulation` = 1 was required to obtain many optimizer steps: the healthy window set is
 a single ~2,600-window pass, so at grad-accum 8 the run terminated after 50 optimizer steps.
@@ -387,7 +385,7 @@ design rests on was unmeasurable.
 
 ### 8.1 Why peak overlap cannot measure it
 
-Naive peak overlap gives `pdac_specific_open = 0.00` — an **artifact**: the healthy ATAC peak set
+Naive peak overlap gives `pdac_specific_open = 0.00`, an **artifact**: the healthy ATAC peak set
 has **874,795** peaks versus PDAC's **99,761** (~9×, a permissive merged set), so "open in PDAC,
 closed in healthy" is empty *by construction*. Reported as an artifact, not biology.
 
@@ -400,8 +398,8 @@ A *within-PDAC* enrichment is unaffected by that asymmetry and is valid:
 
 ### 8.2 Signal-level residual (`scripts/pdac_disease_residual.py`)
 
-Matched assays — ENCODE **signal p-value** tracks, Panc1 vs healthy pancreas, same output type and
-assembly — `log2((pdac + 0.1)/(healthy + 0.1))` over TSS ± 2 kb, ~1,676 loci, 6 healthy tracks per
+Matched assays. ENCODE **signal p-value** tracks, Panc1 vs healthy pancreas, same output type and
+assembly, `log2((pdac + 0.1)/(healthy + 0.1))` over TSS ± 2 kb, ~1,676 loci, 6 healthy tracks per
 mark. Parameterised by `RESIDUAL_MARK`.
 
 | mark | RAC targets | background | all loci | Mann-Whitney p |
@@ -410,17 +408,17 @@ mark. Parameterised by `RESIDUAL_MARK`.
 | **H3K27ac** | **+1.596** (80 % up) | +0.261 (54 %) | +0.277 | **0.00062** |
 
 ~~**Replicated on two independent marks.** The ATAC result is meaningful precisely because the
-overall trend runs the **other way** — TF promoters are on average *less* accessible in Panc1 than
-healthy pancreas — yet the targets buck it. On H3K27ac the gain is ≈ **3× active-enhancer signal**.~~
+overall trend runs the **other way**, TF promoters are on average *less* accessible in Panc1 than
+healthy pancreas, yet the targets buck it. On H3K27ac the gain is ≈ **3× active-enhancer signal**.~~
 The targets were derived with **no chromatin input at all** (that part stands).
 
-**[SUPERSEDED — §25/§28.** These figures come from ENCODE **signal p-value** tracks, which conflate sequencing depth with enrichment. Recomputed on **fold-change over control**: **H3K27ac holds** (+0.919 vs -0.091, p = 0.0022, surviving expression-, selection-variable- and degree-matched backgrounds and 12/12 window x pseudocount settings) but **ATAC does NOT replicate** (p = 0.074). The effect is **promoter-local** — absolute enrichment falls to 1.01x at +/-25 kb — and **modest**, ~1.5-1.8x, not the "3x active-enhancer signal" stated here. The two-mark replication claim is withdrawn. See [docs/ADDENDUM_CHROMATIN.md]({{ '/addenda/chromatin/' | relative_url }}).]**
+**[SUPERSEDED, §25/§28.** These figures come from ENCODE **signal p-value** tracks, which conflate sequencing depth with enrichment. Recomputed on **fold-change over control**: **H3K27ac holds** (+0.919 vs -0.091, p = 0.0022, surviving expression-, selection-variable- and degree-matched backgrounds and 12/12 window x pseudocount settings) but **ATAC does NOT replicate** (p = 0.074). The effect is **promoter-local**, absolute enrichment falls to 1.01x at +/-25 kb. And **modest**, ~1.5-1.8x, not the "3x active-enhancer signal" stated here. The two-mark replication claim is withdrawn. See [docs/ADDENDUM_CHROMATIN.md]({{ '/addenda/chromatin/' | relative_url }}).]**
 
 `sealed_studies_touched: false` is recorded in both artifacts.
 
 ---
 
-## 9. Stage 2 — progression state residual
+## 9. Stage 2, progression state residual
 
 ### 9.1 Encoding a PDAC cell line honestly
 
@@ -429,7 +427,7 @@ The frozen 18-coordinate state schema is
 drug_resistant, organoid, PDX, primary_tumor, epithelial_fraction, fibroblast_fraction,
 immune_fraction, KRAS_activity, purity_or_confidence, species_human, species_mouse]`.
 
-There is **no `cell_line` coordinate** — but the schema separates *disease state* from *sample
+There is **no `cell_line` coordinate**, but the schema separates *disease state* from *sample
 format*, so a cultured line is representable without inventing one or amending the registry:
 
 | coordinate | Panc1 | reason |
@@ -460,28 +458,28 @@ the healthy prior.
 
 | supervision | unpaired | **paired** |
 |---|---|---|
-| `residual_delta` (PDAC-minus-normal) | **0.000000** — silently inert | **+0.445470 — ACTIVE** |
+| `residual_delta` (PDAC-minus-normal) | **0.000000** — silently inert | **+0.445470, ACTIVE** |
 | profile / correlation | 0.012 / 0.70 | 0.061 / 0.80 |
 
 **Scope.** The paired run reached **250 steps** before a native crash (exit 127) under GPU
-contention. This is **proof the objective is live and correctly wired — not a converged Stage-2
+contention. This is **proof the objective is live and correctly wired, not a converged Stage-2
 model**. Panc1 is a cell line, so this is a PDAC-*line* residual, not primary tumour.
 
 ---
 
 ## 10. Auxiliary evidence layers
 
-### 10.1 DNA methylation — silencing filter
+### 10.1 DNA methylation, silencing filter
 
 HM450 promoter probes only (`TSS200`, `TSS1500`, `1stExon`, `5'UTR`), beta averaged per gene.
 Of 413 covered RAC nodes, **72 are hypermethylated** (β > 0.5; median β 0.085).
 
 | gene | β | reading |
 |---|---|---|
-| **TP63** | **0.733** | the **basal** master TF — silenced, consistent with a classical-dominant cohort |
+| **TP63** | **0.733** | the **basal** master TF, silenced, consistent with a classical-dominant cohort |
 | **AGR2** | **0.586** | classical marker, hypermethylated → **demoted** despite 28 % amplification |
 | GATA6 / KLF5 / MYC / E2F1 / SETDB1 | 0.02–0.05 | unmethylated → genuinely active |
-| **CDKN2A** | **0.038** | **not** methylated — silenced by **deletion** (63 %) instead |
+| **CDKN2A** | **0.038** | **not** methylated, silenced by **deletion** (63 %) instead |
 
 The last row is the satisfying one: two different silencing mechanisms cleanly resolved by two
 independent layers. Applied to the top-20 targets: 2 hypermethylated (AGR2, FAM83A) flagged as
@@ -489,13 +487,13 @@ poor CRISPRi targets; **0 ATAC-open-but-silenced** false positives.
 
 A **mapping bug was found and fixed**: HM450 `NAME`/`DESCRIPTION` are *positionally paired*
 (`"A;B"` ↔ `"Body;TSS200"`). Assigning a probe to every listed gene when *any* region is
-promoter-like fabricates hypermethylation — KRT19 read β = 0.671, implausible for a highly
+promoter-like fabricates hypermethylation, KRT19 read β = 0.671, implausible for a highly
 expressed ductal marker. After strict positional pairing, KRT19/VIM correctly drop to
 no-promoter-coverage and the real signals (TP63, AGR2, SETDB1) are unchanged.
 
-### 10.2 CPTAC proteomics — protein-level TF activity
+### 10.2 CPTAC proteomics, protein-level TF activity
 
-**651 of 1,639 Lambert TFs quantified at protein level — 32× the 20-TF RPPA panel.** Detection
+**651 of 1,639 Lambert TFs quantified at protein level, 32× the 20-TF RPPA panel.** Detection
 rate is reported alongside abundance, because a TF that is mRNA-high but protein-undetected is a
 poor CRISPRi target.
 
@@ -513,7 +511,7 @@ computed for **1,676 genes** from the released derived tracks (the 2.6 GB contac
 needed).
 
 **Result: a sanity check that passes, not a discriminator.** 90 % of RAC targets sit in the active
-**A** compartment vs 70 % of background TFs — but **Mann-Whitney p = 0.504**, because expressed TFs
+**A** compartment vs 70 % of background TFs, but **Mann-Whitney p = 0.504**, because expressed TFs
 are already mostly in A. No claim made.
 
 ### 10.4 Single-cell in-vivo malignant substrate
@@ -526,7 +524,7 @@ an *in-vivo* tumour-intrinsic graph with no stroma, no immune, no culture.
 | cultured DepMap cell lines | **0.65–0.66** |
 | in-vivo malignant cells | **0.51–0.55** |
 
-**The cultured cell-line graph beats the in-vivo tumour graph** — the substrate that matches the
+**The cultured cell-line graph beats the in-vivo tumour graph**, the substrate that matches the
 cell-line-measured CRISPR readout wins. In-vivo is not automatically better.
 
 ---
@@ -553,7 +551,7 @@ redirects the programme away from a question that cannot be answered with this r
 
 ### 12.1 Unpaired data makes Stage 2 a silent no-op
 
-`residual_delta` reads exactly **0** at every step while the profile loss still falls — a run can
+`residual_delta` reads exactly **0** at every step while the profile loss still falls, a run can
 **look successful while learning no residual at all**. Only inspecting the loss *parts* reveals it.
 
 ### 12.2 `chromatin-compile` and `chromatin-pair` disagree on chromosome order
@@ -583,11 +581,11 @@ Additionally the GPU was shared with unrelated workloads (~11.4 GB, 100 % util),
 
 ### 12.5 Smaller ones
 
-- Permutation p poisoned by a NaN (§5) — `null >= NaN` is always False, yielding a spurious
+- Permutation p poisoned by a NaN (§5), `null >= NaN` is always False, yielding a spurious
   `p = 1/3001`.
 - JASPAR headers are `>MATRIX_ID NAME`; keying motifs by token 0 gives matrix IDs, not gene
   symbols (879 → 0 usable until fixed).
-- The TrackSpec loader **rejects unknown fields** (a `sample_format` annotation was refused — the
+- The TrackSpec loader **rejects unknown fields** (a `sample_format` annotation was refused, the
   honesty contract working as designed).
 - `chromatin-pair` requires a `manifest.json` beside the shards and refuses a pre-existing output
   directory.
@@ -611,7 +609,7 @@ Release requires freezing the three registered candidate seeds
 (`20260620`, `20260714`, `20260808`); `target_download_release_required: true`.
 
 **These were not downloaded.** Three of the five are KLF5 perturbation studies, and KLF5 is the TF
-this model ranks first — downloading them (or the lookalike series GSE310807/309861/309860) would
+this model ranks first. Downloading them (or the lookalike series GSE310807/309861/309860) would
 unblind the test set for the very prediction the model most wants credit for. Analyses record
 `sealed_studies_touched: false`.
 
@@ -620,7 +618,7 @@ projects and PAAD is not among them** (Corces 2018 excluded pancreatic). Primary
 exists only on GEO.
 
 **Independent corroboration.** Three 2024–25 GEO series are titled *"KLF5 controls
-subtype-independent highly interactive enhancers in PDAC"* — the literature independently converged
+subtype-independent highly interactive enhancers in PDAC"*, the literature independently converged
 on the master regulator this unsupervised model ranked first.
 
 ---
@@ -693,11 +691,11 @@ reconstruct the loss curve from checkpoints.
 Circuit design is treated as **optimal control of a data-calibrated regulatory attractor
 landscape**, where essentiality is a *dynamical* property (collapse to the dead attractor) rather
 than a centrality statistic, and the dynamics are required to agree with independent evidence
-streams — bulk/cell-line steady states as attractors, CRISPR loss-of-function as held-out truth,
+streams. Bulk/cell-line steady states as attractors, CRISPR loss-of-function as held-out truth,
 and chromatin as the counterfactual substrate.
 
 The claim is licensed by **leave-cell-line-out generalisation** (§6.3) and the **two-mark disease
-residual** (§8.2) — not by the essentiality AUC alone, which is honestly modest (0.65, fragile
+residual** (§8.2). Not by the essentiality AUC alone, which is honestly modest (0.65, fragile
 under bootstrap, only moderately above a degree baseline).
 
 The pipeline **does not beat Enformer** and the benchmark **ABSTAINs** by construction.

@@ -1,4 +1,4 @@
-# Review response — including a retraction
+# Review response, including a retraction
 
 An external editorial review of [FINDINGS.md](FINDINGS.md) and [METHODS.md](METHODS.md) raised
 objections that turned out to be correct. Two of them were tested directly. **One headline claim
@@ -7,9 +7,9 @@ what the corrected scope is.
 
 ---
 
-## 1. RETRACTED — "attractor-collapse predicts CRISPR essentiality"
+## 1. RETRACTED, "attractor-collapse predicts CRISPR essentiality"
 
-**Previously claimed:** *"Attractor-collapse predicts CRISPR essentiality out-of-modality — AUC
+**Previously claimed:** *"Attractor-collapse predicts CRISPR essentiality out-of-modality, AUC
 0.653, 50,000-permutation p = 0.0022, beating degree (0.629) and eigenvector (0.584)."*
 
 The reviewer noted that a permutation test against **chance** does not answer whether RAC adds
@@ -35,26 +35,26 @@ to a covariate model does not improve it (it is marginally worse). The ΔAUC poi
 identified:
 
 1. **The null was against chance, not against degree.** p = 0.0022 only says collapse ranks
-   essentials above random — degree does that too, and better.
+   essentials above random, degree does that too, and better.
 2. **Model selection reused the endpoint.** The 400-node / τ = 0.4 configuration was chosen by
    its CRISPR AUC and then reported on the same CRISPR labels. "CRISPR held out" was true of
    *parameter fitting* and false of *model selection*.
 3. **Configuration sensitivity.** The retest at the selected configuration (motif-free, fixed
-   seed) gives 0.547, well below the 0.653 obtained under the ensemble/campaign settings — the
+   seed) gives 0.547, well below the 0.653 obtained under the ensemble/campaign settings, the
    spread across configurations is comparable to the effect being claimed.
 
 **What is left of the method.** RAC still provides intervention semantics and attractor-state
 predictions that a centrality score does not. But the correct statement is now the reviewer's:
 
 > RAC performs **no better than a strong degree baseline** at ranking core-essential genes. Its
-> value, if any, is interpretability and control design — not discrimination.
+> value, if any, is interpretability and control design, not discrimination.
 
 The leave-cell-line-out result (§3) is a *state-reconstruction* result and is unaffected by this,
 but it is a diagnostic, not evidence of vulnerability prediction.
 
 ---
 
-## 2. ACCEPTED — the chromatin residual is wrongly computed
+## 2. ACCEPTED, the chromatin residual is wrongly computed
 
 The residual used ENCODE **signal p-value** tracks. ENCODE distinguishes *signal p-value* from
 *fold change over control*; a log-ratio of p-value tracks is **not** a biological fold change.
@@ -64,7 +64,7 @@ The residual used ENCODE **signal p-value** tracks. ENCODE distinguishes *signal
 Also accepted:
 - **H3K27ac over TSS ± 2 kb is promoter-proximal signal, not enhancer signal.** Distal enhancers
   must be defined and linked separately before any enhancer claim.
-- **PANC-1 is quasimesenchymal** — a basal/mesenchymal model. Validating a *classical* target set
+- **PANC-1 is quasimesenchymal**, a basal/mesenchymal model. Validating a *classical* target set
   against it is a substrate mismatch; classical and basal target sets must be analysed separately.
 - **Two marks in one cell line are orthogonal assays, not independent biological replication.**
   "Replicated on two independent marks" → "concordant across two orthogonal assays in the same
@@ -78,11 +78,11 @@ subtype-separated analysis; a classical substrate.
 
 ---
 
-## 3. ACCEPTED — leave-cell-line-out was not leakage-free, and is demoted
+## 3. ACCEPTED, leave-cell-line-out was not leakage-free, and is demoted
 
 The original LOO reused whole-panel statistics: the co-expression graph was built across all
 1,684 lines (including the held-out one), node selection used variance across all 54 PDAC lines,
-and per-gene scaling used all 54. The gene-permuted null is also weak — it destroys covariance, so
+and per-gene scaling used all 54. The gene-permuted null is also weak, it destroys covariance, so
 a model capturing average PDAC architecture beats it trivially.
 
 A leakage-free implementation (node selection, scaling and graph rebuilt from the 53 training
@@ -96,7 +96,7 @@ read during part B). **Until it completes, the LOO result is demoted from "stron
 
 ---
 
-## 4. ACCEPTED — the safety layer failed, and a signed gate now exists
+## 4. ACCEPTED, the safety layer failed, and a signed gate now exists
 
 The reviewer's most serious biological objection: **"driver" is not "oncogene to repress"**, and
 a safety score that passes TGIF1 repression is not a safety score.
@@ -112,14 +112,14 @@ to the top-20 targets (`results/intervention_gate.json`):
 
 The quarantine list is itself an indictment of the ranking:
 
-- **BRCA2, ATM, KMT2C** — DNA-repair / chromatin **tumour suppressors**. Repressing them is a
+- **BRCA2, ATM, KMT2C**, DNA-repair / chromatin **tumour suppressors**. Repressing them is a
   genome-instability liability, not a therapy.
-- **GATA6** — maintains classical epithelial identity; repression risks driving a
+- **GATA6**, maintains classical epithelial identity; repression risks driving a
   classical → basal switch, i.e. a *more* aggressive state.
-- **HNF4G** — stage-dependent; loss can unmask FOXA1-driven metastatic programmes.
-- **TGIF1** — blocked outright: its **loss** accelerates KRAS-driven PDAC.
+- **HNF4G**, stage-dependent; loss can unmask FOXA1-driven metastatic programmes.
+- **TGIF1**, blocked outright: its **loss** accelerates KRAS-driven PDAC.
 - 10 further genes (ZNF790, SOX13, AHR, AGR2, ZNF331, SF3B1, SMAD3, HOXA3, ZNF528, FAM83A,
-  ZNF93, ZNF85) — **unclassified**: no curated role, direction not established.
+  ZNF93, ZNF85), **unclassified**: no curated role, direction not established.
 
 **The finding this forces:** the convergence score ranks by *attractor movement × disease-up*, so
 it systematically surfaces DNA-repair tumour suppressors and uncharacterised zinc fingers. **The
@@ -129,14 +129,14 @@ not calibrated against adverse-direction interventions.
 
 ---
 
-## 4b. DONE — targets re-ranked *through* the gate, not after it
+## 4b. DONE, targets re-ranked *through* the gate, not after it
 
 The gate was originally a post-hoc filter on a score that ranked by attractor-movement x
 disease-up. That ordering is what produced a list led by DNA-repair tumour suppressors. The
 pipeline is now inverted (`scripts/gated_target_ranking.py`, `results/gated_target_ranking.{json,md}`):
 
 1. the admissible direction is decided **first**, from gene role;
-2. evidence is **signed for that direction** — a tumour suppressor scores for CRISPR**a**, and
+2. evidence is **signed for that direction**, a tumour suppressor scores for CRISPR**a**, and
    being disease-*down*, deleted or hypermethylated counts in its favour, the exact opposite
    evidence to an oncogene;
 3. **collapse carries zero weight**, because its discrimination did not beat degree (§1). The
@@ -152,16 +152,16 @@ Of 20 input targets: **4 rankable, 4 quarantined, 12 unclassified.**
 | E2F1 | CRISPRi | **+0.692** | proliferation oncogenic |
 | FOSL1 | CRISPRi | +0.418 | AP-1 oncogenic |
 
-All four survivors are oncogenic/proliferation factors — a coherent CRISPRi direction. **This is
+All four survivors are oncogenic/proliferation factors, a coherent CRISPRi direction. **This is
 the usable output of the project: four hypotheses, not twenty.** The remaining 16 are either
 state/stage-dependent (GATA6, HNF4G, BRCA2, ATM, KMT2C) or have no established direction.
 
 That 16/20 of a "convergent target catalogue" cannot be acted on is the honest measure of how much
-the original ranking was driven by attractor movement rather than by therapeutic logic.
+the original ranking was driven by attractor movement instead of by therapeutic logic.
 
 ---
 
-## 5. ACCEPTED — claim language
+## 5. ACCEPTED, claim language
 
 | was | now |
 |---|---|
@@ -180,7 +180,7 @@ the original ranking was driven by attractor movement rather than by therapeutic
 
 Also accepted: the 6,006 simulated circuits are **not** 6,006 experiments; robustness = 1.00
 everywhere, safety in a 0.86–0.90 band and off-risk uniformly 0.00 indicate **metric saturation**,
-not circuit quality. The graph is **not** strictly a TF network — several nodes are not TFs.
+not circuit quality. The graph is **not** strictly a TF network, several nodes are not TFs.
 Seed `20260808` is **planned**, not completed.
 
 ---
@@ -212,34 +212,34 @@ Seed `20260808` is **planned**, not completed.
    centroid / PCA / covariance-preserving nulls. If it survives, it is the method's best evidence.
 2. **Recompute the chromatin contrast** on fold-change-over-control tracks, background-matched,
    subtype-separated, with replicate counts and CIs. Add a classical substrate (organoid or a
-   classical line) — PANC-1 alone cannot validate a classical target set.
+   classical line), PANC-1 alone cannot validate a classical target set.
 3. **Re-rank targets through the signed gate**, not after it. Add CRISPRa for tumour suppressors
    and state-maintaining factors. Report `allowed` candidates only.
 4. **Selection-aware null + nested CV** for any retained discrimination claim, and predeclare the
    primary endpoint and essentiality threshold.
-5. **Fix Module I the same way** — MCDA weights are grid-searched to maximise recovery of the same
+5. **Fix Module I the same way**, MCDA weights are grid-searched to maximise recovery of the same
    seven drivers that are then reported; the p = 0.003 is anti-conservative unless the whole
    search is repeated inside every permutation.
-6. **Break the metric saturation** — global parameter uncertainty, Sobol/Latin-hypercube
+6. **Break the metric saturation**, global parameter uncertainty, Sobol/Latin-hypercube
    sensitivity, adversarial regimes, negative-control circuits, memorisation tests for generated
    promoters.
 7. **Narrow the paper** to the RAC method; move Modules I–VII, the GAN, PDACircuitFormer, Hi-C,
    single-cell and the defects to supplement or separate work.
 8. **Keep the seal.** Freeze the model, hyperparameters and evaluation plan with an immutable
    record, then run the protected studies **once** and publish every outcome.
-9. **One functional validation tier** — an anchor (KLF5) plus a discovery-like candidate
+9. **One functional validation tier**, an anchor (KLF5) plus a discovery-like candidate
    (TCF7L2 / YBX3) in subtype-appropriate models, multiple reagents, nonmalignant controls.
 
 **Suggested title, once corrected:** *A bistable attractor-control model prioritises
-transcriptional vulnerabilities in pancreatic ductal adenocarcinoma* — without "synthetic gene
+transcriptional vulnerabilities in pancreatic ductal adenocarcinoma*, without "synthetic gene
 circuits" until a circuit is actually tested.
 
 ---
 
 ## 8. Standing assessment
 
-The review's editorial verdict — **major revision, potentially publishable** as a computational
-systems-biology methods paper; **not** as a target-discovery or circuit-efficacy paper — is
+The review's editorial verdict, **major revision, potentially publishable** as a computational
+systems-biology methods paper; **not** as a target-discovery or circuit-efficacy paper, is
 accepted in full. The retraction in §1 lowers it further: the primary quantitative claim is gone,
 and what remains is a method with intervention semantics whose discrimination is not better than
 degree.
@@ -252,19 +252,19 @@ That is a worse result than was reported yesterday, and it is the correct one.
 
 The review required that "the classical and basal target lists be analyzed separately," and stated
 that PANC-1 is quasimesenchymal and therefore a poor substrate for a classical target set. Both
-points are now tested against data rather than argued.
+points are now tested against data, not argued.
 Script: `scripts/subtype_resolved_targets.py` · result: `results/subtype_resolved_targets.json`.
 
-**A defect found in our own first attempt.** Assigning each line by `argmax(basal, classical)` — the
-obvious rule, and the one first written here — forces every cell line into a subtype, including
+**A defect found in our own first attempt.** Assigning each line by `argmax(basal, classical)`, the
+obvious rule, and the one first written here, forces every cell line into a subtype, including
 lines that express *neither* programme above the panel mean. Those are precisely the
 quasimesenchymal lines. The rule was replaced: a line is called only if it is above the panel mean
 on the winning programme **and** the two scores are separated by > 0.20; otherwise it is held out.
 Of 54 scored DepMap PDAC lines this yields **22 basal / 13 classical**, with **14 intermediate and
-5 ambiguous held out** rather than silently assigned.
+5 ambiguous held out** and not silently assigned.
 
 **PANC-1 is intermediate, and the reviewer is right for a reason the reviewer did not give.**
-PANC-1 scores **basal −0.344 / classical −0.169** — *below* the panel mean on **both** programmes.
+PANC-1 scores **basal −0.344 / classical −0.169**, *below* the panel mean on **both** programmes.
 Argmax would have labelled it "classical," which is how a quasimesenchymal line gets mistaken for a
 classical model. It is neither. Every PANC-1 chromatin concordance number in this repository is
 therefore a measurement in a line that faithfully represents **neither** target set, which is a
@@ -285,13 +285,13 @@ stronger substrate objection than the original review made, and it is conceded.
 **Not one gene survives multiple-testing correction.** The four candidates are **pan-PDAC**: they
 are essential in both subtypes, at effectively the same magnitude. There is no basal list and no
 classical list to separate, so the review's request is answered by showing the premise does not
-hold for these targets — not by producing two lists.
+hold for these targets, not by producing two lists.
 
 **This is not a threshold artefact.** Re-running across margins 0.0–0.4 (line splits from 26b/14c
 to 21b/11c) leaves every candidate non-significant at every margin (SETDB1 0.67–0.93, MYBL2
 0.74–1.00, E2F1 0.62–0.93, FOSL1 0.33–0.67). The null is stable to the one free parameter.
 
-**The split itself works — the positive control fires.** GATA6, the canonical classical-identity
+**The split itself works. The positive control fires.** GATA6, the canonical classical-identity
 factor, is the single most subtype-differential gene tested and is more essential in classical
 lines (p = 0.019), recovered blind from expression alone. It does not clear BH at q = 0.154, so it
 is reported as a **directionally correct positive control, not a finding**. That it ranks first,
@@ -299,8 +299,8 @@ with the correct sign, is evidence the assignment is measuring real subtype biol
 correction is evidence the panel is underpowered for this contrast (13 classical lines).
 
 **Consequence for the constructs.** The four guides are correctly described as **pan-PDAC
-candidates**. They should *not* be advertised as subtype-targeted, and — following the PANC-1
-finding above — should be validated in lines that actually sit at the poles of the signature, not
+candidates**. They should *not* be advertised as subtype-targeted, and, following the PANC-1
+finding above. Should be validated in lines that actually sit at the poles of the signature, not
 in PANC-1, whose intermediate state makes it uninformative about either target set.
 
 ---
@@ -315,9 +315,9 @@ then permutes those labels while holding the weights **fixed** (`prioritize.py:1
 already encode where the drivers are, so no permuted replicate can ever compete on equal terms.
 
 `scripts/module1_selection_aware_null.py` re-runs the **entire** grid search inside each of 2,000
-permutations — same recovery@k objective, same most-balanced tie-break — so every replicate gets
+permutations. Same recovery@k objective, same most-balanced tie-break, so every replicate gets
 the weights that are best for *its own* shuffled labels. The naive fixed-weight null is computed
-on identical draws, so the inflation is measured rather than argued.
+on identical draws, so the inflation is measured, not argued.
 
 | statistic | observed | naive p (weights frozen) | **selection-aware p** | naive null mean | selection-aware null mean |
 |---|---|---|---|---|---|
@@ -325,15 +325,14 @@ on identical draws, so the inflation is measured rather than argued.
 | mean rank of controls | −298.7 | 0.0045 | **0.0075** | −662.4 | −653.7 |
 
 **The selection advantage is real and large.** Under the naive null a random label set recovers
-0.05 drivers on average; once each replicate may choose its own weights, that rises to **0.326** —
-a null six times more competitive. The recovery@k p-value inflates **8.7×** (0.0015 → 0.0130).
+0.05 drivers on average; once each replicate may choose its own weights, that rises to **0.326**, a null six times more competitive. The recovery@k p-value inflates **8.7×** (0.0015 → 0.0130).
 
 **But the finding holds.** Both statistics remain significant at α = 0.05 under the honest null
 (0.0130 and 0.0075). Unlike the collapse claim, this one does not depend on the flaw. The reported
-p-value was wrong; the conclusion was not. It is corrected here rather than withdrawn.
+p-value was wrong; the conclusion was not. It is corrected here instead of withdrawn.
 
 **Two things that should temper it.** The effect size is thin: **2 of 7** drivers in the top 10,
-against a prereg margin of exactly 2 — it clears by nothing. And the selected weights are
+against a prereg margin of exactly 2, it clears by nothing. And the selected weights are
 `c_subtype 0.50, c_expr 0.25, c_breadth 0.25, c_spec 0.00, c_onc 0.00`: the grid search assigns
 **zero weight to both the oncogenicity and the tumour-specificity criteria**, so the
 "multi-criteria" ranking is in fact driven by three of its five criteria, and driver recovery is
@@ -349,23 +348,23 @@ off-target risk = 0.00 everywhere). `scripts/robustness_metric_diagnostic.py` te
 against negative controls and the repository's own golden fixtures.
 Result: `results/robustness_metric_diagnostic.json`.
 
-**Hypothesis 1 — refuted, and it was ours.** We assumed `parameter_sweep`'s single global
+**Hypothesis 1. Refuted, and it was ours.** We assumed `parameter_sweep`'s single global
 multiplicative factor per axis (applied to *every* gene at once) made it near-incapable of breaking
 a circuit. It is not: the sweep scores `robust_circuit` at **1.000** and both `fragile_circuit` and
 `repressilator` at **0.203**, a spread of **0.80**. It detects instability perfectly well, and it
 correctly fails an oscillator. The global-vs-per-gene distinction is not the defect.
 
-**Hypothesis 2 — confirmed, and it is the real defect.** `steady_state_within_tol` asks only
+**Hypothesis 2. Confirmed, and it is the real defect.** `steady_state_within_tol` asks only
 whether the system *settles*, never whether it settles to the value the circuit was designed to
-compute. Setting every gene's output drive to zero — a circuit that provably cannot compute
-anything — yields robustness **1.000**, the maximum, for **every** fixture tested. The metric's
+compute. Setting every gene's output drive to zero, a circuit that provably cannot compute
+anything. Yields robustness **1.000**, the maximum, for **every** fixture tested. The metric's
 optimum is achieved by doing nothing. `robustness = 1.0` is therefore not evidence that a circuit
 works, and since every circuit the pipeline actually delivers (`run_basal`, `run_classical`,
 `gated_constructs`) scores exactly **1.0**, the objective contributes **no ranking information** to
 the NSGA-II front at all. Module VI is optimising over three live objectives, not four.
 
 **The repair, demonstrated.** Scoring instead against agreement with the circuit's own compiled
-Boolean fixed points — the spec `boolean.py` already derives — restores discrimination exactly
+Boolean fixed points. The spec `boolean.py` already derives, restores discrimination exactly
 where the shipped metric saturates:
 
 | circuit | shipped (settle-only) | Boolean-correctness |
@@ -376,13 +375,13 @@ where the shipped metric saturates:
 | `fragile_circuit` | 0.203 | 0.0 |
 | `repressilator` | 0.203 | 0.0 |
 
-The shipped metric cannot separate `robust`, `monostable` and `toggle` — all three are 1.000. The
+The shipped metric cannot separate `robust`, `monostable` and `toggle`, all three are 1.000. The
 correctness criterion does, and it still fails the oscillator and the fragile design, which is the
 required behaviour.
 
 **Two honest caveats.** `monostable_circuit` settles on 100% of draws yet matches its Boolean fixed
 point on none; that is either a genuine mismatch between its ODE and its own spec or a residual
-thresholding artefact in the diagnostic, and it is **unresolved** — it is not being reported as a
+thresholding artefact in the diagnostic, and it is **unresolved**, it is not being reported as a
 finding about that circuit. Separately, a first version of this diagnostic required a *unique*
 Boolean fixed point, which silently resolved the reference to `None` for every multistable circuit
 and scored them all 0.0; the toggle switch is bistable by construction. That bug produced a clean
@@ -398,12 +397,12 @@ attribution over the corrected objective.
 
 The review required a memorisation test for the generated promoters. The shipped certification
 cannot serve as one: it passes the GAN because its 4-mer spectrum is closer to real promoters
-(JS 0.0088) than random DNA is (JS 0.0508) — but **memorisation minimises JS**. A generator that
+(JS 0.0088) than random DNA is (JS 0.0508), but **memorisation minimises JS**. A generator that
 simply copied its training set would score JS ≈ 0 and pass most convincingly of all. "Realism
 beats random" is evidence the model learned something, not evidence it invented anything.
 Script: `scripts/gan_memorisation_test.py` · result: `results/gan_memorisation_test.json`.
 
-**No memorisation — the GAN passes cleanly.** Nearest-neighbour identity on aligned 1,024 bp
+**No memorisation. The GAN passes cleanly.** Nearest-neighbour identity on aligned 1,024 bp
 TSS-anchored windows, 500 generated vs 4,000 training promoters:
 
 | set | median NN identity to training set | p95 | max |
@@ -413,7 +412,7 @@ TSS-anchored windows, 500 generated vs 4,000 training promoters:
 | random DNA | 0.2998 | — | — |
 
 Generated sequences are **not** closer to the training set than a real promoter is to its nearest
-training neighbour — they are marginally *further* (Mann-Whitney p = 1.000 in the tested
+training neighbour. They are marginally *further* (Mann-Whitney p = 1.000 in the tested
 direction), with **zero** near-exact copies and a maximum identity of 0.358 against 0.622 for real
 promoters. The novelty claim survives, on a test that could have refuted it.
 
@@ -434,7 +433,7 @@ and it is the number that should be reported.
 **But it exposes a third saturated metric.** The entire dynamic range between random DNA and real
 promoters is **0.042** on a nominally [0,1] scale: the Module II model scores *random DNA* at a
 median of **0.758**. The unit strength is therefore not calibrated, and an absolute figure like
-"predicted strength 0.79" carries almost no information — chance sequence already scores 0.76.
+"predicted strength 0.79" carries almost no information, chance sequence already scores 0.76.
 Every downstream use of promoter strength as an absolute quantity (including `pred_strength_gen_max
 = 0.993`) inherits this. Percent-of-gap-closed is meaningful here; the raw score is not.
 
@@ -443,7 +442,7 @@ before Module VI's Pareto front can be said to be ranking on four real axes.
 
 ---
 
-## 13. off_target_risk = 0.00 is blind, not clean — and the four constructs must be re-described
+## 13. off_target_risk = 0.00 is blind, not clean, and the four constructs must be re-described
 
 §11 left `off_target_risk = 0.00` untested. It is now tested, and it does not survive.
 
@@ -457,14 +456,14 @@ for locus in loci:
     search_seqs.append((locus["chrom"], s))
 ```
 
-For a four-target design that is ~40 kb against a 3.1 Gb genome — **0.0013%**. The pipeline looks
+For a four-target design that is ~40 kb against a 3.1 Gb genome, **0.0013%**. The pipeline looks
 for off-targets only in the immediate neighbourhood of the gene it is already cutting. Finding
 none there is close to guaranteed by construction. `offtarget.py` is candid that exhaustive search
 is out of scope; the danger is that the resulting `0.00` reads as safety.
 
 **A real scan of the local hg38.** `scripts/genomewide_offtarget_audit.py` scans all 3.09 Gb of the
 main assembly, both strands, for every NGG site within ≤4 mismatches of each proposed guide, and
-scores hits with the repository's **own** MIT/CFD-style functions — same scorer, honest search
+scores hits with the repository's **own** MIT/CFD-style functions, same scorer, honest search
 space. Result: `results/genomewide_offtarget_audit.json` (138 s).
 
 | gene | shipped report | perfect matches (incl. on-target) | **off-targets ≤4 mm** | 2 mm | 3 mm | 4 mm |
@@ -476,16 +475,16 @@ space. Result: `results/genomewide_offtarget_audit.json` (138 s).
 
 **384 off-target sites across the four guides, every one of them reported as zero.** SETDB1 carries
 a **2-mismatch** site. FOSL1 has a sampled hit at chr1:7,174,801 (`TCTGCCTCGCCTGGGCCGTGGGG`) scoring
-**CFD-style 0.921** — predicted ~92% as active as the intended target.
+**CFD-style 0.921**, predicted ~92% as active as the intended target.
 
 **One real positive.** Every guide has **exactly one** perfect genomic match: each is uniquely
 placed at its intended locus, with no second perfect site anywhere in the assembly. That is a
 genuine specificity result, and it is the only part of the original specificity claim that holds.
 
-**Limitation of this audit, stated rather than buried.** The CFD figures above are computed over a
+**Limitation of this audit, stated, not buried.** The CFD figures above are computed over a
 capped sample of ≤12 hits per guide, not all 384; the true worst-case CFD is therefore likely
-*worse* than shown, not better — a 12-hit sample already surfaced 0.921. Bulges are not modelled
-(substitutions only), and the CFD implementation remains position-granular rather than the exact
+*worse* than shown, not better, a 12-hit sample already surfaced 0.921. Bulges are not modelled
+(substitutions only), and the CFD implementation remains position-granular and not the exact
 Doench-2016 nucleotide-pair matrix.
 
 **Consequence.** The four constructs in §9 were previously described as having "no candidate
@@ -495,21 +494,21 @@ described as **uniquely placed at their intended locus, with 35-206 genome-wide 
 ≤4 mismatches each, unranked and unvalidated**. No guide here is ready to order on specificity
 grounds, and FOSL1's high-CFD site would need direct assessment first.
 
-**The fix to the code** is to feed the real assembly into the search rather than a ±5 kb window,
+**The fix to the code** is to feed the real assembly into the search, not a ±5 kb window,
 and to report the CFD aggregate over genome-wide hits. Until then `cfd_specificity` and
-`off_target_risk` should not be emitted at all, rather than emitted as 1.00 and 0.00.
+`off_target_risk` should not be emitted at all, instead of emitted as 1.00 and 0.00.
 
 ---
 
 ## 14. The off-target defect is repaired in the code, and it rejects our own candidates
 
 §13 documented the flaw. Documenting a defect while the tool keeps emitting `0.00` is half a job,
-so the search is now fixed rather than merely described.
+so the search is now fixed, not merely described.
 
 **What changed.** New module `src/pdac_circuit/grna/genome_offtarget.py` scans the whole local hg38
 (both strands, ≤ `max_mm` mismatches) using the project's own MIT/CFD scorers. `design_guides` now
-treats the ±5 kb neighbourhood search as what it is — a cheap **pre-filter for ordering
-candidates** — then rescores the shortlist genome-wide and **applies the pre-registered gate to
+treats the ±5 kb neighbourhood search as what it is, a cheap **pre-filter for ordering
+candidates**, then rescores the shortlist genome-wide and **applies the pre-registered gate to
 those real numbers**. The marginal cost is small: encoding the assembly dominates, so ~12 guides
 costs little more than 4 (~140 s).
 
@@ -520,7 +519,7 @@ perfect safety. The envelope also carries `offtarget_scope`, so a reader can see
 came from the genome or from a 40 kb window.
 
 **Two independent implementations agree exactly.** The standalone audit (§13) and the library
-module return identical counts — 75 / 206 / 35 / 68 — on separate code paths.
+module return identical counts, 75 / 206 / 35 / 68, on separate code paths.
 
 **The repaired gate rejects all four of our own candidates.**
 
@@ -542,26 +541,25 @@ mismatch identities near zero. Summing that proxy over 206 sites therefore likel
 total off-target activity, so `cfd_specificity = 0.042` is probably **pessimistic** and these
 guides may not be as bad as the table implies. The honest position is that the true value lies
 between the old `0.00` and these figures, and pinning it down requires the exact Doench-2016
-matrix — which remains unimplemented.
+matrix, which remains unimplemented.
 
 What improved is not that we now have the right number. It is that **the direction of the error
 changed from fails-dangerous to fails-safe**, and that the reported quantity is now a property of
-the genome rather than of the search radius.
+the genome and not of the search radius.
 
 ### 14b. Correction to §14: the rejection is not robust either
 
-> **SUPERSEDED BY §24 — and its central prediction was wrong.** The `undetermined` verdict below
+> **SUPERSEDED BY §24. And its central prediction was wrong.** The `undetermined` verdict below
 > is now RESOLVED with the exact Doench-2016 matrix (downloaded, validated against 7 published
-> test vectors). Two claims below do not survive: (i) *"at ≤3 mm three of four guides pass"* —
-> in fact only FOSL1 passes; MYBL2 (0.659→0.469) and E2F1 (0.510→0.447) flip to FAIL; and
-> (ii) *"the position-granular figures are likely pessimistic"* — the approximation erred in
+> test vectors). Two claims below do not survive: (i) *"at ≤3 mm three of four guides pass"*, > in fact only FOSL1 passes; MYBL2 (0.659→0.469) and E2F1 (0.510→0.447) flip to FAIL; and
+> (ii) *"the position-granular figures are likely pessimistic"*, the approximation erred in
 > BOTH directions and was **optimistic** at the decision-relevant ≤3 mm cutoff. See §24.
 
 
 §14 concluded that the repaired gate "rejects all four candidates" and that every construct is
 "withdrawn on specificity grounds". That is an over-correction, and the sensitivity analysis it
 asked for refutes it. `scripts/offtarget_cutoff_sensitivity.py` recomputes aggregate specificity
-restricted to ≤2, ≤3 and ≤4 mismatches — separating conclusions that survive the position-granular
+restricted to ≤2, ≤3 and ≤4 mismatches, separating conclusions that survive the position-granular
 CFD approximation from those carried by the distant tail it models worst.
 
 | gene | ≤2 mm (n, spec) | ≤3 mm (n, spec) | ≤4 mm (n, spec) | gate ≥ 0.5 |
@@ -573,26 +571,26 @@ CFD approximation from those carried by the distant tail it models worst.
 
 **No guide is rejected at every cutoff.** For MYBL2, E2F1 and FOSL1 the rejection rests *entirely*
 on the 4-mismatch tail: 72 of MYBL2's 75 sites, 62 of E2F1's 68, and 32 of FOSL1's 35 sit at 4
-mismatches, where the true CFD depends on *which* substitutions occurred — exactly the information
+mismatches, where the true CFD depends on *which* substitutions occurred, exactly the information
 Hsu position weights discard. At ≤3 mm all three clear the gate.
 
 **The honest verdict is therefore `undetermined`, not `rejected`.** Both of this repository's
 previous positions were overconfident in opposite directions:
 
-* `off_risk = 0.00` — wrong, and dangerously so: the search covered 0.0013% of the genome.
-* `off_risk = 0.78–0.96, all rejected` — also unsupported: driven by a tail the scorer approximates.
+* `off_risk = 0.00`. Wrong, and dangerously so: the search covered 0.0013% of the genome.
+* `off_risk = 0.78–0.96, all rejected`, also unsupported: driven by a tail the scorer approximates.
 
 **What survives regardless of the approximation:**
-* every guide is **uniquely placed** — exactly one perfect genomic match each;
-* **SETDB1 is the one robust concern** — it fails at ≤3 mm (spec 0.283, 18 sites) and carries a
+* every guide is **uniquely placed**, exactly one perfect genomic match each;
+* **SETDB1 is the one robust concern**, it fails at ≤3 mm (spec 0.283, 18 sites) and carries a
   **2-mismatch** site, which no CFD refinement will explain away;
-* **E2F1 at ≤3 mm is marginal** (0.510 against a 0.5 gate) — it clears by 0.010 and should not be
+* **E2F1 at ≤3 mm is marginal** (0.510 against a 0.5 gate), it clears by 0.010 and should not be
   called specific;
-* MYBL2 (0.659) and FOSL1 (0.707) are the most defensible of the four at ≤3 mm — though FOSL1 still
+* MYBL2 (0.659) and FOSL1 (0.707) are the most defensible of the four at ≤3 mm, though FOSL1 still
   owns the single highest-CFD site found (0.921).
 
 **This does not resolve the true value.** Only the exact Doench-2016 nucleotide-pair matrix can, and
-its coefficients are deliberately **not** reconstructed from memory here — inventing them would be
+its coefficients are deliberately **not** reconstructed from memory here, inventing them would be
 precisely the fabrication this project forbids, and CRISPOR's distribution is a pickle (loading it
 is arbitrary code execution, so it is not used). Until that matrix is obtained from a safe source,
 `off_target_risk` should be reported **with its mismatch cutoff attached**, and no guide in this
@@ -621,13 +619,12 @@ but they did **not** solve the real problem.
 **The unfixed problem.** `run_pipeline` designs guides one target at a time
 (`orchestrator` → `select_repressor` → `design_guides`), so a k-target run pays k separate
 genome scans: `run_pipeline(top_k=6)` now costs ~11 min where it previously cost seconds. This is a
-direct regression introduced by the repair, and it is **real**, not incidental — `tests/
+direct regression introduced by the repair, and it is **real**, not incidental, `tests/
 test_pipeline.py::test_pipeline_end_to_end` is the visible casualty.
 
 The correct fix is architectural: the scan is a property of the *genome*, not of a guide, so the
-orchestrator should collect every target's shortlist and issue **one** scan for all of them,
-rather than one per target. That is not done here. Until it is, `run_pipeline` is slow by design,
-and the alternative — defaulting `genome_wide_offtarget=False` to make it fast again — is exactly
+orchestrator should collect every target's shortlist and issue **one** scan for all of them,, not one per target. That is not done here. Until it is, `run_pipeline` is slow by design,
+and the alternative. Defaulting `genome_wide_offtarget=False` to make it fast again, is exactly
 the trade this repository must not make: it would return `certified-negative` guides quickly
 instead of honest ones slowly.
 
@@ -635,12 +632,12 @@ A note on how this was found: the slowdown was first reported here as "the suite
 data-heavy tests unrelated to my change." That was asserted without checking and was false. The
 targeted run that looked green (`-k "grna or design or offtarget or repressor or parts"`) does not
 match test *names* containing "pipeline", so it silently skipped the one caller the change most
-affects — a filter that excludes the important case is indistinguishable from one that covers it.
+affects. A filter that excludes the important case is indistinguishable from one that covers it.
 
 ### 14d. Correction to §14c: batching is NOT the fix either (measured)
 
 §14c asserted "the correct fix is architectural: the orchestrator should issue one scan for all
-targets rather than one per target." That was a third un-measured performance claim, and measuring
+targets instead of one per target." That was a third un-measured performance claim, and measuring
 it refutes it. Scan cost vs guide count, with the genome cache already warm (so this isolates scan
 scaling from disk):
 
@@ -652,13 +649,13 @@ scaling from disk):
 | 8 | 178.2 s | 22.28 s |
 | 16 | 360.8 s | 22.55 s |
 
-**Cost ≈ 25 s + 21 s × n — linear in the number of guides.** The marginal per-guide term dominates
+**Cost ≈ 25 s + 21 s × n. Linear in the number of guides.** The marginal per-guide term dominates
 the fixed term for any realistic shortlist. Batching a 6-target run (72 guides) into one scan costs
 `25 + 72×21 = 1537 s` against `6 × (25 + 12×21) = 1662 s` for separate scans: a **7.5% saving**.
 Batching is nearly useless, and §14c's architectural recommendation is withdrawn.
 
 (These absolute figures were collected while the test suite was also running, so they are upper
-bounds inflated by contention — a methodological error, since both jobs scan the genome and each
+bounds inflated by contention. A methodological error, since both jobs scan the genome and each
 caches ~3.1 GB. The linear *shape*, which is what the conclusion rests on, is unaffected: both
 terms inflate together.)
 
@@ -667,7 +664,7 @@ reduce per-guide work, not reorganise call sites. The obvious candidate is early
 site needs ≤4 mismatches, but after only 8 positions ~89% of sites already exceed that budget
 (X ~ Binomial(8, 0.75), P(X≤4) ≈ 0.11), so the remaining 12 passes are ~89% wasted. Pruning
 survivors periodically should recover roughly 2x. **That is a hypothesis and is not implemented
-here — it is recorded as a hypothesis precisely because the previous three were stated as
+here. It is recorded as a hypothesis precisely because the previous three were stated as
 conclusions and all three were wrong.**
 
 **Tally of performance claims in this section, for calibration:**
@@ -680,7 +677,7 @@ conclusions and all three were wrong.**
 | early termination in the mismatch loop | ~2x | **untested** |
 
 Three plausible, well-reasoned, wrong. The lesson is not about this scanner: it is that
-*"I reasoned about where the cost is"* is worth nothing next to a measurement — the same
+*"I reasoned about where the cost is"* is worth nothing next to a measurement, the same
 relationship that holds between a bounded search and a genome-wide one (§13), between
 "does it settle" and "does it compute the right answer" (§11), and between JS divergence and a
 memorisation test (§12).
@@ -688,7 +685,7 @@ memorisation test (§12).
 ### 14e. Fourth performance hypothesis: exact, and slower. Reverted.
 
 §14d predicted that early termination in the mismatch loop would recover ~2x, and flagged it as a
-hypothesis rather than a conclusion. It was implemented and measured. It is **wrong too**, and in
+hypothesis, not a conclusion. It was implemented and measured. It is **wrong too**, and in
 the worst direction: **9% slower** (140.4 s vs 129.0 s on the same four guides), with counts
 identical (75 / 206 / 35 / 68) and all 14 reference tests passing.
 
@@ -701,7 +698,7 @@ comparison it removes. The saved work was already cheap; the bookkeeping added t
 **Reverted.** A comment now marks the straight loop as deliberate, so the next reader does not
 re-derive the same attractive, wrong idea.
 
-**Final tally — every performance claim made about this scanner:**
+**Final tally, every performance claim made about this scanner:**
 
 | claim | predicted | measured | outcome |
 |---|---|---|---|
@@ -715,7 +712,7 @@ stopwatch. The genome-wide scan costs ~25 s + ~21 s per guide because that is wh
 20-mer against ~380 M PAM sites costs; there was no waste to reclaim, only an intuition that there
 must be.
 
-This is the same lesson as §11, §12 and §13, applied to the author rather than the codebase: a
+This is the same lesson as §11, §12 and §13, applied to the author and not the codebase: a
 confident account of a mechanism is not evidence about that mechanism. The off-target search
 reported 0.00 because nobody measured what it searched. The robustness metric reported 1.00 because
 nobody asked a dead circuit. The GAN passed because nobody tested for copying. Here, four
@@ -728,7 +725,7 @@ does not complete a single test in 40 minutes (`EXIT=124`, uncontended). The ari
 No optimisation above closes that gap, because the cost is intrinsic.
 
 The honest options are therefore all trade-offs, not fixes:
-* scan fewer candidates per target (shortlist `top_k` rather than `max(top_k*3, 12)`) -- 4x faster,
+* scan fewer candidates per target (shortlist `top_k`, not `max(top_k*3, 12)`) -- 4x faster,
   at the cost of never re-ranking a candidate the bounded pre-filter mis-ordered;
 * mark the pipeline tests slow and accept ~30 min;
 * keep `genome_wide_offtarget=False` for tests and assert `certified-negative` -- honest, since a
@@ -760,7 +757,7 @@ coherent story either way; only `--durations` distinguished them.
 
 **Incidental defect found, not fixed:** `bamnostic` is imported by `signal/bamio.py` but absent
 from the declared dependencies, so a clean install cannot run `test_signal`. Out of scope here and
-recorded rather than silently patched.
+recorded instead of silently patched.
 
 **Net state of the repair:** the off-target fix is verified correct (two independent
 implementations agreeing on 75/206/35/68, 14 planted-site reference tests, 183/184 suite) and
@@ -780,13 +777,13 @@ sharper question is conditional: **among genes of comparable degree, where degre
 separate essential from non-essential, does collapse rank the essential ones higher?**
 
 `scripts/conditional_collapse_signal.py` answers it with two views on the *same* primary
-configuration as part A (400 nodes, tau 0.4 — so this extends the retraction, not a new fit; the
+configuration as part A (400 nodes, tau 0.4, so this extends the retraction, not a new fit; the
 unconditioned collapse AUC reproduces part A at 0.547 exactly). Interpretation thresholds were
 **predeclared before running**: a real residual requires matched AUC > 0.55 and permutation
 p < 0.05 at the 0.25x-spread caliper or tighter, for absolute essentiality; PDAC-selective
 (≈14 positives) was declared exploratory-only regardless of outcome.
 
-**Absolute essentiality (n = 419, 31 essential) — the retraction deepens.** Degree-conditioned
+**Absolute essentiality (n = 419, 31 essential), the retraction deepens.** Degree-conditioned
 concordance, tightening the degree caliper:
 
 | caliper | matched AUC | unconditioned | pairs | perm p |
@@ -797,12 +794,12 @@ concordance, tightening the degree caliper:
 
 Once genes are matched on degree, collapse is **at chance or slightly below** (≤ 0.49), and never
 significant. The unconditioned 0.547 was *entirely* degree. The tertile view confirms the
-mechanism — collapse AUC rises monotonically with degree (low 0.404, mid 0.516, high 0.556),
+mechanism. Collapse AUC rises monotonically with degree (low 0.404, mid 0.516, high 0.556),
 tracking exactly where degree is itself informative (degree AUC 0.490 / 0.713 / 0.594). **For core
-essentiality, collapse is degree in disguise** — a stronger and cleaner statement than the pooled
+essentiality, collapse is degree in disguise**, a stronger and cleaner statement than the pooled
 partial correlation.
 
-**PDAC-selective essentiality (n = 419, 14 selective) — exploratory, and not claimed.** Here degree
+**PDAC-selective essentiality (n = 419, 14 selective), exploratory, and not claimed.** Here degree
 is uninformative (low-tertile degree AUC 0.434), and the degree-matched collapse concordance sits
 *above* its unconditioned value:
 
@@ -812,13 +809,13 @@ is uninformative (low-tertile degree AUC 0.434), and the degree-matched collapse
 | 8.3 | 0.636 | 0.607 | 2,338 | 0.060 |
 | 3.3 | 0.614 | 0.607 | 1,205 | 0.106 |
 
-This is the one place collapse looks like it might carry degree-independent signal — and it is
+This is the one place collapse looks like it might carry degree-independent signal, and it is
 exactly where a *disease-specific* dynamical model should add value if it adds any, since selective
 (not core) vulnerability was the entire motivation for RAC. But it does **not** clear the bar to be
 called a finding, and per the predeclared rule it is reported as a hypothesis only:
 
 * significant (p 0.035) at the loosest caliper *only*; degrades to 0.106 under strict degree
-  matching — the opposite of what a robust conditional effect does;
+  matching, the opposite of what a robust conditional effect does;
 * does not survive even mild multiple-comparison correction (6 conditional tests; 0.035 x 6 ≈ 0.21);
 * only 14 positives, and the eye-catching mid-tertile AUC of 0.829 rests on **4 genes**;
 * the panel is known to contain ~7 strongly PDAC-selective TFs (§ single-cell power audit), so this
@@ -828,11 +825,11 @@ called a finding, and per the predeclared rule it is reported as a hypothesis on
 contributes nothing beyond degree for the essentiality that degree already predicts (core), and
 shows only an underpowered, non-robust hint at the selective margin that degree does not predict.
 The honest one-line summary: **collapse fails where degree already succeeds, and the one regime
-where it might not fail is too thin to call.** The prospective test that would settle it — more
-PDAC-selective dependencies than DepMap currently resolves — is the same data gap flagged
+where it might not fail is too thin to call.** The prospective test that would settle it, more
+PDAC-selective dependencies than DepMap currently resolves, is the same data gap flagged
 throughout this record, not a modelling choice.
 
-### 15b. The selective hint, dissected: artifact, not signal — the retraction is now total and located
+### 15b. The selective hint, dissected: artifact, not signal, the retraction is now total and located
 
 §15 left one thread open: for PDAC-*selective* essentiality the degree-matched concordance sat at
 0.61-0.65, reported exploratory-only. Leaving a hint dangling is not depth; it is either a real
@@ -858,7 +855,7 @@ from the *loosest* caliper (16.6); at the predeclared matching caliper nothing c
 **The biology falsifies it directly.** Naming the 14 positives at cut 0.15 with their collapse and
 degree percentiles: only **1 of 14 (JUNB)** sits in the informative quadrant (high collapse, low/mid
 degree) that a degree-independent signal requires. The rest are either high-degree (ZNF85, KLF5
-[degree pct 1.00], SOX9, FOSL1, TCF7L2 — riding the confound through imperfect matching) or
+[degree pct 1.00], SOX9, FOSL1, TCF7L2, riding the confound through imperfect matching) or
 low-collapse. Most tellingly, the two strongest selective dependencies in the panel are ranked
 **near the bottom** by collapse:
 
@@ -868,17 +865,16 @@ low-collapse. Most tellingly, the two strongest selective dependencies in the pa
 | MYC | +0.495 | 0.47 |
 
 A model that captured PDAC-selective essentiality could not place KRAS at the 8th percentile. Even
-KLF5 — this project's own recovered driver and the only curated PDAC-selective positive — owes its
+KLF5. This project's own recovered driver and the only curated PDAC-selective positive, owes its
 position to degree (percentile 1.00), not collapse. Leave-one-positive-out (base 0.636, range
 [0.598, 0.701]) shows removing a low-collapse gene *raises* the AUC, i.e. the number is diffuse
 degree leakage, not a coherent per-gene effect.
 
-**Consequence.** The §15 "thin hint at the selective margin" is **withdrawn**. There is no regime —
-core or selective — where collapse adds discrimination over degree. The retraction, first stated
+**Consequence.** The §15 "thin hint at the selective margin" is **withdrawn**. There is no regime, core or selective, where collapse adds discrimination over degree. The retraction, first stated
 globally (§1) and then located to core essentiality (§15), is now **complete**: collapse is degree
 in disguise everywhere it was tested, and the one place it appeared not to be was an artifact of a
 threshold and imperfect matching. This is the strongest and cleanest form of the retraction, and it
-was reached by dissecting the model's most flattering result rather than resting on it.
+was reached by dissecting the model's most flattering result, not resting on it.
 
 The bistable formulation's standing is therefore narrowed to exactly what survives: an *intervention
 semantics* (clamp a node, observe attractor collapse) that is internally coherent but carries no
@@ -886,30 +882,30 @@ demonstrated predictive advantage over network degree on any essentiality endpoi
 
 ---
 
-## 16. Is the intervention gate's "safety" calibrated? Audited against local data — 11/12 corroborated
+## 16. Is the intervention gate's "safety" calibrated? Audited against local data, 11/12 corroborated
 
 The review's standing objection to the signed intervention gate (§ intervention_gate) is that its
-role assignments are a literature prior — hand-curated, not calibrated against anything measured.
+role assignments are a literature prior, hand-curated, not calibrated against anything measured.
 `scripts/gate_role_data_audit.py` -> `results/gate_role_data_audit.json` tests every curated role
 against a data-implied direction derived from independent local layers, and asks whether the two
 agree.
 
 **A metric bug, caught by sanity-checking against known biology.** The first version scored four
 layers including `disease_log2fc` and protein-detection, and flagged the three canonical PDAC
-tumour suppressors — SMAD4, CDKN2A, TP53 — as CONFLICT, i.e. "data says oncogenic." That is
+tumour suppressors, SMAD4, CDKN2A, TP53, as CONFLICT, i.e. "data says oncogenic." That is
 impossible (SMAD4 is deleted in ~68% of tumours), so the audit was wrong, not the curation.
 Diagnosis: `g.disease_log2fc` is a real TCGA-PAAD-vs-GTEx differential but CROSS-PLATFORM (TCGA RSEM
 vs GTEx TPM), carrying a uniform +5.61 median batch offset that pins 91.8% of genes positive
 (SMAD4 6.96, TGIF1 8.11); §16b shows even the batch-corrected differential cannot separate oncogene
 from suppressor. (An earlier version of this section wrongly called the field an absolute
-expression *level*; it is a batch-biased differential — the conclusion that it is unusable as a
+expression *level*; it is a batch-biased differential, the conclusion that it is unusable as a
 direction is unchanged, the mechanism is corrected.) Protein-detection and unmethylated-default are
 not directional either. The
-one correctly-computed layer — copy number — had the right answer all along (SMAD4 deletion 0.77,
+one correctly-computed layer. Copy number, had the right answer all along (SMAD4 deletion 0.77,
 CDKN2A 0.90). The metric was corrected to score only genuinely directional layers: CNA (bidirectional,
 primary) and promoter hypermethylation (one-sided, suppressor-only). This is the same failure the
-rest of this document catalogues — a field used without verifying what it measures — reproduced in
-an audit written to catch exactly that, and caught here by biology rather than by the number.
+rest of this document catalogues. A field used without verifying what it measures, reproduced in
+an audit written to catch exactly that, and caught here by biology and not by the number.
 
 **Corrected result: 11 of 12 directional calls corroborated by independent copy number.**
 
@@ -930,13 +926,13 @@ directional calls are therefore calibrated against measured copy number, not mer
 amplified in classical PDAC) yet is ACTIVATE-admissible / quarantined. That is not an error: GATA6
 is an amplified *dependency* whose repression is nonetheless unsafe, because it maintains classical
 identity and its loss drives the more aggressive basal state. GATA6 is precisely the gene where
-"amplified and essential" and "safe to repress" diverge — the exact case a convergence score alone
+"amplified and essential" and "safe to repress" diverge, the exact case a convergence score alone
 gets wrong and the reason the signed gate exists. The audit surfacing GATA6 as the sole conflict,
 with the gate's state-switch reasoning as the resolution, is the strongest single piece of evidence
 that the gate encodes something a pure dependency ranking does not.
 
 **Honest limits.** Copy number cannot adjudicate functional/expression-level suppressors (TGIF1,
-whose loss accelerates PDAC without deletion) — reported inconclusive, not corroborated. TP63 is
+whose loss accelerates PDAC without deletion), reported inconclusive, not corroborated. TP63 is
 absent from the graph and has no scored local evidence. And a true tumour-vs-normal expression
 differential is not available locally as a clean contrast; adding GTEx-normalised expression would
 let the audit adjudicate the functional suppressors it currently cannot.
@@ -947,10 +943,10 @@ let the audit adjudicate the functional suppressors it currently cannot.
 was wrong, and both are worth stating precisely because the distinction is the whole point.
 
 **Correction.** `disease_log2fc` is not an absolute expression level. It is a genuine TCGA-PAAD
-tumour vs GTEx normal-pancreas log2 differential — the same one `targeting/features.py` computes and
+tumour vs GTEx normal-pancreas log2 differential, the same one `targeting/features.py` computes and
 already flags as cross-platform. Across 1,666 matched genes its distribution is min -7.40, **median
 +5.61**, max 13.03, with **91.8% of genes positive**: a large uniform batch offset from comparing
-TCGA RSEM against GTEx TPM (GTEx pancreas TPMs are implausibly low — BRCA2 0.1, CDKN2A 0.2 — because
+TCGA RSEM against GTEx TPM (GTEx pancreas TPMs are implausibly low, BRCA2 0.1, CDKN2A 0.2, because
 pancreatic RNA is enzyme-dominated and degradation-prone). The offset, not the biology, is what
 pinned every gene positive.
 
@@ -963,23 +959,23 @@ median) and expression *still* does not separate oncogene from suppressor:
 | tumour suppressors | SMAD4, CDKN2A, TP53, TGIF1, FBXW7 | +1.23 |
 
 Separation +0.09; Mann-Whitney (oncogene > suppressor) **p = 0.669**. SMAD4 (+1.35), TP53 (+1.36)
-and TGIF1 (+2.50) — all suppressors — read *more* up than MYC (-0.21) and MYBL2 (-0.01). This is not
+and TGIF1 (+2.50). All suppressors, read *more* up than MYC (-0.21) and MYBL2 (-0.01). This is not
 noise; it is biology: **PDAC tumour suppressors are inactivated by deletion and loss-of-function
 mutation, not by transcriptional down-regulation**, so their mRNA is often normal or elevated even
 as their function is lost. Expression differential is therefore structurally incapable of assigning
 oncogene-vs-suppressor direction here, batch effect or no batch effect.
 
-Copy number is the correct and, locally, the only valid directional instrument — amplification and
+Copy number is the correct and, locally, the only valid directional instrument, amplification and
 deletion *are* the mechanism of action in PDAC. §16's reliance on CNA was right for a stronger
 reason than "the expression field looked buggy": it is right because the alternative cannot work.
-The honest residual limit stands — CNA cannot see purely functional suppressors like TGIF1 — but no
+The honest residual limit stands. CNA cannot see purely functional suppressors like TGIF1, but no
 locally available layer can, and claiming expression could would have been wrong.
 
 ---
 
 ## 17. The foundational premise: the system is not bistable (full addendum)
 
-The retraction in §1/§15/§15b was phenomenological — collapse does not predict essentiality beyond
+The retraction in §1/§15/§15b was phenomenological, collapse does not predict essentiality beyond
 degree. A dynamical-systems audit now supplies the *mechanism*, and it is more fundamental than the
 phenomenology: **the fitted RAC system is not bistable at its operating gain, and its "attractors"
 are not attractors.** Full treatment in [docs/ADDENDUM_DYNAMICS.md](docs/ADDENDUM_DYNAMICS.md);
@@ -990,15 +986,15 @@ Four tests, three of them model-free (no eigenvalue), on the primary §15 fit:
 
 | test | result |
 |---|---|
-| cell-state one-step residual (fixed-point quality) | median **0.729**, max 0.980 — not fixed points |
-| convergence from 84 initial conditions (2000 iters) | **0 / 84** converge — no reachable stable attractor |
+| cell-state one-step residual (fixed-point quality) | median **0.729**, max 0.980, not fixed points |
+| convergence from 84 initial conditions (2000 iters) | **0 / 84** converge, no reachable stable attractor |
 | perturbation growth over 20 steps | median **3.41×**, max 71× — expansive/unstable |
-| spectral radius ρ (finite-diff = analytic) | **1.02–1.13** across equilibria — linearly unstable |
+| spectral radius ρ (finite-diff = analytic) | **1.02–1.13** across equilibria, linearly unstable |
 | bifurcation (gain sweep) | hysteresis only from gain **5.9**; operating 4.0 is below it |
 | clamping reaches a dead basin | **0 / 10** nodes |
 
 **Consequence.** `collapse_scores` calls `_settle` for 250 iterations on a map that never converges,
-so it compares two *transient snapshots* with and without a node clamped — a **graph-influence
+so it compares two *transient snapshots* with and without a node clamped, a **graph-influence
 propagation** score, not a basin-transition score. A propagation score over a co-expression graph is
 expected to track degree, which is exactly what §15 found. The mechanism explains the phenomenology.
 
@@ -1008,20 +1004,20 @@ expected to track degree, which is exactly what §15 found. The mechanism explai
 fitted co-expression-masked weight matrix, which does not beat degree. **Untouched:** the intervention
 gate (§16, independent) and all data layers.
 
-**A metric bug, caught by its guard.** The first eigenvalue estimate (ρ ≈ 2.6) was wrong — the
+**A metric bug, caught by its guard.** The first eigenvalue estimate (ρ ≈ 2.6) was wrong, the
 analytic Jacobian evaluated σ′ at `z` instead of at the map's argument `gain·z`. The
 finite-difference cross-check, placed specifically to catch this, disagreed by 1.9 elementwise and
 exposed it; corrected, analytic 1.019 = finite-diff 1.023. The conclusion never depended on the
 eigenvalue (the convergence and perturbation tests are model-free), but the number was wrong and is
-corrected rather than quietly dropped — the same discipline applied to the audit as to the code it
+corrected, not quietly dropped, the same discipline applied to the audit as to the code it
 audits.
 
 ---
 
-## 18. Can the method be rescued by operating in the bistable regime? No — tested, and the failure is structural
+## 18. Can the method be rescued by operating in the bistable regime? No, tested, and the failure is structural
 
 §17 identified that the operating gain 4.0 is below the bifurcation (~5.9). The obvious constructive
-fix is "raise the gain." `scripts/gain_sweep_rescue.py` tests it directly — refit RAC at gains 4–8
+fix is "raise the gain." `scripts/gain_sweep_rescue.py` tests it directly, refit RAC at gains 4–8
 and, at each, measure convergence, spectral radius, and collapse-vs-degree AUC (against the fixed
 §15 degree reference 0.629). Interpretation predeclared: rescue = a convergent/stable regime **and**
 collapse > degree.
@@ -1034,10 +1030,10 @@ collapse > degree.
 | 7.0 | 0.00 | 0.96 | 0.674 | +0.045 (isolated) |
 | 8.0 | 0.00 | 0.92 | 0.615 | −0.014 |
 
-**Neither axis rescues.** Convergence is 0.00 at *every* gain — even where ρ < 1 (gains 7, 8) the
+**Neither axis rescues.** Convergence is 0.00 at *every* gain, even where ρ < 1 (gains 7, 8) the
 map does not settle, so ρ is measured at a transient snapshot and certifies no fixed point. And
 collapse never robustly beats degree: four of five gains negative, the lone positive (gain 7,
-+0.045) isolated, non-convergent, and inside §15's ΔAUC noise band (±0.11) — reported, not claimed,
++0.045) isolated, non-convergent, and inside §15's ΔAUC noise band (±0.11), reported, not claimed,
 because selecting it would be the one-in-five outcome-selection §15 exists to prevent.
 
 **This makes the §15 retraction structural.** Dynamics propagate only what the graph encodes; §15/§15b
@@ -1045,24 +1041,24 @@ showed essentiality is not in the co-expression graph beyond degree (partial ρ 
 percentile), so no reparameterisation over that graph can manufacture it. RAC is not one
 hyperparameter from working; a real rebuild would have to change what the graph encodes (directed/
 causal edges, perturbation data), not how the dynamics run over it. It also corrects §17's own
-constructive suggestion: raising the gain is necessary but not sufficient — the fit must be made to
+constructive suggestion: raising the gain is necessary but not sufficient, the fit must be made to
 produce true, stable fixed points first. Full detail in [docs/ADDENDUM_DYNAMICS.md](docs/ADDENDUM_DYNAMICS.md) §7.
 
 ---
 
-## 19. RAC v2 rebuild attempt — substrate-first, stopped at the gate (full addendum)
+## 19. RAC v2 rebuild attempt, substrate-first, stopped at the gate (full addendum)
 
 §18 concluded RAC's failure is structural in the substrate. The constructive response is a rebuild,
 executed in the order the diagnosis dictates: **fix the substrate first, prove it carries signal,
 and only then build dynamics.** Full write-up in [docs/ADDENDUM_RAC_V2.md](docs/ADDENDUM_RAC_V2.md);
 scripts `build_directed_grn.py` + `substrate_signal_test.py`.
 
-**Phase 1 — a directed substrate.** The current graph is symmetric co-expression (degree ≈ hub-ness
+**Phase 1. A directed substrate.** The current graph is symmetric co-expression (degree ≈ hub-ness
 ≈ essentiality tautologically). Built a directed TF→target motif-GRN instead: edge i→j = best JASPAR
 PWM hit of TF i in gene j's hg38 promoter. 422 nodes, 205 regulators with PWMs, 11,331 edges at
 score ≥ 0.9. Leakage-free vs DepMap CRISPR.
 
-**Phase 2 — the gate (predeclared): does the directed topology beat degree?** Against DepMap absolute
+**Phase 2. The gate (predeclared): does the directed topology beat degree?** Against DepMap absolute
 essentiality (co-expression degree AUC 0.629 as baseline), every directed property fails:
 
 | property | raw AUC | matched AUC | partial p vs degree |
@@ -1074,33 +1070,33 @@ essentiality (co-expression degree AUC 0.629 as baseline), every directed proper
 
 Not one beats degree (raw all < 0.629; matched all < 0.55; partial all n.s.). Threshold-free weighted
 strengths fail too, so it is not a cutoff artifact. The "master regulator drives many genes"
-hypothesis is refuted with the sign — out-degree is *anti*-associated with essentiality (0.39).
+hypothesis is refuted with the sign, out-degree is *anti*-associated with essentiality (0.39).
 
 **Decision: STOP; the failure is confirmed across two independent topologies.** Both undirected
 co-expression and directed motif-regulatory graphs fail to encode PDAC-TF essentiality beyond node
-degree. The signal is not in the edge directions or a smarter centrality — it is not in the graph
+degree. The signal is not in the edge directions or a smarter centrality, it is not in the graph
 topology at all. Genuine progress needs different *information* (perturbation data as input, a causal
 network learned from interventions, a larger panel), not a reparameterisation of RAC. Building
 bistable dynamics on this substrate would repeat the diagnosed error one level up, so the rebuild
-stops here — the correct, honest outcome. The intervention gate (§16) and data layers are unaffected.
+stops here, the correct, honest outcome. The intervention gate (§16) and data layers are unaffected.
 
 ---
 
-## 20. The achievable ceiling (RAC v2 Phase 4) — and the one weak positive
+## 20. The achievable ceiling (RAC v2 Phase 4), and the one weak positive
 
 With graph topology ruled out (§19), the quantitative question remained: is degree the ceiling for
 *any* available feature? A nested-CV supervised model (logistic + GBM, 5 seeds, fixed defaults) was
 fit on every leakage-free feature (degree, directed-GRN properties, CNA, methylation, expression,
 disease log2FC). Full detail: [docs/ADDENDUM_RAC_V2.md](docs/ADDENDUM_RAC_V2.md) §8.
 
-**Absolute essentiality:** full model 0.85 vs degree 0.62 — but the gain is carried by `expr_mean_raw`
+**Absolute essentiality:** full model 0.85 vs degree 0.62, but the gain is carried by `expr_mean_raw`
 (univariate 0.809), the DepMap tautology that an unexpressed gene has Chronos ≈ 0. Real, not
 actionable (you cannot drug "being expressed"); topology and CNA add nothing (all ≤ degree or ≈ 0.52).
 
 **Selective essentiality (the endpoint that matters):** degree is *anti*-predictive (0.424). The
 multi-omic model reaches 0.651, and it was held to the §15b bar that killed the collapse hint:
-matched permutation null p = 0.030 (I first ran the null on the wrong 14-feature set — 0.516,
-chance — and corrected it to match the 0.651); threshold sweep 0.10–0.20 significant at the two
+matched permutation null p = 0.030 (I first ran the null on the wrong 14-feature set, 0.516,
+chance, and corrected it to match the 0.651); threshold sweep 0.10–0.20 significant at the two
 best-powered cuts (p = 0.010, 0.020 at n = 20, 16). **Unlike §15b, this is not a threshold artifact:**
 the observed AUC is stable at ~0.65–0.70 and sits ~0.15–0.20 above the null mean at *every* cut;
 significance fades at the high cuts only because positives drop to 6–9 (a power effect, not
@@ -1108,16 +1104,16 @@ effect-size collapse). The script's naive "2/5 significant → artifact" auto-ve
 reading the effect-size stability.
 
 **Honest verdict:** a **weak, real, underpowered** PDAC-selective signal that degree, topology, and
-RAC dynamics all miss — recoverable by ordinary supervised learning over the assembled multi-omic
+RAC dynamics all miss. Recoverable by ordinary supervised learning over the assembled multi-omic
 data, not by attractor dynamics. It rests on ~20 genes, is marginal after the five cuts, and leans on
 expression; a hypothesis for prospective testing on a larger selective panel, not an established
 predictor. **The value across this project is the data assembly and the intervention gate (§16), not
-the attractor model** — which is retracted (§15), retired (§17), and unrescuable by gain (§18) or
+the attractor model**, which is retracted (§15), retired (§17), and unrescuable by gain (§18) or
 substrate (§19).
 
 ---
 
-## 21. Phase 5 — the last positive is an expression confound, and the model is worse than its own feature
+## 21. Phase 5. The last positive is an expression confound, and the model is worse than its own feature
 
 RAC v2 §8.3 recorded the investigation's single surviving positive (a supervised multi-omic model
 recovering PDAC-selective essentiality, CV-AUC 0.651/0.683 where degree is anti-predictive at 0.424)
@@ -1126,11 +1122,10 @@ measurement confound." §9 of [docs/ADDENDUM_RAC_V2.md](docs/ADDENDUM_RAC_V2.md)
 (`scripts/selective_confound_test.py`). The claim does not survive intact.
 
 **Protocol reproduced first:** full model returns 0.6510 logistic / 0.6833 GBM against the expected
-0.651/0.683 — so all comparisons are valid. (Guard added because a previous null was run on a
+0.651/0.683, so all comparisons are valid. (Guard added because a previous null was run on a
 mismatched feature set.)
 
-**A single expression feature beats the whole model.** Univariate CV-AUC on the *selective* endpoint
-— never previously measured; the earlier artifact check covered only absolute essentiality:
+**A single expression feature beats the whole model.** Univariate CV-AUC on the *selective* endpoint, never previously measured; the earlier artifact check covered only absolute essentiality:
 
 | feature | univariate CV-AUC |
 |---|---|
@@ -1143,16 +1138,16 @@ mismatched feature set.)
 | pagerank | 0.363 |
 
 `expr_mean_raw` alone (**0.777**) exceeds the full 16-feature model (0.651 / 0.683). The multi-omic
-integration does not add value here — it dilutes one strong column.
+integration does not add value here, it dilutes one strong column.
 
 **My predeclared hypothesis was refuted, informatively.** I predicted the PDAC-vs-other expression
 *differential* would carry the tautology ("selectively expressed ⇒ selectively essential", threshold
 ≥0.62). It scores only **0.557**, and adding it to the model *hurts* (0.651 → 0.634). The real
 confound is **absolute PDAC expression**: it predicts absolute essentiality at 0.809 and selective at
 0.777, because expression drives the PDAC arm of `sel = −(pdac − other)`. Expression confounds the
-minuend, not the difference — a reader checking only the differential would have wrongly cleared it.
+minuend, not the difference. A reader checking only the differential would have wrongly cleared it.
 
-**Ablation splits by model class, and is reported split rather than collapsed:**
+**Ablation splits by model class, and is reported split instead of collapsed:**
 
 | model | with expression | without expression (11 feats) |
 |---|---|---|
@@ -1160,60 +1155,59 @@ minuend, not the difference — a reader checking only the differential would ha
 | GBM | 0.683 ± 0.031 | **0.625 ± 0.043** |
 
 The linear signal is entirely expression (0.450 is below chance). A nonlinear model retains 0.625 on
-topology + CNA + methylation — reported as an **underpowered hypothesis** (14 positives, ~2.8 per
+topology + CNA + methylation. Reported as an **underpowered hypothesis** (14 positives, ~2.8 per
 fold, widest variance in the study). What it likely learns is visible in the univariate table:
 pagerank 0.363, out_degree 0.376, hits_hub 0.380 are strongly *anti*-predictive, i.e. **selective
-dependencies sit at the graph periphery, not at hubs** — consistent with §15b ranking KRAS at the
+dependencies sit at the graph periphery, not at hubs**, consistent with §15b ranking KRAS at the
 8th percentile. Disclosed limitation: the ablation removes expression *levels* but `coexpr_degree`/
 `eigenvector` still derive from co-expression, so it is a partial ablation.
 
 **Corrected position.** Not supported: "a supervised *multi-omic* model recovers selective signal."
 Supported with a heavy caveat: PDAC-selective essentiality is predicted by mean PDAC expression
 (0.777) through a substantially near-definitional channel (same cell lines; a gene cannot be
-essential where it is not expressed) — expected biology, not a discovery, requiring neither a network
+essential where it is not expressed). Expected biology, not a discovery, requiring neither a network
 model nor multi-omic integration. What remains genuinely defensible from this project is the **data
 assembly** and the **data-calibrated intervention gate** (§16), not the attractor model and not the
 supervised ceiling.
 
 ---
 
-## 22. Phase 6 — the graph-peripheral hypothesis is refuted, and the screen that produced it was unsound
+## 22. Phase 6. The graph-peripheral hypothesis is refuted, and the screen that produced it was unsound
 
 §21 closed the supervised ceiling as expression-carried but opened one new observation: several
 centrality features scored below 0.5 on the selective endpoint, from which §9.3 inferred *"inverted
-predictiveness is predictiveness — selective dependencies sit at the graph periphery."* That is now
+predictiveness is predictiveness. Selective dependencies sit at the graph periphery."* That is now
 withdrawn. Full treatment: [docs/ADDENDUM_RAC_V2.md](docs/ADDENDUM_RAC_V2.md) §10.
 
 **Two demonstrated errors in the instrument, not just the hypothesis:**
 
-1. **Logistic CV-AUC is exactly invariant to negating a feature** — fitting `−x` flips the coefficient
+1. **Logistic CV-AUC is exactly invariant to negating a feature**, fitting `−x` flips the coefficient
    and leaves predictions identical (verified: `AUC(x) = AUC(−x) = 0.423986`). The "peripherality =
    −centrality" composite was a **no-op** re-test of centrality.
 2. **A fitted OOF AUC below 0.5 does not mean inverted signal at 14 positives.** On synthetic data
    with a genuinely *positive* association (model-free AUC 0.562), the 5-fold logistic OOF AUC is
-   **0.424** — dragged below chance by ~2.8 positives per fold. Sub-0.5 fitted AUCs carry no
+   **0.424**, dragged below chance by ~2.8 positives per fold. Sub-0.5 fitted AUCs carry no
    directional information.
 
-**Model-free rank screen — six features flip direction.** out_degree 0.376→**0.558**, hits_hub
+**Model-free rank screen. Six features flip direction.** out_degree 0.376→**0.558**, hits_hub
 0.380→**0.556**, coexpr_degree 0.424→**0.527**, expr_var_raw 0.412→**0.549**, expr_var_norm
 0.604→**0.373**, in_strength 0.597→**0.378**. The centralities behind the peripherality claim land
-*slightly above* 0.5 — the opposite direction — and disagree with each other. That is noise.
+*slightly above* 0.5, the opposite direction, and disagree with each other. That is noise.
 
 **Nothing survives correction.** Over 17 continuous Spearman tests, BH gives **zero survivors**; the
 best is expr_mean_raw at p = 0.024 → **q = 0.402**. At this sample size the selective endpoint
 supports no feature-level claim that survives multiple testing. It also sharpens §21: expr_mean_raw
-is strong on the dichotomised tail (rank AUC 0.794) but only weakly monotone overall (ρ = 0.111) —
-it separates the extreme selective genes rather than tracking selectivity, exactly as a confound
+is strong on the dichotomised tail (rank AUC 0.794) but only weakly monotone overall (ρ = 0.111), it separates the extreme selective genes, not tracking selectivity, exactly as a confound
 would.
 
 **Transferable lesson:** for univariate screening with a small positive class, use a model-free rank
 statistic. A fitted CV model cannot express direction (it learns its own sign) and is biased below
-chance by fold instability — and reading direction off it produced a confident, plausible, wrong
+chance by fold instability. And reading direction off it produced a confident, plausible, wrong
 story about network topology.
 
 ---
 
-## 23. Phase 7 — the detection floor, and two corrections it forces
+## 23. Phase 7, the detection floor, and two corrections it forces
 
 §22 ended on "nothing survives BH", which is ambiguous between *no signal exists* and *none was
 detectable*. `scripts/selective_power_floor.py` quantifies the floor (Mann-Whitney power; for target
@@ -1225,30 +1219,30 @@ positives is **7%** for a 0.65 effect, 41% for 0.70. Positives required for the 
 expr_mean_raw (0.794) → 14 (sufficient); expression differential (0.611) → 120; best centrality
 (0.563) → >400.
 
-**Correction 1 — §22's "nothing survives BH" was over-generalised.** That holds for the *continuous*
+**Correction 1, §22's "nothing survives BH" was over-generalised.** That holds for the *continuous*
 Spearman tests but not the *dichotomised* one. Recomputing BH over dichotomised Mann-Whitney
-p-values: **expr_mean_raw p = 0.00018, q = 0.0030 — survives robustly**; nothing else does (next
-q = 0.374). (My first pass at this table had a BH bug — a forward running minimum instead of the
-reverse cumulative minimum — which reported q = 0.003 for p = 0.105. Caught because a q three orders
+p-values: **expr_mean_raw p = 0.00018, q = 0.0030, survives robustly**; nothing else does (next
+q = 0.374). (My first pass at this table had a BH bug, a forward running minimum instead of the
+reverse cumulative minimum, which reported q = 0.003 for p = 0.105. Caught because a q three orders
 below its own p is impossible.)
 
 **The synthesis is sharper than any single phase.** Expression *separates the extreme selective
 tail* robustly (AUC 0.794, q = 0.0030, and adequately powered) but *does not grade selectivity*
 (continuous ρ = 0.111, q = 0.402). That combination is the signature of a **threshold-like
-confound** — whether a gene is expressed in PDAC at all — rather than a graded biological predictor,
+confound**, whether a gene is expressed in PDAC at all, and not a graded biological predictor,
 which is precisely the near-definitional channel §21 identified. Everything else was undetectable by
 construction.
 
-**Correction 2 — the §22 "refutation" of the graph-peripheral hypothesis is calibrated down.** With
+**Correction 2. The §22 "refutation" of the graph-peripheral hypothesis is calibrated down.** With
 7–19% power for effects of 0.60–0.65, non-significance proves nothing about centrality effects in
-either direction. The refutation rests solely on its other leg — model-free point estimates
+either direction. The refutation rests solely on its other leg, model-free point estimates
 *contradicting* the hypothesis (centralities slightly above 0.5, opposite to "peripheral", and
 mutually inconsistent). Calibrated verdict: **unsupported, point estimates pointing the wrong way,
-underpowered to settle definitively** — weaker than "refuted", and what the data supports.
+underpowered to settle definitively**, weaker than "refuted", and what the data supports.
 
 **Design specification for any future attempt** (80% power, BH over ~17 features): rank-AUC 0.75
 needs ~20 positives; 0.70 needs ~30; 0.65 needs ~50–60; 0.60 needs ~100+. This panel has **14**, and
-only ~7 of 1,164 TFs are strongly PDAC-selective — so this is not fixable by better statistics on
+only ~7 of 1,164 TFs are strongly PDAC-selective, so this is not fixable by better statistics on
 DepMap, it needs a larger or differently-constituted selective-dependency panel.
 
 ---
@@ -1268,7 +1262,7 @@ Bioconductor package `crisprScore` (crisprVerse/crisprScore, `inst/cfd_cas9/`) f
 
 **Two verification steps, because a silently-inverted matrix would corrupt every score.**
 crisprScore keys its table `{spacer}{protospacer}{position}` in DNA space with **no
-reverse-complement** — it has already absorbed the revcomp the original `cfd_score_calculator.py`
+reverse-complement**, it has already absorbed the revcomp the original `cfd_score_calculator.py`
 applies. Using the original convention against this file would invert it. The order was fixed by
 arithmetic: the package's own test vector expects **0.765** for a spacer-A/protospacer-G mismatch at
 position 20, matching `AG20 = 0.7647`, *not* `GA20 = 0.9375`. The loader then reproduces **all seven
@@ -1276,7 +1270,7 @@ published Cas9 test vectors exactly** and raises if it cannot, so a corrupted ma
 (Independent bonus check: the downloaded Hsu-2013 MIT weights match this repo's hardcoded
 `HSU_WEIGHTS` exactly.)
 
-**Resolved verdict — all four guides FAIL the pre-registered gate (cfd_specificity ≥ 0.5):**
+**Resolved verdict. All four guides FAIL the pre-registered gate (cfd_specificity ≥ 0.5):**
 
 | gene | off-targets ≤4mm | ≤2mm | ≤3mm | ≤4mm | gate |
 |---|---|---|---|---|---|
@@ -1287,7 +1281,7 @@ published Cas9 test vectors exactly** and raises if it cannot, so a corrupted ma
 
 **My prediction was wrong, and in the consequential direction.** Across §14/§14b I repeatedly wrote
 that the position-granular figures were "likely **pessimistic**" and that the truth lay somewhere
-better. The exact matrix mostly made things **worse**, and the error is **non-monotone** — it went
+better. The exact matrix mostly made things **worse**, and the error is **non-monotone**, it went
 both ways:
 
 | gene | cutoff | approximation | exact | change |
@@ -1297,8 +1291,7 @@ both ways:
 | E2F1 | ≤3mm | 0.510 | **0.447** | −0.063 (PASS → **FAIL**) |
 | FOSL1 | ≤4mm | 0.218 | **0.308** | +0.090 |
 
-So §14b's headline — *"at ≤3 mm, MYBL2, FOSL1 and E2F1 clear the gate; only SETDB1 fails robustly"* —
-is **withdrawn**. At ≤3 mm only **FOSL1** passes (0.700). The approximation was optimistic exactly
+So §14b's headline, *"at ≤3 mm, MYBL2, FOSL1 and E2F1 clear the gate; only SETDB1 fails robustly"*, is **withdrawn**. At ≤3 mm only **FOSL1** passes (0.700). The approximation was optimistic exactly
 where the earlier conclusion leaned on it.
 
 **Characterised worst sites (exact CFD):**
@@ -1310,28 +1303,28 @@ where the earlier conclusion leaned on it.
 | MYBL2 | chr17:39,401,140 | 3 | 0.476 |
 | FOSL1 | chr17:83,101,244 | 3 | 0.220 |
 
-FOSL1's previously-alarming "CFD 0.921" site drops to **0.220** under the exact matrix — the
+FOSL1's previously-alarming "CFD 0.921" site drops to **0.220** under the exact matrix, the
 approximation badly over-scored that one site while under-scoring others, which is precisely why a
 position-granular proxy could not settle this question either way.
 
-**Standing position.** No guide in this repository is orderable on specificity grounds — now stated
-with a published, validated scorer rather than a proxy, and no longer hedged as `undetermined`.
+**Standing position.** No guide in this repository is orderable on specificity grounds, now stated
+with a published, validated scorer, not a proxy, and no longer hedged as `undetermined`.
 Every guide remains uniquely placed (exactly one perfect genomic match each). All future scores
 carry a `cfd_scorer` provenance field (`doench2016_exact`) so no result is ambiguous about which
 scorer produced it.
 
 ---
 
-## 25. Fold-change chromatin: the H3K27ac enrichment SURVIVES — the first claim in this record to do so
+## 25. Fold-change chromatin: the H3K27ac enrichment SURVIVES, the first claim in this record to do so
 
-The README has carried "PANC-1 chromatin concordance — directional only; must be recomputed on
+The README has carried "PANC-1 chromatin concordance, directional only; must be recomputed on
 fold-change tracks" since the original review. The tracks are downloaded and the recompute is done.
 Scripts: `fetch_foldchange_tracks.py`, `pdac_residual_foldchange.py`. Results:
 `results/pdac_residual_foldchange_{H3K27ac,ATAC-seq}.json`. Provenance:
 `data/manifests/encode-foldchange.json` (4 artifacts, sha256, REAL).
 
 **Why the old number was untrustworthy.** It used ENCODE **signal p-value** tracks, which conflate
-sequencing depth with enrichment — a deeper library yields larger p-values for the same true
+sequencing depth with enrichment, a deeper library yields larger p-values for the same true
 enrichment. Fold-change-over-control is depth-normalised against the matched input. Files were
 selected by matching the `derived_from` **processing run** of the p-value tracks they replace
 (Panc1 H3K27ac ENCFF528UFR to ENCFF047WWJ, both from ENCFF384KMQ+ENCFF675MQQ; Panc1 ATAC
@@ -1340,11 +1333,11 @@ ENCSR000EXK contains a second run whose fold-change file (ENCFF240BXE) derives f
 alignments; picking it would have changed two things at once.
 
 **Three matched controls, because the original test had a worse flaw than its normalisation.**
-"Targets vs all background" risks measuring expression, not disease — the confound §21 showed
+"Targets vs all background" risks measuring expression, not disease, the confound §21 showed
 carries the supervised selective signal. Each target was paired with up to 3 background genes
 (0.25 SD caliper) on three orthogonal variables.
 
-### H3K27ac — survives everything (n_targets = 20, n_loci = 1,675)
+### H3K27ac, survives everything (n_targets = 20, n_loci = 1,675)
 
 | contrast | matched score (tgt vs bg) | targets | background | MWU p |
 |---|---|---|---|---|
@@ -1355,21 +1348,21 @@ carries the supervised selective signal. Each target was paired with up to 3 bac
 
 The two controls that mattered most both hold. **Circularity:** RAC selected targets partly on
 `disease_log2fc` (a TCGA-vs-GTEx differential) while this residual is a Panc1-vs-healthy-pancreas
-contrast — both "PDAC vs normal pancreas", so a disease-up gene would have disease-up promoter
+contrast. Both "PDAC vs normal pancreas", so a disease-up gene would have disease-up promoter
 acetylation almost by construction. Matching on absolute expression does *not* control for that (it
 matches level, not change); matching on `disease_log2fc` does, and the effect holds. **Hub-ness:**
 §15 established collapse is degree in disguise, so "hub TFs sit on PDAC-gained enhancers" was the
 most likely mundane explanation. With degree matched to 136.8 vs 136.75 the effect is if anything
 *stronger* (p = 0.010). It is not a hub artifact.
 
-### ATAC-seq — does NOT replicate
+### ATAC-seq, does NOT replicate
 
-Primary contrast **+0.421 vs +0.177, p = 0.074 — not significant**. Its matched controls are
+Primary contrast **+0.421 vs +0.177, p = 0.074, not significant**. Its matched controls are
 nominally significant (0.0045–0.047), and they are **not** used to claim a positive: significant
 matched subsets do not rescue a failed primary contrast, because that is choosing whichever
 comparison happens to work. My first verdict function evaluated only the matched controls and
 reported "SURVIVES all matched controls" for ATAC; the primary contrast now gates the verdict, and
-ATAC reads "does not replicate". Same failure mode as elsewhere in this record — an auto-verdict
+ATAC reads "does not replicate". Same failure mode as elsewhere in this record, an auto-verdict
 that did not check the thing that mattered.
 
 ### What this does and does not mean
@@ -1386,11 +1379,9 @@ kill it**.
 (§19). This says the *gene set* has a chromatin property; it says nothing about collapse predicting
 essentiality.
 
-**Standing caveats, none of which the result removes:** PANC-1 is an **intermediate** substrate (§9
-— below panel mean on both Moffitt programmes, representing neither subtype); the fold-change corpus
+**Standing caveats, none of which the result removes:** PANC-1 is an **intermediate** substrate (§9, below panel mean on both Moffitt programmes, representing neither subtype); the fold-change corpus
 has **one** healthy track per mark versus six averaged in the p-value run; n = 20 targets; and the
-weakest control would not clear a Bonferroni across the three, so this is a robustness demonstration
-rather than an independently-powered confirmation. **ATAC not replicating means the effect is
+weakest control would not clear a Bonferroni across the three, so this is a robustness demonstration instead of an independently-powered confirmation. **ATAC not replicating means the effect is
 mark-specific** and should be described as an H3K27ac observation, not a general chromatin claim.
 
 ---
@@ -1403,14 +1394,14 @@ that a result can clear its primary test and still be carried by one or two gene
 one arbitrary threshold. Nothing in §25 ruled that out. `scripts/h3k27ac_fragility.py` →
 `results/h3k27ac_fragility.json`.
 
-**A. Set-level permutation — the correct null, and it is stricter than the one I reported.**
+**A. Set-level permutation. The correct null, and it is stricter than the one I reported.**
 Mann-Whitney treats genes as exchangeable individuals, but the claim is about a **set of 20**.
 Drawing 20 random background genes 20,000 times: observed set mean **+0.919** against a null mean of
-−0.093 and a null 95th percentile of **+0.461**. **p = 0.00155** — more significant than the
+−0.093 and a null 95th percentile of **+0.461**. **p = 0.00155**, more significant than the
 gene-wise MWU (0.0022), not less. The §25 p-value was not significance borrowed from a false
 independence assumption.
 
-**B. Leave-one-target-out — not one gene.** Dropping each target in turn, the *worst* case is
+**B. Leave-one-target-out. Not one gene.** Dropping each target in turn, the *worst* case is
 p = 0.0058, when removing **HOXA3** (the single largest contributor at +5.88). Even excising the
 biggest driver the result stays an order of magnitude below 0.05.
 
@@ -1421,11 +1412,11 @@ identity factor, and §9 established PANC-1 sits **below** the panel mean on the
 A classical-identity enhancer should be *less* acetylated in a non-classical line, and it is. The
 one gene whose direction was predictable from independent evidence points the right way.
 
-**D. Bootstrap 95% CI on the target mean: [0.244, 1.679].** Excludes zero, and is **wide** — the
-effect is real but imprecisely estimated at n = 20. Reported as an interval rather than a point
+**D. Bootstrap 95% CI on the target mean: [0.244, 1.679].** Excludes zero, and is **wide**, the
+effect is real but imprecisely estimated at n = 20. Reported as an interval, not a point
 because the point overstates what 20 genes can pin down.
 
-**E. Caliper sensitivity — flat, which is the §15b discriminator.** All three matched controls at
+**E. Caliper sensitivity. Flat, which is the §15b discriminator.** All three matched controls at
 calipers 0.10 / 0.25 / 0.50 SD:
 
 | caliper | expression | `disease_log2fc` | degree |
@@ -1442,15 +1433,15 @@ called an artifact. Stability across the free parameter is what separates the tw
 
 **What still does not change.** PANC-1 remains an **intermediate** substrate (§9); one healthy
 fold-change track versus six averaged; n = 20; **ATAC does not replicate** (primary p = 0.074), so
-this is an H3K27ac-specific observation; and it does **not** resurrect RAC — the essentiality claim
+this is an H3K27ac-specific observation; and it does **not** resurrect RAC, the essentiality claim
 stays retracted (§15), the bistable framing retired (§17), the rebuild unrescuable (§18/§19). The
 defensible statement is unchanged in scope and now much better supported: *the 20 RAC-surfaced genes
 sit on PDAC-gained H3K27ac beyond expression, beyond the disease-expression change they were
-selected on, and beyond hub-ness — robustly, and not because of any single gene.*
+selected on, and beyond hub-ness, robustly, and not because of any single gene.*
 
 ---
 
-## 27. Window sensitivity and per-locus detail — robust, with two corrections to how §25/§26 read
+## 27. Window sensitivity and per-locus detail, robust, with two corrections to how §25/§26 read
 
 §26 varied caliper, gene membership and null model, but never the parameter baked into the
 measurement itself: the **TSS ± 2 kb window**, inherited from `pdac_disease_residual.py` and never
@@ -1458,7 +1449,7 @@ justified. A result living at one arbitrary threshold is the §15b artifact sign
 the last open methodological hole. `scripts/h3k27ac_window_and_loci.py` →
 `results/h3k27ac_window_and_loci.json`.
 
-### Significant at 6/6 widths — but read the contrast, not the target mean
+### Significant at 6/6 widths, but read the contrast, not the target mean
 
 | window | target log2 | target fold | background log2 | **contrast** | MWU p | set-perm p |
 |---|---|---|---|---|---|---|
@@ -1469,20 +1460,20 @@ the last open methodological hole. `scripts/h3k27ac_window_and_loci.py` →
 | ±10 kb | +0.231 | 1.17× | −0.422 | +0.653 | 0.0070 | 0.0093 |
 | ±25 kb | +0.016 | **1.01×** | −0.533 | +0.549 | 0.0074 | 0.015 |
 
-**Correction 1 — the effect is promoter-local, and at wide windows the targets are not enriched at
+**Correction 1. The effect is promoter-local, and at wide windows the targets are not enriched at
 all.** The target–background *contrast* is stable (+0.55 to +1.01), which is what drives significance
 everywhere. But the target's **absolute** enrichment collapses from 2.05× at ±500 bp to **1.01× at
-±25 kb** — no gain whatsoever. Significance at wide windows comes from the *background* becoming
+±25 kb**, no gain whatsoever. Significance at wide windows comes from the *background* becoming
 depleted (−0.533), not from targets staying high. The honest two-part statement: targets **gain**
 acetylation at promoter scale, and **retain** it at domain scale where other TF loci lose it.
 Describing this as a broad "PDAC-gained enhancer domain" would be wrong.
 
 **Disclosed, not buried: ±2 kb is the most favourable of the six windows** (largest contrast,
-smallest p). It was inherited rather than chosen after seeing results, and all six widths are
-significant, so this is not a lucky cut — but the published number sits at the optimum and should be
+smallest p). It was inherited and not chosen after seeing results, and all six widths are
+significant, so this is not a lucky cut, but the published number sits at the optimum and should be
 read that way.
 
-### Correction 2 — the top locus is substantially a pseudocount artifact
+### Correction 2, the top locus is substantially a pseudocount artifact
 
 Per-locus inspection at ±2 kb (linear PDAC/healthy ratio):
 
@@ -1497,8 +1488,7 @@ Per-locus inspection at ±2 kb (linear PDAC/healthy ratio):
 | … | | | | |
 | GATA6 | | | | **0.21×** |
 
-**HOXA3's healthy fold-change is exactly 0.000**, so its 58.7× ratio is `log2((5.772+0.1)/(0+0.1))`
-— a number set entirely by the arbitrary pseudocount `PSEUDO = 0.1`, not by data. Change the
+**HOXA3's healthy fold-change is exactly 0.000**, so its 58.7× ratio is `log2((5.772+0.1)/(0+0.1))`, a number set entirely by the arbitrary pseudocount `PSEUDO = 0.1`, not by data. Change the
 pseudocount and HOXA3's contribution changes arbitrarily. It was the single largest contributor to
 the headline mean, and it is the *only* target with near-zero healthy signal (the other 19 have real
 signal on both sides). Whether healthy is truly unacetylated there or the track simply lacks
@@ -1513,24 +1503,23 @@ coverage cannot be distinguished from a fold-change file.
 | **median (outlier-robust)** | **+0.852** | **1.81×** |
 
 §26's leave-one-out already established the result survives HOXA3's removal (MWU p = 0.0058,
-set-permutation p = 0.017), so the finding stands — but the headline **1.89× overstates it**, and
+set-permutation p = 0.017), so the finding stands, but the headline **1.89× overstates it**, and
 **1.6–1.8× is the defensible range**. The median, which was always robust to this, sits at 1.81×.
 
 ### Net effect
 
 The finding is **more robust than §25 claimed on the window axis** (6/6 widths, contrast stable
 across a 50× range of widths) and **smaller than §25 claimed on effect size** (1.58–1.81×, not
-1.89×). Both corrections come from looking at the per-locus data rather than the summary statistic —
-the aggregate was hiding one degenerate denominator and one qualitative change in what "enrichment"
+1.89×). Both corrections come from looking at the per-locus data, not the summary statistic, the aggregate was hiding one degenerate denominator and one qualitative change in what "enrichment"
 meant as the window widened. Everything else stands: PANC-1 is an intermediate substrate (§9), one
 healthy track, n = 20, ATAC does not replicate, and this does not resurrect RAC.
 
 ---
 
-## 28. Pseudocount sensitivity — the last unvaried constant, and what it settles about effect size
+## 28. Pseudocount sensitivity. The last unvaried constant, and what it settles about effect size
 
 §27 showed the pseudocount is not cosmetic: HOXA3's healthy fold-change is exactly 0.000, so its
-entire 58.7× ratio is `log2(5.872 / 0.1)` — manufactured by the constant. Having found that
+entire 58.7× ratio is `log2(5.872 / 0.1)`, manufactured by the constant. Having found that
 `PSEUDO = 0.1` decides one locus outright, leaving the aggregate's dependence on it untested would
 repeat the omission §27 had just corrected for the window. `scripts/h3k27ac_pseudocount.py` →
 `results/h3k27ac_pseudocount.json`. Raw per-locus fold-changes are read once and reused, so the
@@ -1547,7 +1536,7 @@ sweep varies exactly one thing.
 
 Only **one target** (HOXA3) has zero healthy signal; 67 of 1,675 loci overall.
 
-**Significance is essentially immune to the constant — and there is a reason, not a coincidence.**
+**Significance is essentially immune to the constant, and there is a reason, not a coincidence.**
 MWU p stays in 0.0021–0.0032 and the set-level permutation in 0.0014–0.0065 across a **200× range**
 of pseudocounts. Both are **rank-based**, and changing the pseudocount is very nearly a monotone
 transform of every locus's ratio, so the gene ordering barely moves. This retrospectively validates
@@ -1565,13 +1554,13 @@ swept parameters the target enrichment spans:
 
 **All 12 settings are significant; not one gives a stable magnitude.** The estimators that resist
 the constant are the median (+0.564…+0.891) and the zero-denominator-excluded mean
-(+0.457…+0.676) — both far tighter than the raw mean's +0.532…+1.101. At published settings those
+(+0.457…+0.676), both far tighter than the raw mean's +0.532…+1.101. At published settings those
 give **1.58–1.81×**, consistent with §27.
 
 **Final characterisation of the one surviving claim.** The 20 RAC-surfaced genes sit on PDAC-gained
 H3K27ac at their promoters. The *existence* of the effect is robust: significant under every matched
 control (§25), the set-level null and leave-one-out (§26), all six windows (§27), and all six
-pseudocounts (§28) — 12 parameter settings, no exceptions. The *magnitude* is **not** well
+pseudocounts (§28), 12 parameter settings, no exceptions. The *magnitude* is **not** well
 determined: roughly **1.5–1.8×** on the estimators that resist arbitrary constants, with a plausible
 range of 1.0–2.2× depending on choices no data constrains. Reporting a single headline number for
 this effect would misrepresent it; the claim is "real, promoter-local, and modest", not "1.89×".

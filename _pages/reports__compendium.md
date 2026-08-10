@@ -10,7 +10,7 @@ order: 1
 
 A single, in-depth record of the entire project: what was built, every data source, every method,
 every result, every retraction, and the one claim that survived. It supersedes nothing and
-duplicates nothing — it *compiles* the material spread across
+duplicates nothing, it *compiles* the material spread across
 README.md, [METHODS.md]({{ '/reports/methods-full/' | relative_url }}), [FINDINGS.md]({{ '/reports/findings/' | relative_url }}),
 [RESULTS.md]({{ '/reports/results-ledger/' | relative_url }}), [REVIEW_RESPONSE.md]({{ '/reports/review/' | relative_url }}) (§1–§28), and the three addenda
 ([ADDENDUM_DYNAMICS.md]({{ '/addenda/dynamics/' | relative_url }}),
@@ -26,20 +26,20 @@ Every number below is read from a committed artifact in `results/` or a manifest
 
 `pdac-circuit` is a Python-only, from-scratch pipeline that designs synthetic gene circuits to
 target pancreatic-ductal-adenocarcinoma (PDAC) transcription factors, built on ~112 GB of real open
-data. Its original headline — a novel "Regulatory Attractor Control" (RAC) model whose
-attractor-collapse score predicts CRISPR essentiality — **did not survive** a review-driven
+data. Its original headline, a novel "Regulatory Attractor Control" (RAC) model whose
+attractor-collapse score predicts CRISPR essentiality, **did not survive** a review-driven
 head-to-head test and is **retracted**; a deep audit further showed the model is **not bistable at
 all**, so the mechanism it claimed does not exist. Across a 28-step review arc almost every
 substantive claim was retracted, retired, shown unrescuable, or exposed as confounded. **Exactly one
 positive survived** every attempt to kill it: the 20 RAC-surfaced genes sit on PDAC-gained promoter
-H3K27ac beyond expression, beyond their selection variable, and beyond hub-ness — a *real,
+H3K27ac beyond expression, beyond their selection variable, and beyond hub-ness, a *real,
 promoter-local, modest* effect (~1.5–1.8×), significant across 12/12 parameter settings, though ATAC
 does not replicate it. The project's durable value is the **multi-omic data assembly**, the
 **data-calibrated intervention gate**, and a body of **methodology** for not fooling yourself.
 
 ---
 
-## 1. What was built — the seven-module pipeline
+## 1. What was built, the seven-module pipeline
 
 A from-scratch design pipeline. No external pretrained model supplies candidate features,
 pseudo-labels, or training targets; frozen Enformer/Borzoi predictions are permitted only as
@@ -68,11 +68,11 @@ hash-locked evaluation baselines.
 
 ---
 
-## 2. Data — 112 GB, 381 artifacts, all REAL, sha256-verified
+## 2. Data, 112 GB, 381 artifacts, all REAL, sha256-verified
 
 Every corpus is downloaded, hashed, and recorded under `data/manifests/` with `dataClass: REAL`;
 `sha256` is never fabricated; license-walled sets (COSMIC/OncoKB) are replaced with open
-equivalents rather than bypassed.
+equivalents, not bypassed.
 
 | corpus | contents | role |
 |---|---|---|
@@ -100,7 +100,7 @@ crisprScore, so CRISPOR's `.pkl` (arbitrary code execution) was never used.
 
 ---
 
-## 3. RAC — the novel contribution, and the arc that dismantled it
+## 3. RAC, the novel contribution, and the arc that dismantled it
 
 ### 3.1 What RAC was
 
@@ -117,7 +117,7 @@ SF3B1, SMAD3, HOXA3, ATM, ZNF528, FAM83A, ZNF93, FOSL1, ZNF85.
 **Claimed:** collapse predicts held-out CRISPR essentiality, AUC 0.653 (50,000-permutation
 p = 0.0022), beating degree (0.629) and eigenvector centrality (0.584).
 
-**The test that had never been run** — a direct head-to-head against the degree baseline
+**The test that had never been run**, a direct head-to-head against the degree baseline
 (`rigorous_validation.py`):
 
 | statistic | value |
@@ -133,12 +133,12 @@ degree, and the configuration had been selected on the same CRISPR labels. **Ret
 **Located (§15):** a degree-conditioned analysis showed collapse *is* degree in disguise for core
 essentiality (degree-matched AUC ≤ 0.49). **Dissected (§15b):** the one flattering exception, a
 PDAC-selective hint, bounced across label cuts and had only 1/14 positives in the informative
-quadrant — collapse ranks **KRAS**, the strongest selective dependency, at the **8th percentile**.
+quadrant. Collapse ranks **KRAS**, the strongest selective dependency, at the **8th percentile**.
 Artifact.
 
 ### 3.3 The foundational finding: the system is not bistable (§17, ADDENDUM_DYNAMICS)
 
-The entire method rests on bistability — a contractive/monostable map has one fixed point and cannot
+The entire method rests on bistability, a contractive/monostable map has one fixed point and cannot
 express "collapse". This had never been checked. Four tests, three of them model-free:
 
 | test | result | interpretation |
@@ -151,12 +151,12 @@ express "collapse". This had never been checked. Four tests, three of them model
 | clamping reaches a dead basin | **0 / 10** nodes | there is no dead basin to reach |
 
 `collapse_scores` iterates a *non-converging* map for 250 steps and compares two transient
-snapshots — a **graph-influence propagation** score, not a basin transition, which is *why* it
+snapshots. A **graph-influence propagation** score, not a basin transition, which is *why* it
 equals degree. **The bistable-attractor framing is retired.**
 
 *(A self-caught bug: the first spectral radius was ρ≈2.6, from evaluating σ′ at `z` instead of the
 map's argument `gain·z`. A finite-difference cross-check, placed specifically to catch that class of
-error, flagged it. The conclusion never depended on the eigenvalue — the convergence and
+error, flagged it. The conclusion never depended on the eigenvalue, the convergence and
 perturbation tests are model-free.)*
 
 ### 3.4 Not rescuable (§18, §19)
@@ -164,7 +164,7 @@ perturbation tests are model-free.)*
 - **Raising the gain (§18):** refit at gains 4–8 → **0.00 convergence at every gain**; collapse never
   robustly beats degree. The bistable regime is never reached and the failure is *structural*.
 - **A better substrate (§19, ADDENDUM_RAC_V2):** a directed TF→target motif-GRN (`build_directed_grn.py`,
-  422 nodes, 205 regulators, 11,331 edges, leakage-free vs CRISPR) — **no** directed property beats
+  422 nodes, 205 regulators, 11,331 edges, leakage-free vs CRISPR), **no** directed property beats
   degree (out-strength 0.39, out-degree 0.43, pagerank 0.48, authority 0.54; all matched-AUC < 0.55).
   Two independent topologies both hit the degree ceiling: essentiality is **not in the graph
   topology** beyond node degree.
@@ -173,26 +173,25 @@ perturbation tests are model-free.)*
 
 A supervised nested-CV model on all leakage-free features:
 
-- **Absolute essentiality:** full model 0.85 vs degree 0.62 — but `expr_mean_raw` alone scores 0.809,
+- **Absolute essentiality:** full model 0.85 vs degree 0.62, but `expr_mean_raw` alone scores 0.809,
   so this is the DepMap expression tautology (a gene can't be essential where it isn't expressed).
   Real, not actionable.
 - **PDAC-selective essentiality** (the endpoint that matters; degree anti-predictive at 0.42): full
-  model 0.651. §21 confound test: **a single feature, mean PDAC expression, scores 0.777 —
-  beating the full 16-feature model**; ablating expression collapses the linear model to 0.450. The
+  model 0.651. §21 confound test: **a single feature, mean PDAC expression, scores 0.777, beating the full 16-feature model**; ablating expression collapses the linear model to 0.450. The
   channel is near-definitional. §22: the "graph-peripheral" follow-up hypothesis was **refuted**, and
   the fitted-CV screen that produced it was **unsound** (a fitted CV-AUC cannot express feature
-  direction, and at 14 positives is biased below chance — model-free re-screening flipped six
+  direction, and at 14 positives is biased below chance, model-free re-screening flipped six
   directions; nothing survives BH). §23 detection floor: at 14 positives the minimum detectable
-  rank-AUC is 0.771, so most effects were undetectable by construction — a design specification, not
+  rank-AUC is 0.771, so most effects were undetectable by construction, a design specification, not
   a discovery.
 
-**Net:** no regime — core or selective, expression-blind or not, linear or nonlinear — recovers
+**Net:** no regime. Core or selective, expression-blind or not, linear or nonlinear, recovers
 essentiality signal that degree misses. RAC as a predictor is dead, on the merits, in every form
 tested.
 
 ---
 
-## 4. What survives, and how hard it was tested — the H3K27ac result (§25–§28, ADDENDUM_CHROMATIN)
+## 4. What survives, and how hard it was tested, the H3K27ac result (§25–§28, ADDENDUM_CHROMATIN)
 
 The one claim that survived every attempt to kill it.
 
@@ -214,7 +213,7 @@ expression). Both fixed: fold-change-over-control tracks matched to the *same pr
 | `disease_log2fc` (circularity) | 6.867 vs 6.75 | +0.919 | +0.022 | **0.025** |
 | co-expression degree (hub-ness) | 136.8 vs 136.75 | +0.919 | −0.017 | **0.010** |
 
-### 4.2 Fragility, window, pseudocount (§26–§28) — 12/12 settings significant
+### 4.2 Fragility, window, pseudocount (§26–§28), 12/12 settings significant
 
 | axis | range | significant | notes |
 |---|---|---|---|
@@ -227,7 +226,7 @@ expression). Both fixed: fold-change-over-control tracks matched to the *same pr
 ### 4.3 Two corrections the aggregate was hiding
 
 - **Promoter-local, not domain-wide:** absolute target enrichment falls from 2.05× (±500 bp) to
-  **1.01× (±25 kb)** — no gain at domain scale; wide-window significance comes from *background*
+  **1.01× (±25 kb)**, no gain at domain scale; wide-window significance comes from *background*
   depletion. Not a "PDAC-gained enhancer domain".
 - **The top locus is a pseudocount artifact:** HOXA3's healthy fold-change is exactly 0.000, so its
   58.7× ratio is set by `PSEUDO = 0.1`, not data. It's the only target with near-zero healthy signal.
@@ -235,10 +234,10 @@ expression). Both fixed: fold-change-over-control tracks matched to the *same pr
 ### 4.4 An unplanned coherence check that passes
 
 **GATA6 is the most negative target (0.21×).** GATA6 is the classical-identity factor and §9 showed
-PANC-1 sits below the panel mean on the classical programme — a classical enhancer should be *less*
+PANC-1 sits below the panel mean on the classical programme, a classical enhancer should be *less*
 acetylated in a non-classical line, and it is. Nobody designed this check.
 
-### 4.5 Effect size — a range, because it is not well-determined
+### 4.5 Effect size, a range, because it is not well-determined
 
 | estimator | published settings | span over 12 settings |
 |---|---|---|
@@ -248,11 +247,11 @@ acetylated in a non-classical line, and it is. Nobody designed this check.
 
 **Existence robust; magnitude ~1.5–1.8×, plausibly 1.0–2.2×.** No single headline number is
 supported. **ATAC does not replicate** (p = 0.074), so this is H3K27ac-specific. It does **not**
-resurrect RAC — it says the *gene set* has a chromatin property.
+resurrect RAC, it says the *gene set* has a chromatin property.
 
 ---
 
-## 5. The intervention gate — data-calibrated (§4, §4b, §16)
+## 5. The intervention gate, data-calibrated (§4, §4b, §16)
 
 The convergence score ranked genes by attractor movement and never asked whether repressing them was
 biologically sane; it passed TGIF1, whose *loss* accelerates PDAC. The **signed intervention gate**
@@ -260,21 +259,21 @@ biologically sane; it passed TGIF1, whose *loss* accelerates PDAC. The **signed 
 blocks/quarantines the rest. Only **4 of 20** ranked targets have a defensible repression direction.
 
 **§16 calibration** against independent TCGA copy number: **11/12 directional role calls
-corroborated** — all seven repression-allowed oncogenes are amplified; four of five tumour-suppressor
+corroborated**, all seven repression-allowed oncogenes are amplified; four of five tumour-suppressor
 blocks are deleted. The sole conflict, **GATA6** (amplified yet quarantined), is the gate *working*:
 an amplified dependency that is still unsafe to repress because its loss drives the aggressive basal
-state — exactly the case a dependency ranking gets wrong. *(Gotcha found here: `RegulatoryGraph.disease_log2fc`
+state, exactly the case a dependency ranking gets wrong. *(Gotcha found here: `RegulatoryGraph.disease_log2fc`
 is a cross-platform TCGA-vs-GTEx differential dominated by a uniform batch offset, useless as a
 direction; CNA is the only clean bidirectional signal locally.)*
 
 ---
 
-## 6. The four designed constructs — and why none is orderable (§13, §14, §24)
+## 6. The four designed constructs, and why none is orderable (§13, §14, §24)
 
 Modules I–VI were run end-to-end on the four gate-approved oncogenic targets, producing real
 protospacer+PAM guides in open chromatin, no common-SNP overlap, each **uniquely placed** (exactly
 one perfect genomic match). But the shipped off-target `risk = 0.00` was **blind, not clean**: the
-search covered the target loci ±5 kb — **0.0013% of the genome**. A real hg38 scan (both strands,
+search covered the target loci ±5 kb, **0.0013% of the genome**. A real hg38 scan (both strands,
 ≤4 mismatches) finds 35–206 near-matches per guide.
 
 Resolved with the **exact Doench-2016 CFD matrix** (§24, downloaded as plain text, validated against
@@ -316,7 +315,7 @@ it erred both ways and was **optimistic** at ≤3 mm, flipping MYBL2 and E2F1 fr
 
 ---
 
-## 8. Methodology — the transferable lessons
+## 8. Methodology, the transferable lessons
 
 The recurring failure across this project was not a wrong number but **a check structurally unable
 to detect the failure it existed to catch**. Instances, several of them self-inflicted and caught by
@@ -325,7 +324,7 @@ guards built for the purpose:
 - an off-target search covering 0.0013% of the genome reporting "0 off-targets";
 - a robustness metric a **dead circuit** scores 1.000 on;
 - a GAN novelty test (JS divergence) that memorisation *minimises*;
-- a fitted CV-AUC used to read feature **direction** — it cannot (AUC(x) = AUC(−x)), and at small n
+- a fitted CV-AUC used to read feature **direction**, it cannot (AUC(x) = AUC(−x)), and at small n
   is biased below chance ([[gotcha_fitted_cv_auc_direction]]);
 - an analytic Jacobian evaluated at the wrong argument (`z` vs `gain·z`), caught by a
   finite-difference cross-check;
@@ -346,8 +345,7 @@ effect from a single-threshold artifact; **predeclared** interpretation threshol
 data-calibrated intervention gate; and the methodology above. **Not** the attractor model, and
 **not** any orderable construct.
 
-**To confirm the one surviving result**, a future study needs: (1) a properly-typed substrate —
-primary PDAC tumour/organoid H3K27ac, or lines at the poles of the Moffitt signature, not the
+**To confirm the one surviving result**, a future study needs: (1) a properly-typed substrate, primary PDAC tumour/organoid H3K27ac, or lines at the poles of the Moffitt signature, not the
 intermediate PANC-1; (2) multiple healthy references, not one track; (3) a second mark that
 replicates (ATAC did not); (4) an independent target set, since these 20 came from a retracted model.
 
