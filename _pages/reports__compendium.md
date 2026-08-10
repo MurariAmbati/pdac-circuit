@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Compendium"
+subtitle: "A single compiled record of what was built, every data source, method, result, and retraction."
 description: "A single compiled record of what was built, every data source, method, result, and retraction."
 permalink: /reports/compendium/
 group: reports

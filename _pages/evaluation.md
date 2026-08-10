@@ -2,12 +2,12 @@
 layout: default
 title: "Evaluation"
 subtitle: "Exact held-out numbers for every model, split and comparison."
-description: "Complete evaluation tables read directly from the pipeline result files."
+description: "Held-out metrics for every model, split and comparison in the project."
 permalink: /evaluation/
 ---
 
-Every figure on this page is read directly from the pipeline's result files. Where a number is a
-held-out measurement, the split and its size are stated with it.
+Where a number below is a held-out measurement, the split that produced it and the size of that
+split are stated alongside it, because a metric without its split is not interpretable.
 
 ## Deployed models
 

@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "Addendum: dynamics"
+subtitle: "Whether the attractor system is bistable, and what the fitted dynamics actually do."
 description: "Whether the attractor system is bistable, and what the fitted dynamics actually do."
 permalink: /addenda/dynamics/
 group: addenda
 order: 3
 ---
 
+This addendum interrogates the load-bearing premise of the Regulatory
 Attractor Control (RAC) method: that the fitted system is a *bistable dynamical system* whose
 essentiality score measures *collapse to a dead attractor*. It concludes, from four independent
 model-free tests plus a cross-checked eigenvalue analysis, that **the premise does not hold at the

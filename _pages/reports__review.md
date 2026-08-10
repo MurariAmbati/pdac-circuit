@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Review arc"
+subtitle: "The full twenty-eight step review arc that tested and in most cases overturned the claims."
 description: "The full twenty-eight step review arc that tested and in most cases overturned the claims."
 permalink: /reports/review/
 group: reports

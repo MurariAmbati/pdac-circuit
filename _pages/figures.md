@@ -6,7 +6,7 @@ description: "Complete figure list for the PDAC chromatin-circuit project."
 permalink: /figures/
 ---
 
-Each figure is generated directly from the pipeline's result files by `scripts/make_figures.py` and is written as a 300 dpi raster together with a vector copy suitable for print. The captions below are the captions carried on the pages where the figures appear, extracted at build time so that the two cannot drift apart.
+Each figure is written as a 300 dpi raster together with a vector copy suitable for print. The captions below are the captions carried on the pages where the figures appear, extracted at build time rather than rewritten here.
 
 <ul class="doclist figindex">
 <li><a href="#fig1">Figure 1</a> <span class="l">Held-out performance before and after removing training-data caps, for four models</span></li>

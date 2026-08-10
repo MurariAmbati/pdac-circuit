@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Technical report"
+subtitle: "The long-form technical description of the pipeline and its analyses."
 description: "The long-form technical description of the pipeline and its analyses."
 permalink: /reports/technical/
 group: reports

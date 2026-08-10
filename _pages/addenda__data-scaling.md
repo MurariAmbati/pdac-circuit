@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "Addendum: real-data scaling"
+subtitle: "Controlled data-scaling programme across all four learned sequence models."
 description: "Controlled data-scaling programme across all four learned sequence models."
 permalink: /addenda/data-scaling/
 group: addenda
 order: 1
 ---
 
+This addendum documents a controlled data-scaling program across the four
 learned sequence models in the pipeline: the gRNA on-target model (Module V), the promoter-strength
 model (Module II), the enhancer-activity model (Module II), and the promoter GAN generator
 (Module VII). The question in every case was the same one the gRNA work first raised: **are these

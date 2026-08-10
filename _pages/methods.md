@@ -135,8 +135,6 @@ yields a certified negative instead of an apparently clean guide.
 
 ## Reproducing the analysis
 
-The site's figures are generated from the pipeline's result files rather than transcribed, so a published
-number cannot drift from the data behind it.
 
 ```
 python scripts/make_figures.py

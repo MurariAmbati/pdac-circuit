@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "Addendum: attractor model v2"
+subtitle: "The rebuilt directed-motif substrate, its gate, and the supervised ceiling."
 description: "The rebuilt directed-motif substrate, its gate, and the supervised ceiling."
 permalink: /addenda/rac-v2/
 group: addenda
 order: 4
 ---
 
+This addendum documents an attempt to *rebuild* the Regulatory Attractor
 Control method after [ADDENDUM_DYNAMICS.md]({{ '/addenda/dynamics/' | relative_url }}) §7 concluded that its failure is
 **structural in the substrate** — the co-expression graph does not encode essentiality beyond node
 degree, so no dynamics over it can. The rebuild was executed in the honest order that diagnosis

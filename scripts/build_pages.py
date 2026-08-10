@@ -42,10 +42,19 @@ for src, perma, *_ in DOCS:
     for variant in (src, base, f"docs/{base}", f"../{base}", f"./{base}"):
         LINKMAP[variant] = f"/{perma}/"
 
-DROP = re.compile(
-    r"^\s*(\*\*Research Use Only[^\n]*|>\s*\*\*Research Use Only[^\n]*|"
-    r"[^\n]*not for clinical[^\n]*|[^\n]*ruo_banner[^\n]*)$",
-    re.IGNORECASE)
+RUO = re.compile(r"^\s*>?\s*\*\*Research\s+use\s+only.*?\*\*[\s.—-]*", re.IGNORECASE)
+DISCLAIM = re.compile(r"^(no|not for)\s+clinical[^.]*\.?\s*", re.IGNORECASE)
+DROP = re.compile(r"^[^\n]*ruo_banner[^\n]*$", re.IGNORECASE)
+
+
+def strip_banner(ln):
+    if DROP.match(ln):
+        return None
+    cut = RUO.sub("", ln)
+    if cut == ln:
+        return ln
+    rest = DISCLAIM.sub("", cut.strip()).strip()
+    return rest or None
 
 
 def rewrite_links(text):
@@ -70,15 +79,16 @@ def convert(src, perma, title, desc, group, order):
         if not seen_h1 and ln.startswith("# "):
             seen_h1 = True
             continue
-        if DROP.match(ln):
+        kept = strip_banner(ln)
+        if kept is None:
             continue
-        out.append(ln)
+        out.append(kept)
     body = "\n".join(out).strip("\n")
     body = re.sub(r"\n{3,}", "\n\n", body)
     body = rewrite_links(body)
     fm = (f"---\nlayout: default\ntitle: {json.dumps(title)}\n"
-          f"description: {json.dumps(desc)}\npermalink: /{perma}/\n"
-          f"group: {group}\norder: {order}\n---\n\n")
+          f"subtitle: {json.dumps(desc)}\ndescription: {json.dumps(desc)}\n"
+          f"permalink: /{perma}/\ngroup: {group}\norder: {order}\n---\n\n")
     dest = PAGES / (perma.replace("/", "__") + ".md")
     dest.write_text(fm + body + "\n", encoding="utf-8")
     return dest, len(body.split("\n"))
@@ -135,8 +145,8 @@ def evaluation_page():
         f"<td class='num {'up' if v['log2_residual']>0 else 'dn'}'>{v['log2_residual']:+.4f}</td></tr>"
         for g, v in sorted(k27["per_target"].items(), key=lambda kv: -kv[1]["log2_residual"]))
 
-    body = f"""Every figure on this page is read directly from the pipeline's result files. Where a number is a
-held-out measurement, the split and its size are stated with it.
+    body = f"""Where a number below is a held-out measurement, the split that produced it and the size of that
+split are stated alongside it, because a metric without its split is not interpretable.
 
 ## Deployed models
 
@@ -268,7 +278,7 @@ cross-validated AUC by {rig['covariate_control']['auc_covariates_plus_collapse_c
 """
     fm = ('---\nlayout: default\ntitle: "Evaluation"\n'
           'subtitle: "Exact held-out numbers for every model, split and comparison."\n'
-          'description: "Complete evaluation tables read directly from the pipeline result files."\n'
+          'description: "Held-out metrics for every model, split and comparison in the project."\n'
           'permalink: /evaluation/\n---\n\n')
     (PAGES / "evaluation.md").write_text(fm + body, encoding="utf-8")
 
@@ -278,6 +288,7 @@ FIGURE_SOURCES = [
     ("_pages/results.md", "Results", "/results/"),
     ("_pages/methods.md", "Methods", "/methods/"),
     ("_pages/validation.md", "Validation", "/validation/"),
+    ("_pages/circuits.md", "Circuits", "/circuits/"),
 ]
 
 FIG_BLOCK = re.compile(r"<figure>\s*(.*?)\s*</figure>", re.S)
@@ -335,10 +346,9 @@ def figures_page():
           'description: "Complete figure list for the PDAC chromatin-circuit project."\n'
           'permalink: /figures/\n---\n\n')
     intro = (
-        "Each figure is generated directly from the pipeline's result files by "
-        "`scripts/make_figures.py` and is written as a 300 dpi raster together with a vector copy "
-        "suitable for print. The captions below are the captions carried on the pages where the figures "
-        "appear, extracted at build time so that the two cannot drift apart.\n\n"
+        "Each figure is written as a 300 dpi raster together with a vector copy suitable for print. "
+        "The captions below are the captions carried on the pages where the figures appear, extracted "
+        "at build time rather than rewritten here.\n\n"
         '<ul class="doclist figindex">\n%s\n</ul>\n\n' % toc)
     (PAGES / "figures.md").write_text(fm + intro + "\n\n".join(parts) + "\n", encoding="utf-8")
     print("  figures page (%d figures)" % len(figs))
@@ -358,8 +368,8 @@ def main():
                "later retracted or superseded; where that happened the overturn is stated in place rather "
                "than removed.")
     evaluation_page()
-    figures_page()
     build_circuits.main()
+    figures_page()
     print("  evaluation page + 2 index pages")
 
 

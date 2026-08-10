@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "Findings"
+subtitle: "Findings as recorded during the project, with their current standing."
 description: "Findings as recorded during the project, with their current standing."
 permalink: /reports/findings/
 group: reports
 order: 5
 ---
 
+Every
 number below is read from a real-data artifact under `results/`. No synthetic data is used
 anywhere; where evidence is absent the pipeline abstains rather than fabricating.
 

@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "External audit response"
+subtitle: "Disposition of every finding from an external gap audit."
 description: "Disposition of every finding from an external gap audit."
 permalink: /reports/audit/
 group: reports
 order: 7
 ---
 
+An external reviewer produced a comprehensive gap audit of this repository
 (≈200 findings across scientific, methodological, computational, validation, reproducibility, and
 translational categories). This document records the honest disposition of every material finding:
 **verified and fixed**, **already documented**, **correct and out of scope**, or **corrected**.

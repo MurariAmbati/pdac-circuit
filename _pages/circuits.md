@@ -2,18 +2,18 @@
 layout: default
 title: "Circuits"
 subtitle: "The eight designed constructs, their parts, and what the scores do and do not mean."
-description: "Complete designed circuits read directly from the pipeline result files."
+description: "The enumerated design space, the leading constructs, and one circuit in full."
 permalink: /circuits/
 ---
 
 A circuit here is a complete, orderable construct rather than a diagram. Each one names a
 transcription factor to repress, a promoter to drive the repressor, an enhancer locus that is
 accessible in pancreas, a CRISPRi guide placed inside that locus, and the sequence edits needed to
-bring the assembled construct into a synthesisable GC band. The pipeline designed
-8 of them for the classical subtype, simulated all
-8 individually, and found 5 on the first
-Pareto front. Every one uses a generated promoter rather than a catalogue part, which is the only
-place in this project where the generative model does work that a lookup table could not.
+bring the assembled construct into a synthesisable GC band. Two sets are reported. The first is an
+enumeration over the part space, in which a larger set of circuits were assembled and individually
+simulated. The second is a curated set of 8 for the classical subtype that
+predates the enumeration and carries fuller construct detail, 5 of them on the
+first Pareto front.
 
 Read what follows as engineering output, not as a therapeutic proposal. The scores below are
 internal to the design objective and none of them has been measured in a cell.
@@ -32,7 +32,11 @@ Four further targets were nominated and could not be designed, namely BRCA2, KMT
 is the intended behaviour rather than a failure, since a target with no feature row cannot be
 scored and the pipeline declines to guess one.
 
-## The eight designed circuits
+## The curated eight
+
+The set below predates the enumeration. It fixes one promoter, one enhancer and one guide per target
+and is kept because it is the version carrying complete construct detail, including the sequence
+optimisation and immunogenicity fields that the enumeration does not recompute per circuit.
 
 <div class="table-wrap">
 <table class="data">

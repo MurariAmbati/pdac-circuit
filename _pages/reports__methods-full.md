@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Methods in full"
+subtitle: "Complete methodological detail for every module and model."
 description: "Complete methodological detail for every module and model."
 permalink: /reports/methods-full/
 group: reports

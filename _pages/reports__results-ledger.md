@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "Results ledger"
+subtitle: "The complete result ledger, including entries later retracted or superseded."
 description: "The complete result ledger, including entries later retracted or superseded."
 permalink: /reports/results-ledger/
 group: reports
 order: 4
 ---
 
+All numbers below are read directly from trained-model
 manifests and pipeline run artifacts (real open data; models trained from scratch).
 
 > ### ⚠️ STATUS: several results in this document are RETRACTED or SUPERSEDED

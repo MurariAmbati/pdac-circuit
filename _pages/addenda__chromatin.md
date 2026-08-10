@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "Addendum: chromatin"
+subtitle: "The H3K27ac residual analysis, its controls, and what ATAC does and does not replicate."
 description: "The H3K27ac residual analysis, its controls, and what ATAC does and does not replicate."
 permalink: /addenda/chromatin/
 group: addenda
 order: 2
 ---
 
+This addendum consolidates the single claim in this project that survived the
 full review arc, states exactly what it does and does not support, and records the complete evidence
 so it can be checked rather than trusted. Every other substantive claim was retracted, retired,
 shown unrescuable, or exposed as confounded — see [ADDENDUM_DYNAMICS.md]({{ '/addenda/dynamics/' | relative_url }}),
