@@ -81,15 +81,15 @@ def blunt(ax, tip, angle_deg=0, size=0.020, lw=3.0, color=None):
 def fig_scaleup():
     g = load("results/grna_cnn_kim_retrain.json")
     p = load("results/promoter_scaleup.json")
-    e = load("results/enhancer_scaleup.json")
+    e = load("results/enhancer_maxdata.json")
     a = load("results/promoter_gan_scaleup.json")
     panels = [
         ("gRNA on-target", "Spearman", g["shipped_ensemble"], g["deployed_ensemble"], "5,310", "18,142"),
         ("Promoter strength", "Spearman", p["baseline_shipped_ensemble"], p["scaleup_ensemble"], "60,000", "181,428"),
-        ("Enhancer activity", "AUROC", e["baseline_shipped_auroc"], e["scaleup_auroc"], "20,000", "135,402"),
+        ("Enhancer activity", "AUROC", e["baseline_deployed_auroc"], e["best_auroc"], "135,049", "540,199"),
         ("Promoter generator", "p90 strength", a["baseline_p90"], a["scaleup_p90"], "12,000", "52,342"),
     ]
-    band = 0.005
+    bands = [0.005, 0.005, 0.0063, None]
     fig, axes = plt.subplots(1, 4, figsize=(15.4, 4.6), gridspec_kw={"wspace": 0.40})
     for k, (ax, (title, metric, b, af, nb, na)) in enumerate(zip(axes, panels)):
         bars = ax.bar([0, 1], [b, af], width=0.60, color=[NEUT, BLUE],
@@ -102,31 +102,33 @@ def fig_scaleup():
         ax.set_ylabel(metric, fontsize=12.5)
         ygrid(ax)
         d = af - b
-        comparable = k < 3
+        bnd = bands[k]
+        comparable = bnd is not None
         if comparable:
-            ax.axhspan(b - band, b + band, color=PALETTE["red_1"], alpha=0.6, zorder=1)
-            ax.axhline(b + band, color=PALETTE["red_strong"], lw=1.3, ls=(0, (4, 3)), zorder=2)
-        clears = (not comparable) or abs(d) > 2 * band
+            ax.axhspan(b - bnd, b + bnd, color=PALETTE["red_1"], alpha=0.6, zorder=1)
+            ax.axhline(b + bnd, color=PALETTE["red_strong"], lw=1.3, ls=(0, (4, 3)), zorder=2)
+        clears = (not comparable) or abs(d) > 2 * bnd
         ax.annotate(f"{d:+.4f}", (0.5, 0.985), xycoords="axes fraction", ha="center",
                     va="top", fontsize=12.5, fontweight="bold" if clears else "normal",
                     color=PALETTE["grey_dark"] if clears else PALETTE["red_strong"])
         if comparable and not clears:
             ax.annotate("inside run-to-run" + chr(10) + "variation", (0.5, 0.900),
-                        (0.5, 0.900), xycoords="axes fraction",
-                        ha="center", va="top", fontsize=9.4, style="italic",
-                        color=PALETTE["red_strong"])
+                        xycoords="axes fraction", ha="center", va="top",
+                        fontsize=9.4, style="italic", color=PALETTE["red_strong"])
     fig.suptitle("Held-out performance before and after removing the training-data caps",
                  fontsize=15.5, fontweight="bold", y=1.06)
-    fig.text(0.5, -0.055, "Shaded band marks the run-to-run variation of an independent retraining, "
-             "about 0.005. A gain lying inside it is not established by this comparison alone. "
-             "The generator panel measures a different quantity and has no repeat-run estimate, so no "
-             "band is drawn.", ha="center", fontsize=10.2, color=PALETTE["grey_mid"])
+    fig.text(0.5, -0.055, "Shaded band marks the run-to-run variation of an independent retraining, taken "
+             "as 0.005 for the first two panels and as the 0.0063 non-monotonicity measured on the enhancer "
+             "curve for the third." + chr(10) +
+             "A gain lying inside the band is not established by this comparison alone. The generator "
+             "measures a different quantity with no repeat-run estimate, so it carries no band.",
+             ha="center", fontsize=10.2, color=PALETTE["grey_mid"])
     save(fig, "fig1_scaleup")
 
 
 def fig_curves():
     pc = load("results/promoter_scaling_curve.json")
-    ec = load("results/enhancer_scaling_curve.json")
+    ec = load("results/enhancer_maxdata.json")
     fig, axes = plt.subplots(1, 2, figsize=(12.0, 4.4), gridspec_kw={"wspace": 0.24})
 
     ax = axes[0]
@@ -145,13 +147,16 @@ def fig_curves():
     ygrid(ax)
 
     ax = axes[1]
-    n2 = [q["n_train"] for q in ec["points"]]
-    ax.plot(n2, [q["auroc"] for q in ec["points"]], "-o", color=BLUE, lw=2.8, ms=8,
-            mec="black", mew=1.6, zorder=3)
+    n2 = [q["n_train"] for q in ec["curve"]]
+    a2 = [q["auroc"] for q in ec["curve"]]
+    ax.plot(n2, a2, "-o", color=BLUE, lw=2.8, ms=8, mec="black", mew=1.6, zorder=3)
+    ax.axhline(ec["baseline_deployed_auroc"], color=GREY, ls="--", lw=2.0, zorder=2,
+               label="previous model, same test")
     ax.set_xlabel("training rows")
     ax.set_ylabel("AUROC")
     ax.set_title("Enhancer activity", fontweight="bold", fontsize=13.5)
-    ax.set_ylim(0.7975, 0.8185)
+    ax.set_ylim(0.818, 0.842)
+    ax.legend(loc="lower right", fontsize=10.5)
     ygrid(ax)
 
     for ax in axes:

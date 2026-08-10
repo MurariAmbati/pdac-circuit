@@ -21,8 +21,8 @@ held-out measurement, the split and its size are stated with it.
 <tr><td>Promoter, ensemble</td><td>Spearman</td><td class="num">0.5275</td><td>chromosome-held-out (chr8, chr9)</td><td class="num">16,940</td></tr>
 <tr><td>Promoter, CNN</td><td>Spearman</td><td class="num">0.5247</td><td>same</td><td class="num">16,940</td></tr>
 <tr><td>Promoter, tree model</td><td>Spearman</td><td class="num">0.5081</td><td>same</td><td class="num">16,940</td></tr>
-<tr><td>Enhancer, classification</td><td>AUROC</td><td class="num">0.8147</td><td>chromosome-held-out (chr8, chr9)</td><td class="num">13,425</td></tr>
-<tr><td>Enhancer, signal head</td><td>Spearman</td><td class="num">0.5807</td><td>active rows of the same test set</td><td class="num">—</td></tr>
+<tr><td>Enhancer, classification</td><td>AUROC</td><td class="num">0.8375</td><td>chromosome-held-out (chr8, chr9)</td><td class="num">13,425</td></tr>
+<tr><td>Enhancer, signal head</td><td>Spearman</td><td class="num">0.5162</td><td>active rows of the same test set</td><td class="num">—</td></tr>
 <tr><td>Generator, realism</td><td>4-mer JS</td><td class="num">0.0123</td><td>fixed 2,000-promoter real reference</td><td class="num">1,500</td></tr>
 <tr><td>Generator, selectable tail</td><td>p90 strength</td><td class="num">0.9918</td><td>same</td><td class="num">1,500</td></tr>
 </tbody>

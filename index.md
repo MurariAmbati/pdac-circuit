@@ -27,7 +27,7 @@ given the same prominence as the other two, is the set of claims that were withd
 
 <div class="cards">
 <div class="card"><div class="k">0.657</div><div class="l">gRNA on-target Spearman on held-out genes, raised from 0.494</div></div>
-<div class="card"><div class="k">0.815</div><div class="l">enhancer-activity AUROC on held-out chromosomes</div></div>
+<div class="card"><div class="k">0.837</div><div class="l">enhancer-activity AUROC on held-out chromosomes</div></div>
 <div class="card"><div class="k">+0.92</div><div class="l">log2 H3K27ac gain at target promoters in PDAC, p = 0.0022</div></div>
 <div class="card"><div class="k">0.55<span style="font-size:1rem;color:var(--mut)"> vs </span>0.63</div><div class="l">the original attractor claim, beaten by plain network degree</div></div>
 </div>
@@ -45,8 +45,8 @@ The gRNA gain is unambiguous at more than thirty times the run-to-run variation 
 The promoter and enhancer gains are not, since each sits inside that variation and so is not established by
 a single before-and-after comparison. What supports the promoter is the scaling curve rather than the delta.
 Its ensemble score increases at every one of six training sizes without a single reversal, which under a null
-of no trend has probability 1/6! = 0.0014. The enhancer curve is not monotone and moves by only 0.007 across
-its whole range, so it remains the weakest quantitative claim here.
+of no trend has probability 1/6! = 0.0014. The enhancer was then given far more real data than any other
+model here, and the outcome is reported below as a negative rather than dressed up.
 
 <figure>
   <img src="{{ '/images/fig1_scaleup.png' | relative_url }}" alt="Held-out performance before and after removing training-data caps, for four models">
