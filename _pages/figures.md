@@ -23,7 +23,7 @@ Each figure is generated directly from the pipeline's result files by `scripts/m
 
 <figure id="fig1">
   <img src="{{ '/images/fig1_scaleup.png' | relative_url }}" alt="Held-out performance before and after removing training-data caps, for four models">
-  <figcaption><b>Figure 1.</b> Held-out performance before and after the caps were removed. Each comparison is like for like, because the previously deployed model is re-scored on the identical held-out set rather than compared against its historical reported figure. Grey hatched bars are the capped models and blue bars are the full-data models. The y-scales are independent, so note that the gRNA gain is an order of magnitude larger than the other three. Produced by <code>scripts/promoter_scaleup.py</code>, <code>scripts/enhancer_scaleup.py</code>, <code>scripts/grna_cnn_kim_retrain.py</code> and <code>scripts/promoter_gan_scaleup.py</code>.
+  <figcaption><b>Figure 1.</b> Held-out performance before and after the caps were removed. Each comparison is like for like, because the previously deployed model is re-scored on the identical held-out set rather than compared against its historical reported figure. Grey hatched bars are the capped models and blue bars are the full-data models. The shaded band is the run-to-run variation of an independent retraining, so a bar ending inside it has not been shown to differ from its predecessor. The y-scales are independent. Produced by <code>scripts/promoter_scaleup.py</code>, <code>scripts/enhancer_scaleup.py</code>, <code>scripts/grna_cnn_kim_retrain.py</code> and <code>scripts/promoter_gan_scaleup.py</code>.
   <span class="figmeta">Appears in <a href="{{ '/' | relative_url }}">Overview</a>. Vector copy <a href="{{ '/images/fig1_scaleup.pdf' | relative_url }}">fig1_scaleup.pdf</a>.</span></figcaption>
 </figure>
 
@@ -47,7 +47,7 @@ Each figure is generated directly from the pipeline's result files by `scripts/m
 
 <figure id="fig5">
   <img src="{{ '/images/fig2_scaling_curves.png' | relative_url }}" alt="Held-out performance versus training-set size for the promoter and enhancer models">
-  <figcaption><b>Figure 5.</b> Performance against training-set size on the fixed chr8 and chr9 test. The promoter ensemble climbs monotonically by 0.035 across an eighteen-fold increase in data and then flattens over the final step, which is the signature of a model that was data-limited and is now approaching its ceiling. The enhancer curve is much flatter throughout. These are independent trainings, so run-to-run variation of roughly 0.005 is expected and the trend rather than any single point is the result.
+  <figcaption><b>Figure 5.</b> Performance against training-set size on the fixed chr8 and chr9 test. The promoter ensemble climbs at every one of six sizes without a reversal, by 0.035 in total across an eighteen-fold increase in data, then flattens over the final step. A strictly increasing run of six points has probability 1/6! = 0.0014 under a null of no trend, which is what makes the promoter result credible where its single delta does not. The enhancer curve spans only 0.007 in total and is not monotone. These are independent trainings, so run-to-run variation of roughly 0.005 is expected and the trend rather than any single point is the result.
   <span class="figmeta">Appears in <a href="{{ '/results/' | relative_url }}">Results</a>. Vector copy <a href="{{ '/images/fig2_scaling_curves.pdf' | relative_url }}">fig2_scaling_curves.pdf</a>.</span></figcaption>
 </figure>
 

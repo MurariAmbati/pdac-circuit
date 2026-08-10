@@ -3,17 +3,18 @@
 
 :root {
   --bg: #ffffff;
-  --fg: #1a202c;
-  --mut: #5a6474;
-  --line: #e2e8f0;
-  --soft: #f7fafc;
-  --acc: #2b6cb0;
-  --good: #2f855a;
-  --bad: #c53030;
+  --fg: #16181d;
+  --mut: #5b6472;
+  --line: #e4e7ec;
+  --soft: #fafbfc;
+  --acc: #0f4d92;
+  --good: #2f6f4e;
+  --bad: #b64342;
 }
 
 * { box-sizing: border-box; }
 
+html { background: #fff; }
 body {
   margin: 0;
   background: var(--bg);
@@ -26,8 +27,8 @@ body {
 
 .nav {
   border-bottom: 1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  backdrop-filter: saturate(180%) blur(8px);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: saturate(180%) blur(10px);
   position: sticky; top: 0; z-index: 20;
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 13px; padding-bottom: 13px; }
@@ -53,7 +54,7 @@ a:hover { text-decoration: underline; }
 .hero h1 { font-size: 2.75rem; }
 
 figure { margin: 26px 0; }
-figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
 figcaption { color: var(--mut); font-size: .87rem; margin-top: 9px; line-height: 1.55; }
 figcaption b { color: var(--fg); font-weight: 600; }
 
@@ -108,11 +109,15 @@ figure[id] { scroll-margin-top: 78px; padding-top: 4px; }
   .nav-inner { flex-direction: column; align-items: flex-start; gap: 9px; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f141b; --fg: #e6edf3; --mut: #9aa4b2; --line: #232b36;
-    --soft: #161d26; --acc: #6aa6ff; --good: #4ac26b; --bad: #f2726a;
-  }
-  .nav { background: rgba(15,20,27,.92); }
-  figure img { background: #fff; }
-}
+
+::selection { background: #dce8f6; }
+
+h2 { color: #14181f; }
+figcaption { max-width: 78ch; }
+.card { background: #fff; border-color: var(--line); }
+.callout { background: #fafbfc; }
+.doclist li { background: #fff; }
+.doclist li:hover { background: var(--soft); }
+table { font-variant-numeric: tabular-nums; }
+thead th { border-bottom: 2px solid #d7dbe2; }
+tbody tr:last-child td { border-bottom: 1px solid var(--line); }

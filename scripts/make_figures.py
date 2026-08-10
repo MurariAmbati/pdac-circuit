@@ -89,11 +89,12 @@ def fig_scaleup():
         ("Enhancer activity", "AUROC", e["baseline_shipped_auroc"], e["scaleup_auroc"], "20,000", "135,402"),
         ("Promoter generator", "p90 strength", a["baseline_p90"], a["scaleup_p90"], "12,000", "52,342"),
     ]
-    fig, axes = plt.subplots(1, 4, figsize=(15.0, 4.2), gridspec_kw={"wspace": 0.40})
-    for ax, (title, metric, b, af, nb, na) in zip(axes, panels):
+    band = 0.005
+    fig, axes = plt.subplots(1, 4, figsize=(15.4, 4.6), gridspec_kw={"wspace": 0.40})
+    for k, (ax, (title, metric, b, af, nb, na)) in enumerate(zip(axes, panels)):
         bars = ax.bar([0, 1], [b, af], width=0.60, color=[NEUT, BLUE],
                       edgecolor="black", linewidth=2.0, hatch=["//", ""])
-        tighten_ylim(ax, [b, af], frac=0.50, floor=0.0)
+        tighten_ylim(ax, [b, af], frac=0.55, floor=0.0)
         annotate_bars(ax, bars, [b, af], fmt="{:.3f}", fontsize=12.5)
         ax.set_xticks([0, 1])
         ax.set_xticklabels([f"capped\nn = {nb}", f"full\nn = {na}"], fontsize=11)
@@ -101,10 +102,25 @@ def fig_scaleup():
         ax.set_ylabel(metric, fontsize=12.5)
         ygrid(ax)
         d = af - b
-        ax.annotate(f"{d:+.4f}", (0.5, 0.97), xycoords="axes fraction", ha="center",
-                    va="top", fontsize=12.5, fontweight="bold", color=PALETTE["grey_dark"])
+        comparable = k < 3
+        if comparable:
+            ax.axhspan(b - band, b + band, color=PALETTE["red_1"], alpha=0.6, zorder=1)
+            ax.axhline(b + band, color=PALETTE["red_strong"], lw=1.3, ls=(0, (4, 3)), zorder=2)
+        clears = (not comparable) or abs(d) > 2 * band
+        ax.annotate(f"{d:+.4f}", (0.5, 0.985), xycoords="axes fraction", ha="center",
+                    va="top", fontsize=12.5, fontweight="bold" if clears else "normal",
+                    color=PALETTE["grey_dark"] if clears else PALETTE["red_strong"])
+        if comparable and not clears:
+            ax.annotate("inside run-to-run" + chr(10) + "variation", (0.5, 0.900),
+                        (0.5, 0.900), xycoords="axes fraction",
+                        ha="center", va="top", fontsize=9.4, style="italic",
+                        color=PALETTE["red_strong"])
     fig.suptitle("Held-out performance before and after removing the training-data caps",
-                 fontsize=15.5, fontweight="bold", y=1.04)
+                 fontsize=15.5, fontweight="bold", y=1.06)
+    fig.text(0.5, -0.055, "Shaded band marks the run-to-run variation of an independent retraining, "
+             "about 0.005. A gain lying inside it is not established by this comparison alone. "
+             "The generator panel measures a different quantity and has no repeat-run estimate, so no "
+             "band is drawn.", ha="center", fontsize=10.2, color=PALETTE["grey_mid"])
     save(fig, "fig1_scaleup")
 
 

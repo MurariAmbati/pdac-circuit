@@ -38,16 +38,24 @@ Each of the four trained models had been fitted on an arbitrary fraction of the 
 sitting on disk for it. The gRNA model saw 5,310 guides drawn from only 17 genes. The promoter model saw
 60,000 of 209,374 FANTOM5 CAGE peaks. The enhancer model saw 20,000 of 470,874 accessible, H3K27ac-marked
 pancreatic regions, which is roughly four percent of what was available. The generator saw 12,000 of 52,342
-high-activity promoters. Removing those caps produced the largest single block of improvement in the project,
-and it did so without changing a single layer of any network.
+high-activity promoters. Removing those caps changed performance without changing a single layer of any
+network, but the four gains are not of equal evidential weight and are not presented as though they were.
+
+The gRNA gain is unambiguous at more than thirty times the run-to-run variation of an independent retraining.
+The promoter and enhancer gains are not, since each sits inside that variation and so is not established by
+a single before-and-after comparison. What supports the promoter is the scaling curve rather than the delta.
+Its ensemble score increases at every one of six training sizes without a single reversal, which under a null
+of no trend has probability 1/6! = 0.0014. The enhancer curve is not monotone and moves by only 0.007 across
+its whole range, so it remains the weakest quantitative claim here.
 
 <figure>
   <img src="{{ '/images/fig1_scaleup.png' | relative_url }}" alt="Held-out performance before and after removing training-data caps, for four models">
   <figcaption><b>Figure 1.</b> Held-out performance before and after the caps were removed. Each comparison is
   like for like, because the previously deployed model is re-scored on the identical held-out set rather than
   compared against its historical reported figure. Grey hatched bars are the capped models and blue bars are
-  the full-data models. The y-scales are independent, so note that the gRNA gain is an order of magnitude
-  larger than the other three. Produced by <code>scripts/promoter_scaleup.py</code>,
+  the full-data models. The shaded band is the run-to-run variation of an independent retraining, so a bar
+  ending inside it has not been shown to differ from its predecessor. The y-scales are independent.
+  Produced by <code>scripts/promoter_scaleup.py</code>,
   <code>scripts/enhancer_scaleup.py</code>, <code>scripts/grna_cnn_kim_retrain.py</code> and
   <code>scripts/promoter_gan_scaleup.py</code>.</figcaption>
 </figure>

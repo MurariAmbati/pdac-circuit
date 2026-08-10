@@ -27,6 +27,13 @@ weights are selected on the validation split and never on test.
 </table>
 </div>
 
+Two of these deltas are small enough to need a caveat stated with them. An independent retraining of the
+same model on the same data varies by roughly 0.005, so the promoter and enhancer gains sit inside the
+variation of the procedure that produced them and are not established by the before-and-after comparison on
+its own. The evidence for the promoter is the scaling curve in the next section, whose six points increase
+without a single reversal. The enhancer has no equivalent support and is the weakest quantitative claim on
+this site. The gRNA gain is more than thirty times that variation and needs no such qualification.
+
 The generator carries a second metric because realism and usefulness are separate properties for a
 generative model. On 4-mer Jensen-Shannon divergence against real promoters, where a lower value indicates
 closer composition, the deployed generator scores 0.0123 while random DNA scores 0.0508 against the same
@@ -77,9 +84,10 @@ same fixed held-out test.
 <figure>
   <img src="{{ '/images/fig2_scaling_curves.png' | relative_url }}" alt="Held-out performance versus training-set size for the promoter and enhancer models">
   <figcaption><b>Figure 5.</b> Performance against training-set size on the fixed chr8 and chr9 test. The
-  promoter ensemble climbs monotonically by 0.035 across an eighteen-fold increase in data and then flattens
-  over the final step, which is the signature of a model that was data-limited and is now approaching its
-  ceiling. The enhancer curve is much flatter throughout. These are independent trainings, so run-to-run
+  promoter ensemble climbs at every one of six sizes without a reversal, by 0.035 in total across an
+  eighteen-fold increase in data, then flattens over the final step. A strictly increasing run of six points
+  has probability 1/6! = 0.0014 under a null of no trend, which is what makes the promoter result credible
+  where its single delta does not. The enhancer curve spans only 0.007 in total and is not monotone. These are independent trainings, so run-to-run
   variation of roughly 0.005 is expected and the trend rather than any single point is the result.</figcaption>
 </figure>
 
