@@ -1,9 +1,9 @@
 {
   "schema": "pdac-circuit.pipeline-sync/1",
   "source_repo": "https://github.com/MurariAmbati/pdac-chromatin-circuit",
-  "source_commit": "cb695bc46d2f0d88fd9ed41c2483fea5a55cadc2",
-  "source_subject": "Circuit design campaign: 11,136 enumerated circuits, none clears the pre-registered floors",
-  "synced_at": "2026-08-10T11:12:53Z",
+  "source_commit": "bfd9d3888b3b3aee6429be4ed75a5ff676a42869",
+  "source_subject": "Use readable link labels in the chromatin addendum",
+  "synced_at": "2026-08-10T14:47:01Z",
   "files": 332,
   "note": "Mirrored from the pipeline repository by scripts/sync_from_pipeline.py. The pipeline repository is authoritative; rerun the script to refresh. Raw data and trained weights are excluded, as in the source."
 }

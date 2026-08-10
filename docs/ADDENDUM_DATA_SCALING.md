@@ -1,22 +1,19 @@
-# Addendum — real-data scaling of the Module II/V sequence models
+# Addendum, real-data scaling of the Module II/V sequence models
 
-**Research Use Only.** This addendum documents a controlled data-scaling program across the four
-learned sequence models in the pipeline: the gRNA on-target model (Module V), the promoter-strength
-model (Module II), the enhancer-activity model (Module II), and the promoter GAN generator
-(Module VII). The question in every case was the same one the gRNA work first raised: **are these
-models limited by their features/architecture, or by the amount of real training data they were
-given?** The shipped models were all trained on artificially capped subsets of the available real
-data. The experiments below remove those caps (or add a second real dataset), and measure the effect
-honestly on a held-out test (or a fixed real reference) that is held constant across the comparison.
+This addendum documents a controlled data-scaling program across the four learned sequence models,
+the gRNA on-target model (Module V), the promoter-strength model (Module II), the enhancer-activity
+model (Module II), and the promoter GAN generator (Module VII). Each was shipped trained on an
+artificially capped subset of the available real data, so the question in every case was whether the
+model is limited by its features and architecture or by how much data it was given. The experiments
+below remove the caps, or add a second real dataset, and measure the effect on a held-out test that is
+held constant across the comparison.
 
-Every number here is on **real** data (sha256-manifested), every comparison is **apples-to-apples**
-(the baseline and the scaled model are scored on the identical held-out set), and every ensemble
-weight is selected on a **held-out validation split, never on test**. All four models were deployed on
-more real data; the enhancer additionally produced an honest negative on a second lever (adding PDAC
-data), and the GAN's gain was in its selectable tail rather than its already-near-ceiling 4-mer
-realism. None of this changes the pipeline's overall standing (still a computational prototype, not a
-validated therapeutic platform); it makes the component models measurably better and
-better-characterised.
+Every number is on real, sha256-manifested data, every baseline is re-scored on the identical held-out
+set, and every ensemble weight is selected on a held-out validation split rather than on test. All
+four models were deployed on more data. The enhancer additionally produced an honest negative on a
+second lever, and the GAN's gain was in its selectable tail rather than its already-near-ceiling 4-mer
+realism. None of this changes the pipeline's standing as a computational prototype. It makes the
+component models measurably better characterised.
 
 ---
 
@@ -32,7 +29,7 @@ better-characterised.
 Two independent findings sit alongside the enhancer scale-up:
 
 - **Cross-domain generalisation (positive).** A healthy-pancreas-only enhancer model predicts PANC-1
-  **PDAC** enhancers at AUROC **0.835** — higher than its own pancreas test — evidence the model
+  **PDAC** enhancers at AUROC **0.835**, higher than its own pancreas test, evidence the model
   learns transferable regulatory grammar rather than tissue-specific artefacts.
 - **Adding PANC-1 PDAC data (honest negative).** Merging real PANC-1 chromatin into training does
   **not** help the pancreas benchmark (0.815 → 0.810); because the grammar already transfers, the
@@ -40,7 +37,7 @@ Two independent findings sit alongside the enhancer scale-up:
 
 ---
 
-## 2. gRNA on-target (Module V) — add a second real HT dataset
+## 2. gRNA on-target (Module V), add a second real HT dataset
 
 The shipped model was feature-saturated (Azimuth/Rule-Set-2 extras added +0.008) but data-starved:
 5,310 guides across only 17 genes. We added **Kim et al. 2019** (Science Advances eaax9249), a real
@@ -48,7 +45,7 @@ high-throughput SpCas9 library of **12,832** synthetic-target guides in the iden
 30-mer format, rank-normalised within-dataset so it pools with Doench's drug-gene rank.
 
 **Diagnosis before integrating.** Training on Doench's 17 genes and testing on all 12,832 Kim guides
-gave Spearman **0.592** — *higher* than the within-Doench held-out (0.53) — proving the model had
+gave Spearman **0.592**, *higher* than the within-Doench held-out (0.53), proving the model had
 learned transferable guide biology, not 17-gene memorisation.
 
 **Result on the identical 688 held-out Doench genes** (genes CCDC101/CD15/CD45, gene-grouped):
@@ -65,7 +62,7 @@ guides. Ensemble weight 0.40 CNN / 0.60 GBM, selected on held-out Doench val gen
 
 ---
 
-## 3. Promoter strength (Module II) — remove the FANTOM5 cap
+## 3. Promoter strength (Module II), remove the FANTOM5 cap
 
 FANTOM5 provides **209,374** real CAGE peaks on standard chromosomes; the shipped model trained on a
 random **60,000**. We built the full dataset, fixed the held-out test to **all 16,940 peaks on chr8
@@ -79,16 +76,16 @@ on the full 181,428-peak train pool.
 | ensemble (deployed) | 0.5199 | **0.5275** |
 
 The CNN gains +0.026 from 3× the data (data-hungry, as expected); the tree-based RF is nearly flat
-(+0.006). The ensemble gain (+0.0075) is modest — consistent with this sequence→expression task being
+(+0.006). The ensemble gain (+0.0075) is modest, consistent with this sequence→expression task being
 close to its data-saturation ceiling for the current architecture. Deployed at the val-selected
 weight 0.86 CNN / 0.14 RF. `results/promoter_scaleup.json`.
 
 ---
 
-## 4. Enhancer activity (Module II) — remove the cap, and test adding PDAC data
+## 4. Enhancer activity (Module II), remove the cap, and test adding PDAC data
 
 The shipped model caps pancreas actives (ENCODE ATAC ∩ H3K27ac) at **20,000**, but **470,874** real
-actives are available — it trained on ~4% of the data.
+actives are available, it trained on ~4% of the data.
 
 ### 4a. Un-capping pancreas (deployed)
 
@@ -105,15 +102,15 @@ A real +0.006 AUROC and a clear signal-regression gain. `results/enhancer_scaleu
 ### 4b. Cross-domain generalisation and the PANC-1 augmentation (honest negative)
 
 We separately tested adding real **PANC-1 PDAC** chromatin (ENCODE ENCFF953NZY ATAC +
-ENCFF579DQM H3K27ac) — a genuinely new source, and the PDAC context the project targets.
+ENCFF579DQM H3K27ac). A genuinely new source, and the PDAC context the project targets.
 
 - A **pancreas-only** model reproduces the shipped **0.8150** exactly and predicts PANC-1 enhancers
   at AUROC **0.8349** (forward cross-domain transfer). The enhancer grammar is domain-general.
-- **Merging** PANC-1 into training moves the pancreas benchmark to **0.8096** (−0.0054) — a small
+- **Merging** PANC-1 into training moves the pancreas benchmark to **0.8096** (−0.0054), a small
   dilution, because the model was not data-limited on enhancer *sequence*, only on pancreas sample
   count. Correctly **not deployed**; the shipped/un-capped model is kept.
 
-This is the same controlled experiment the gRNA augmentation was — it simply came out negative on this
+This is the same controlled experiment the gRNA augmentation was, it simply came out negative on this
 lever, which is worth recording precisely because the forward-transfer result explains *why*.
 `results/enhancer_panc1_augment.json`.
 
@@ -121,10 +118,10 @@ lever, which is worth recording precisely because the forward-transfer result ex
 
 ## 5. Scaling curves
 
-To characterise *where* each model sits on its data-scaling curve — rather than asserting saturation
-from two points — we trained at a ladder of training-set sizes and scored every point on the same
-fixed held-out chr8/chr9 test. These are independent trainings (stochastic run-to-run variation
-~0.005), so read the trend, not the third decimal.
+To locate each model on its scaling curve rather than assert saturation from two points, we trained at
+a ladder of training-set sizes and scored every point on the same fixed held-out chr8/chr9 test. These
+are independent trainings with run-to-run variation near 0.005, so read the trend rather than the
+third decimal.
 
 **Promoter** (Spearman, ensemble, `results/promoter_scaling_curve.json`):
 
@@ -133,10 +130,10 @@ fixed held-out chr8/chr9 test. These are independent trainings (stochastic run-t
 | CNN | 0.489 | 0.477 | 0.503 | 0.514 | 0.530 | 0.528 |
 | ensemble | 0.498 | 0.501 | 0.513 | 0.519 | 0.532 | **0.533** |
 
-A clean, monotone rise of **+0.035** across an 18× increase in real data — decisive evidence the
-shipped 60k model was data-limited, not at its irreducible ceiling. The curve flattens over the last
-step (120k→181k, +0.001), so the model is *approaching* saturation near the full set; the CNN carries
-essentially all of the gain (0.489 → 0.528), the RF is flat throughout.
+A monotone rise of **+0.035** across an 18-fold increase in real data, which is decisive evidence the
+shipped 60k model was data-limited rather than at its ceiling. The curve flattens over the last step
+(120k to 181k, +0.001), so it approaches saturation near the full set. The CNN carries essentially all
+of the gain, 0.489 to 0.528, and the RF is flat throughout.
 
 **Enhancer** (AUROC, `results/enhancer_scaling_curve.json`):
 
@@ -144,9 +141,9 @@ essentially all of the gain (0.489 → 0.528), the RF is flat throughout.
 |---|---|---|---|---|
 | AUROC | 0.805 | 0.804 | 0.806 | **0.812** |
 
-Flatter than the promoter — the enhancer classifier is closer to saturation, consistent with the
-+0.006 scale-up gain and with the fact that the grammar already generalises across domains. Most of
-the movement is in the final doubling (80k→135k).
+Flatter than the promoter, so the enhancer classifier is closer to saturation. That is consistent
+with the +0.006 scale-up gain and with the grammar already generalising across domains. Most of the
+movement is in the final doubling.
 
 **Bidirectional cross-domain transfer** (AUROC):
 
@@ -155,18 +152,18 @@ the movement is in the final doubling (80k→135k).
 | forward | pancreas (multi-donor) | PANC-1 PDAC | **0.835** |
 | reverse | PANC-1 PDAC | pancreas (multi-donor) | **0.790** |
 
-Both directions are well above chance, confirming the enhancer grammar is genuinely shared between
-healthy pancreas and PDAC. The asymmetry (0.835 vs 0.790) is expected: the multi-donor pancreas set is
-the more diverse training source, so it generalises to the single PANC-1 line better than the reverse.
+Both directions are well above chance, so the enhancer grammar is genuinely shared between healthy
+pancreas and PDAC. The asymmetry is expected, because the multi-donor pancreas set is the more diverse
+training source and generalises to a single line better than the reverse.
 
 ---
 
-## 6. Promoter GAN (Module VII) — un-capped generator deployed for a stronger selectable tail
+## 6. Promoter GAN (Module VII), un-capped generator deployed for a stronger selectable tail
 
 The WGAN-GP promoter generator trains on the top-quartile (highest-activity) real FANTOM5 promoters,
 capped at **12,000** of the **52,342** available. We removed the cap (trained on all 52,342, same
 config: 2,500 generator iterations, best-4-mer-JS early stopping) and evaluated the shipped and
-un-capped generators identically — same fixed real reference, same 1,500 generated sequences, same
+un-capped generators identically. Same fixed real reference, same 1,500 generated sequences, same
 seed, scored with the current promoter model. `scripts/promoter_gan_scaleup.py`,
 `results/promoter_gan_scaleup.json`.
 
@@ -177,19 +174,18 @@ seed, scored with the current promoter model. `scripts/promoter_gan_scaleup.py`,
 | predicted-strength p90 | 0.937 | **0.992** | higher = stronger selectable tail |
 | median strength uplift | −0.021 | **+0.106** | (not gated by design) |
 
-**Deployed.** How the pipeline actually consumes the generator decides this one: it generates a
-library and **selects the strongest promoter**, so the selectable tail (p90) is the operative axis,
-and the prereg criterion gates realism only at JS ≤ 0.05 (plus beating random) and usability at
-p90 ≥ 0.7. The un-capped generator clears both gates — JS 0.0123 is ~4× better than random and well
-inside the 0.05 bound — and is markedly stronger on the tail the pipeline uses (p90 0.937 → 0.992,
-median uplift −0.021 → +0.106). Because the generator is trained purely on real sequence and never
-against the promoter model, that stronger tail is a genuine learned property, not scorer-gaming. The
-cost is a small rise in 4-mer JS (0.0088 → 0.0123), still deeply within spec; it reflects the
-generator concentrating more mass on strong-promoter composition. The deploy gate is therefore the
-project's own certification (JS ≤ 0.05, beats random, p90 ≥ 0.7) plus a non-regressing tail, not a
-tighter faithfulness bar that would have rejected a certified, more-useful model. Consistent with the
-promoter-strength curve in §5, the *faithfulness* signal itself is near saturated well before 52k —
-the extra real data buys tail strength rather than lower JS.
+**Deployed.** How the pipeline consumes the generator decides this one. It generates a library and
+selects the strongest promoter, so the selectable tail at p90 is the operative axis, and the
+pre-registered criterion gates realism only at JS ≤ 0.05 with a requirement to beat random, and
+usability at p90 ≥ 0.7. The un-capped generator clears both. Its JS of 0.0123 is about four times
+better than random and well inside the bound, and it is markedly stronger on the tail the pipeline
+actually uses. Because the generator trains purely on real sequence and never against the promoter
+model, that stronger tail is a learned property rather than scorer-gaming. The cost is a small rise in
+4-mer JS, still well within spec, reflecting the generator concentrating more mass on strong-promoter
+composition. The deploy gate is therefore the project's own certification plus a non-regressing tail,
+not a tighter faithfulness bar that would have rejected a certified and more useful model. Consistent
+with the promoter curve in §5, faithfulness is near saturated well before 52k, and the extra data buys
+tail strength rather than lower JS.
 
 ---
 
