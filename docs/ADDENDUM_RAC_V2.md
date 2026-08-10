@@ -15,8 +15,8 @@ Results: `results/directed_grn.npz`, `results/directed_grn.meta.json`,
 
 ## Corrections to this addendum
 
-Four claims below were revised by later analysis in the same investigation, collected here so a reader
-meets them before the phase-by-phase record rather than scattered through it.
+Four claims below got revised by later work in the same investigation. They sit at the front so you
+meet them before the claims they overturn, and not buried three thousand words down.
 
 **The predeclared confound was the wrong one, revising Phase 5.** The prediction, with a 0.62
 threshold declared in advance, was that the PDAC-against-other expression differential would carry the
@@ -46,7 +46,7 @@ below its own p.
 **Refuted was too strong, revising Phase 6.** With power of 7 to 19 per cent for effects in the 0.60
 to 0.65 range, non-significance alone proves nothing about centrality effects of that size in either
 direction. The refutation rests entirely on its other leg, that the model-free point estimates
-contradict the hypothesis, with centralities landing slightly above 0.5 rather than below and
+contradict the hypothesis, with centralities landing slightly above 0.5 instead of below and
 disagreeing with one another. The calibrated verdict is unsupported, with point estimates pointing the
 wrong way, and underpowered to settle definitively.
 
@@ -331,8 +331,8 @@ That GBM residual is a genuine observation and its caveats belong with it. Fourt
 five folds is about 2.8 per fold, the seed spread is the widest in the table at ±0.043, and GBM has
 the most freedom to fit noise. Several topology features are strongly anti-predictive, with pagerank
 at 0.363, out_degree 0.376, hits_hub 0.380 and coexpr_degree 0.424, which was read at the time as
-selective dependencies sitting at the periphery of the graph rather than at hubs. It was reported as
-an underpowered hypothesis rather than a result, and §9 withdraws the interpretation.
+selective dependencies sitting at the periphery of the graph and not at hubs. It was reported as
+an underpowered hypothesis, not a result, and §9 withdraws the interpretation.
 
 **A limitation of the ablation, disclosed.** Removing expression levels does not remove all
 expression-derived information, because `coexpr_degree` and `eigenvector` are built from the
@@ -406,7 +406,7 @@ survives correction.
 
 Note the nuance this exposes in the surviving expression result: `expr_mean_raw` is strong on the
 **dichotomised tail** (rank AUC 0.794) but only weakly monotone across all genes (ρ = 0.111). It
-separates the extreme selective genes rather than tracking selectivity continuously, consistent
+separates the extreme selective genes and does not track selectivity continuously, consistent
 with §8's confound account (the top-selective genes are highly expressed), and a further reason not
 to promote it to a predictor.
 

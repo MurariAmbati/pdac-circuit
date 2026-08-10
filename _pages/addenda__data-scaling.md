@@ -8,20 +8,19 @@ group: addenda
 order: 1
 ---
 
-This addendum documents a controlled data-scaling program across the four learned sequence models,
-the gRNA on-target model (Module V), the promoter-strength model (Module II), the enhancer-activity
-model (Module II), and the promoter GAN generator (Module VII). Each was shipped trained on an
-artificially capped subset of the available real data, so the question in every case was whether the
-model is limited by its features and architecture or by how much data it was given. The experiments
-below remove the caps, or add a second real dataset, and measure the effect on a held-out test that is
-held constant across the comparison.
+Four learned sequence models sit in the pipeline. gRNA on-target (Module V), promoter strength and
+enhancer activity (both Module II), and the promoter GAN (Module VII). All four shipped trained on a
+slice of the real data available to them, capped for no good reason. So the question each time was
+simple. Is the model held back by its features and architecture, or just by how little it saw?
 
-Every number is on real, sha256-manifested data, every baseline is re-scored on the identical held-out
-set, and every ensemble weight is selected on a held-out validation split rather than on test. All
-four models were deployed on more data. The enhancer additionally produced an honest negative on a
-second lever, and the GAN's gain was in its selectable tail rather than its already-near-ceiling 4-mer
-realism. None of this changes the pipeline's standing as a computational prototype. It makes the
-component models measurably better characterised.
+The runs below lift the caps, or bring in a second real dataset, and score what comes out on a
+held-out test that stays fixed across the comparison. Every number comes off real sha256-manifested
+data. Every baseline gets re-scored on that same set. Every ensemble weight is picked on validation,
+never on test.
+
+All four went out on more data. The enhancer threw an honest negative on its second lever. The GAN's
+gain landed in its selectable tail, since 4-mer realism was already near ceiling. None of this moves
+the pipeline off being a prototype. It does make the parts better understood.
 
 ---
 
@@ -38,7 +37,7 @@ Two independent findings sit alongside the enhancer scale-up:
 
 - **Cross-domain generalisation (positive).** A healthy-pancreas-only enhancer model predicts PANC-1
   **PDAC** enhancers at AUROC **0.835**, higher than its own pancreas test, evidence the model
-  learns transferable regulatory grammar rather than tissue-specific artefacts.
+  learns transferable regulatory grammar and not tissue-specific artefacts.
 - **Adding PANC-1 PDAC data (honest negative).** Merging real PANC-1 chromatin into training does
   **not** help the pancreas benchmark (0.815 → 0.810); because the grammar already transfers, the
   mixed-domain objective slightly dilutes per-domain performance. Not deployed.
@@ -126,10 +125,9 @@ lever, which is worth recording precisely because the forward-transfer result ex
 
 ## 5. Scaling curves
 
-To locate each model on its scaling curve rather than assert saturation from two points, we trained at
-a ladder of training-set sizes and scored every point on the same fixed held-out chr8/chr9 test. These
-are independent trainings with run-to-run variation near 0.005, so read the trend rather than the
-third decimal.
+Two points cannot tell you a curve has flattened. So each model was trained at a ladder of set sizes
+and every point scored on the same fixed chr8/chr9 test. These are independent trainings, drifting
+about 0.005 run to run, so read the shape and ignore the third decimal.
 
 **Promoter** (Spearman, ensemble, `results/promoter_scaling_curve.json`):
 
@@ -139,7 +137,7 @@ third decimal.
 | ensemble | 0.498 | 0.501 | 0.513 | 0.519 | 0.532 | **0.533** |
 
 A monotone rise of **+0.035** across an 18-fold increase in real data, which is decisive evidence the
-shipped 60k model was data-limited rather than at its ceiling. The curve flattens over the last step
+shipped 60k model was data-limited and not at its ceiling. The curve flattens over the last step
 (120k to 181k, +0.001), so it approaches saturation near the full set. The CNN carries essentially all
 of the gain, 0.489 to 0.528, and the RF is flat throughout.
 
@@ -188,12 +186,12 @@ pre-registered criterion gates realism only at JS ≤ 0.05 with a requirement to
 usability at p90 ≥ 0.7. The un-capped generator clears both. Its JS of 0.0123 is about four times
 better than random and well inside the bound, and it is markedly stronger on the tail the pipeline
 actually uses. Because the generator trains purely on real sequence and never against the promoter
-model, that stronger tail is a learned property rather than scorer-gaming. The cost is a small rise in
+model, that stronger tail is a learned property, not scorer-gaming. The cost is a small rise in
 4-mer JS, still well within spec, reflecting the generator concentrating more mass on strong-promoter
 composition. The deploy gate is therefore the project's own certification plus a non-regressing tail,
 not a tighter faithfulness bar that would have rejected a certified and more useful model. Consistent
 with the promoter curve in §5, faithfulness is near saturated well before 52k, and the extra data buys
-tail strength rather than lower JS.
+tail strength, not lower JS.
 
 ---
 

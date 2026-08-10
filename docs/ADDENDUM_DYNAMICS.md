@@ -93,7 +93,7 @@ evaluated the sigmoid derivative at `z = Wx+b` instead of at the map's actual ar
 finite-difference cross-check (probe C) disagreed by 1.9 elementwise, exposing the error; corrected,
 analytic (1.019) and finite-difference (1.023) agree, and ρ ≈ 1.02. The conclusion is unchanged
 because it never rested on the eigenvalue, A, B and D are model-free, but the *number* was wrong
-and is corrected here rather than quietly. This is the same failure mode the review response
+and is corrected here instead of quietly. This is the same failure mode the review response
 catalogues throughout, caught this time by a guard placed specifically to catch it.
 
 ---
@@ -171,11 +171,11 @@ both establish, it does not beat degree.
 
 ## 7. Can raising the gain rescue it? No, the failure is structural on both axes
 
-§6 proposed operating above the bifurcation. `scripts/gain_sweep_rescue.py` tests that directly by
-refitting RAC at gains 4 to 8, each fit optimising W and b for its gain, and measuring convergence,
-spectral radius, and whether the collapse score beats the fixed degree reference of 0.629. The
-interpretation was predeclared. A rescue requires a convergent, stable regime and collapse above
-degree.
+§6 floated running above the bifurcation. `scripts/gain_sweep_rescue.py` puts that to the test. RAC is
+refit at gains 4 through 8, each fit tuning W and b for its own gain, and every fit checked for
+convergence, spectral radius, and whether collapse beats the fixed degree reference of 0.629. What
+counts as a rescue was fixed up front. A settled, stable regime, and collapse above degree. Both, or
+it fails.
 
 | gain | converged fraction | ρ | collapse AUC | degree AUC | ΔAUC | beats degree? |
 |---|---|---|---|---|---|---|
@@ -189,23 +189,23 @@ degree.
 
 *Bistability axis.* Convergence is **0.00 at every gain** and not one refit produces a map that
 settles. Even where ρ < 1, at gains 7 and 8, the map still does not converge, and with nothing
-converging ρ is measured at a transient snapshot rather than at a fixed point, so it certifies
+converging ρ is measured at a transient snapshot, not at a fixed point, so it certifies
 nothing. The characterization's bifurcation at 5.9 is hysteresis between two non-converged transient
-means rather than two stable basins. Raising the gain alone does not yield a bistable system with
+means, not two stable basins. Raising the gain alone does not yield a bistable system with
 this fit. Enforcing true stable fixed points is the binding requirement.
 
 *Prediction axis.* Collapse never robustly beats degree. Four of five gains are negative, and the
 lone positive at gain 7 is isolated with both neighbours negative, sits in a non-convergent regime,
-and is well inside §15's noise band of ±0.11. It is reported rather than claimed, because treating it
+and is well inside §15's noise band of ±0.11. It is reported, not claimed, because treating it
 as a rescue would mean selecting one gain out of five on the outcome, the exact error §15 was built to
 avoid.
 
 **Conclusion. The §15 retraction is structural, not a tuning artifact.** Dynamics can only propagate
 what the graph encodes. Essentiality is not in the co-expression graph beyond degree, as §15 and §15b
 showed with a partial ρ of 0.028 and KRAS at the 8th percentile, so no reparameterisation of the
-dynamics over that graph can manufacture it. The failure is in the substrate rather than the operating
+dynamics over that graph can manufacture it. The failure sits in the substrate, not the operating
 point. RAC as posed is not one hyperparameter away from working, and a genuine rebuild would have to
-change what the graph encodes, through directed or causal edges and perturbation data, rather than how
+change what the graph encodes, through directed or causal edges and perturbation data, and not how
 the dynamics run over it.
 
 ---
