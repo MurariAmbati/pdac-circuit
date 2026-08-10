@@ -17,24 +17,24 @@ from figstyle import (
     ygrid,
 )
 
-SRC = Path("C:/Users/murar/pdac-circuit")
-OUT = Path(__file__).resolve().parents[1] / "images"
+SRC=Path("C:/Users/murar/pdac-circuit")
+OUT=Path(__file__).resolve().parents[1] / "images"
 
-INK = PALETTE["ink"]
-BLUE = PALETTE["blue_main"]
-BLUE2 = PALETTE["blue_secondary"]
-GREEN = PALETTE["green_3"]
-RED = PALETTE["red_strong"]
-NEUT = PALETTE["neutral"]
-GREY = PALETTE["grey_mid"]
-TEAL = PALETTE["teal"]
-VIOLET = PALETTE["violet"]
+INK=PALETTE["ink"]
+BLUE=PALETTE["blue_main"]
+BLUE2=PALETTE["blue_secondary"]
+GREEN=PALETTE["green_3"]
+RED=PALETTE["red_strong"]
+NEUT=PALETTE["neutral"]
+GREY=PALETTE["grey_mid"]
+TEAL=PALETTE["teal"]
+VIOLET=PALETTE["violet"]
 
 apply_publication_style(FigureStyle(font_size=15, axes_linewidth=2.2))
 
 
 def load(rel):
-    p = SRC / rel
+    p=SRC / rel
     if not p.exists():
         raise FileNotFoundError(rel)
     return json.loads(p.read_text(encoding="utf-8"))
@@ -50,8 +50,8 @@ def box(ax, x, y, w, h, title, sub=None, detail=None, fill="#FFFFFF",
                                 boxstyle="round,pad=0.004,rounding_size=0.010",
                                 linewidth=lw, edgecolor=edge or INK,
                                 facecolor=fill, zorder=3))
-    n = 1 + (sub is not None) + (detail is not None)
-    ys = {1: [0.50], 2: [0.62, 0.32], 3: [0.72, 0.47, 0.22]}[n]
+    n=1 + (sub is not None) + (detail is not None)
+    ys={1: [0.50], 2: [0.62, 0.32], 3: [0.72, 0.47, 0.22]}[n]
     ax.text(x + w / 2, y + h * ys[0], title, ha="center", va="center",
             fontsize=ts, fontweight="bold", color=INK, zorder=4)
     if sub:
@@ -71,28 +71,28 @@ def arrow(ax, p0, p1, color=None, lw=2.0, ls="-", rad=0.0, style="-|>", ms=13):
 
 def blunt(ax, tip, angle_deg=0, size=0.020, lw=3.0, color=None):
     import math
-    a = math.radians(angle_deg)
-    px, py = -math.sin(a), math.cos(a)
+    a=math.radians(angle_deg)
+    px, py=-math.sin(a), math.cos(a)
     ax.plot([tip[0] + px * size, tip[0] - px * size],
             [tip[1] + py * size, tip[1] - py * size],
             color=color or INK, linewidth=lw, solid_capstyle="butt", zorder=5)
 
 
 def fig_scaleup():
-    g = load("results/grna_cnn_kim_retrain.json")
-    p = load("results/promoter_scaleup.json")
-    e = load("results/enhancer_maxdata.json")
-    a = load("results/promoter_gan_scaleup.json")
-    panels = [
+    g=load("results/grna_cnn_kim_retrain.json")
+    p=load("results/promoter_scaleup.json")
+    e=load("results/enhancer_maxdata.json")
+    a=load("results/promoter_gan_scaleup.json")
+    panels=[
         ("gRNA on-target", "Spearman", g["shipped_ensemble"], g["deployed_ensemble"], "5,310", "18,142"),
         ("Promoter strength", "Spearman", p["baseline_shipped_ensemble"], p["scaleup_ensemble"], "60,000", "181,428"),
         ("Enhancer activity", "AUROC", e["baseline_deployed_auroc"], e["best_auroc"], "135,049", "540,199"),
         ("Promoter generator", "p90 strength", a["baseline_p90"], a["scaleup_p90"], "12,000", "52,342"),
     ]
-    bands = [0.005, 0.005, 0.0063, None]
-    fig, axes = plt.subplots(1, 4, figsize=(15.4, 4.6), gridspec_kw={"wspace": 0.40})
+    bands=[0.005, 0.005, 0.0063, None]
+    fig, axes=plt.subplots(1, 4, figsize=(15.4, 4.6), gridspec_kw={"wspace": 0.40})
     for k, (ax, (title, metric, b, af, nb, na)) in enumerate(zip(axes, panels)):
-        bars = ax.bar([0, 1], [b, af], width=0.60, color=[NEUT, BLUE],
+        bars=ax.bar([0, 1], [b, af], width=0.60, color=[NEUT, BLUE],
                       edgecolor="black", linewidth=2.0, hatch=["//", ""])
         tighten_ylim(ax, [b, af], frac=0.55, floor=0.0)
         annotate_bars(ax, bars, [b, af], fmt="{:.3f}", fontsize=12.5)
@@ -101,13 +101,13 @@ def fig_scaleup():
         ax.set_title(title, fontweight="bold", fontsize=13.5, pad=10)
         ax.set_ylabel(metric, fontsize=12.5)
         ygrid(ax)
-        d = af - b
-        bnd = bands[k]
-        comparable = bnd is not None
+        d=af - b
+        bnd=bands[k]
+        comparable=bnd is not None
         if comparable:
             ax.axhspan(b - bnd, b + bnd, color=PALETTE["red_1"], alpha=0.6, zorder=1)
             ax.axhline(b + bnd, color=PALETTE["red_strong"], lw=1.3, ls=(0, (4, 3)), zorder=2)
-        clears = (not comparable) or abs(d) > 2 * bnd
+        clears=(not comparable) or abs(d) > 2 * bnd
         ax.annotate(f"{d:+.4f}", (0.5, 0.985), xycoords="axes fraction", ha="center",
                     va="top", fontsize=12.5, fontweight="bold" if clears else "normal",
                     color=PALETTE["grey_dark"] if clears else PALETTE["red_strong"])
@@ -127,12 +127,12 @@ def fig_scaleup():
 
 
 def fig_curves():
-    pc = load("results/promoter_scaling_curve.json")
-    ec = load("results/enhancer_maxdata.json")
-    fig, axes = plt.subplots(1, 2, figsize=(12.0, 4.4), gridspec_kw={"wspace": 0.24})
+    pc=load("results/promoter_scaling_curve.json")
+    ec=load("results/enhancer_maxdata.json")
+    fig, axes=plt.subplots(1, 2, figsize=(12.0, 4.4), gridspec_kw={"wspace": 0.24})
 
-    ax = axes[0]
-    n = [q["n_train"] for q in pc["points"]]
+    ax=axes[0]
+    n=[q["n_train"] for q in pc["points"]]
     ax.plot(n, [q["ensemble"] for q in pc["points"]], "-o", color=BLUE, lw=2.8, ms=8,
             mec="black", mew=1.6, label="ensemble", zorder=4)
     ax.plot(n, [q["cnn"] for q in pc["points"]], "--s", color=TEAL, lw=2.2, ms=7,
@@ -146,9 +146,9 @@ def fig_curves():
     ax.set_ylim(0.455, 0.552)
     ygrid(ax)
 
-    ax = axes[1]
-    n2 = [q["n_train"] for q in ec["curve"]]
-    a2 = [q["auroc"] for q in ec["curve"]]
+    ax=axes[1]
+    n2=[q["n_train"] for q in ec["curve"]]
+    a2=[q["auroc"] for q in ec["curve"]]
     ax.plot(n2, a2, "-o", color=BLUE, lw=2.8, ms=8, mec="black", mew=1.6, zorder=3)
     ax.axhline(ec["baseline_deployed_auroc"], color=GREY, ls="--", lw=2.0, zorder=2,
                label="previous model, same test")
@@ -167,16 +167,16 @@ def fig_curves():
 
 
 def fig_grna_components():
-    g = load("results/grna_cnn_kim_retrain.json")
-    labels = ["sequence CNN", "gradient-boosted tree", "deployed ensemble"]
-    before = [g["cnn_doench_only_prev"], 0.5250, g["shipped_ensemble"]]
-    after = [g["cnn_doench_plus_kim"], g["gbm_doench_plus_kim"], g["deployed_ensemble"]]
-    x = np.arange(3)
-    w = 0.35
-    fig, ax = plt.subplots(figsize=(8.6, 4.8))
-    b1 = ax.bar(x - w / 2, before, w, label="Doench-2016 only, 17 genes",
+    g=load("results/grna_cnn_kim_retrain.json")
+    labels=["sequence CNN", "gradient-boosted tree", "deployed ensemble"]
+    before=[g["cnn_doench_only_prev"], 0.5250, g["shipped_ensemble"]]
+    after=[g["cnn_doench_plus_kim"], g["gbm_doench_plus_kim"], g["deployed_ensemble"]]
+    x=np.arange(3)
+    w=0.35
+    fig, ax=plt.subplots(figsize=(8.6, 4.8))
+    b1=ax.bar(x - w / 2, before, w, label="Doench-2016 only, 17 genes",
                 color=NEUT, edgecolor="black", linewidth=2.0, hatch="//")
-    b2 = ax.bar(x + w / 2, after, w, label="Doench-2016 + Kim-2019, 18,142 guides",
+    b2=ax.bar(x + w / 2, after, w, label="Doench-2016 + Kim-2019, 18,142 guides",
                 color=BLUE, edgecolor="black", linewidth=2.0)
     annotate_bars(ax, b1, before, fontsize=11.5, weight="normal")
     annotate_bars(ax, b2, after, fontsize=11.5)
@@ -192,14 +192,14 @@ def fig_grna_components():
 
 
 def fig_h3k27ac():
-    k = load("results/pdac_residual_foldchange_H3K27ac.json")
-    tv = k["targets_vs_all_background"]
-    items = sorted(k["per_target"].items(), key=lambda kv: kv[1]["log2_residual"])
-    names = [g for g, _ in items]
-    vals = [v["log2_residual"] for _, v in items]
-    cols = [GREEN if v > 0 else PALETTE["red_2"] for v in vals]
-    fig, ax = plt.subplots(figsize=(8.8, 6.6))
-    bars = ax.barh(names, vals, color=cols, edgecolor="black", linewidth=1.6, zorder=3)
+    k=load("results/pdac_residual_foldchange_H3K27ac.json")
+    tv=k["targets_vs_all_background"]
+    items=sorted(k["per_target"].items(), key=lambda kv: kv[1]["log2_residual"])
+    names=[g for g, _ in items]
+    vals=[v["log2_residual"] for _, v in items]
+    cols=[GREEN if v > 0 else PALETTE["red_2"] for v in vals]
+    fig, ax=plt.subplots(figsize=(8.8, 6.6))
+    bars=ax.barh(names, vals, color=cols, edgecolor="black", linewidth=1.6, zorder=3)
     for b, v in zip(bars, vals):
         ax.annotate(f"{v:+.2f}", (v, b.get_y() + b.get_height() / 2),
                     xytext=(7 if v > 0 else -7, 0), textcoords="offset points",
@@ -226,13 +226,13 @@ def fig_h3k27ac():
 
 
 def fig_rac():
-    r = load("results/rigorous_validation.json")["A_rac_vs_degree"]
-    fig, axes = plt.subplots(1, 2, figsize=(12.4, 4.6),
+    r=load("results/rigorous_validation.json")["A_rac_vs_degree"]
+    fig, axes=plt.subplots(1, 2, figsize=(12.4, 4.6),
                              gridspec_kw={"width_ratios": [1.12, 1], "wspace": 0.26})
-    ax = axes[0]
-    names = ["attractor\ncollapse", "eigenvector\ncentrality", "network\ndegree"]
-    vals = [r["auc_rac"], r["auc_eigenvector"], r["auc_degree"]]
-    bars = ax.bar(names, vals, width=0.58, color=[RED, NEUT, BLUE],
+    ax=axes[0]
+    names=["attractor\ncollapse", "eigenvector\ncentrality", "network\ndegree"]
+    vals=[r["auc_rac"], r["auc_eigenvector"], r["auc_degree"]]
+    bars=ax.bar(names, vals, width=0.58, color=[RED, NEUT, BLUE],
                   edgecolor="black", linewidth=2.0)
     annotate_bars(ax, bars, vals, fontsize=12.5)
     ax.axhline(0.5, color=GREY, ls=":", lw=2.2)
@@ -243,9 +243,9 @@ def fig_rac():
                  fontweight="bold", fontsize=13.5, pad=10)
     ygrid(ax)
 
-    ax = axes[1]
-    d = r["delta_auc_rac_minus_degree"]
-    lo, hi = r["delta_auc_ci95_paired_bootstrap"]
+    ax=axes[1]
+    d=r["delta_auc_rac_minus_degree"]
+    lo, hi=r["delta_auc_ci95_paired_bootstrap"]
     ax.errorbar([d], [0], xerr=[[d - lo], [hi - d]], fmt="o", color=RED, ms=13,
                 mec="black", mew=1.8, capsize=9, elinewidth=2.8, capthick=2.8, zorder=3)
     ax.axvline(0, color=INK, ls="--", lw=2.2)
@@ -267,14 +267,14 @@ def fig_rac():
 
 
 def fig_transfer():
-    p = load("results/enhancer_panc1_augment.json")
-    ec = load("results/enhancer_scaling_curve.json")
-    labels = ["pancreas to pancreas\nwithin domain", "pancreas to PANC-1\nforward transfer",
+    p=load("results/enhancer_panc1_augment.json")
+    ec=load("results/enhancer_scaling_curve.json")
+    labels=["pancreas to pancreas\nwithin domain", "pancreas to PANC-1\nforward transfer",
               "PANC-1 to pancreas\nreverse transfer"]
-    vals = [p["pancreas_only_pancreas_test"], p["pancreas_only_panc1_test_xdomain"],
+    vals=[p["pancreas_only_pancreas_test"], p["pancreas_only_panc1_test_xdomain"],
             ec["reverse_xdomain_panc1_to_pancreas"]]
-    fig, ax = plt.subplots(figsize=(8.8, 4.8))
-    bars = ax.bar(labels, vals, width=0.56, color=[NEUT, BLUE, TEAL],
+    fig, ax=plt.subplots(figsize=(8.8, 4.8))
+    bars=ax.bar(labels, vals, width=0.56, color=[NEUT, BLUE, TEAL],
                   edgecolor="black", linewidth=2.0, hatch=["//", "", ".."])
     annotate_bars(ax, bars, vals, fontsize=12.5)
     ax.axhline(0.5, color=GREY, ls=":", lw=2.2)
@@ -289,8 +289,8 @@ def fig_transfer():
 
 
 def fig_evidence_heatmap():
-    d = load("results/rac_target_dossiers.json")
-    layers = [
+    d=load("results/rac_target_dossiers.json")
+    layers=[
         ("disease_log2fc", "is_it_real", "disease log2FC"),
         ("depmap_essentiality", "is_it_real", "DepMap essentiality"),
         ("depmap_pdac_selectivity", "is_it_real", "PDAC selectivity"),
@@ -301,25 +301,25 @@ def fig_evidence_heatmap():
         ("h3k27ac_disease_residual_log2", "is_it_active", "H3K27ac residual"),
         ("hic_compartment_eigenvector", "is_it_active", "Hi-C compartment"),
     ]
-    genes = [x["gene"] for x in d["dossiers"]]
-    raw = np.full((len(genes), len(layers)), np.nan)
+    genes=[x["gene"] for x in d["dossiers"]]
+    raw=np.full((len(genes), len(layers)), np.nan)
     for i, dos in enumerate(d["dossiers"]):
         for j, (key, grp, _) in enumerate(layers):
-            v = dos.get(grp, {}).get(key)
+            v=dos.get(grp, {}).get(key)
             if isinstance(v, (int, float)):
-                raw[i, j] = float(v)
-    z = np.full_like(raw, np.nan)
+                raw[i, j]=float(v)
+    z=np.full_like(raw, np.nan)
     for j in range(raw.shape[1]):
-        col = raw[:, j]
-        ok = ~np.isnan(col)
+        col=raw[:, j]
+        ok=~np.isnan(col)
         if ok.sum() > 1 and np.nanstd(col) > 0:
-            z[ok, j] = (col[ok] - np.nanmean(col)) / np.nanstd(col)
+            z[ok, j]=(col[ok] - np.nanmean(col)) / np.nanstd(col)
         elif ok.sum():
-            z[ok, j] = 0.0
-    z = np.clip(z, -2.0, 2.0)
+            z[ok, j]=0.0
+    z=np.clip(z, -2.0, 2.0)
 
-    fig, ax = plt.subplots(figsize=(10.6, 6.4))
-    im = ax.imshow(z, cmap="RdBu_r", vmin=-2.0, vmax=2.0, aspect="auto")
+    fig, ax=plt.subplots(figsize=(10.6, 6.4))
+    im=ax.imshow(z, cmap="RdBu_r", vmin=-2.0, vmax=2.0, aspect="auto")
     for i in range(len(genes)):
         for j in range(len(layers)):
             if np.isnan(z[i, j]):
@@ -339,7 +339,7 @@ def fig_evidence_heatmap():
     ax.tick_params(which="both", length=0)
     for s in ax.spines.values():
         s.set_visible(False)
-    cb = fig.colorbar(im, ax=ax, fraction=0.026, pad=0.015)
+    cb=fig.colorbar(im, ax=ax, fraction=0.026, pad=0.015)
     cb.set_label("z-score within layer", fontsize=11)
     cb.ax.tick_params(labelsize=10)
     cb.outline.set_visible(False)
@@ -351,39 +351,39 @@ def fig_evidence_heatmap():
 
 
 def fig_architecture():
-    fig, ax = plt.subplots(figsize=(14.6, 7.6))
+    fig, ax=plt.subplots(figsize=(14.6, 7.6))
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis("off")
 
-    data_specs = [
+    data_specs=[
         ("TCGA-PAAD, GTEx", "expression, CNA"),
         ("FANTOM5", "209,374 peaks"),
         ("ENCODE pancreas", "470,874 actives"),
         ("Doench, Kim", "18,142 guides"),
         ("DepMap", "1,684 cell lines"),
     ]
-    dw, dx0, dgap = 0.142, 0.020, 0.053
+    dw, dx0, dgap=0.142, 0.020, 0.053
     for i, (lab, role) in enumerate(data_specs):
-        x = dx0 + i * (dw + dgap)
+        x=dx0 + i * (dw + dgap)
         box(ax, x, 0.845, dw, 0.110, lab, role, fill="#F2F5FA",
             edge=PALETTE["grey_dark"], ts=10.8, ss=9.4, lw=1.6)
 
-    mods = [
+    mods=[
         ("I", "Target\nprioritisation", "MCDA over five layers", "1,639 TFs screened"),
         ("II", "Regulatory\nparts", "promoter r = 0.528", "enhancer AUROC 0.815"),
         ("V", "Guide\ndesign", "on-target r = 0.657", "CFD, genome-wide"),
         ("III / IV", "Circuit and\nsequence", "Hill ODE per circuit", "3,003 simulated"),
         ("VI", "Multi-objective\nscoring", "NSGA-II Pareto", "four objectives"),
     ]
-    mw, mgap, mx0 = 0.142, 0.053, 0.020
-    my, mh = 0.455, 0.225
-    xs = [mx0 + i * (mw + mgap) for i in range(5)]
+    mw, mgap, mx0=0.142, 0.053, 0.020
+    my, mh=0.455, 0.225
+    xs=[mx0 + i * (mw + mgap) for i in range(5)]
     for x, (num, name, sub, det) in zip(xs, mods):
         box(ax, x, my, mw, mh, name, sub, det, ts=12.2, ss=10.0, ds=9.0)
         ax.annotate(num, (x + 0.008, my + mh - 0.026), fontsize=9.5,
                     color=BLUE, fontweight="bold")
-    edge_labels = ["targets", "parts", "guides", "circuits"]
+    edge_labels=["targets", "parts", "guides", "circuits"]
     for i in range(4):
         arrow(ax, (xs[i] + mw, my + mh / 2), (xs[i + 1], my + mh / 2), lw=2.2)
         ax.annotate(edge_labels[i], ((xs[i] + mw + xs[i + 1]) / 2, my + mh / 2 + 0.024),
@@ -399,7 +399,7 @@ def fig_architecture():
         "4-mer JS 0.012", fill="#EFF6EF", edge=PALETTE["green_3"], ts=11.4, ss=9.6, ds=8.8)
     arrow(ax, (xs[1] + mw / 2, 0.330), (xs[1] + mw / 2, my), color=PALETTE["grey_dark"], lw=2.0)
 
-    gx = xs[4] + mw / 2
+    gx=xs[4] + mw / 2
     box(ax, xs[4] - 0.012, 0.175, mw + 0.024, 0.155, "Specificity gate",
         "genome-wide CFD", "0 of 4 guides clear", fill="#FBEEEE", edge=RED,
         ts=11.4, ss=9.6, ds=8.8)
@@ -421,10 +421,10 @@ def fig_architecture():
 
 
 def fig_circuit():
-    fig = plt.figure(figsize=(14.4, 8.2))
-    gs = fig.add_gridspec(2, 1, height_ratios=[1.0, 1.18], hspace=0.14)
+    fig=plt.figure(figsize=(14.4, 8.2))
+    gs=fig.add_gridspec(2, 1, height_ratios=[1.0, 1.18], hspace=0.14)
 
-    ax = fig.add_subplot(gs[0])
+    ax=fig.add_subplot(gs[0])
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis("off")
@@ -465,7 +465,7 @@ def fig_circuit():
                 "and codon adaptation",
                 (0.028, 0.060), fontsize=10.4, color=GREY)
 
-    ax2 = fig.add_subplot(gs[1])
+    ax2=fig.add_subplot(gs[1])
     ax2.set_xlim(0, 1)
     ax2.set_ylim(0, 1)
     ax2.axis("off")
@@ -501,7 +501,7 @@ def fig_circuit():
                  r"$\beta$ set by promoter strength,   $n=2$",
                  (0.028, 0.040), fontsize=10.8, color=GREY)
 
-    sx, sy, sw, sh = 0.858, 0.285, 0.142, 0.500
+    sx, sy, sw, sh=0.858, 0.285, 0.142, 0.500
     ax2.add_patch(FancyBboxPatch((sx, sy), sw, sh,
                                  boxstyle="round,pad=0.006,rounding_size=0.02",
                                  facecolor="#F7F9FC", edgecolor=PALETTE["grey_dark"],
@@ -510,7 +510,7 @@ def fig_circuit():
                  fontsize=10.4, fontweight="bold", color=INK, zorder=4)
     for i, (k, v) in enumerate([("efficacy", 0.915), ("specificity", 0.794),
                                 ("robustness", 1.000), ("safety", 0.877)]):
-        y = sy + sh - 0.135 - i * 0.078
+        y=sy + sh - 0.135 - i * 0.078
         ax2.annotate(k, (sx + 0.013, y), fontsize=9.6, color=PALETTE["grey_dark"], zorder=4)
         ax2.annotate(f"{v:.3f}", (sx + sw - 0.013, y), fontsize=9.6, ha="right",
                      color=INK, fontweight="bold", zorder=4)

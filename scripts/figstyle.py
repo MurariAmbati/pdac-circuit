@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass,field
 from pathlib import Path
 
 import matplotlib
@@ -26,8 +26,8 @@ PALETTE = {
     "violet": "#9A4D8E",
 }
 
-DEFAULT_ORDER = [PALETTE["blue_main"], PALETTE["green_3"], PALETTE["red_strong"],
-                 PALETTE["teal"], PALETTE["violet"], PALETTE["neutral"]]
+DEFAULT_ORDER = [PALETTE["blue_main"],PALETTE["green_3"],PALETTE["red_strong"],
+                 PALETTE["teal"],PALETTE["violet"],PALETTE["neutral"]]
 
 
 @dataclass(frozen=True)
@@ -35,8 +35,8 @@ class FigureStyle:
     font_size: int = 16
     axes_linewidth: float = 2.5
     grid: bool = False
-    font_family: tuple[str, ...] = field(
-        default=("DejaVu Sans", "Helvetica", "Arial", "sans-serif"))
+    font_family: tuple[str,...] = field(
+        default=("DejaVu Sans","Helvetica","Arial","sans-serif"))
 
 
 def apply_publication_style(style: FigureStyle | None = None) -> FigureStyle:
@@ -76,46 +76,46 @@ def apply_publication_style(style: FigureStyle | None = None) -> FigureStyle:
     return style
 
 
-def create_subplots(nrows=1, ncols=1, figsize=None, **kwargs):
-    fig, axes = plt.subplots(nrows, ncols, figsize=figsize, **kwargs)
+def create_subplots(nrows=1,ncols=1,figsize=None,**kwargs):
+    fig,axes = plt.subplots(nrows,ncols,figsize=figsize,**kwargs)
     try:
         axes = axes.ravel()
     except AttributeError:
         axes = [axes]
-    return fig, axes
+    return fig,axes
 
 
-def annotate_bars(ax, bars, values=None, fmt="{:.3f}", fontsize=13, padding=3, weight="bold"):
+def annotate_bars(ax,bars,values=None,fmt="{:.3f}",fontsize=13,padding=3,weight="bold"):
     values = values if values is not None else [b.get_height() for b in bars]
-    for b, v in zip(bars, values):
-        ax.annotate(fmt.format(v), (b.get_x() + b.get_width() / 2, b.get_height()),
-                    textcoords="offset points", xytext=(0, padding),
-                    ha="center", va="bottom", fontsize=fontsize, fontweight=weight,
+    for b,v in zip(bars,values):
+        ax.annotate(fmt.format(v),(b.get_x() + b.get_width() / 2,b.get_height()),
+                    textcoords="offset points",xytext=(0,padding),
+                    ha="center",va="bottom",fontsize=fontsize,fontweight=weight,
                     color=PALETTE["ink"])
 
 
-def tighten_ylim(ax, values, frac=0.45, floor=None):
-    lo, hi = min(values), max(values)
+def tighten_ylim(ax,values,frac=0.45,floor=None):
+    lo,hi = min(values),max(values)
     span = (hi - lo) or (abs(hi) or 1.0)
     low = lo - span * frac
     if floor is not None:
-        low = max(floor, low)
-    ax.set_ylim(low, hi + span * frac)
+        low = max(floor,low)
+    ax.set_ylim(low,hi + span * frac)
 
 
 def ygrid(ax):
     ax.set_axisbelow(True)
-    ax.yaxis.grid(True, color="#E6E8EC", linewidth=1.0)
+    ax.yaxis.grid(True,color="#E6E8EC",linewidth=1.0)
     ax.xaxis.grid(False)
 
 
-def finalize_figure(fig, out_dir, name, formats=("png", "pdf"), dpi=300, pad=2.0, close=True):
+def finalize_figure(fig,out_dir,name,formats=("png","pdf"),dpi=300,pad=2.0,close=True):
     out_dir = Path(out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True,exist_ok=True)
     if pad is not None:
         fig.tight_layout(pad=pad)
     for ext in formats:
-        fig.savefig(out_dir / f"{name}.{ext}", dpi=dpi)
+        fig.savefig(out_dir / f"{name}.{ext}",dpi=dpi)
     if close:
         plt.close(fig)
     return f"{name}." + "/".join(formats)
