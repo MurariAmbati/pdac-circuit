@@ -1,9 +1,9 @@
 {
   "schema": "pdac-circuit.pipeline-sync/1",
   "source_repo": "https://github.com/MurariAmbati/pdac-chromatin-circuit",
-  "source_commit": "873f81a175f9fcba569a04da01f7f4a498a04c1c",
-  "source_subject": "Audit peak duplication in pooled ENCODE corpora; add circuit design campaign",
-  "synced_at": "2026-08-10T09:02:37Z",
-  "files": 330,
+  "source_commit": "cb695bc46d2f0d88fd9ed41c2483fea5a55cadc2",
+  "source_subject": "Circuit design campaign: 11,136 enumerated circuits, none clears the pre-registered floors",
+  "synced_at": "2026-08-10T11:12:53Z",
+  "files": 332,
   "note": "Mirrored from the pipeline repository by scripts/sync_from_pipeline.py. The pipeline repository is authoritative; rerun the script to refresh. Raw data and trained weights are excluded, as in the source."
 }

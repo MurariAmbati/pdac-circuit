@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import numpy as np
 
-from pdac_circuit.core.paths import MODELS, RESULTS
+from pdac_circuit.core.paths import MODELS, REGISTRY_JSON, RESULTS
 from pdac_circuit.core.seeds import set_seeds
 from pdac_circuit.data.genes import crispri_window, gene_locus, promoter_window
 from pdac_circuit.data.reference import fetch_sequence
@@ -272,6 +272,26 @@ def main():
     comp = np.array([r["composite"] for r in allrec])
     kd = np.array([r["knockdown"] for r in allrec])
 
+    pre_v = json.loads(REGISTRY_JSON.read_text(encoding="utf-8"))["prereg"]["module_V"]
+    min_spec = float(pre_v["min_specificity"])
+    guide_cfd = {r["protospacer"]: r["cfd_specificity"] for r in allrec}
+    guide_off = {r["protospacer"]: r["n_off_targets"] for r in allrec}
+    best_g = max(guide_cfd, key=guide_cfd.get)
+    best_t = next(r["target"] for r in allrec if r["protospacer"] == best_g)
+    extra = {
+        "pass_efficacy_pct": round(100.0 * float(np.mean([r["efficacy"] >= floors["efficacy_floor"]
+                                                          for r in allrec])), 2),
+        "pass_safety_pct": round(100.0 * float(np.mean([r["safety"] >= floors["safety_floor"]
+                                                        for r in allrec])), 2),
+        "max_safety": round(max(r["safety"] for r in allrec), 4),
+        "cfd_median": round(float(np.median(list(guide_cfd.values()))), 4),
+        "off_median": round(float(np.median(list(guide_off.values()))), 1),
+        "max_cfd": round(max(guide_cfd.values()), 4),
+        "best_guide_target": best_t,
+        "min_specificity": min_spec,
+        "guides_clearing_minspec": sum(1 for v in guide_cfd.values() if v >= min_spec),
+    }
+
     gz = RESULTS / "circuit_design_campaign_all.jsonl.gz"
     with gzip.open(gz, "wt", encoding="utf-8") as fh:
         for r in allrec:
@@ -310,6 +330,7 @@ def main():
         "module_I": env1.payload["numbers"],
         "skipped_targets": skipped,
         "top_circuits": allrec[:TOP_KEEP],
+        "extra": extra,
         "all_circuits_file": gz.name,
         "runtime_s": round(time.time() - t0, 1),
     }

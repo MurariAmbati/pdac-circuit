@@ -110,16 +110,18 @@ def campaign_section():
     s = json.loads(p.read_text(encoding="utf-8"))
     d = s["design_space"]
     rows = s["top_circuits"]
+    ext = s.get("extra", {})
     pct = 100.0 * s["n_pareto_front0"] / s["n_circuits"]
     stable = 100.0 * s["n_stable"] / s["n_circuits"]
+    effp = ext.get("pass_efficacy_pct", 0.0)
     return f"""
 ## The design campaign
 
 The eight circuits below came from one target list with a single best part chosen at every stage. That
 is a demonstration rather than a search, so the pipeline was rerun as an enumeration over the part
-space. {d['targets_designed']} targets survived part assembly out of
+space. {d['targets_designed']} targets were assembled from the
 {d['targets_considered']:,} in the Module I feature matrix, and each was combined against
-{d['promoters_per_target']} promoters, {d['enhancers_per_target']} enhancer loci and
+{d['promoters_per_target']} promoters, up to {d['enhancers_per_target']} enhancer loci and
 {d['guides_per_target']} guides. Adding paired-target circuits over
 {' and '.join(d['pair_logics'])} logic across the leading {d['pair_top']} targets brings the total to
 {s['n_circuits']:,} circuits, of which {s['n_single_target']:,} act on one transcription factor
@@ -128,10 +130,12 @@ formula, which is why the run took {s['runtime_s']/60:.0f} minutes.
 
 The promoters are not eight copies of the same maximum. A pool of {d['gan_pool']:,} sequences was
 generated and then sampled across its predicted-strength range, so promoter strength enters as a swept
-variable rather than a constant. Enhancers are the strongest accessible loci within 50 kb of each
-transcription start site, ranked by predicted activity. Guides are the highest on-target protospacers
-inside each CRISPRi window, and all {s['n_guides_scanned']} of them carry a genome-wide off-target
-scan of hg38 at up to four mismatches, of which {s['n_guides_zero_offtarget']} return no hit at all.
+variable rather than a constant. Enhancer loci are deduplicated before selection and required to sit at
+least {d.get('min_locus_separation_bp', 500)} bp apart, because peaks pooled across experiments repeat
+the same coordinates and an earlier version of this run was quietly comparing a locus against itself.
+Guides are drawn from a {d.get('guide_preshortlist', 48)}-candidate shortlist per target, ranked the way
+the pipeline ranks them, on predicted activity multiplied by a local specificity estimate, and all
+{s['n_guides_scanned']} survivors carry a genome-wide off-target scan of hg38 at up to four mismatches.
 
 <figure>
   <img src="{{{{ '/images/fig10_design_campaign.png' | relative_url }}}}"
@@ -147,15 +151,42 @@ scan of hg38 at up to four mismatches, of which {s['n_guides_zero_offtarget']} r
 Composite score runs from {s['composite']['min']:.4f} to {s['composite']['max']:.4f} with a median of
 {s['composite']['median']:.4f}, and {s['n_pareto_front0']:,} circuits ({pct:.1f} per cent) are
 non-dominated. Simulated knockdown spans {s['knockdown']['min']:.3f} to {s['knockdown']['max']:.3f}.
-{stable:.1f} per cent of the enumerated circuits reach a stable steady state, so stability is a weak
-filter here and the separation comes from the other axes.
+Every circuit in the enumeration reaches a stable steady state, so stability separates nothing here and
+the four objectives carry all of the discrimination.
 
-That a few per cent of circuits are non-dominated is a statement about the geometry of a four-objective
-problem, not evidence that those circuits work. Enumerating a larger space raises the best observed
-composite score partly because more samples are drawn from the same predictive distributions, and the
-models supplying those predictions carry the held-out error reported on the Evaluation page. The
-campaign establishes that the design space is searchable and that the search is reproducible from
-committed artefacts. It does not establish that any circuit in it is effective.
+## The campaign returns a negative
+
+<div class="callout neg">
+<p>Not one of the {s['n_circuits']:,} circuits clears the pre-registered floors. {effp:.1f} per cent clear
+the efficacy floor of {s['floors']['efficacy_floor']}, and none clears the safety floor of
+{s['floors']['safety_floor']}, the best safety score in the whole enumeration being
+{ext.get('max_safety', 0):.4f}. Under the thresholds this project registered before running anything, the
+enumerated design space contains no acceptable circuit.</p>
+</div>
+
+The constraint that binds is guide specificity, and it binds hard. Safety is built from off-target risk,
+immunogenicity and integration risk, and off-target risk is one minus CFD specificity, so a guide with a
+crowded genome-wide off-target profile caps the safety of every circuit built on it no matter how good the
+promoter and enhancer are. Across the {s['n_guides_scanned']} guides that were scanned, the median CFD
+specificity is {ext.get('cfd_median', 0):.4f} and the median off-target count at up to four mismatches is
+{ext.get('off_median', 0):.0f}. Exactly {ext.get('guides_clearing_minspec', 0)} of {s['n_guides_scanned']}
+clears the Module V minimum specificity of {ext.get('min_specificity', 0.5)}, and that one guide, against
+{ext.get('best_guide_target', 'its target')}, reaches only {ext.get('max_cfd', 0):.4f}.
+
+This is worth stating plainly rather than hiding behind the {s['n_pareto_front0']:,} non-dominated
+circuits. Being non-dominated means nothing else in the set beats a circuit on all four objectives at
+once, which is a statement about the geometry of the enumeration. It is not a pass mark, and here the
+whole set sits below the bar. The efficacy side of the design problem looks tractable, since most circuits
+clear that floor comfortably, while the specificity side does not, and no amount of promoter or enhancer
+search repairs it.
+
+One boundary on this negative should be stated. Each target contributed
+{d['guides_per_target']} guides to the genome-wide scan, selected from a shortlist of
+{d.get('guide_preshortlist', 48)} using a local off-target estimate that only searches the surrounding
+few kilobases. A local estimate is a weak proxy for a genome-wide one, so a deeper scan of more guides per
+target could surface acceptable candidates that this budget missed. The negative is therefore conditional
+on the guide budget, and the honest reading is that acceptable guides are scarce at these loci rather than
+proven absent.
 
 ### Leading circuits from the enumeration
 

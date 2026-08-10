@@ -60,6 +60,15 @@ def main():
     ax=axes[0][1]
     ax.scatter(eff[~front],saf[~front],s=7,c=NEUT,alpha=0.55,linewidths=0,label="dominated")
     ax.scatter(eff[front],saf[front],s=16,c=RED,linewidths=0,label=f"Pareto front ({front.sum()})")
+    fl=s.get("floors",{})
+    if fl:
+        ax.axhline(fl["safety_floor"],color=INK,ls="--",lw=1.6)
+        ax.axvline(fl["efficacy_floor"],color=GREY,ls=":",lw=1.4)
+        ax.text(0.02,fl["safety_floor"],f" safety floor {fl['safety_floor']}  (nothing reaches it)",
+                color=INK,fontsize=11.5,va="bottom",ha="left")
+        ax.text(fl["efficacy_floor"],0.02," efficacy floor",color=GREY,fontsize=11.5,
+                va="bottom",ha="left",rotation=90)
+        ax.set_ylim(0,max(1.0,fl["safety_floor"]*1.12))
     ax.set_xlabel("efficacy")
     ax.set_ylabel("safety")
     ax.set_title("B  Efficacy against safety",loc="left")
