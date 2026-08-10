@@ -1,132 +1,140 @@
 ---
 layout: default
 title: Methods
-subtitle: The eight modules, how each model is trained and evaluated, and the discipline applied to every number.
+subtitle: The eight modules, how each model is trained and evaluated, and the rules applied to every number.
 permalink: /methods/
 ---
 
 ## Pipeline architecture
 
-Eight modules, built from scratch in Python. No external pretrained model supplies candidate features,
-pseudo-labels, or training targets at any point; frozen third-party predictors are permitted only as
-hash-locked evaluation baselines, never as inputs.
+The pipeline is eight modules implemented across 17 packages under `src/pdac_circuit`, comprising roughly 130
+modules, with 51 analysis entrypoints in `scripts/`. No external pretrained model supplies candidate features,
+pseudo-labels, or training targets at any stage. Frozen third-party predictors are permitted in exactly one
+role, as hash-locked evaluation baselines, and never as an input to a design decision.
 
 <div class="tablewrap">
 <table>
 <thead><tr><th>Module</th><th>Package</th><th>Function</th></tr></thead>
 <tbody>
-<tr><td>I</td><td><code>targeting/</code></td><td>Rank PDAC-driver transcription factors from TCGA-PAAD versus GTEx expression, IntOGen and NCG driver catalogues, and Moffitt subtype signatures, combined by multi-criteria decision analysis</td></tr>
-<tr><td>II</td><td><code>parts/</code></td><td>Trained promoter-strength and enhancer-activity models; CRISPRi repressor selection</td></tr>
-<tr><td>III</td><td><code>circuit/</code></td><td>AND / NOT logic with feedback; Boolean-network and Hill-ODE viability and robustness analysis</td></tr>
-<tr><td>IV</td><td><code>seqopt/</code></td><td>Sequence optimisation: GC content, cryptic splice sites, restriction sites, codon adaptation by Viterbi, 5′ structure</td></tr>
-<tr><td>V</td><td><code>grna/</code></td><td>PAM scanning, trained on-target efficiency model, CFD and MIT off-target scoring</td></tr>
-<tr><td>VI</td><td><code>scoring/</code></td><td>Efficacy, specificity, robustness and safety objectives resolved by NSGA-II Pareto optimisation</td></tr>
-<tr><td>VII</td><td><code>generate/</code></td><td>Trained promoter WGAN-GP generating novel synthetic promoters</td></tr>
-<tr><td>VIII</td><td><code>attractor/</code></td><td>Regulatory attractor-control dynamics — see <a href="{{ '/validation/' | relative_url }}">Validation</a> for its retraction</td></tr>
+<tr><td>I</td><td><code>targeting/</code></td><td>Ranks PDAC driver transcription factors using TCGA-PAAD against GTEx expression, the IntOGen and NCG driver catalogues, and Moffitt subtype signatures, combined by multi-criteria decision analysis in <code>prioritize.py</code></td></tr>
+<tr><td>II</td><td><code>parts/</code></td><td>Holds the trained promoter-strength and enhancer-activity models and the CRISPRi repressor selection in <code>select.py</code></td></tr>
+<tr><td>III</td><td><code>circuit/</code></td><td>Builds AND and NOT logic with feedback, then analyses viability and robustness through Boolean-network and Hill-ODE treatments in <code>stability.py</code></td></tr>
+<tr><td>IV</td><td><code>seqopt/</code></td><td>Optimises sequence for GC content, cryptic splice sites, restriction sites, codon adaptation by Viterbi decoding, and 5′ structure</td></tr>
+<tr><td>V</td><td><code>grna/</code></td><td>Scans for PAMs, applies the trained on-target model, and scores off-targets by CFD and MIT, with the genome-wide search in <code>genome_offtarget.py</code></td></tr>
+<tr><td>VI</td><td><code>scoring/</code></td><td>Resolves efficacy, specificity, robustness and safety objectives by NSGA-II Pareto optimisation</td></tr>
+<tr><td>VII</td><td><code>generate/</code></td><td>Contains the promoter WGAN-GP and its evaluation in <code>evaluate.py</code></td></tr>
+<tr><td>VIII</td><td><code>attractor/</code></td><td>Implements the regulatory attractor-control dynamics whose central claim is retracted, as set out on the <a href="{{ '/validation/' | relative_url }}">validation page</a></td></tr>
 </tbody>
 </table>
 </div>
 
+Supporting packages carry the machinery that the eight modules rely on. `harness/` holds the shared training
+loop, the split logic and the fixture system. `data/` holds the loaders and interval indexing. `stats/` holds
+the metrics, the permutation and conformal routines, and the certification lattice. `chromatin/` is the
+largest package at 30 modules and covers the long-range chromatin model and its data handling.
+
 ## Trained models
 
-### gRNA on-target efficiency (Module V)
+### gRNA on-target efficiency, module V
 
-**Data.** Doench-2016 Rule Set 2 (5,310 guides, 17 genes, drug-gene rank endpoint) merged with Kim et al.
-2019 (12,832 high-throughput SpCas9 guides, background-subtracted indel frequency). Both use the identical
-(4 + 20 + 3 + 3) 30-mer context format.
+Training data combines Doench-2016 Rule Set 2, which contributes 5,310 guides across 17 genes with a
+drug-gene rank endpoint, and Kim et al. 2019, which contributes 12,832 high-throughput SpCas9 guides with a
+background-subtracted indel frequency endpoint. Both use the same 4 + 20 + 3 + 3 nucleotide 30-mer context.
+Assembly happens in `src/pdac_circuit/grna/datamodule.py`.
 
-**Pooling two endpoints.** The two datasets measure different quantities, so Kim's indel percentages are
-rank-normalised *within dataset* before pooling. Spearman is the reporting metric, so a monotone
-within-dataset transform is the appropriate way to combine them; the cross-dataset generalisation test
-described in Results is what justified pooling at all.
+Because the two endpoints are not the same quantity, Kim's indel percentages are rank-normalised within
+their own dataset before the sets are pooled. Spearman is the reporting metric, so a monotone within-dataset
+transform is the correct way to combine them, and it avoids the mistake of treating a rank in one assay as
+equivalent to a percentage in another.
 
-**Architecture.** A gradient-boosted tree over engineered Rule-Set-2 style features — position-wise
-nucleotide one-hot, dinucleotide counts, GC content, melting temperature — ensembled with a sequence CNN
-reading the 30-mer one-hot directly.
+The model itself is an ensemble. A gradient-boosted tree reads engineered Rule-Set-2 style features covering
+position-wise nucleotide identity, dinucleotide counts, GC content and melting temperature, while a
+convolutional network reads the 30-mer one-hot encoding directly. Evaluation uses the gene-grouped split in
+`training.py`, so no gene appears on both sides and guide-neighbourhood leakage is prevented. Kim's synthetic
+targets receive disjoint pseudo-groups so they can never share a group with a Doench gene. The headline
+figure is measured on the held-out genes CCDC101, CD15 and CD45, which together supply 688 guides, and that
+set is held identical across every comparison reported anywhere in the project.
 
-**Evaluation.** Gene-grouped split so no gene appears in both train and test, which prevents
-guide-neighbourhood leakage. Kim's synthetic targets receive disjoint pseudo-groups so they can never share
-a group with a Doench gene. The reported figure is on the held-out Doench genes CCDC101, CD15 and CD45
-(688 guides), held identical across every comparison.
+### Promoter strength, module II
 
-### Promoter strength (Module II)
+Training data is FANTOM5 CAGE, giving 209,374 peaks on standard chromosomes once lifted to hg38 windows, each
+labelled by log10 mean TPM across samples. Assembly is in `src/pdac_circuit/parts/datamodule.py`.
 
-**Data.** FANTOM5 CAGE peaks lifted to hg38 windows, 209,374 on standard chromosomes, labelled by
-log10 mean TPM across samples.
+The architecture pairs a dilated convolutional network over 1,000 bp of one-hot sequence, supplemented with
+GC and CpG auxiliary scalars, against a gradient-boosted tree over 4-mer frequency features. Predictions are
+mapped into the unit interval through the training CDF, which means the reported strength is a rank within
+the training distribution rather than a physical unit, and that distinction is preserved wherever the value
+is consumed downstream in `parts/select.py`.
 
-**Architecture.** A dilated sequence CNN over 1,000 bp one-hot with GC and CpG auxiliary scalars, ensembled
-with a gradient-boosted tree over 4-mer frequency features. Output is mapped to [0, 1] through the training
-CDF, so the reported "strength" is a rank within the training distribution rather than a physical unit.
+Evaluation holds chr8 and chr9 for test and chr7 for validation, with everything else used for training. The
+ensemble weight is chosen by grid search on validation only.
 
-**Evaluation.** Chromosome-held-out: chr8 and chr9 are test, chr7 validation, everything else train. The
-ensemble weight is chosen by grid search on validation.
+### Enhancer activity, module II
 
-### Enhancer activity (Module II)
+Positives are ENCODE pancreas ATAC peaks that intersect H3K27ac, labelled with the H3K27ac signal. Negatives
+come in two kinds, because a classifier trained only against easy negatives learns an easy problem. Hard
+negatives are accessible regions carrying no H3K27ac, and easy negatives are random genomic background drawn
+from outside any ATAC peak. The model is a multitask convolutional network over 2,000 bp with a
+classification head and a signal-regression head trained jointly, which lets the signal head act as an
+auxiliary constraint on the representation rather than a separate model.
 
-**Data.** ENCODE pancreas ATAC-seq peaks. Active examples are ATAC peaks intersecting H3K27ac, labelled with
-H3K27ac signal; negatives are hard negatives (accessible but unmarked) plus random genomic background
-excluded from any ATAC peak.
+### Promoter generator, module VII
 
-**Architecture.** A multitask CNN over 2,000 bp with two heads — active/inactive classification and
-H3K27ac signal regression — trained jointly.
+The generator is trained on the top-activity quartile of FANTOM5 promoters, giving 52,342 real sequences of
+1,024 bp. It is a WGAN-GP with gradient penalty of 10 and five critic steps per generator step, run for 2,500
+generator iterations with early stopping on the best 4-mer divergence.
 
-**Evaluation.** Same chromosome-held-out protocol. AUROC on the classification head is the headline; signal
-Spearman on active regions is reported alongside.
-
-### Promoter generator (Module VII)
-
-**Data.** The top-activity quartile of FANTOM5 promoters, 52,342 real 1,024 bp sequences.
-
-**Architecture.** WGAN-GP with gradient penalty λ = 10 and five critic steps per generator step, trained for
-2,500 generator iterations with best-4-mer-divergence early stopping.
-
-**Certification.** Pre-registered and two-sided: generated promoters must match real 4-mer composition better
-than random DNA (Jensen–Shannon ≤ 0.05 *and* below random), and the library must contain a strong selectable
-tail (90th-percentile predicted strength ≥ 0.7). Median strength uplift is reported but deliberately not
-gated — a faithful generator reproduces the full, weak-heavy real promoter distribution, so its median sits
-near random by construction. The value is realistic composition plus a strong tail, because the pipeline
-selects the strongest generated promoter rather than a random one.
+Certification is deliberately two-sided and was fixed before training. Generated promoters must match real
+4-mer composition better than random DNA, requiring Jensen-Shannon divergence at or below 0.05 and strictly
+below the random baseline, and the library must contain a strong selectable tail, requiring a 90th-percentile
+predicted strength at or above 0.7. Median strength uplift is reported but deliberately not gated, and the
+reason matters. A faithful generator reproduces the full real promoter distribution, which is weak-heavy, so
+its median necessarily sits near random. Gating on the median would therefore reward a generator that had
+learned the wrong distribution. What the pipeline actually consumes is the strongest sequence in a generated
+library, which is why the tail is the gated quantity.
 
 ## Evaluation discipline
 
-These rules are what make the numbers comparable across the project.
+These rules are what make numbers comparable across the project, and several of them exist because an earlier
+version of the work violated them.
 
-**Apples-to-apples baselines.** When a model is retrained, the previously deployed model is re-scored on the
-identical held-out set rather than compared against its historical reported figure. Historical numbers can
-differ for reasons unrelated to the change being tested.
+Baselines are always re-scored rather than quoted. When a model is retrained, the previously deployed model
+is evaluated again on the identical held-out set, because a historical reported figure can differ for reasons
+unrelated to the change under test.
 
-**Validation-selected hyperparameters.** Ensemble weights are chosen on a held-out validation split that never
-overlaps test. Where an older weight had been chosen with knowledge of test performance, it was replaced.
+Hyperparameters that touch the reported number are selected on validation. Ensemble weights are chosen on a
+held-out validation split that never overlaps test. Where an older weight had been chosen with knowledge of
+test performance, it was replaced even though doing so lowered the headline figure slightly.
 
-**Diagnose before integrating.** New data is tested for transferability before being merged. The
-Doench→Kim cross-dataset score is the example: had it come back near chance, the datasets would not have been
-pooled.
+New data is diagnosed before it is integrated. The Doench to Kim cross-dataset test is the worked example,
+and it was run with the explicit understanding that a result near chance would have prevented the merge.
 
-**Pre-registration.** Thresholds and margins live in a registry written before training, so a result either
-clears a pre-committed bar or is reported as not clearing it. The gRNA Spearman margin, the promoter and
-enhancer margins, the generator's realism and tail bounds, and the guide-specificity minimum are all fixed in
-advance.
+Thresholds are pre-registered. Margins live in a registry written before training, so a result either clears
+a bar committed in advance or is reported as not clearing it. The gRNA Spearman margin, the promoter and
+enhancer margins, the generator's realism and tail bounds, and the guide-specificity minimum are all fixed
+there.
 
-**Frozen predeploy fixtures.** Each deployed model ships a frozen set of real test rows together with their
-CPU predictions. Reloading the checkpoint must reproduce those predictions to 1 × 10⁻⁴ or the model fails its
-gate. This catches silent weight corruption and environment drift, and it is verified for all four deployed
-models.
+Deployed weights are provenance-locked. Each model ships a frozen set of real test rows together with their
+CPU predictions, handled by `src/pdac_circuit/harness/fixtures.py`. Reloading the checkpoint must reproduce
+those predictions to within 1e-4 or the model fails its gate, which catches silent weight corruption and
+environment drift. All four deployed models currently reproduce exactly.
 
-**Provenance by hash.** Every corpus is recorded with source URL, byte count and SHA-256. Raw data bytes stay
-out of version control; the hashes are the provenance. Model weights are likewise excluded, with the
-manifest's `weight_sha256` binding a reported metric to a specific checkpoint.
+Absence of evidence is reported as absence rather than as a default value. The locus-neighbourhood off-target
+search cannot establish specificity, so it never populates the specificity field at all. Only a genome-wide
+scan does, and every other path fails safe to maximum risk. This is why disabling the genome-wide search
+yields a certified negative instead of an apparently clean guide.
 
-**Honest abstention.** Where evidence is absent, the pipeline returns a certified-negative rather than a
-default value. The locus-neighbourhood off-target search cannot establish specificity, so it never populates
-the specificity field; only a genome-wide scan does, and every other path fails safe to maximum risk.
+## Reproducing the analysis
 
-## Reproducing the figures
-
-Every figure on this site is generated from the pipeline's result files rather than transcribed, so the
-published numbers cannot drift from the data:
+The site's figures are generated from the pipeline's result files rather than transcribed, so a published
+number cannot drift from the data behind it.
 
 ```
 python scripts/make_figures.py
+python scripts/build_pages.py
 ```
 
-The script reads the model manifests and result JSONs directly and writes both PNG and vector PDF at 300 dpi.
+The first script reads the model manifests and result JSONs and writes each figure as a 300 dpi PNG together
+with a vector PDF. The second converts the project's primary documents into the pages under
+[full reports]({{ '/reports/' | relative_url }}) and regenerates the
+[evaluation tables]({{ '/evaluation/' | relative_url }}) from the same sources.
