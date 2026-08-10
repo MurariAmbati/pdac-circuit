@@ -270,6 +270,77 @@ cross-validated AUC by {rig['covariate_control']['auc_covariates_plus_collapse_c
     (PAGES / "evaluation.md").write_text(fm + body, encoding="utf-8")
 
 
+FIGURE_SOURCES = [
+    ("index.md", "Overview", "/"),
+    ("_pages/results.md", "Results", "/results/"),
+    ("_pages/methods.md", "Methods", "/methods/"),
+    ("_pages/validation.md", "Validation", "/validation/"),
+]
+
+FIG_BLOCK = re.compile(r"<figure>\s*(.*?)\s*</figure>", re.S)
+FIG_IMG = re.compile(r"<img src=\"\{\{\s*'/images/([^']+)'[^>]*alt=\"([^\"]*)\"", re.S)
+FIG_CAP = re.compile(r"<figcaption>(.*?)</figcaption>", re.S)
+FIG_NUM = re.compile(r"<b>Figure\s+(\d+)\.</b>\s*(.*)", re.S)
+
+
+def collect_figures():
+    out = []
+    for rel, page, url in FIGURE_SOURCES:
+        p = ROOT / rel
+        if not p.exists():
+            continue
+        text = p.read_text(encoding="utf-8")
+        for block in FIG_BLOCK.findall(text):
+            im = FIG_IMG.search(block)
+            cap = FIG_CAP.search(block)
+            if not im or not cap:
+                continue
+            body = " ".join(cap.group(1).split())
+            m = FIG_NUM.match(body)
+            num = int(m.group(1)) if m else 999
+            caption = m.group(2) if m else body
+            out.append({"n": num, "file": im.group(1), "alt": im.group(2),
+                        "caption": caption, "page": page, "url": url})
+    seen, uniq = set(), []
+    for f in sorted(out, key=lambda d: d["n"]):
+        if f["n"] in seen:
+            continue
+        seen.add(f["n"])
+        uniq.append(f)
+    return uniq
+
+
+def figures_page():
+    figs = collect_figures()
+    parts = []
+    for f in figs:
+        stem = f["file"].rsplit(".", 1)[0]
+        parts.append(
+            '<figure id="fig%d">\n'
+            '  <img src="{{ \'/images/%s\' | relative_url }}" alt="%s">\n'
+            '  <figcaption><b>Figure %d.</b> %s\n'
+            '  <span class="figmeta">Appears in <a href="{{ \'%s\' | relative_url }}">%s</a>. '
+            'Vector copy <a href="{{ \'/images/%s.pdf\' | relative_url }}">%s.pdf</a>.</span>'
+            '</figcaption>\n</figure>'
+            % (f["n"], f["file"], f["alt"], f["n"], f["caption"], f["url"], f["page"], stem, stem)
+        )
+    toc = "\n".join(
+        '<li><a href="#fig%d">Figure %d</a> <span class="l">%s</span></li>' % (f["n"], f["n"], f["alt"])
+        for f in figs)
+    fm = ('---\nlayout: default\ntitle: "Figures"\n'
+          'subtitle: "Every figure on the site, with its caption and a vector copy."\n'
+          'description: "Complete figure list for the PDAC chromatin-circuit project."\n'
+          'permalink: /figures/\n---\n\n')
+    intro = (
+        "Each figure is generated directly from the pipeline's result files by "
+        "`scripts/make_figures.py` and is written as a 300 dpi raster together with a vector copy "
+        "suitable for print. The captions below are the captions carried on the pages where the figures "
+        "appear, extracted at build time so that the two cannot drift apart.\n\n"
+        '<ul class="doclist figindex">\n%s\n</ul>\n\n' % toc)
+    (PAGES / "figures.md").write_text(fm + intro + "\n\n".join(parts) + "\n", encoding="utf-8")
+    print("  figures page (%d figures)" % len(figs))
+
+
 def main():
     PAGES.mkdir(parents=True, exist_ok=True)
     print("converting writeups:")
@@ -284,6 +355,7 @@ def main():
                "later retracted or superseded; where that happened the overturn is stated in place rather "
                "than removed.")
     evaluation_page()
+    figures_page()
     print("  evaluation page + 2 index pages")
 
 

@@ -91,6 +91,12 @@ pre code { background: none; border: 0; padding: 0; }
 .doclist a { text-decoration: none; font-size: 1.03rem; }
 .doclist .l { color: var(--mut); font-size: .88rem; display: inline-block; margin-top: 3px; }
 
+.figmeta { display: block; margin-top: 7px; font-size: .82rem; color: var(--mut); }
+.figindex li { padding: 10px 16px; margin-bottom: 7px; }
+.figindex a { font-size: .96rem; font-weight: 600; }
+.figindex .l { display: block; margin-top: 1px; font-size: .84rem; }
+figure[id] { scroll-margin-top: 78px; padding-top: 4px; }
+
 .next { display: flex; gap: 14px; flex-wrap: wrap; margin: 34px 0 0; }
 .next a { display: inline-block; border: 1px solid var(--line); border-radius: 8px; padding: 11px 16px; text-decoration: none; color: var(--fg); font-size: .92rem; font-weight: 600; }
 .next a:hover { border-color: var(--acc); color: var(--acc); text-decoration: none; }

@@ -115,6 +115,7 @@ Exact held-out numbers for every model, split and comparison are tabulated on th
 <a href="{{ '/methods/' | relative_url }}">Methods →</a>
 <a href="{{ '/validation/' | relative_url }}">Validation →</a>
 <a href="{{ '/data/' | relative_url }}">Data →</a>
+<a href="{{ '/figures/' | relative_url }}">Figures →</a>
 <a href="{{ '/addenda/' | relative_url }}">Addenda →</a>
 <a href="{{ '/reports/' | relative_url }}">Full reports →</a>
 </div>
