@@ -86,8 +86,26 @@ available, which is more real data. Two separate limits were found. The peak loa
 `src/pdac_circuit/data/tracks.py` carried `max_files: int = 4`, so the project had only ever retrieved four
 ATAC and four H3K27ac pancreas peak files when ENCODE has released ten and fourteen. Fetching the remaining
 sixteen through `scripts/fetch_all_pancreas_peaks.py` raised the ATAC interval count from 874,795 to
-1,974,976 and the accessible, H3K27ac-marked regions from 470,874 to 1,376,493. That is additional
-biological replication across donors and experiments rather than more peaks resampled from the same files.
+1,974,976 and the accessible, H3K27ac-marked regions from 470,874 to 1,376,493.
+
+<div class="callout neg">
+<p>An audit run afterwards showed that those interval counts are not counts of distinct regions, and an
+earlier version of this page described them as though they were. Peaks are pooled across every released
+experiment without merging, so a region called in several experiments is counted once per experiment. Of
+the 1,974,976 ATAC intervals only 684,673 are distinct coordinates, a duplication factor of 2.88 and a
+redundant fraction of 65.3 per cent. For H3K27ac the factor is 1.36. Because
+<code>scripts/enhancer_maxdata.py</code> iterates the pooled intervals without deduplication, a region
+observed in several experiments contributes one training row per observation, so the training set grew by
+considerably less in distinct regions than the row count suggests. The numbers come from
+<code>scripts/peak_duplication_audit.py</code> and are recorded in
+<code>results/peak_duplication_audit.json</code>.</p>
+</div>
+
+The duplication does not put the held-out comparison at risk, because the split is by chromosome and every
+copy of a duplicated region falls on the same side of it. What it changes is the interpretation. The
+additional files do carry real replication across donors and experiments, and repeated observation of the
+same region is evidence about that region rather than noise, but it is not the same thing as covering more
+of the genome.
 
 The second limit was that the shared trainer moves its whole tensor onto the GPU, and one-hot sequence at
 2,000 bp in float32 costs 32 kB per row, so the previous 135,402-row set already occupied 4.3 GB of a 12 GB
@@ -95,7 +113,8 @@ card. Training on the enriched data required storing base indices as `int8` on t
 one-hot per batch on the device, which is sixteen times smaller and is implemented in
 `scripts/enhancer_maxdata.py`.
 
-The model was then retrained on 540,199 rows, eight times the previous training set, and evaluated on all
+The model was then retrained on 540,199 rows, eight times the previous training set in rows though by less
+than that in distinct regions for the reason given above, and evaluated on all
 54,103 chr8 and chr9 rows of the enriched dataset. The previously deployed model was re-scored on that same
 test, giving 0.8300 against 0.8375 for the new one.
 

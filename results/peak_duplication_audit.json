@@ -1,0 +1,220 @@
+{
+  "schema": "pdac-circuit.peak-duplication-audit/1",
+  "data_class": "REAL",
+  "generatedAt": "2026-08-10T09:01:13Z",
+  "question": "The enhancer scale-up counted raw peak intervals pooled across every released ENCODE pancreas experiment. A region called in more than one experiment appears once per experiment. This audit measures how many of those intervals are distinct genomic coordinates.",
+  "corpora": {
+    "encode-pancreas-atac": {
+      "intervals": 1974976,
+      "distinct_coordinates": 684673,
+      "redundant": 1290303,
+      "redundant_fraction": 0.6533,
+      "duplication_factor": 2.8846,
+      "per_chromosome": {
+        "chr1": {
+          "intervals": 192397,
+          "distinct": 65230
+        },
+        "chr10": {
+          "intervals": 98948,
+          "distinct": 35170
+        },
+        "chr11": {
+          "intervals": 100801,
+          "distinct": 33935
+        },
+        "chr12": {
+          "intervals": 94442,
+          "distinct": 32482
+        },
+        "chr13": {
+          "intervals": 48651,
+          "distinct": 17726
+        },
+        "chr14": {
+          "intervals": 65933,
+          "distinct": 22794
+        },
+        "chr15": {
+          "intervals": 67635,
+          "distinct": 23116
+        },
+        "chr16": {
+          "intervals": 68866,
+          "distinct": 22808
+        },
+        "chr17": {
+          "intervals": 90942,
+          "distinct": 29351
+        },
+        "chr18": {
+          "intervals": 41412,
+          "distinct": 15250
+        },
+        "chr19": {
+          "intervals": 72392,
+          "distinct": 21484
+        },
+        "chr2": {
+          "intervals": 157530,
+          "distinct": 55912
+        },
+        "chr20": {
+          "intervals": 50730,
+          "distinct": 18247
+        },
+        "chr21": {
+          "intervals": 25166,
+          "distinct": 8856
+        },
+        "chr22": {
+          "intervals": 40885,
+          "distinct": 13499
+        },
+        "chr3": {
+          "intervals": 122270,
+          "distinct": 44315
+        },
+        "chr4": {
+          "intervals": 90517,
+          "distinct": 33172
+        },
+        "chr5": {
+          "intervals": 102693,
+          "distinct": 36797
+        },
+        "chr6": {
+          "intervals": 116129,
+          "distinct": 40302
+        },
+        "chr7": {
+          "intervals": 104336,
+          "distinct": 36646
+        },
+        "chr8": {
+          "intervals": 86063,
+          "distinct": 30822
+        },
+        "chr9": {
+          "intervals": 84733,
+          "distinct": 29144
+        },
+        "chrX": {
+          "intervals": 51457,
+          "distinct": 17584
+        },
+        "chrY": {
+          "intervals": 48,
+          "distinct": 31
+        }
+      }
+    },
+    "encode-pancreas-h3k27ac": {
+      "intervals": 862832,
+      "distinct_coordinates": 636347,
+      "redundant": 226485,
+      "redundant_fraction": 0.2625,
+      "duplication_factor": 1.3559,
+      "per_chromosome": {
+        "chr1": {
+          "intervals": 88018,
+          "distinct": 64418
+        },
+        "chr10": {
+          "intervals": 43314,
+          "distinct": 32018
+        },
+        "chr11": {
+          "intervals": 46116,
+          "distinct": 33790
+        },
+        "chr12": {
+          "intervals": 40911,
+          "distinct": 30098
+        },
+        "chr13": {
+          "intervals": 19280,
+          "distinct": 14418
+        },
+        "chr14": {
+          "intervals": 29165,
+          "distinct": 21428
+        },
+        "chr15": {
+          "intervals": 30197,
+          "distinct": 22111
+        },
+        "chr16": {
+          "intervals": 35881,
+          "distinct": 26519
+        },
+        "chr17": {
+          "intervals": 48234,
+          "distinct": 35271
+        },
+        "chr18": {
+          "intervals": 16834,
+          "distinct": 12514
+        },
+        "chr19": {
+          "intervals": 43566,
+          "distinct": 31806
+        },
+        "chr2": {
+          "intervals": 63375,
+          "distinct": 46872
+        },
+        "chr20": {
+          "intervals": 24170,
+          "distinct": 17912
+        },
+        "chr21": {
+          "intervals": 10535,
+          "distinct": 7751
+        },
+        "chr22": {
+          "intervals": 22551,
+          "distinct": 16539
+        },
+        "chr3": {
+          "intervals": 49488,
+          "distinct": 36637
+        },
+        "chr4": {
+          "intervals": 33327,
+          "distinct": 25052
+        },
+        "chr5": {
+          "intervals": 38691,
+          "distinct": 28888
+        },
+        "chr6": {
+          "intervals": 45494,
+          "distinct": 33541
+        },
+        "chr7": {
+          "intervals": 42449,
+          "distinct": 31646
+        },
+        "chr8": {
+          "intervals": 35410,
+          "distinct": 26318
+        },
+        "chr9": {
+          "intervals": 38874,
+          "distinct": 28609
+        },
+        "chrX": {
+          "intervals": 16765,
+          "distinct": 12052
+        },
+        "chrY": {
+          "intervals": 187,
+          "distinct": 139
+        }
+      }
+    }
+  },
+  "finding": "Of 1,974,976 pooled ATAC intervals only 684,673 are distinct coordinates, a duplication factor of 2.8846. scripts/enhancer_maxdata.py iterates the pooled intervals without deduplication, so a region called in k experiments contributes k training rows. The reported growth of the enhancer training set therefore overstates the growth in distinct accessible regions.",
+  "leakage": "This does not create train/test leakage. Splits are held out by chromosome, so every copy of a duplicated region falls on the same side of the split."
+}
