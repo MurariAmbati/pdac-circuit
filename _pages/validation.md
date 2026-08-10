@@ -28,7 +28,7 @@ identical data rather than on independently drawn samples.
 
 <figure>
   <img src="{{ '/images/fig5_rac_validation.png' | relative_url }}" alt="Attractor collapse versus degree and eigenvector centrality, with a confidence interval on the difference">
-  <figcaption><b>Figure 7.</b> Across 419 genes carrying 31 essential positives, attractor collapse reaches
+  <figcaption><b>Figure 10.</b> Across 419 genes carrying 31 essential positives, attractor collapse reaches
   AUC 0.547 while plain network degree reaches 0.629. The paired-bootstrap 95 percent confidence interval on
   the difference spans zero.</figcaption>
 </figure>

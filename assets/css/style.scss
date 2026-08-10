@@ -55,20 +55,20 @@ a:hover { text-decoration: underline; }
 figure { margin: 26px 0; }
 figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
 figcaption { color: var(--mut); font-size: .87rem; margin-top: 9px; line-height: 1.55; }
-figcaption b { color: var(--fg); }
+figcaption b { color: var(--fg); font-weight: 600; }
 
 .tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
 table { width: 100%; border-collapse: collapse; font-size: .92rem; }
 th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-th { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--mut); font-weight: 700; white-space: nowrap; }
+th { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--mut); font-weight: 600; white-space: nowrap; }
 tbody tr:hover { background: var(--soft); }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-.up { color: var(--good); font-weight: 650; }
-.dn { color: var(--bad); font-weight: 650; }
+.up { color: var(--good); }
+.dn { color: var(--bad); }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(196px, 1fr)); gap: 14px; margin: 26px 0; }
 .card { border: 1px solid var(--line); border-radius: 10px; padding: 17px 18px; background: var(--soft); }
-.card .k { font-size: 1.72rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.card .k { font-size: 1.62rem; font-weight: 600; letter-spacing: -.02em; font-variant-numeric: tabular-nums; line-height: 1.15; }
 .card .l { color: var(--mut); font-size: .81rem; margin-top: 5px; line-height: 1.5; }
 
 .callout { border-left: 3px solid var(--acc); background: var(--soft); padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 24px 0; }

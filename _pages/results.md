@@ -19,10 +19,10 @@ weights are selected on the validation split and never on test.
 <table>
 <thead><tr><th>Model</th><th>Module</th><th>Architecture</th><th>Metric</th><th class="num">Capped</th><th class="num">Full data</th><th class="num">Δ</th></tr></thead>
 <tbody>
-<tr><td><b>gRNA on-target</b></td><td>V</td><td>GBT + CNN</td><td>Spearman</td><td class="num">0.4938</td><td class="num up">0.6571</td><td class="num up">+0.1633</td></tr>
-<tr><td><b>Promoter strength</b></td><td>II</td><td>GBT + CNN</td><td>Spearman</td><td class="num">0.5199</td><td class="num up">0.5275</td><td class="num up">+0.0075</td></tr>
-<tr><td><b>Enhancer activity</b></td><td>II</td><td>multitask CNN</td><td>AUROC</td><td class="num">0.8087</td><td class="num up">0.8147</td><td class="num up">+0.0060</td></tr>
-<tr><td><b>Promoter generator</b></td><td>VII</td><td>WGAN-GP</td><td>p90 strength</td><td class="num">0.937</td><td class="num up">0.992</td><td class="num up">+0.055</td></tr>
+<tr><td>gRNA on-target</td><td>V</td><td>GBT + CNN</td><td>Spearman</td><td class="num">0.4938</td><td class="num up">0.6571</td><td class="num up">+0.1633</td></tr>
+<tr><td>Promoter strength</td><td>II</td><td>GBT + CNN</td><td>Spearman</td><td class="num">0.5199</td><td class="num up">0.5275</td><td class="num up">+0.0075</td></tr>
+<tr><td>Enhancer activity</td><td>II</td><td>multitask CNN</td><td>AUROC</td><td class="num">0.8087</td><td class="num up">0.8147</td><td class="num up">+0.0060</td></tr>
+<tr><td>Promoter generator</td><td>VII</td><td>WGAN-GP</td><td>p90 strength</td><td class="num">0.937</td><td class="num up">0.992</td><td class="num up">+0.055</td></tr>
 </tbody>
 </table>
 </div>
@@ -146,6 +146,17 @@ out-of-sample comparison rather than a circular restatement of how they were cho
 <div class="card"><div class="k">70%</div><div class="l">of targets gain signal, against 46% of background</div></div>
 </div>
 
+<figure>
+  <img src="{{ '/images/fig8_evidence_heatmap.png' | relative_url }}" alt="Heatmap of multi-omic evidence layers across the prioritised target genes">
+  <figcaption><b>Figure 7.</b> Multi-omic evidence for each prioritised target, with every layer standardised
+  within its own column so that quantities on different scales can be read side by side. Red indicates a
+  higher value within a layer and blue a lower one. Hatched cells are layers in which that gene was not
+  measured, and two columns are hatched throughout, which records that promoter methylation and the ATAC
+  residual are unavailable for this target set rather than that they were zero. The pattern is deliberately
+  uneven, since no single layer nominates a target and the prioritisation depends on agreement across
+  several. Assembled by <code>scripts/rac_target_dossiers.py</code>.</figcaption>
+</figure>
+
 Signal is measured on ENCODE fold-change-over-control bigWigs comparing PANC-1 against healthy pancreas over
 TSS ±2000 bp on GRCh38, with the comparison implemented in `scripts/pdac_residual_foldchange.py`. The
 strongest individual gains are HOXA3 at +5.88, FOSL1 at +2.77, MYBL2 at +2.19 and SMAD3 at +2.12. GATA6 moves
@@ -176,6 +187,16 @@ across every design. Robustness is computed as an actual per-circuit parameter s
 `src/pdac_circuit/circuit/stability.py`, and knockdown is read from a steady-state solution rather than
 assumed. Several thousand circuits are individually simulated in the deep design path rather than ranked by a
 closed-form score.
+
+<figure>
+  <img src="{{ '/images/fig9_circuit.png' | relative_url }}" alt="Schematic of a designed CRISPRi circuit targeting GATA6 with negative feedback">
+  <figcaption><b>Figure 8.</b> One designed circuit, drawn from the classical-subtype deep run. A synthetic
+  promoter taken from the generated library, together with an enhancer scored by the activity model, drives a
+  dCas9-KRAB effector, which is directed to the GATA6 locus by a guide scored by the on-target model. Blunt
+  heads denote repression and the dashed edge is the negative feedback that makes the steady state
+  self-limiting. Kinetics follow the Hill form shown, with the promoter supplying the production rate
+  and each incoming edge contributing an activating or repressive term.</figcaption>
+</figure>
 
 The end-to-end run currently returns ABSTAIN with certification `certified-negative` and emits zero circuits.
 This follows directly from repairing the off-target search. Once specificity is evaluated genome-wide by

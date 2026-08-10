@@ -12,6 +12,15 @@ modules, with 51 analysis entrypoints in `scripts/`. No external pretrained mode
 pseudo-labels, or training targets at any stage. Frozen third-party predictors are permitted in exactly one
 role, as hash-locked evaluation baselines, and never as an input to a design decision.
 
+<figure>
+  <img src="{{ '/images/fig7_architecture.png' | relative_url }}" alt="Block diagram of the eight-module pipeline and its data sources">
+  <figcaption><b>Figure 9.</b> Pipeline organisation. The five modules on the main path run left to right,
+  each drawing directly on the real data corpora above them. Module VII supplies generated promoter libraries
+  into the parts stage, and Module VIII fed the target-prioritisation stage before its predictive claim was
+  withdrawn, which is why that edge is drawn dashed. Any stage lacking the evidence to proceed returns a
+  certified negative rather than a default value.</figcaption>
+</figure>
+
 <div class="tablewrap">
 <table>
 <thead><tr><th>Module</th><th>Package</th><th>Function</th></tr></thead>
