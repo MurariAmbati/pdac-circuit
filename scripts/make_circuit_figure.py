@@ -6,19 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
+import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
-from circuit_glyphs import (
-    backbone,
-    cassette_part,
-    cds,
-    curved,
-    dcas9,
-    dna_duplex,
-    guide_rna,
-    promoter,
-    repression,
-    terminator,
-)
 from figstyle import PALETTE, apply_publication_style, finalize_figure
 
 _HERE = Path(__file__).resolve().parents[1]
@@ -74,72 +63,24 @@ def trajectory(prom, enh, on_target, target_kd):
     return sim, ode, beta_tf, beta_syn, beta_rep, k
 
 
-def panel_a(ax, r):
-    ax.set_xlim(0, 14.6)
-    ax.set_ylim(-1.30, 2.05)
+def panel_diagram(ax, r, c):
+    img = mpimg.imread(str(OUT / "fig9_circuit_biorender.png"))
+    ax.imshow(img)
     ax.axis("off")
-    ax.text(0, 1.88, "a", fontsize=15, weight="bold", color=INK, va="bottom")
-    ax.text(0.42, 1.88, "Delivered construct, drawn to SBOL convention",
-            fontsize=12.5, weight="bold", color=INK, va="bottom")
-
-    y = 0.62
-    backbone(ax, 0.05, 11.55, y, NEUT)
-    x = promoter(ax, 0.30, y, GREEN, label=None,
-                 sub=f"synthetic promoter\nstrength {r['promoter']['strength']:.3f}")
-    x = cassette_part(ax, x + 0.16, y, PALETTE["green_2"], 1.30,
-                      label="enhancer", sub=f"activity {r['enhancer']['activity']:.3f}")
-    x = cds(ax, x + 0.16, y, BLUE, w=2.40, label="dCas9-KRAB", sub="effector CDS")
-    x = terminator(ax, x + 0.20, y, GREY, label="pA")
-    ax.text(11.75, y, "effector cassette", fontsize=10.5, color=GREY,
-            style="italic", va="center")
-
-    y2 = -0.72
-    backbone(ax, 0.05, 11.55, y2, NEUT)
-    x = promoter(ax, 0.30, y2, VIOLET, label=None, sub="U6\npol III")
-    x = cassette_part(ax, x + 0.16, y2, VIOLET, 2.35, label="sgRNA spacer",
-                      sub=f"20 nt, on-target {r['repressor_guide']['on_target']:.3f}")
-    x = cassette_part(ax, x + 0.10, y2, NEUT, 1.35, label="scaffold")
-    x = terminator(ax, x + 0.20, y2, GREY, label="TTTT")
-    ax.text(11.75, y2, "guide cassette", fontsize=10.5, color=GREY,
-            style="italic", va="center")
-
-
-def panel_b(ax, r, c):
-    ax.set_xlim(0, 14.6)
-    ax.set_ylim(-1.75, 2.05)
-    ax.axis("off")
-    ax.text(0, 1.88, "b", fontsize=15, weight="bold", color=INK, va="bottom")
-    ax.text(0.42, 1.88, "Action at the target locus", fontsize=12.5,
-            weight="bold", color=INK, va="bottom")
-
-    y = 0.05
-    dna_duplex(ax, 0.25, 11.6, y, GREY)
+    ax.text(0.0, 1.045, "a", transform=ax.transAxes, fontsize=15, weight="bold",
+            color=INK, va="bottom")
+    ax.text(0.028, 1.045, "Delivered construct and its action at the target locus",
+            transform=ax.transAxes, fontsize=12.5, weight="bold", color=INK, va="bottom")
     loc = r["enhancer"]["locus"]
-    ax.text(0.25, -0.34, f"{loc['chrom']}:{loc['start']:,}", fontsize=8.6, color=GREY)
-    ax.text(11.6, -0.34, f"{loc['end']:,}", fontsize=8.6, color=GREY, ha="right")
-
-    promoter(ax, 6.05, y + 0.10, INK, w=0.62, h=0.50)
-    ax.text(7.34, y + 0.94, "GATA6 promoter", fontsize=10.5, color=INK, weight="bold")
-    ax.text(7.34, y + 0.66, f"chromatin {c['chromatin_state'].replace('_', ', ')}",
-            fontsize=9, color=GREY, style="italic")
-    cds(ax, 7.30, y, NEUT, w=3.05, h=0.46, label="GATA6")
-
-    dcas9(ax, 4.85, y + 0.62, BLUE2)
-    ax.text(4.85, y + 0.62, "dCas9", ha="center", va="center", fontsize=9,
-            color="white", weight="bold", zorder=6)
-    dcas9(ax, 3.85, y + 0.62, RED, w=0.78, h=0.58)
-    ax.text(3.85, y + 0.62, "KRAB", ha="center", va="center", fontsize=8.4,
-            color="white", weight="bold", zorder=6)
-    guide_rna(ax, 4.92, y + 0.34, 5.86, y + 0.10, VIOLET)
-    ax.text(5.70, y - 0.54, "sgRNA", fontsize=9, color=VIOLET, ha="center",
-            style="italic", zorder=7)
-    ax.text(3.85, y + 1.06, "KRAB-mediated\nheterochromatin", fontsize=9.4,
-            color=GREY, ha="center", style="italic")
-
-    repression(ax, 6.36, y + 0.60, y + 0.34, RED)
-    curved(ax, (10.30, y - 0.50), (4.85, y - 0.50), RED, rad=-0.30)
-    ax.text(7.55, y - 1.46, "negative feedback, repressor output feeds back on the target",
-            fontsize=9.6, color=RED, ha="center", style="italic")
+    ax.text(0.0, -0.035,
+            f"promoter strength {r['promoter']['strength']:.3f}   "
+            f"enhancer activity {r['enhancer']['activity']:.3f}   "
+            f"guide on-target {r['repressor_guide']['on_target']:.3f}   "
+            f"CFD specificity {r['repressor_guide']['cfd_specificity']:.3f}   "
+            f"{loc['chrom']}:{loc['start']:,}-{loc['end']:,}",
+            transform=ax.transAxes, fontsize=10, color=GREY, va="top")
+    ax.text(0.0, -0.085, "Diagram created with BioRender.com", transform=ax.transAxes,
+            fontsize=9.5, color=GREY, va="top", style="italic")
 
 
 def panel_c(ax, sim, ode, kd, betas):
@@ -176,7 +117,7 @@ def panel_d(ax, c):
     ax.axis("off")
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.text(0.0, 0.97, "d  Objectives", fontsize=12.5, weight="bold", color=INK, va="top")
+    ax.text(0.0, 0.97, "c  Objectives", fontsize=12.5, weight="bold", color=INK, va="top")
     rows = [("efficacy", c["efficacy"]), ("specificity", c["specificity"]),
             ("robustness", c["robustness"]), ("safety", c["safety"])]
     y = 0.76
@@ -200,16 +141,19 @@ def main():
         r["promoter"]["strength"], r["enhancer"]["activity"],
         r["repressor_guide"]["on_target"], c["tf_knockdown"])
 
-    fig = plt.figure(figsize=(13.6, 9.4))
-    gs = fig.add_gridspec(3, 2, height_ratios=[0.76, 0.92, 1.05],
-                          width_ratios=[1.58, 1.0],
-                          hspace=0.42, wspace=0.20,
-                          left=0.055, right=0.975, top=0.955, bottom=0.075)
-    panel_a(fig.add_subplot(gs[0, :]), r)
-    panel_b(fig.add_subplot(gs[1, :]), r, c)
-    panel_c(fig.add_subplot(gs[2, 0]), sim, ode, kd, (b_tf, b_syn, b_rep))
-    panel_d(fig.add_subplot(gs[2, 1]), c)
-    finalize_figure(fig, OUT, "fig9_circuit", formats=("png", "pdf", "svg"), pad=None)
+    fig = plt.figure(figsize=(13.6, 11.2))
+    gs = fig.add_gridspec(2, 2, height_ratios=[1.62, 1.0], width_ratios=[1.58, 1.0],
+                          hspace=0.20, wspace=0.20,
+                          left=0.055, right=0.975, top=0.955, bottom=0.065)
+    ax = fig.add_subplot(gs[0, :])
+    panel_diagram(ax, r, c)
+    axc = fig.add_subplot(gs[1, 0])
+    panel_c(axc, sim, ode, kd, (b_tf, b_syn, b_rep))
+    axc.set_title("b  Simulated kinetics of this circuit", loc="left", fontsize=12.5,
+                  weight="bold")
+    axd = fig.add_subplot(gs[1, 1])
+    panel_d(axd, c)
+    finalize_figure(fig, OUT, "fig9_circuit", formats=("png", "pdf"), dpi=200, pad=None)
     print(f"  fig9_circuit  (GATA6, knockdown {kd:.3f}, beta_tf {b_tf:.3f})")
 
 
